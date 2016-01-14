@@ -8,20 +8,84 @@
 
 /* Begin PBXBuildFile section */
 		ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1BF41C4730890026A3AC /* AppDelegate.swift */; };
-		ABDA1BF71C4730890026A3AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1BF61C4730890026A3AC /* ViewController.swift */; };
 		ABDA1BFA1C4730890026A3AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1BF81C4730890026A3AC /* Main.storyboard */; };
 		ABDA1BFC1C4730890026A3AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1BFB1C4730890026A3AC /* Assets.xcassets */; };
 		ABDA1BFF1C4730890026A3AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1BFD1C4730890026A3AC /* LaunchScreen.storyboard */; };
+		ABDA1C0E1C4731640026A3AC /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C081C4731640026A3AC /* DGElasticPullToRefreshConstants.swift */; };
+		ABDA1C0F1C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C091C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift */; };
+		ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C0A1C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift */; };
+		ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C0B1C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
+		ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C0C1C4731640026A3AC /* DGElasticPullToRefreshView.swift */; };
+		ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C0D1C4731640026A3AC /* DGRunkeeperSwitch.swift */; };
+		ABDA1C1A1C47319D0026A3AC /* 404.html in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C151C47319D0026A3AC /* 404.html */; };
+		ABDA1C1B1C47319D0026A3AC /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C161C47319D0026A3AC /* bootstrap.min.css */; };
+		ABDA1C1C1C47319D0026A3AC /* markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C171C47319D0026A3AC /* markdown.css */; };
+		ABDA1C1D1C47319D0026A3AC /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C181C47319D0026A3AC /* jquery.min.js */; };
+		ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C191C47319D0026A3AC /* Markdown.swift */; };
+		ABDA1C241C47320D0026A3AC /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */; };
+		ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C231C47320D0026A3AC /* ProgressHUD.m */; };
+		ABDA1C2B1C4732720026A3AC /* MyNSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */; };
+		ABDA1C2C1C4732720026A3AC /* GithubStarsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C281C4732720026A3AC /* GithubStarsRealm.swift */; };
+		ABDA1C2D1C4732720026A3AC /* GithubStarReadMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C291C4732720026A3AC /* GithubStarReadMe.swift */; };
+		ABDA1C2E1C4732720026A3AC /* GithubStarsRealmAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C2A1C4732720026A3AC /* GithubStarsRealmAction.swift */; };
+		ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C301C4732880026A3AC /* GithubAPI.swift */; };
+		ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C311C4732880026A3AC /* ReadMeDown.swift */; };
+		ABDA1C371C4732C10026A3AC /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C361C4732C10026A3AC /* RootTabBarViewController.swift */; };
+		ABDA1C411C4732F70026A3AC /* ReferenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3A1C4732F70026A3AC /* ReferenceTableViewController.swift */; };
+		ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3B1C4732F70026A3AC /* StarInformationViewController.swift */; };
+		ABDA1C431C4732F70026A3AC /* GithubOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3C1C4732F70026A3AC /* GithubOAuth.swift */; };
+		ABDA1C441C4732F70026A3AC /* GetStarredCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3D1C4732F70026A3AC /* GetStarredCount.swift */; };
+		ABDA1C451C4732F70026A3AC /* StarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3E1C4732F70026A3AC /* StarsTableViewCell.swift */; };
+		ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */; };
+		ABDA1C471C4732F70026A3AC /* SearchStarsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C401C4732F70026A3AC /* SearchStarsTableViewController.swift */; };
+		ABDA1C4E1C4733220026A3AC /* ChooseLangueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C491C4733220026A3AC /* ChooseLangueTableViewController.swift */; };
+		ABDA1C4F1C4733220026A3AC /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C4A1C4733220026A3AC /* RequestData.swift */; };
+		ABDA1C501C4733220026A3AC /* TodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C4B1C4733220026A3AC /* TodyViewController.swift */; };
+		ABDA1C511C4733220026A3AC /* WeekExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C4C1C4733220026A3AC /* WeekExploreViewController.swift */; };
+		ABDA1C521C4733220026A3AC /* MonthExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C4D1C4733220026A3AC /* MonthExploreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ABDA1BF11C4730890026A3AC /* GithubStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDA1BF41C4730890026A3AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ABDA1BF61C4730890026A3AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ABDA1BF91C4730890026A3AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABDA1BFB1C4730890026A3AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABDA1BFE1C4730890026A3AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABDA1C001C4730890026A3AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABDA1C081C4731640026A3AC /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
+		ABDA1C091C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
+		ABDA1C0A1C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingView.swift; sourceTree = "<group>"; };
+		ABDA1C0B1C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingViewCircle.swift; sourceTree = "<group>"; };
+		ABDA1C0C1C4731640026A3AC /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
+		ABDA1C0D1C4731640026A3AC /* DGRunkeeperSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGRunkeeperSwitch.swift; sourceTree = "<group>"; };
+		ABDA1C151C47319D0026A3AC /* 404.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404.html; sourceTree = "<group>"; };
+		ABDA1C161C47319D0026A3AC /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.min.css; sourceTree = "<group>"; };
+		ABDA1C171C47319D0026A3AC /* markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = markdown.css; sourceTree = "<group>"; };
+		ABDA1C181C47319D0026A3AC /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
+		ABDA1C191C47319D0026A3AC /* Markdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
+		ABDA1C201C47320C0026A3AC /* GithubStar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubStar-Bridging-Header.h"; sourceTree = "<group>"; };
+		ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		ABDA1C221C47320D0026A3AC /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		ABDA1C231C47320D0026A3AC /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNSUserDefaults.swift; sourceTree = "<group>"; };
+		ABDA1C281C4732720026A3AC /* GithubStarsRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubStarsRealm.swift; sourceTree = "<group>"; };
+		ABDA1C291C4732720026A3AC /* GithubStarReadMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubStarReadMe.swift; sourceTree = "<group>"; };
+		ABDA1C2A1C4732720026A3AC /* GithubStarsRealmAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubStarsRealmAction.swift; sourceTree = "<group>"; };
+		ABDA1C301C4732880026A3AC /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
+		ABDA1C311C4732880026A3AC /* ReadMeDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMeDown.swift; sourceTree = "<group>"; };
+		ABDA1C361C4732C10026A3AC /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
+		ABDA1C3A1C4732F70026A3AC /* ReferenceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceTableViewController.swift; sourceTree = "<group>"; };
+		ABDA1C3B1C4732F70026A3AC /* StarInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarInformationViewController.swift; sourceTree = "<group>"; };
+		ABDA1C3C1C4732F70026A3AC /* GithubOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubOAuth.swift; sourceTree = "<group>"; };
+		ABDA1C3D1C4732F70026A3AC /* GetStarredCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStarredCount.swift; sourceTree = "<group>"; };
+		ABDA1C3E1C4732F70026A3AC /* StarsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsTableViewCell.swift; sourceTree = "<group>"; };
+		ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsTableViewController.swift; sourceTree = "<group>"; };
+		ABDA1C401C4732F70026A3AC /* SearchStarsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStarsTableViewController.swift; sourceTree = "<group>"; };
+		ABDA1C491C4733220026A3AC /* ChooseLangueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseLangueTableViewController.swift; sourceTree = "<group>"; };
+		ABDA1C4A1C4733220026A3AC /* RequestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
+		ABDA1C4B1C4733220026A3AC /* TodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodyViewController.swift; sourceTree = "<group>"; };
+		ABDA1C4C1C4733220026A3AC /* WeekExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekExploreViewController.swift; sourceTree = "<group>"; };
+		ABDA1C4D1C4733220026A3AC /* MonthExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthExploreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +118,127 @@
 		ABDA1BF31C4730890026A3AC /* GithubStar */ = {
 			isa = PBXGroup;
 			children = (
+				ABDA1C341C47329D0026A3AC /* Controller */,
+				ABDA1C2F1C47327C0026A3AC /* API */,
+				ABDA1C261C4732640026A3AC /* Data */,
+				ABDA1C061C4731360026A3AC /* Frame */,
 				ABDA1BF41C4730890026A3AC /* AppDelegate.swift */,
-				ABDA1BF61C4730890026A3AC /* ViewController.swift */,
+				ABDA1C201C47320C0026A3AC /* GithubStar-Bridging-Header.h */,
 				ABDA1BF81C4730890026A3AC /* Main.storyboard */,
 				ABDA1BFB1C4730890026A3AC /* Assets.xcassets */,
 				ABDA1BFD1C4730890026A3AC /* LaunchScreen.storyboard */,
 				ABDA1C001C4730890026A3AC /* Info.plist */,
 			);
 			path = GithubStar;
+			sourceTree = "<group>";
+		};
+		ABDA1C061C4731360026A3AC /* Frame */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1C1F1C4731F70026A3AC /* ProgressHUD */,
+				ABDA1C141C4731740026A3AC /* MarkDown */,
+				ABDA1C071C4731500026A3AC /* DGElasticPullToRefresh */,
+			);
+			name = Frame;
+			sourceTree = "<group>";
+		};
+		ABDA1C071C4731500026A3AC /* DGElasticPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1C081C4731640026A3AC /* DGElasticPullToRefreshConstants.swift */,
+				ABDA1C091C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift */,
+				ABDA1C0A1C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift */,
+				ABDA1C0B1C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift */,
+				ABDA1C0C1C4731640026A3AC /* DGElasticPullToRefreshView.swift */,
+				ABDA1C0D1C4731640026A3AC /* DGRunkeeperSwitch.swift */,
+			);
+			name = DGElasticPullToRefresh;
+			sourceTree = "<group>";
+		};
+		ABDA1C141C4731740026A3AC /* MarkDown */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1C151C47319D0026A3AC /* 404.html */,
+				ABDA1C161C47319D0026A3AC /* bootstrap.min.css */,
+				ABDA1C171C47319D0026A3AC /* markdown.css */,
+				ABDA1C181C47319D0026A3AC /* jquery.min.js */,
+				ABDA1C191C47319D0026A3AC /* Markdown.swift */,
+			);
+			name = MarkDown;
+			sourceTree = "<group>";
+		};
+		ABDA1C1F1C4731F70026A3AC /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */,
+				ABDA1C221C47320D0026A3AC /* ProgressHUD.h */,
+				ABDA1C231C47320D0026A3AC /* ProgressHUD.m */,
+			);
+			name = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		ABDA1C261C4732640026A3AC /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */,
+				ABDA1C281C4732720026A3AC /* GithubStarsRealm.swift */,
+				ABDA1C291C4732720026A3AC /* GithubStarReadMe.swift */,
+				ABDA1C2A1C4732720026A3AC /* GithubStarsRealmAction.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		ABDA1C2F1C47327C0026A3AC /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1C301C4732880026A3AC /* GithubAPI.swift */,
+				ABDA1C311C4732880026A3AC /* ReadMeDown.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		ABDA1C341C47329D0026A3AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1C481C47330B0026A3AC /* Trending */,
+				ABDA1C391C4732E10026A3AC /* Star */,
+				ABDA1C351C4732AE0026A3AC /* Tab */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		ABDA1C351C4732AE0026A3AC /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1C361C4732C10026A3AC /* RootTabBarViewController.swift */,
+			);
+			name = Tab;
+			sourceTree = "<group>";
+		};
+		ABDA1C391C4732E10026A3AC /* Star */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1C3A1C4732F70026A3AC /* ReferenceTableViewController.swift */,
+				ABDA1C3B1C4732F70026A3AC /* StarInformationViewController.swift */,
+				ABDA1C3C1C4732F70026A3AC /* GithubOAuth.swift */,
+				ABDA1C3D1C4732F70026A3AC /* GetStarredCount.swift */,
+				ABDA1C3E1C4732F70026A3AC /* StarsTableViewCell.swift */,
+				ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */,
+				ABDA1C401C4732F70026A3AC /* SearchStarsTableViewController.swift */,
+			);
+			name = Star;
+			sourceTree = "<group>";
+		};
+		ABDA1C481C47330B0026A3AC /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1C491C4733220026A3AC /* ChooseLangueTableViewController.swift */,
+				ABDA1C4A1C4733220026A3AC /* RequestData.swift */,
+				ABDA1C4B1C4733220026A3AC /* TodyViewController.swift */,
+				ABDA1C4C1C4733220026A3AC /* WeekExploreViewController.swift */,
+				ABDA1C4D1C4733220026A3AC /* MonthExploreViewController.swift */,
+			);
+			name = Trending;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +251,7 @@
 				ABDA1BED1C4730890026A3AC /* Sources */,
 				ABDA1BEE1C4730890026A3AC /* Frameworks */,
 				ABDA1BEF1C4730890026A3AC /* Resources */,
+				ABDA1C531C4734350026A3AC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -122,21 +300,70 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABDA1C241C47320D0026A3AC /* ProgressHUD.bundle in Resources */,
+				ABDA1C1B1C47319D0026A3AC /* bootstrap.min.css in Resources */,
 				ABDA1BFF1C4730890026A3AC /* LaunchScreen.storyboard in Resources */,
+				ABDA1C1D1C47319D0026A3AC /* jquery.min.js in Resources */,
 				ABDA1BFC1C4730890026A3AC /* Assets.xcassets in Resources */,
 				ABDA1BFA1C4730890026A3AC /* Main.storyboard in Resources */,
+				ABDA1C1C1C47319D0026A3AC /* markdown.css in Resources */,
+				ABDA1C1A1C47319D0026A3AC /* 404.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ABDA1C531C4734350026A3AC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ABDA1BED1C4730890026A3AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABDA1BF71C4730890026A3AC /* ViewController.swift in Sources */,
+				ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */,
+				ABDA1C411C4732F70026A3AC /* ReferenceTableViewController.swift in Sources */,
+				ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */,
+				ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */,
+				ABDA1C2B1C4732720026A3AC /* MyNSUserDefaults.swift in Sources */,
+				ABDA1C2E1C4732720026A3AC /* GithubStarsRealmAction.swift in Sources */,
+				ABDA1C371C4732C10026A3AC /* RootTabBarViewController.swift in Sources */,
+				ABDA1C4F1C4733220026A3AC /* RequestData.swift in Sources */,
+				ABDA1C511C4733220026A3AC /* WeekExploreViewController.swift in Sources */,
+				ABDA1C521C4733220026A3AC /* MonthExploreViewController.swift in Sources */,
+				ABDA1C451C4732F70026A3AC /* StarsTableViewCell.swift in Sources */,
+				ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */,
+				ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */,
+				ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */,
+				ABDA1C441C4732F70026A3AC /* GetStarredCount.swift in Sources */,
+				ABDA1C2D1C4732720026A3AC /* GithubStarReadMe.swift in Sources */,
+				ABDA1C0F1C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift in Sources */,
+				ABDA1C431C4732F70026A3AC /* GithubOAuth.swift in Sources */,
+				ABDA1C2C1C4732720026A3AC /* GithubStarsRealm.swift in Sources */,
+				ABDA1C471C4732F70026A3AC /* SearchStarsTableViewController.swift in Sources */,
 				ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */,
+				ABDA1C4E1C4733220026A3AC /* ChooseLangueTableViewController.swift in Sources */,
+				ABDA1C0E1C4731640026A3AC /* DGElasticPullToRefreshConstants.swift in Sources */,
+				ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */,
+				ABDA1C501C4733220026A3AC /* TodyViewController.swift in Sources */,
+				ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
+				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
+				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,10 +474,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = GithubStar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.dowhile.GithubStar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GithubStar/GithubStar-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -258,10 +490,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = GithubStar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.dowhile.GithubStar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GithubStar/GithubStar-Bridging-Header.h";
 			};
 			name = Release;
 		};
