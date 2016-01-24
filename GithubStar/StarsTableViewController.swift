@@ -194,6 +194,7 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
     func pulldowndata(){
         //查看是否有 token
         guard let _ = Defaults[.token] else{
+            
             ProgressHUD.showError("Not Logged in", interaction: true)
             GithubOAuth.GithubOAuth(self)
             self.tableView.dg_stopLoading()
