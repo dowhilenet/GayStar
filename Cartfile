@@ -1,0 +1,11 @@
+github "onevcat/Kingfisher" ~> 2.0
+github "dzenbot/DZNEmptyDataSet"
+github "Alamofire/Alamofire"
+github "JohnSundell/Unbox"
+github "SnapKit/SnapKit"
+github "honghaoz/Ji"
+github "radex/SwiftyUserDefaults"
+github "dongri/OAuthSwift"
+github "DianQK/TransitionTreasury"
+github "realm/realm-cocoa"
+github "xhacker/TagListView"
