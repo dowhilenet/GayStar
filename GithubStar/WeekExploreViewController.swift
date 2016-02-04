@@ -31,7 +31,9 @@ class WeekExploreViewController: UIViewController,UITableViewDataSource,UITableV
         tableview.estimatedRowHeight = 88.00
         tableview.rowHeight = UITableViewAutomaticDimension
         tableview.snp_makeConstraints { (make) -> Void in
-            make.edges.equalTo(self.view).inset(EdgeInsets(top: 64, left: 0, bottom: 64, right: 0))
+            make.top.equalTo(self.view.snp_top).offset(64)
+            make.trailing.leading.equalTo(self.view)
+            make.bottom.equalTo(self.view.snp_bottom).offset(-64)
         }
         loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
         tableview.dg_addPullToRefreshWithActionHandler(pulldowndata, loadingView: loadingView)

@@ -1,3 +1,4 @@
+github "uacaps/PageMenu"
 github "onevcat/Kingfisher" ~> 2.0
 github "dzenbot/DZNEmptyDataSet"
 github "Alamofire/Alamofire"

@@ -133,8 +133,8 @@ class StarsTableViewController: UITableViewController{
      */
     private func pulldownConfig(){
         //下拉刷新样式设计
-        loadingView.tintColor = UIColor.whiteColor()
-        self.tableView.dg_setPullToRefreshFillColor(UIColor.blackColor())
+        loadingView.tintColor = PullToRefreshTintColor
+        self.tableView.dg_setPullToRefreshFillColor(PullToRefreshFillColor)
         self.tableView.dg_setPullToRefreshBackgroundColor(self.tableView.backgroundColor!)
         self.tableView.dg_addPullToRefreshWithActionHandler(pulldowndata, loadingView: loadingView)
     }

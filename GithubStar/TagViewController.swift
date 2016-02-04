@@ -97,7 +97,7 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let name = names[indexPath.row].name
-        GithubStarsRealmAction.updateStar(item, groupName: name) { (isSuccess) -> Void in
+        GithubStarsRealmAction.updateStarOwnGroup(item, groupName: name) { (isSuccess) -> Void in
             if isSuccess {
                 ProgressHUD.showSuccess("Success")
                 self.navigationController?.popViewControllerAnimated(true)

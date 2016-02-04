@@ -104,8 +104,8 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
 
     func pullView(){
         //圈圈颜色
-    loadingView.tintColor = UIColor.whiteColor()
-    webview.scrollView.dg_setPullToRefreshFillColor(.blackColor())
+    loadingView.tintColor = PullToRefreshTintColor
+    webview.scrollView.dg_setPullToRefreshFillColor(PullToRefreshFillColor)
     webview.scrollView.dg_setPullToRefreshBackgroundColor(webview.scrollView.backgroundColor!)
     
     webview.scrollView.dg_addPullToRefreshWithActionHandler({ () -> Void in

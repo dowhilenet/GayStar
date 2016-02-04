@@ -23,6 +23,8 @@ class ReferenceTableViewController: UIViewController, UITableViewDataSource,UITa
     var tb: UITableView!
     var groupdelegate: ReferenceTableViewControllerDelegate?
     var names: Results<(GithubGroupRealm)>!
+    var prompt = SwiftPromptsView()
+    var deleteIndex = NSIndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +58,17 @@ extension ReferenceTableViewController{
             make.edges.equalTo(self.view)
         }
         
-        let longtap = UILongPressGestureRecognizer()
-        longtap.minimumPressDuration = 1.0
-        longtap.addTarget(self, action: "longtap:")
-        tb.addGestureRecognizer(longtap)
+        let left = UISwipeGestureRecognizer()
+        left.direction = .Left
+        
+        let right = UISwipeGestureRecognizer()
+        right.direction = .Right
+        
+        left.addTarget(self, action: "longtap:")
+        right.addTarget(self, action: "longtap:")
+        
+        tb.addGestureRecognizer(right)
+        tb.addGestureRecognizer(left)
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
@@ -67,25 +76,19 @@ extension ReferenceTableViewController{
     }
     
     
-    func longtap(ges:UILongPressGestureRecognizer) {
+    func longtap(ges:UISwipeGestureRecognizer) {
         
         let tapPoint = ges.locationInView(self.tb)
-        
+
         guard let  index = tb.indexPathForRowAtPoint(tapPoint) else {  return }
         
-        let alert = UIAlertController(title: "\(names[index.row].name)", message: "Sure you want to remove it", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Remove", style: .Destructive, handler: { (action) -> Void in
-            GithubGroupRealmAction.removeAgroup(self.names[index.row])
-            self.tb.reloadData()
-        }))
-        
-        presentViewController(alert, animated: true, completion: nil)
+        deletePrompts(self.view,title: "Delete", message: "You will remove \n \(names[index.row].name)")
+        deleteIndex = index
     }
     
     
     func addgroups(item:UIBarButtonItem){
-        
+       
         let alert = UIAlertController(title: "Add Group", message: nil, preferredStyle: .Alert)
         
         alert.addTextFieldWithConfigurationHandler { (uitextfield) -> Void in
@@ -150,6 +153,44 @@ extension ReferenceTableViewController{
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         return 66
+    }
+}
+
+
+extension ReferenceTableViewController:SwiftPromptsProtocol{
+    // MARK: - Delegate functions for the prompt
+    
+    func clickedOnTheMainButton() {
+        GithubGroupRealmAction.removeAgroup(names[deleteIndex.row])
+        names = GithubGroupRealmAction.select()
+        self.tb.reloadData()
+        prompt.dismissPrompt()
+    }
+    
+    
+    func deletePrompts(view:UIView,title:String,message:String){
+        //create
+        prompt = SwiftPromptsView(frame: self.view.bounds)
+        prompt.delegate = self
+        
+        //Set the properties of the prompt
+        prompt.setPromptHeader(title)
+        prompt.setPromptContentText(message)
+        prompt.setPromptTopLineVisibility(true)
+        prompt.setPromptBottomLineVisibility(false)
+        prompt.setPromptBottomBarVisibility(true)
+        prompt.setPromptDismissIconVisibility(true)
+        prompt.setPromptOutlineVisibility(true)
+        
+        prompt.setPromptHeaderTxtColor(UIColor(red: 255.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0))
+        prompt.setPromptOutlineColor(UIColor(red: 133.0/255.0, green: 133.0/255.0, blue: 133.0/255.0, alpha: 1.0))
+        prompt.setPromptDismissIconColor(UIColor(red: 133.0/255.0, green: 133.0/255.0, blue: 133.0/255.0, alpha: 1.0))
+        prompt.setPromptTopLineColor(UIColor(red: 151.0/255.0, green: 151.0/255.0, blue: 151.0/255.0, alpha: 1.0))
+        prompt.setPromptBackgroundColor(UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.67))
+        prompt.setPromptBottomBarColor(UIColor(red: 133.0/255.0, green: 133.0/255.0, blue: 133.0/255.0, alpha: 1.0))
+        prompt.setMainButtonColor(UIColor.whiteColor())
+        prompt.setMainButtonText("OK")
+        self.view.addSubview(prompt)
     }
 }
 

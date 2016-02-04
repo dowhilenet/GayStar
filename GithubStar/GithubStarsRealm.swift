@@ -242,11 +242,11 @@ class GithubGroupRealmAction{
         }
     }
     
-    class func updateGroupCount(group:GithubGroupRealm){
-        try! realm.write({ () -> Void in
-            group.count = group.count + 1
-        })
-    }
+//    class func updateGroupCount(group:GithubGroupRealm){
+//        try! realm.write({ () -> Void in
+//            group.count = group.count + 1
+//        })
+//    }
     
     class func select() -> Results<(GithubGroupRealm)>{
         return realm.objects(GithubGroupRealm).sorted("name")

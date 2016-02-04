@@ -21,6 +21,7 @@ class GroupItemsTableViewController: UITableViewController {
     var name: GithubGroupRealm!
     var groupdelegate: GroupItemsTableViewControllerDelegate?
     var starDelegate: PushStarProtocol?
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,11 +85,12 @@ class GroupItemsTableViewController: UITableViewController {
         
         if editingStyle == .Delete {
             GithubStarsRealmAction.updateStarOwnGroup(items[indexPath.row], groupName: "", back: { (ok) -> Void in
-            if ok {
-            ProgressHUD.showSuccess("Success")
-            }
-            
-            })
+                if ok {
+                    ProgressHUD.showSuccess("Success")
+                    }else{
+                    ProgressHUD.showError("Error")
+                    }
+                })
             items = GithubStarsRealmAction.selectStarByGroupNameSortedByName(name.name)
             self.tableView.reloadData()
         }
@@ -113,3 +115,6 @@ extension GroupItemsTableViewController:ReferenceTableViewControllerDelegate{
         name = group
     }
 }
+
+
+

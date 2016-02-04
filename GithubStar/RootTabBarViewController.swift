@@ -41,7 +41,14 @@ class RootTabBarViewController: UITabBarController {
         secViewController.tabBarItem = secTabBarItem
         
         //3
-        self.viewControllers = [firstViewController,secViewController]
+        
+        let thirdViewController = UINavigationController(rootViewController: PageMenuViewController())
+        
+        let thirdTabBarItem = UITabBarItem()
+        thirdTabBarItem.title = "Trending"
+        thirdViewController.tabBarItem = thirdTabBarItem
+        
+        self.viewControllers = [firstViewController,secViewController,thirdViewController]
     }
 
     override func didReceiveMemoryWarning() {
