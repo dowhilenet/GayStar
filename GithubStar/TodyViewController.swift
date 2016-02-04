@@ -10,20 +10,34 @@ import UIKit
 import SnapKit
 import Alamofire
 import Unbox
-
+import RealmSwift
 
 class TodyViewController: UITableViewController{
     
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     
-    var repositoriesModel = [GithubStarsRealm]()
-    var lang = "all"
+    var repositoriesModel: Results<(GithubStarTrending)>!
+    var repositoriesModel1: Results<(GithubStarWeekTrending)>!
+    var repositoriesModel2: Results<(GithubStarMonthyTrending)>!
+    var lang: String?
+    var currType = 0
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+        switchRepositoriesModel()
         tableViewConfig()
+    }
+    
+    func switchRepositoriesModel() {
+        switch currType {
+        case 0:
+            repositoriesModel = GithubStarsRealmAction.selectTrengind()
+        case 1:
+            repositoriesModel1 = GithubStarsRealmAction.selectWeekTrengind()
+        default:
+            repositoriesModel2 = GithubStarsRealmAction.selectMonthyTrengind()
+        }
     }
     
     func tableViewConfig(){
@@ -32,53 +46,17 @@ class TodyViewController: UITableViewController{
         tableView.estimatedRowHeight = 88.00
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+        loadingView.tintColor = PullToRefreshTintColor
         tableView.dg_addPullToRefreshWithActionHandler(pulldowndata, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.5))
+        tableView.dg_setPullToRefreshFillColor(PullToRefreshFillColor)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
     }
     
-    deinit {
-        tableView.dg_removePullToRefresh()
-    }
-    
-    
-    
-    func pulldowndata(){
-        let names = TrendingRepositories.ToDay.getRepo(lang)
-        names.forEach { (name) -> () in
-            Alamofire.request(GithubAPI.repos(repos: name))
-            .validate()
-            .responseData({ (res) -> Void in
-                guard let data = res.data else{
-                    self.tableView.dg_stopLoading()
-                    return
-                }
-//                let cache = Shared.dataCache
-//                cache.set(value: data, key: "today\(self.lang)")
-//                cache.fetch(key: "today\(self.lang)")
-//                    .onSuccess { (data) -> () in
-//                        self.repositoriesModel = Unbox(data)!
-//                        self.tableView.reloadData()
-//                        self.tableView.dg_stopLoading()
-//                }
-            })
-        }
-        
-    }
-    
+
   
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-//        let cache = Shared.dataCache
-//        cache.fetch(key: "today\(self.lang)")
-//        .onSuccess { (data) -> () in
-//            self.repositoriesModel = Unbox(data)!
-//            self.tableView.reloadData()
-//        }
-//        .onFailure { (_) -> () in
-//            self.noticeError("刷新试试", autoClear: true, autoClearTime: 1)
-//        }
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -86,15 +64,115 @@ class TodyViewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositoriesModel.count
+        switch currType {
+        case 0:
+           return repositoriesModel.count
+        case 1:
+           return repositoriesModel1.count
+        default:
+           return repositoriesModel2.count
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TodayCell", forIndexPath: indexPath) as! StarsTableViewCell
         
-        cell.initCellByStarModel(repositoriesModel, index: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("TodayCell", forIndexPath: indexPath) as! StarsTableViewCell
+        switch currType {
+        case 0:
+            cell.initCellItemsToTrending(repositoriesModel, index: indexPath)
+        case 1:
+            cell.initCellItemsToWeekTrending(repositoriesModel1, index: indexPath)
+        default:
+            cell.initCellItemsToMontyTrending(repositoriesModel2, index: indexPath)
+        }
         return cell
     }
 
+    func pulldowndata(){
+        
+        var names = [String]()
+        switch currType {
+        case 0:
+            names = TrendingRepositories.ToDay.getRepo(lang)
+            
+        case 1:
+            names = TrendingRepositories.Week.getRepo(lang)
+        default:
+            names = TrendingRepositories.Monhly.getRepo(lang)
+        }
+        
+        guard names.count > 0 else {
+            ProgressHUD.showError("Error404")
+            self.tableView.dg_stopLoading()
+            return
+        }
+        
+        
+        
+        names.forEach { (name) -> () in
+            Alamofire.request(GithubAPI.repos(repos: name))
+                .responseData({ (res) -> Void in
+                    guard let data = res.data  else{
+                        self.tableView.dg_stopLoading()
+                        ProgressHUD.showError("Error0")
+                        return
+                    }
+                    self.switchInsertType(data)
+                    self.tableView.dg_stopLoading()
+                    self.switchRepositoriesModel()
+                    self.tableView.reloadData()
+                })
+        }
+        
+        
+    }
+    
+    func switchInsertType(data:NSData) {
+        switch self.currType {
+        case 0:
+            guard let stars: GithubStarTrending = Unbox(data) else {
+                self.tableView.dg_stopLoading()
+                ProgressHUD.showError("Error1")
+                return
+            }
+            
+            GithubStarsRealmAction.insertStarTrending([stars], callblocak: { (success) -> Void in
+                guard success else {
+                    self.tableView.dg_stopLoading()
+                    ProgressHUD.showError("Error2")
+                    return
+                }
+            })
+            
+        case 1:
+            
+            guard let stars: GithubStarWeekTrending = Unbox(data) else {
+                self.tableView.dg_stopLoading()
+                ProgressHUD.showError("Error1")
+                return
+            }
+            
+            GithubStarsRealmAction.insertStarWeekTrending([stars], callblocak: { (success) -> Void in
+                guard success else {
+                    self.tableView.dg_stopLoading()
+                    ProgressHUD.showError("Error2")
+                    return
+                }
+            })
+        default:
+            guard let stars: GithubStarMonthyTrending = Unbox(data) else {
+                self.tableView.dg_stopLoading()
+                ProgressHUD.showError("Error1")
+                return
+            }
+            GithubStarsRealmAction.insertStarMontyTrending([stars], callblocak: { (success) -> Void in
+                guard success else {
+                    self.tableView.dg_stopLoading()
+                    ProgressHUD.showError("Error2")
+                    return
+                }
+            })
+        }// end switch
+    }
 
 }

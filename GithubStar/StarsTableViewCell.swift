@@ -53,6 +53,33 @@ class StarsTableViewCell: UITableViewCell {
         autherName.text = res[index.row].autherName
     }
     
+    func initCellItemsToTrending(items:Results<(GithubStarTrending)>,index:NSIndexPath){
+        self.name.text = items[index.row].name
+        self.desText.text = items[index.row].decription ?? ""
+        self.starLabel.text = items[index.row].stargazersCount.toString()
+        self.langLabel.text = items[index.row].language ?? "NULL"
+        self.imageview.kf_setImageWithURL(NSURL(string: items[index.row].avatarURL)!)
+        self.autherName.text = items[index.row].autherName
+    }
+    
+    func initCellItemsToWeekTrending(items:Results<(GithubStarWeekTrending)>,index:NSIndexPath){
+        self.name.text = items[index.row].name
+        self.desText.text = items[index.row].decription ?? ""
+        self.starLabel.text = items[index.row].stargazersCount.toString()
+        self.langLabel.text = items[index.row].language ?? "NULL"
+        self.imageview.kf_setImageWithURL(NSURL(string: items[index.row].avatarURL)!)
+        self.autherName.text = items[index.row].autherName
+    }
+    
+    func initCellItemsToMontyTrending(items:Results<(GithubStarMonthyTrending)>,index:NSIndexPath){
+        self.name.text = items[index.row].name
+        self.desText.text = items[index.row].decription ?? ""
+        self.starLabel.text = items[index.row].stargazersCount.toString()
+        self.langLabel.text = items[index.row].language ?? "NULL"
+        self.imageview.kf_setImageWithURL(NSURL(string: items[index.row].avatarURL)!)
+        self.autherName.text = items[index.row].autherName
+    }
+    
     func configTableCell(){
         self.selectionStyle = .None
         //头像

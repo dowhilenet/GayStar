@@ -45,7 +45,7 @@ class RootTabBarViewController: UITabBarController {
         let thirdViewController = UINavigationController(rootViewController: PageMenuViewController())
         
         let thirdTabBarItem = UITabBarItem()
-        thirdTabBarItem.title = "Trending"
+        thirdTabBarItem.title = "Explore"
         thirdViewController.tabBarItem = thirdTabBarItem
         
         self.viewControllers = [firstViewController,secViewController,thirdViewController]

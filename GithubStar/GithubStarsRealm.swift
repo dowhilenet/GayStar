@@ -45,6 +45,7 @@ class GithubStarsRealm:Object,Unboxable{
     
     dynamic var autherName            = ""
     dynamic var groupsNmae:String?    = nil
+    
     /**
      设置主键
      
@@ -59,7 +60,7 @@ class GithubStarsRealm:Object,Unboxable{
      - returns: 索引数组
      */
     override static func indexedProperties() -> [String]{
-        return ["id","name","number"]
+        return ["id","name"]
     }
     
     required convenience init(unboxer: Unboxer){
@@ -83,6 +84,222 @@ class GithubStarsRealm:Object,Unboxable{
     }
 }
 
+
+class GithubStarTrending:Object,Unboxable{
+    /// 项目ID
+    dynamic var id                    = 0
+    /// Open Iss
+    dynamic var openIssuesCount       = 0
+    /// Fork Count
+    dynamic var forksCount            = 0
+    /// Stars Count
+    dynamic var stargazersCount       = 0
+    /// Name
+    dynamic var name                  = ""
+    /// Auther URL
+    dynamic var autherURL             = ""
+    /// Full Name
+    dynamic var fullName              = ""
+    /// Description
+    dynamic var decription:String?    = nil
+    /// Language
+    dynamic var language:String?      = nil
+    /// Avatar URL
+    dynamic var avatarURL             = ""
+    /// HTML URL
+    dynamic var htmlURL               = ""
+    /// Pushed Time
+    dynamic var pushedTime            = ""
+    /// Home Page
+    dynamic var homePage:String?      = nil
+    
+    dynamic var html                  = ""
+    
+    dynamic var default_branch:String = ""
+    
+    dynamic var autherName            = ""
+
+    /**
+     设置主键
+     
+     - returns: 主键
+     */
+    override static func primaryKey() -> String?{
+        return "id"
+    }
+    /**
+     设置索引
+     
+     - returns: 索引数组
+     */
+    override static func indexedProperties() -> [String]{
+        return ["id","name"]
+    }
+    
+    required convenience init(unboxer: Unboxer){
+        self.init()
+        fullName        = unboxer.unbox("full_name")
+        decription      = unboxer.unbox("description")
+        language        = unboxer.unbox("language")
+        forksCount      = unboxer.unbox("forks_count")
+        stargazersCount = unboxer.unbox("stargazers_count")
+        avatarURL       = unboxer.unbox("owner.avatar_url")
+        htmlURL         = unboxer.unbox("owner.html_url")
+        html            = unboxer.unbox("html_url")
+        openIssuesCount = unboxer.unbox("open_issues_count")
+        pushedTime      = unboxer.unbox("updated_at")
+        homePage        = unboxer.unbox("homepage")
+        name            = unboxer.unbox("name")
+        autherURL       = unboxer.unbox("owner.url")
+        id              = unboxer.unbox("id")
+        default_branch  = unboxer.unbox("default_branch")
+        autherName      = unboxer.unbox("owner.login")
+    }
+}
+
+class GithubStarWeekTrending:Object,Unboxable{
+    /// 项目ID
+    dynamic var id                    = 0
+    /// Open Iss
+    dynamic var openIssuesCount       = 0
+    /// Fork Count
+    dynamic var forksCount            = 0
+    /// Stars Count
+    dynamic var stargazersCount       = 0
+    /// Name
+    dynamic var name                  = ""
+    /// Auther URL
+    dynamic var autherURL             = ""
+    /// Full Name
+    dynamic var fullName              = ""
+    /// Description
+    dynamic var decription:String?    = nil
+    /// Language
+    dynamic var language:String?      = nil
+    /// Avatar URL
+    dynamic var avatarURL             = ""
+    /// HTML URL
+    dynamic var htmlURL               = ""
+    /// Pushed Time
+    dynamic var pushedTime            = ""
+    /// Home Page
+    dynamic var homePage:String?      = nil
+    
+    dynamic var html                  = ""
+    
+    dynamic var default_branch:String = ""
+    
+    dynamic var autherName            = ""
+    
+    /**
+     设置主键
+     
+     - returns: 主键
+     */
+    override static func primaryKey() -> String?{
+        return "id"
+    }
+    /**
+     设置索引
+     
+     - returns: 索引数组
+     */
+    override static func indexedProperties() -> [String]{
+        return ["id","name"]
+    }
+    
+    required convenience init(unboxer: Unboxer){
+        self.init()
+        fullName        = unboxer.unbox("full_name")
+        decription      = unboxer.unbox("description")
+        language        = unboxer.unbox("language")
+        forksCount      = unboxer.unbox("forks_count")
+        stargazersCount = unboxer.unbox("stargazers_count")
+        avatarURL       = unboxer.unbox("owner.avatar_url")
+        htmlURL         = unboxer.unbox("owner.html_url")
+        html            = unboxer.unbox("html_url")
+        openIssuesCount = unboxer.unbox("open_issues_count")
+        pushedTime      = unboxer.unbox("updated_at")
+        homePage        = unboxer.unbox("homepage")
+        name            = unboxer.unbox("name")
+        autherURL       = unboxer.unbox("owner.url")
+        id              = unboxer.unbox("id")
+        default_branch  = unboxer.unbox("default_branch")
+        autherName      = unboxer.unbox("owner.login")
+    }
+}
+
+class GithubStarMonthyTrending:Object,Unboxable{
+    /// 项目ID
+    dynamic var id                    = 0
+    /// Open Iss
+    dynamic var openIssuesCount       = 0
+    /// Fork Count
+    dynamic var forksCount            = 0
+    /// Stars Count
+    dynamic var stargazersCount       = 0
+    /// Name
+    dynamic var name                  = ""
+    /// Auther URL
+    dynamic var autherURL             = ""
+    /// Full Name
+    dynamic var fullName              = ""
+    /// Description
+    dynamic var decription:String?    = nil
+    /// Language
+    dynamic var language:String?      = nil
+    /// Avatar URL
+    dynamic var avatarURL             = ""
+    /// HTML URL
+    dynamic var htmlURL               = ""
+    /// Pushed Time
+    dynamic var pushedTime            = ""
+    /// Home Page
+    dynamic var homePage:String?      = nil
+    
+    dynamic var html                  = ""
+    
+    dynamic var default_branch:String = ""
+    
+    dynamic var autherName            = ""
+    
+    /**
+     设置主键
+     
+     - returns: 主键
+     */
+    override static func primaryKey() -> String?{
+        return "id"
+    }
+    /**
+     设置索引
+     
+     - returns: 索引数组
+     */
+    override static func indexedProperties() -> [String]{
+        return ["id","name"]
+    }
+    
+    required convenience init(unboxer: Unboxer){
+        self.init()
+        fullName        = unboxer.unbox("full_name")
+        decription      = unboxer.unbox("description")
+        language        = unboxer.unbox("language")
+        forksCount      = unboxer.unbox("forks_count")
+        stargazersCount = unboxer.unbox("stargazers_count")
+        avatarURL       = unboxer.unbox("owner.avatar_url")
+        htmlURL         = unboxer.unbox("owner.html_url")
+        html            = unboxer.unbox("html_url")
+        openIssuesCount = unboxer.unbox("open_issues_count")
+        pushedTime      = unboxer.unbox("updated_at")
+        homePage        = unboxer.unbox("homepage")
+        name            = unboxer.unbox("name")
+        autherURL       = unboxer.unbox("owner.url")
+        id              = unboxer.unbox("id")
+        default_branch  = unboxer.unbox("default_branch")
+        autherName      = unboxer.unbox("owner.login")
+    }
+}
 
 //MARK: GithubStarReadMe
 class GithubStarReadMe: Object {
@@ -135,7 +352,54 @@ class GithubStarsRealmAction{
         }
         
     }
-
+    /**
+     插入Trending数据
+     
+     - parameter data:  数据
+     - parameter block: complete block
+     */
+    class func insertStarTrending(starsModelArray:[GithubStarTrending],callblocak:(Bool) -> Void) {
+        do{
+            try realm.write({ () -> Void in
+                realm.add(starsModelArray, update: true)
+                callblocak(true)
+            })
+        }catch{
+            callblocak(false)
+        }
+    }
+    
+    class func insertStarWeekTrending(starsModelArray:[GithubStarWeekTrending],callblocak:(Bool) -> Void) {
+        do{
+            try realm.write({ () -> Void in
+                realm.add(starsModelArray, update: true)
+                callblocak(true)
+            })
+        }catch{
+            callblocak(false)
+        }
+    }
+    
+    class func insertStarMontyTrending(starsModelArray:[GithubStarMonthyTrending],callblocak:(Bool) -> Void) {
+        do{
+            try realm.write({ () -> Void in
+                realm.add(starsModelArray, update: true)
+                callblocak(true)
+            })
+        }catch{
+            callblocak(false)
+        }
+    }
+    
+    class func selectTrengind() -> Results<(GithubStarTrending)> {
+        return realm.objects(GithubStarTrending)
+    }
+    class func selectWeekTrengind() -> Results<(GithubStarWeekTrending)> {
+        return realm.objects(GithubStarWeekTrending)
+    }
+    class func selectMonthyTrengind() -> Results<(GithubStarMonthyTrending)> {
+        return realm.objects(GithubStarMonthyTrending)
+    }
     
     //选择数据
     
@@ -160,12 +424,18 @@ class GithubStarsRealmAction{
      
      - returns: 选择结果
      */
+    
+    class func selectStarsSortByUngrouped() -> Results<(GithubStarsRealm)>{
+        return realm.objects(GithubStarsRealm).filter("groupsNmae = nil").sorted("name")
+    }
+    /**
+     选择ALL Repository
+     
+     - returns: 选择结果
+     */
     class func selectStarsSortByName()-> Results<(GithubStarsRealm)>{
         
         return realm.objects(GithubStarsRealm).sorted("name")
-    }
-    class func selectStarsSortByUngrouped() -> Results<(GithubStarsRealm)>{
-        return realm.objects(GithubStarsRealm).filter("groupsNmae = nil")
     }
     /**
      选择项目的Readme 文件
@@ -242,11 +512,7 @@ class GithubGroupRealmAction{
         }
     }
     
-//    class func updateGroupCount(group:GithubGroupRealm){
-//        try! realm.write({ () -> Void in
-//            group.count = group.count + 1
-//        })
-//    }
+
     
     class func select() -> Results<(GithubGroupRealm)>{
         return realm.objects(GithubGroupRealm).sorted("name")
@@ -259,5 +525,7 @@ class GithubGroupRealmAction{
     }
     
 }
+
+
 
 
