@@ -30,7 +30,7 @@ protocol PushStarProtocol:class{
 }
 
 
-class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UISearchBarDelegate{
+class StarsTableViewController: UITableViewController{
     
     let cellId = "StarsCell"
     //realm 选择 结果
@@ -39,19 +39,15 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
     var stardelegate: PushStarProtocol?
     //下拉刷新控件
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-    //Search Controller
-    var searchController: UISearchController!
-    var searchResults = [GithubStarsRealm]()
     
     var page = 1
-    var shouldShowSearchResults = false
-    let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Time", rightTitle: "Name")
+    let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Stared", rightTitle: "Ungrouped")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let home = NSHomeDirectory()
             print(home)
-//        configureSearchController()
+        
         runkeepeSwitch()
         tableviewConfig()
         pulldownConfig()
@@ -64,12 +60,12 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
             }
 
         }
-  
         //获取table 数据
-       self.items = GithubStarsRealmAction.selectStars()
-   
+        self.items = GithubStarsRealmAction.selectStars()
     }
 
+    
+    
     deinit {
         self.tableView.dg_removePullToRefresh()
     }
@@ -91,12 +87,11 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
      配置 switch
      */
     private func runkeepeSwitch(){
-    
-    runkeeperSwitch.backgroundColor = UIColor(red: 239.0/255.0, green: 95.0/255.0, blue: 49.0/255.0, alpha: 1.0)
+    runkeeperSwitch.backgroundColor = .blackColor()
     runkeeperSwitch.selectedBackgroundColor = .whiteColor()
     runkeeperSwitch.tintColor = .whiteColor()
-    runkeeperSwitch.selectedTitleColor = UIColor(red: 239.0/255.0, green: 95.0/255.0, blue: 49.0/255.0, alpha: 1.0)
-    runkeeperSwitch.titleFont = UIFont(name: "HelveticaNeue-Medium", size: 13.0)
+    runkeeperSwitch.selectedTitleColor = .blackColor()
+    runkeeperSwitch.titleFont = UIFont(name: "OpenSans", size: 13.0)
     runkeeperSwitch.frame = CGRect(x: 30.0, y: 40.0, width: 200.0, height: 30.0)
     runkeeperSwitch.autoresizingMask = [.FlexibleWidth]
     runkeeperSwitch.addTarget(self, action: Selector("switchValueDidChange:"), forControlEvents: .ValueChanged)
@@ -108,12 +103,12 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
      
      - parameter sender: sender
      */
-    func switchValueDidChange(sender:DGRunkeeperSwitch!){
+    func switchValueDidChange(sender:DGRunkeeperSwitch){
         if self.runkeeperSwitch.selectedIndex == 0{
             self.items = GithubStarsRealmAction.selectStars()
             self.tableView.reloadData()
         }else{
-            self.items = GithubStarsRealmAction.selectStarsSortByName()
+            self.items = GithubStarsRealmAction.selectStarsSortByUngrouped()
             self.tableView.reloadData()
         }
     }
@@ -121,68 +116,25 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
      Table View 配置
      */
     private func tableviewConfig(){
+        
         self.tableView.estimatedRowHeight = 88.00
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.separatorColor = UIColor(red:
+            240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0,
+            alpha: 0.8)
         self.tableView.registerClass(StarsTableViewCell.classForCoder(), forCellReuseIdentifier: cellId)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     }
     
-    /**
-     配置搜索
-     */
-    //MARK: SearchController
-    private func configureSearchController(){
-        
-        searchController = ({
-            let con = UISearchController(searchResultsController:nil)
-            con.searchResultsUpdater = self
-            con.dimsBackgroundDuringPresentation = true
-            con.searchBar.placeholder = "Search here..."
-            con.searchBar.delegate = self
-            con.searchBar.sizeToFit()
-            self.tableView.tableHeaderView = con.searchBar
-            self.definesPresentationContext = true
-            return con
-        })()
-    }
-    //MARK: UISearchResultsUpdating
-    func updateSearchResultsForSearchController(searchController: UISearchController){
-        let searchString = searchController.searchBar.text
-        filterContentForSearchText(searchString!)
-        self.tableView.reloadData()
-    }
-    
-    func filterContentForSearchText(searchText:String){
-            searchResults =  items.filter({ (star) -> Bool in
-            return star.name.lowercaseString.containsString(searchText.lowercaseString)
-            })
-    }
-    //MARK:UISearchBarDelegate
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        shouldShowSearchResults = true
-        self.tableView.reloadData()
-    }
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        shouldShowSearchResults = false
-        self.tableView.reloadData()
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        if !shouldShowSearchResults{
-            shouldShowSearchResults = true
-            self.tableView.reloadData()
-        }
-        searchController.searchBar.resignFirstResponder()
-    }
-    
+   
     
     /**
      配置下拉组建
      */
     private func pulldownConfig(){
         //下拉刷新样式设计
-        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
-        self.tableView.dg_setPullToRefreshFillColor(UIColor(red: 239.0/255.0, green: 95.0/255.0, blue: 49.0/255.0, alpha: 1.0))
+        loadingView.tintColor = UIColor.whiteColor()
+        self.tableView.dg_setPullToRefreshFillColor(UIColor.blackColor())
         self.tableView.dg_setPullToRefreshBackgroundColor(self.tableView.backgroundColor!)
         self.tableView.dg_addPullToRefreshWithActionHandler(pulldowndata, loadingView: loadingView)
     }
@@ -211,7 +163,7 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
     }
     
     
-    
+
    
     /**
      下载数据
@@ -222,7 +174,6 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
         if Defaults[.HaveDownAllPagesStars]{
         self.page = 1
         Defaults[.HaveDownAllPagesStars] = false
-        Defaults[.number] = 0
         Defaults.synchronize()
         }
         Alamofire.request(GithubAPI.star(page: "\(page++)"))
@@ -252,10 +203,6 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
                     return
                 }
                 
-                stars.forEach({ (star) -> () in
-                    star.number = ++Defaults[.number]
-                    Defaults.synchronize()
-                })
                 GithubStarsRealmAction.insertStars(stars, callblocak: { (bool) -> Void in
                     if bool {
 
@@ -274,16 +221,32 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
     
     
     // MARK: - Table view data source
+    
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
+        
+    }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
+        let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Group") { (UITableaction, indexpath) -> Void in
+
+            let vc = TagViewController()
+            self.stardelegate = vc
+            self.stardelegate?.didSelectedStar(self.items[indexPath.row])
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        groupAction.backgroundColor = UIColor.blackColor()
+        return [groupAction]
+    }
+    
+    
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
-        if items == nil{
-        let messageLbl = UILabel(frame:CGRectMake(0, 0,self.tableView.bounds.size.width,self.tableView.bounds.size.height))
-        messageLbl.text = "There is no data, try the drop-down refresh"
-        messageLbl.numberOfLines = 0
-        messageLbl.textAlignment = .Center
-        messageLbl.sizeToFit()
-        tableView.backgroundView = messageLbl
-        tableView.separatorStyle = .None
+        if items == nil || items.count == 0{
+        self.tableView.configKongTable("There is no data. try the drop-down refresh")
         return 0
         }
         
@@ -292,31 +255,23 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
 
      override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        if shouldShowSearchResults{
-            return searchResults.count
-        }
            return items.count
         
     }
 
      override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //取消点击状态
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            //取消点击状态
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if shouldShowSearchResults{
-            let star = searchResults[indexPath.row]
-            let starView = StarInformationViewController()
-            self.navigationController?.pushViewController(starView, animated: true)
-            self.stardelegate = starView
-            self.stardelegate?.didSelectedStar(star)
-        }else{
             let star = items[indexPath.row]
             //初始化项目详细信息界面
+            
             let starView = StarInformationViewController()
+            starView.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(starView, animated: true)
             self.stardelegate = starView
             self.stardelegate?.didSelectedStar(star)
-        }
+        
     }
     
      override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -327,6 +282,23 @@ class StarsTableViewController: UITableViewController,UISearchResultsUpdating,UI
     }
 
 }
+
+
+extension UITableView{
+    func configKongTable(title:String){
+        let messageLbl = UILabel(frame:CGRectMake(0, 0,self.bounds.size.width,self.bounds.size.height))
+        messageLbl.backgroundColor = UIColor.clearColor()
+        messageLbl.text = title
+        messageLbl.numberOfLines = 0
+        messageLbl.textAlignment = .Center
+        messageLbl.font = UIFont(name: "FrederickatheGreat", size: 18)
+        messageLbl.sizeToFit()
+        self.backgroundView = messageLbl
+        self.separatorStyle = .None
+    }
+}
+
+
 
 
 

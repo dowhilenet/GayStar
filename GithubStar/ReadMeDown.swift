@@ -14,18 +14,19 @@ import Unbox
 
 
 struct ReadMeDownModel:Unboxable{
-    
-    let download_url:String
+    let download_url: String
+    let html_url: String?
     
     init(unboxer: Unboxer){
     download_url = unboxer.unbox("download_url")
+    html_url = unboxer.unbox("html_url")
     }
 }
 
 
 class ReadMeDown{
     
-    class func request(id:Int,url:String, callback:(Bool) -> Void){
+    class func request(id:Int,url:String,html_url:String?, callback:(Bool) -> Void){
         Alamofire.request(.GET, url)
         .validate()
         .responseString { (response) -> Void in
@@ -40,7 +41,11 @@ class ReadMeDown{
                 var markdown               = Markdown(options: options)
                 let outputhtml             = markdown.transform(readmeString)
 
-                let starReadMeHtml         = GithubStarReadMe(value:["id":id,"htmlString":outputhtml])
+                let starReadMeHtml         = GithubStarReadMe(value:
+                    ["id" : id ,
+                    "htmlString" : outputhtml ,
+                    ])
+                starReadMeHtml.html_url = html_url
                 
                 do{
                     try realm.write({ () -> Void in

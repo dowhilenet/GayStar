@@ -7,17 +7,29 @@
 //
 
 import UIKit
+import SnapKit
+import RealmSwift
+import SwiftyUserDefaults
 
-class ReferenceTableViewController: UITableViewController {
+protocol ReferenceTableViewControllerDelegate{
+    func didSelectedGroupDelegate(group:GithubGroupRealm)
+}
 
+
+
+class ReferenceTableViewController: UIViewController, UITableViewDataSource,UITableViewDelegate{
+
+    
+    var tb: UITableView!
+    var groupdelegate: ReferenceTableViewControllerDelegate?
+    var names: Results<(GithubGroupRealm)>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.title = "Group"
+        self.names = GithubGroupRealmAction.select()
+        configTB()
+        guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,71 +37,119 @@ class ReferenceTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
+    
+}
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+
+//MARK: Functions
+
+extension ReferenceTableViewController{
+    
+    func configTB(){
+        tb = UITableView()
+        tb.separatorStyle = .None
+        tb.registerClass(GroupTableViewCell.classForCoder(), forCellReuseIdentifier: "groupCell")
+        tb.delegate = self
+        tb.dataSource = self
+        self.view.addSubview(tb)
+        tb.snp_makeConstraints { (make) -> Void in
+            make.edges.equalTo(self.view)
+        }
+        
+        let longtap = UILongPressGestureRecognizer()
+        longtap.minimumPressDuration = 1.0
+        longtap.addTarget(self, action: "longtap:")
+        tb.addGestureRecognizer(longtap)
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addgroups:")
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    
+    
+    func longtap(ges:UILongPressGestureRecognizer) {
+        
+        let tapPoint = ges.locationInView(self.tb)
+        
+        guard let  index = tb.indexPathForRowAtPoint(tapPoint) else {  return }
+        
+        let alert = UIAlertController(title: "\(names[index.row].name)", message: "Sure you want to remove it", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Remove", style: .Destructive, handler: { (action) -> Void in
+            GithubGroupRealmAction.removeAgroup(self.names[index.row])
+            self.tb.reloadData()
+        }))
+        
+        presentViewController(alert, animated: true, completion: nil)
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+    
+    
+    func addgroups(item:UIBarButtonItem){
+        
+        let alert = UIAlertController(title: "Add Group", message: nil, preferredStyle: .Alert)
+        
+        alert.addTextFieldWithConfigurationHandler { (uitextfield) -> Void in
+            uitextfield.placeholder = "Group Name"
+        }
+        
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            guard let name = alert.textFields?.first?.text else{ return }
+            
+            if let _ = self.names.indexOf(NSPredicate(format: "name = %@", name)){
+                ProgressHUD.showError("Error")
+                return
+            }
+            GithubGroupRealmAction.insert(name, callbock: { (res) -> Void in
+                if res {
+                    self.names = GithubGroupRealmAction.select()
+                    self.tb.reloadData()
+                }
+            })
+            
+        }))
+        presentViewController(alert, animated: true, completion: nil)
+    }
+}
+//MARK: UITableViewDataSource
+extension ReferenceTableViewController{
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+        if names.count == 0{
+            tb.configKongTable("There is no data  try add group")
+            return 0
+        }
+        
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return names.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("groupCell", forIndexPath: indexPath) as! GroupTableViewCell
+        cell.setButtonTitle(names[indexPath.row].name)
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+//  MARK: UITableViewDelegate
+extension ReferenceTableViewController{
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let controller = GroupItemsTableViewController()
+        controller.hidesBottomBarWhenPushed = true
+        self.groupdelegate = controller
+        self.groupdelegate?.didSelectedGroupDelegate(names[indexPath.row])
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
+        return 66
+    }
+}
+

@@ -24,11 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window!.rootViewController = RootTabBarViewController()
         window!.makeKeyAndVisible()
-        
         return true
     }
     
-    
+
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         if url.host == "oauth-callback"{

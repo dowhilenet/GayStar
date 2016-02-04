@@ -9,8 +9,7 @@
 import UIKit
 import SnapKit
 import RealmSwift
-import Haneke
-
+import Kingfisher
 
 class StarsTableViewCell: UITableViewCell {
     
@@ -23,12 +22,12 @@ class StarsTableViewCell: UITableViewCell {
      var desText: UILabel!
      var starLabel: UILabel!
      var langLabel: UILabel!
-
+     var autherName: UILabel!
 
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.selectionStyle = .None
+//        self.selectionStyle = .None
         configTableCell()
     }
 
@@ -38,49 +37,61 @@ class StarsTableViewCell: UITableViewCell {
     
     func initCellItems(items:Results<(GithubStarsRealm)>,index:NSIndexPath){
         self.name.text = items[index.row].name
-        self.desText.text = items[index.row].decription ?? "没有详细的描述"
+        self.desText.text = items[index.row].decription ?? ""
         self.starLabel.text = items[index.row].stargazersCount.toString()
         self.langLabel.text = items[index.row].language ?? "NULL"
-        self.imageview.hnk_setImageFromURL(NSURL(string: items[index.row].avatarURL)!)
+        self.imageview.kf_setImageWithURL(NSURL(string: items[index.row].avatarURL)!)
+        self.autherName.text = items[index.row].autherName
     }
     
     func initCellByStarModel(res:[GithubStarsRealm],index:NSIndexPath){
         name.text = res[index.row].name
-        desText.text = res[index.row].description ?? "没有详细的描述"
+        desText.text = res[index.row].decription ?? ""
         starLabel.text = res[index.row].stargazersCount.toString()
         langLabel.text = res[index.row].language ?? "NULL"
-        imageview.hnk_setImageFromURL(NSURL(string: res[index.row].avatarURL)!)
+        imageview.kf_setImageWithURL(NSURL(string: res[index.row].avatarURL)!)
+        autherName.text = res[index.row].autherName
     }
     
     func configTableCell(){
-        
+        self.selectionStyle = .None
         //头像
         imageview = UIImageView(image: UIImage(named: "Icon-60"))
-        imageview.layer.cornerRadius = 44.0 / 2
+//        imageview.layer.cornerRadius = 44.0 / 2
         self.addSubview(imageview)
         
         //name
         name = UILabel()
         name.numberOfLines = 0
-        name.font = UIFont.systemFontOfSize(20)
+        name.font = UIFont(name: "Candal", size: 16)
         
         self.addSubview(name)
+        //auther name
+        autherName = UILabel()
+        autherName.numberOfLines = 0
+        autherName.font = UIFont(name: "Orbitron", size: 12)
+        
+        self.addSubview(autherName)
         
        //starImageView
-        starImageView = UIImageView(image: UIImage(named: "Icon-Small"))
+        starImageView = UIImageView(image: UIImage(named: "Rectangle 46"))
         self.addSubview(starImageView)
+        
        //star Label
         starLabel = UILabel()
+        starLabel.font = UIFont(name: "Orbitron", size: 12)
         self.addSubview(starLabel)
         
         //desText
         desText = UILabel()
         desText.numberOfLines = 0
+        desText.font = UIFont.systemFontOfSize(16)
         self.addSubview(desText)
         
-        langImageView = UIImageView(image: UIImage(named: "Icon-Small"))
+        langImageView = UIImageView(image: UIImage(named: "code"))
         self.addSubview(langImageView)
         langLabel = UILabel()
+        langLabel.font = UIFont(name: "Orbitron", size: 12)
         self.addSubview(langLabel)
 
        
@@ -88,33 +99,42 @@ class StarsTableViewCell: UITableViewCell {
         
         //头像布局
         imageview.snp_makeConstraints { (make) -> Void in
-            make.left.top.equalTo(2)
+            make.left.top.equalTo(8)
             make.height.width.equalTo(44.00)
-            make.bottom.lessThanOrEqualTo(0)
+            make.bottom.lessThanOrEqualTo(2)
         }
         
         //name 布局
         name.snp_makeConstraints { (make) -> Void in
-            make.leading.equalTo(imageview.snp_trailing).offset(2)
-            make.trailing.equalTo(0)
+        make.leading.equalTo(imageview.snp_trailing).offset(8)
+            make.trailing.equalTo(3)
             make.top.equalTo(imageview.snp_top)
-//            marke.height.equalTo(self.imageview.snp_height)
-            make.bottom.equalTo(self.imageview.snp_bottom)
+            make.bottom.equalTo(imageview.snp_bottom).multipliedBy(0.7)
+        }
+        
+        autherName.snp_makeConstraints { (make) -> Void in
+            make.leading.equalTo(name.snp_leading)
+            make.trailing.equalTo(name.snp_trailing)
+            make.top.equalTo(name.snp_bottom).offset(3)
+            make.bottom.equalTo(imageview.snp_bottom)
         }
         //des text 布局
         desText.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(name.snp_bottom).offset(6)
-            make.leading.trailing.equalTo(0)
+            
+            make.top.equalTo(imageview.snp_bottom).offset(10)
+            make.leading.equalTo(imageview.snp_leading)
+            make.trailing.equalTo(-3)
         }
         // Star image view 布局
         starImageView.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(desText.snp_bottom).offset(6)
+            make.top.equalTo(desText.snp_bottom).offset(10)
             make.width.height.equalTo(20)
-            make.leading.equalTo(0)
-            make.bottom.equalTo(-2)
+            make.leading.equalTo(imageview.snp_leading)
+            make.bottom.equalTo(-3)
         }
+        
         starLabel.snp_makeConstraints { (make) -> Void in
-            make.leading.equalTo(starImageView.snp_trailing).offset(2)
+            make.leading.equalTo(starImageView.snp_trailing).offset(12)
             make.top.equalTo(starImageView.snp_top)
             make.bottom.equalTo(starImageView.snp_bottom)
             make.height.equalTo(starImageView.snp_height)
@@ -124,12 +144,12 @@ class StarsTableViewCell: UITableViewCell {
         
         langImageView.snp_makeConstraints { (make) -> Void in
             make.height.width.equalTo(20)
-            make.leading.equalTo(starLabel.snp_trailing).offset(10)
+            make.leading.equalTo(starImageView.snp_trailing).offset(100)
             make.top.equalTo(starLabel.snp_top)
             
         }
         langLabel.snp_makeConstraints { (make) -> Void in
-            make.leading.equalTo(langImageView.snp_trailing).offset(2)
+            make.leading.equalTo(langImageView.snp_trailing).offset(12)
             make.top.equalTo(langImageView.snp_top)
             make.height.equalTo(langImageView.snp_height)
             make.bottom.equalTo(langImageView.snp_bottom)

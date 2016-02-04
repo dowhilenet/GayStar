@@ -13,26 +13,35 @@ class RootTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
+        
+        //配置 nav 样式
+        UINavigationBar.appearance().barTintColor = UIColor.blackColor()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+//        UINavigationBar.appearance().translucent = true
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+       //配置 TabBar 样式
+//        UITabBar.appearance().translucent = true
+        UITabBar.appearance().tintColor = UIColor.whiteColor()
+        UITabBar.appearance().barTintColor = UIColor.blackColor()
+        
         //1
         let firstViewController = UINavigationController(rootViewController: StarsTableViewController())
-        UINavigationBar.appearance().barTintColor = UIColor(red: 239.0/255.0, green: 95.0/255.0, blue: 49.0/255.0, alpha: 1.0)
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().translucent = true
+        firstViewController.navigationBar.barStyle = .Black
         let firstViewTabBarItem = UITabBarItem()
-        firstViewTabBarItem.title = "Stars"
+        firstViewTabBarItem.title = "Star"
+        firstViewTabBarItem.image = UIImage(named: "Star 3")
         firstViewController.tabBarItem = firstViewTabBarItem
+        
         //2
- 
-//        let secViewController = UINavigationController(rootViewController: TodyViewController())
-//        
-//        let secTabBarItem = UITabBarItem()
-//        secTabBarItem.title = "Explore"
-//        secViewController.tabBarItem = secTabBarItem
+        let secViewController = UINavigationController(rootViewController: ReferenceTableViewController())
+        secViewController.navigationBar.barStyle = .Black
+        let secTabBarItem = UITabBarItem()
+        secTabBarItem.title = "Group"
+        secTabBarItem.image = UIImage(named: "Oval 13")
+        secViewController.tabBarItem = secTabBarItem
         
         //3
-        
-        self.viewControllers = [firstViewController]
+        self.viewControllers = [firstViewController,secViewController]
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +49,7 @@ class RootTabBarViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
-
-
+   
 }
+
+

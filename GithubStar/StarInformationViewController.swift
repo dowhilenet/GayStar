@@ -12,27 +12,24 @@ import Alamofire
 import WebKit
 import RealmSwift
 import Unbox
+import Kingfisher
+import SafariServices
 
 class StarInformationViewController: UIViewController,PushStarProtocol{
     
-    
-    var item:GithubStarsRealm!
-    var starReadMe:Results<GithubStarReadMe>!
-    var webview:WKWebView!
-    var html:String!
+    var item: GithubStarsRealm!
+    var starReadMe: Results<GithubStarReadMe>!
+    var webview: WKWebView!
+    var html: String!
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-    
+    var toolView: UIToolbar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
-
-        webview = WKWebView()
-        webview.backgroundColor = UIColor.greenColor()
-        self.view.addSubview(webview)
-        webview.snp_makeConstraints { (make) -> Void in
-        make.edges.equalTo(self.view)
-        }
+        
+        //配置视图
+        configView()
+        //下拉刷新控件的配置
         pullView()
         //获取这个项目的README 文件。
         let tryloadReadme = GithubStarsRealmAction.selectReadMe(self.item.id)
@@ -42,14 +39,11 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
         }else{
             loadreadMefromRealm(item.id)
         }
-        
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-
-        
-        
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        ProgressHUD.dismiss()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,6 +51,47 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
         
         // Dispose of any resources that can be recreated.
     }
+    
+    //配置视图
+    func configView(){
+        
+        self.title = "README.md"
+        webview = WKWebView()
+        self.view.addSubview(webview)
+        webview.snp_makeConstraints { (make) -> Void in
+            make.top.leading.trailing.equalTo(self.view)
+        }
+        
+        toolView = UIToolbar()
+        self.view.addSubview(toolView)
+        toolView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(webview.snp_bottom)
+            make.leading.trailing.bottom.equalTo(self.view)
+        }
+        
+        //Home
+        let tab1 = UIBarButtonItem(image: UIImage(named: "项目网站"), style: .Plain, target: self, action: "goHome")
+        
+        //README
+        let tab2 = UIBarButtonItem(image: UIImage(named: "Group"), style: .Plain, target: self, action: "readMeOnGithub")
+        
+        //ISS
+        let tab3 = UIBarButtonItem(image: UIImage(named: "GitHub主页"), style: .Plain, target: self, action: "onGithub")
+        
+        //User
+        let tab4 = UIBarButtonItem(image: UIImage(named: "作者信息"), style: .Plain, target: self, action: "user")
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        
+        toolView.items = [flexibleSpace,tab1,flexibleSpace,tab2,flexibleSpace,tab3,flexibleSpace,tab4,flexibleSpace]
+    }
+    
+    
+    
+
+    
+  
+    
     /**
      代理传值
      
@@ -68,10 +103,9 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
 
 
     func pullView(){
-        
-    loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
-    //圈圈颜色
-    webview.scrollView.dg_setPullToRefreshFillColor(UIColor(red: 239.0/255.0, green: 95.0/255.0, blue: 49.0/255.0, alpha: 1.0))
+        //圈圈颜色
+    loadingView.tintColor = UIColor.whiteColor()
+    webview.scrollView.dg_setPullToRefreshFillColor(.blackColor())
     webview.scrollView.dg_setPullToRefreshBackgroundColor(webview.scrollView.backgroundColor!)
     
     webview.scrollView.dg_addPullToRefreshWithActionHandler({ () -> Void in
@@ -115,7 +149,7 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
         }
         let urlmodel:ReadMeDownModel? = Unbox(data)
         if let urlmodel               = urlmodel{
-        ReadMeDown.request(self.item.id, url: urlmodel.download_url, callback: { (boole) -> Void in
+        ReadMeDown.request(self.item.id, url: urlmodel.download_url, html_url: urlmodel.html_url ,callback: { (boole) -> Void in
         if boole{
         self.loadreadMefromRealm(self.item.id)
         }else{
@@ -139,7 +173,6 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
      */
     
     private func loadreadMefromRealm(id:Int){
-        
         self.starReadMe = GithubStarsRealmAction.selectReadMe(id)
         if self.starReadMe.first?.htmlString != nil{
             self.html = self.htmlheader(self.starReadMe.first!.htmlString)
@@ -185,10 +218,10 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
         
         var markdwoncss:String{
             let star = "<style>"
-            let end = "</style>"
+            
             let cssfilePatch = NSBundle.mainBundle().pathForResource("markdown", ofType: "css")!
             let cssString = try! NSString(contentsOfFile: cssfilePatch, encoding:NSUTF8StringEncoding) as String
-         
+            let end = "</style>"
             return star + cssString + end
         }
         
@@ -210,3 +243,67 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
         return htmlhead + htmbody + javascript + scriptstar + htmlend
     }
 }
+
+//MARK: SFSafariViewControllerDelegate
+extension StarInformationViewController:SFSafariViewControllerDelegate{
+    
+    func safariViewControllerDidFinish(controller: SFSafariViewController){
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+}
+//MARK: Function
+extension StarInformationViewController{
+    
+    func goHome(){
+        let homeUrl = item.homePage
+        guard let homeurl = homeUrl else{
+            ProgressHUD.showError("No Home Page")
+            return
+        }
+        if homeurl.isEmpty{
+            ProgressHUD.showError("No Home Page")
+            return
+        }
+        showSafari(homeurl)
+    }
+    
+    func readMeOnGithub(){
+        let readmehtmlurl = GithubStarsRealmAction.selectReadMeHTMLUrl(item.id)
+        guard let url = readmehtmlurl?.html_url else {
+            ProgressHUD.showError("404")
+            return
+        }
+        showSafari(url)
+    }
+    
+    func onGithub(){
+        let userurl = item.html
+        showSafari(userurl)
+    }
+    
+    func user(){
+        let userurl = item.htmlURL
+        showSafari(userurl)
+    }
+    
+    func showSafari(url:String){
+        let safari = SFSafariViewController(URL: NSURL(string: url)!)
+        presentViewController(safari, animated: true, completion: nil)
+    }
+    
+    
+    //   open  SafariServices
+    func readmeOnGithub(){
+        let url = GithubStarsRealmAction.selectReadMeHTMLUrl(item.id)?.html_url
+        guard let htmlurl = url else{
+            ProgressHUD.showError("404")
+            return
+        }
+        let safari = SFSafariViewController(URL: NSURL(string: htmlurl)!,entersReaderIfAvailable: true)
+        safari.delegate = self
+        self.presentViewController(safari, animated: true, completion: nil)
+    }
+}
+
+
