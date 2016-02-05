@@ -62,23 +62,7 @@ class StarsTableViewCell: UITableViewCell {
         self.autherName.text = items[index.row].autherName
     }
     
-    func initCellItemsToWeekTrending(items:Results<(GithubStarWeekTrending)>,index:NSIndexPath){
-        self.name.text = items[index.row].name
-        self.desText.text = items[index.row].decription ?? ""
-        self.starLabel.text = items[index.row].stargazersCount.toString()
-        self.langLabel.text = items[index.row].language ?? "NULL"
-        self.imageview.kf_setImageWithURL(NSURL(string: items[index.row].avatarURL)!)
-        self.autherName.text = items[index.row].autherName
-    }
     
-    func initCellItemsToMontyTrending(items:Results<(GithubStarMonthyTrending)>,index:NSIndexPath){
-        self.name.text = items[index.row].name
-        self.desText.text = items[index.row].decription ?? ""
-        self.starLabel.text = items[index.row].stargazersCount.toString()
-        self.langLabel.text = items[index.row].language ?? "NULL"
-        self.imageview.kf_setImageWithURL(NSURL(string: items[index.row].avatarURL)!)
-        self.autherName.text = items[index.row].autherName
-    }
     
     func configTableCell(){
         self.selectionStyle = .None
@@ -128,13 +112,12 @@ class StarsTableViewCell: UITableViewCell {
         imageview.snp_makeConstraints { (make) -> Void in
             make.left.top.equalTo(8)
             make.height.width.equalTo(44.00)
-            make.bottom.lessThanOrEqualTo(2)
         }
         
         //name 布局
         name.snp_makeConstraints { (make) -> Void in
-        make.leading.equalTo(imageview.snp_trailing).offset(8)
-            make.trailing.equalTo(3)
+            make.leading.equalTo(imageview.snp_trailing).offset(8)
+            make.trailing.equalTo(-3)
             make.top.equalTo(imageview.snp_top)
             make.bottom.equalTo(imageview.snp_bottom).multipliedBy(0.7)
         }
@@ -142,7 +125,7 @@ class StarsTableViewCell: UITableViewCell {
         autherName.snp_makeConstraints { (make) -> Void in
             make.leading.equalTo(name.snp_leading)
             make.trailing.equalTo(name.snp_trailing)
-            make.top.equalTo(name.snp_bottom).offset(3)
+            make.top.equalTo(name.snp_bottom)
             make.bottom.equalTo(imageview.snp_bottom)
         }
         //des text 布局
@@ -157,7 +140,7 @@ class StarsTableViewCell: UITableViewCell {
             make.top.equalTo(desText.snp_bottom).offset(10)
             make.width.height.equalTo(20)
             make.leading.equalTo(imageview.snp_leading)
-            make.bottom.equalTo(-3)
+            make.bottom.equalTo(-8)
         }
         
         starLabel.snp_makeConstraints { (make) -> Void in

@@ -13,8 +13,37 @@ import PageMenuFramework
 class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
 
     var pageMenu : CAPSPageMenu?
-    var pageMenu1: CAPSPageMenu?
-    let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Trending", rightTitle: "Showcases")
+    var showcasesPageMenu: CAPSPageMenu?
+    let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Repository", rightTitle: "Developer")
+    
+    let parameters: [CAPSPageMenuOption] = [
+        //分离器的宽度
+        .MenuItemSeparatorWidth(4.3),
+        //是否使用Segment模式
+        .UseMenuLikeSegmentedControl(true),
+        //分离器的高度
+        .MenuItemSeparatorPercentageHeight(0.1),
+        //分离器变成小圆点
+        .MenuItemSeparatorRoundEdges(true),
+        //背景颜色
+        .ViewBackgroundColor(UIColor.blackColor()),
+        //Menu 背景颜色
+        .ScrollMenuBackgroundColor(UIColor.blackColor()),
+        //横向滚动条的颜色
+        .SelectionIndicatorColor(UIColor.orangeColor()),
+        //选中的Menu文字颜色
+        .SelectedMenuItemLabelColor(UIColor.whiteColor()),
+        //未选中Menu文字颜色
+        //            .UnselectedMenuItemLabelColor(UIColor(red:0.837, green:0.837, blue:0.837, alpha:1)),
+        //Menu 之间的空隙颜色
+        .MenuItemSeparatorColor(UIColor.whiteColor()),
+        //横向滚动轨道颜色
+        .BottomMenuHairlineColor(UIColor.blackColor()),
+        .MenuItemFont(UIFont(name: "OpenSans-Italic", size: 14)!),
+        .EnableHorizontalBounce(true),
+        .MenuItemWidthBasedOnTitleTextWidth(true)
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pageMenuConfig()
@@ -51,55 +80,24 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
     func switchValueDidChange(sender:DGRunkeeperSwitch){
         if self.runkeeperSwitch.selectedIndex == 0{
             pageMenuConfig()
-            pageMenu1 = nil
         }else{
-            pageMenu1Config()
-            pageMenu = nil
+            showcasesPageMenuConfig()
         }
     }
     
     
-    let parameters: [CAPSPageMenuOption] = [
-        //分离器的宽度
-        .MenuItemSeparatorWidth(4.3),
-        //是否使用Segment模式
-        .UseMenuLikeSegmentedControl(true),
-        //分离器的高度
-        .MenuItemSeparatorPercentageHeight(0.1),
-        //分离器变成小圆点
-        .MenuItemSeparatorRoundEdges(true),
-        //背景颜色
-        .ViewBackgroundColor(UIColor.blackColor()),
-        //Menu 背景颜色
-        .ScrollMenuBackgroundColor(UIColor.blackColor()),
-        //横向滚动条的颜色
-        .SelectionIndicatorColor(UIColor.orangeColor()),
-        //选中的Menu文字颜色
-        .SelectedMenuItemLabelColor(UIColor.whiteColor()),
-        //未选中Menu文字颜色
-        //            .UnselectedMenuItemLabelColor(UIColor(red:0.837, green:0.837, blue:0.837, alpha:1)),
-        //Menu 之间的空隙颜色
-        .MenuItemSeparatorColor(UIColor.whiteColor()),
-        //横向滚动轨道颜色
-        .BottomMenuHairlineColor(UIColor.blackColor()),
-        .MenuItemFont(UIFont(name: "OpenSans-Italic", size: 14)!),
-        .EnableHorizontalBounce(true),
-        .MenuItemWidthBasedOnTitleTextWidth(true)
-    ]
     
     func pageMenuConfig(){
-        
         var controllerArray = [UIViewController]()
-        
-        let today = TodyViewController()
+        let today = TrendingRepositoriesViewController()
         today.title = "Today"
         controllerArray.append(today)
         
-        let week = TodyViewController()
+        let week = TrendingRepositoriesViewController()
         week.title = "Week"
         controllerArray.append(week)
         
-        let month = TodyViewController()
+        let month = TrendingRepositoriesViewController()
         month.title = "Month"
         controllerArray.append(month)
         
@@ -109,33 +107,35 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
         pageMenu!.delegate = self
     }
     
-    
-    func pageMenu1Config() {
+    func showcasesPageMenuConfig() {
         var controllerArray = [UIViewController]()
-        let month = TodyViewController()
-        month.title = "Month"
-        controllerArray.append(month)
         
-        let today = TodyViewController()
+        let today = TrendingDevelopersTableViewController()
         today.title = "Today"
         controllerArray.append(today)
         
-        let week = TodyViewController()
+        let week = TrendingDevelopersTableViewController()
         week.title = "Week"
         controllerArray.append(week)
         
-        pageMenu1 = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 64.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)
-        self.view.addSubview(pageMenu1!.view)
+        let month = TrendingDevelopersTableViewController()
+        month.title = "Month"
+        controllerArray.append(month)
         
-        pageMenu1!.delegate = self
+        showcasesPageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 64.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)
+        self.view.addSubview(showcasesPageMenu!.view)
+        showcasesPageMenu!.delegate = self
     }
     
     func willMoveToPage(controller: UIViewController, index: Int){
-        let TrendingController = controller as! TodyViewController
-        TrendingController.currType = index
-    }
-    func didMoveToPage(controller: UIViewController, index: Int){
         
+        if controller is TrendingRepositoriesViewController {
+            let TrendingController = controller as! TrendingRepositoriesViewController
+            TrendingController.currType = index
+        }else if controller is TrendingDevelopersTableViewController {
+            let showcaseController = controller as! TrendingDevelopersTableViewController
+            showcaseController.currType = index
+        }
     }
 
 }

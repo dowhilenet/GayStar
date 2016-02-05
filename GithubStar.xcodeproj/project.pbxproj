@@ -11,6 +11,7 @@
 		AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */; };
 		AB552E751C6064FD00D6914C /* Candal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E741C6064FD00D6914C /* Candal.ttf */; };
 		AB552E771C60674100D6914C /* FrederickatheGreat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E761C60674100D6914C /* FrederickatheGreat-Regular.ttf */; };
+		AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */; };
 		AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */; };
 		AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */; };
 		AB72320C1C620819004565BC /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72320B1C620819004565BC /* TagViewController.swift */; };
@@ -42,12 +43,14 @@
 		ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */; };
 		ABDA1C4E1C4733220026A3AC /* ChooseLangueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C491C4733220026A3AC /* ChooseLangueTableViewController.swift */; };
 		ABDA1C4F1C4733220026A3AC /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C4A1C4733220026A3AC /* RequestData.swift */; };
-		ABDA1C501C4733220026A3AC /* TodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C4B1C4733220026A3AC /* TodyViewController.swift */; };
+		ABDA1C501C4733220026A3AC /* TrendingRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C4B1C4733220026A3AC /* TrendingRepositoriesViewController.swift */; };
+		ABDFAA451C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDFAA441C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift */; };
 		ABE5A6981C63548A00CB7B5D /* SwiftPrompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A6951C63548A00CB7B5D /* SwiftPrompts.swift */; };
 		ABE5A6991C63548A00CB7B5D /* SwiftPromptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A6961C63548A00CB7B5D /* SwiftPromptsView.swift */; };
 		ABE5A69A1C63548A00CB7B5D /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A6971C63548A00CB7B5D /* UIImageEffects.swift */; };
 		ABE5A69C1C63736C00CB7B5D /* PageMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A69B1C63736C00CB7B5D /* PageMenuViewController.swift */; };
 		ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */; };
+		ABE5A6A01C641FC500CB7B5D /* ShowcasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A69F1C641FC500CB7B5D /* ShowcasesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +71,7 @@
 		AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		AB552E741C6064FD00D6914C /* Candal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Candal.ttf; path = ../Candal.ttf; sourceTree = "<group>"; };
 		AB552E761C60674100D6914C /* FrederickatheGreat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FrederickatheGreat-Regular.ttf"; path = "../FrederickatheGreat-Regular.ttf"; sourceTree = "<group>"; };
+		AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevTableViewCell.swift; sourceTree = "<group>"; };
 		AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowRepositoryListTableViewController.swift; sourceTree = "<group>"; };
 		AB72320B1C620819004565BC /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
@@ -103,12 +107,14 @@
 		ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsTableViewController.swift; sourceTree = "<group>"; };
 		ABDA1C491C4733220026A3AC /* ChooseLangueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseLangueTableViewController.swift; sourceTree = "<group>"; };
 		ABDA1C4A1C4733220026A3AC /* RequestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
-		ABDA1C4B1C4733220026A3AC /* TodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodyViewController.swift; sourceTree = "<group>"; };
+		ABDA1C4B1C4733220026A3AC /* TrendingRepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositoriesViewController.swift; sourceTree = "<group>"; };
+		ABDFAA441C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevelopersTableViewController.swift; sourceTree = "<group>"; };
 		ABE5A6951C63548A00CB7B5D /* SwiftPrompts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPrompts.swift; sourceTree = "<group>"; };
 		ABE5A6961C63548A00CB7B5D /* SwiftPromptsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPromptsView.swift; sourceTree = "<group>"; };
 		ABE5A6971C63548A00CB7B5D /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		ABE5A69B1C63736C00CB7B5D /* PageMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMenuViewController.swift; sourceTree = "<group>"; };
 		ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubStarExtension.swift; sourceTree = "<group>"; };
+		ABE5A69F1C641FC500CB7B5D /* ShowcasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcasesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				AB6B74331C55F5C900FDBBE9 /* Groups */,
-				ABDA1C481C47330B0026A3AC /* Trending */,
+				ABDA1C481C47330B0026A3AC /* Explore */,
 				ABDA1C391C4732E10026A3AC /* Star */,
 				ABDA1C351C4732AE0026A3AC /* Tab */,
 			);
@@ -272,15 +278,18 @@
 			name = Star;
 			sourceTree = "<group>";
 		};
-		ABDA1C481C47330B0026A3AC /* Trending */ = {
+		ABDA1C481C47330B0026A3AC /* Explore */ = {
 			isa = PBXGroup;
 			children = (
 				ABDA1C491C4733220026A3AC /* ChooseLangueTableViewController.swift */,
 				ABDA1C4A1C4733220026A3AC /* RequestData.swift */,
 				ABE5A69B1C63736C00CB7B5D /* PageMenuViewController.swift */,
-				ABDA1C4B1C4733220026A3AC /* TodyViewController.swift */,
+				ABDA1C4B1C4733220026A3AC /* TrendingRepositoriesViewController.swift */,
+				ABDFAA441C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift */,
+				AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */,
+				ABE5A69F1C641FC500CB7B5D /* ShowcasesViewController.swift */,
 			);
-			name = Trending;
+			name = Explore;
 			sourceTree = "<group>";
 		};
 		ABE5A6941C63548A00CB7B5D /* Swift-Prompts */ = {
@@ -381,13 +390,13 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Ji.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OAuthSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PageMenuFramework.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Fuzi.framework",
 			);
 			outputPaths = (
 			);
@@ -403,8 +412,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE5A6991C63548A00CB7B5D /* SwiftPromptsView.swift in Sources */,
+				ABDFAA451C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift in Sources */,
 				ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */,
 				ABDA1C411C4732F70026A3AC /* ReferenceTableViewController.swift in Sources */,
+				ABE5A6A01C641FC500CB7B5D /* ShowcasesViewController.swift in Sources */,
 				AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */,
 				ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */,
 				ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */,
@@ -428,9 +439,10 @@
 				ABDA1C4E1C4733220026A3AC /* ChooseLangueTableViewController.swift in Sources */,
 				ABDA1C0E1C4731640026A3AC /* DGElasticPullToRefreshConstants.swift in Sources */,
 				ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */,
-				ABDA1C501C4733220026A3AC /* TodyViewController.swift in Sources */,
+				ABDA1C501C4733220026A3AC /* TrendingRepositoriesViewController.swift in Sources */,
 				ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
+				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
 				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,6 +552,7 @@
 					"$(SRCROOT)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = GithubStar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -560,6 +573,7 @@
 					"$(SRCROOT)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = GithubStar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

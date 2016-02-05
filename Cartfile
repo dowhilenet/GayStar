@@ -9,4 +9,4 @@ github "radex/SwiftyUserDefaults"
 github "dongri/OAuthSwift"
 github "DianQK/TransitionTreasury"
 github "realm/realm-cocoa"
-github "xhacker/TagListView"
+github "cezheng/Fuzi" ~> 0.3.0

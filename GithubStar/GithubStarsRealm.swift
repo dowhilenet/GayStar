@@ -118,14 +118,15 @@ class GithubStarTrending:Object,Unboxable{
     dynamic var default_branch:String = ""
     
     dynamic var autherName            = ""
-
+    
+    dynamic var typename              = ""
     /**
      设置主键
      
      - returns: 主键
      */
     override static func primaryKey() -> String?{
-        return "id"
+        return "typename"
     }
     /**
      设置索引
@@ -157,149 +158,7 @@ class GithubStarTrending:Object,Unboxable{
     }
 }
 
-class GithubStarWeekTrending:Object,Unboxable{
-    /// 项目ID
-    dynamic var id                    = 0
-    /// Open Iss
-    dynamic var openIssuesCount       = 0
-    /// Fork Count
-    dynamic var forksCount            = 0
-    /// Stars Count
-    dynamic var stargazersCount       = 0
-    /// Name
-    dynamic var name                  = ""
-    /// Auther URL
-    dynamic var autherURL             = ""
-    /// Full Name
-    dynamic var fullName              = ""
-    /// Description
-    dynamic var decription:String?    = nil
-    /// Language
-    dynamic var language:String?      = nil
-    /// Avatar URL
-    dynamic var avatarURL             = ""
-    /// HTML URL
-    dynamic var htmlURL               = ""
-    /// Pushed Time
-    dynamic var pushedTime            = ""
-    /// Home Page
-    dynamic var homePage:String?      = nil
-    
-    dynamic var html                  = ""
-    
-    dynamic var default_branch:String = ""
-    
-    dynamic var autherName            = ""
-    
-    /**
-     设置主键
-     
-     - returns: 主键
-     */
-    override static func primaryKey() -> String?{
-        return "id"
-    }
-    /**
-     设置索引
-     
-     - returns: 索引数组
-     */
-    override static func indexedProperties() -> [String]{
-        return ["id","name"]
-    }
-    
-    required convenience init(unboxer: Unboxer){
-        self.init()
-        fullName        = unboxer.unbox("full_name")
-        decription      = unboxer.unbox("description")
-        language        = unboxer.unbox("language")
-        forksCount      = unboxer.unbox("forks_count")
-        stargazersCount = unboxer.unbox("stargazers_count")
-        avatarURL       = unboxer.unbox("owner.avatar_url")
-        htmlURL         = unboxer.unbox("owner.html_url")
-        html            = unboxer.unbox("html_url")
-        openIssuesCount = unboxer.unbox("open_issues_count")
-        pushedTime      = unboxer.unbox("updated_at")
-        homePage        = unboxer.unbox("homepage")
-        name            = unboxer.unbox("name")
-        autherURL       = unboxer.unbox("owner.url")
-        id              = unboxer.unbox("id")
-        default_branch  = unboxer.unbox("default_branch")
-        autherName      = unboxer.unbox("owner.login")
-    }
-}
 
-class GithubStarMonthyTrending:Object,Unboxable{
-    /// 项目ID
-    dynamic var id                    = 0
-    /// Open Iss
-    dynamic var openIssuesCount       = 0
-    /// Fork Count
-    dynamic var forksCount            = 0
-    /// Stars Count
-    dynamic var stargazersCount       = 0
-    /// Name
-    dynamic var name                  = ""
-    /// Auther URL
-    dynamic var autherURL             = ""
-    /// Full Name
-    dynamic var fullName              = ""
-    /// Description
-    dynamic var decription:String?    = nil
-    /// Language
-    dynamic var language:String?      = nil
-    /// Avatar URL
-    dynamic var avatarURL             = ""
-    /// HTML URL
-    dynamic var htmlURL               = ""
-    /// Pushed Time
-    dynamic var pushedTime            = ""
-    /// Home Page
-    dynamic var homePage:String?      = nil
-    
-    dynamic var html                  = ""
-    
-    dynamic var default_branch:String = ""
-    
-    dynamic var autherName            = ""
-    
-    /**
-     设置主键
-     
-     - returns: 主键
-     */
-    override static func primaryKey() -> String?{
-        return "id"
-    }
-    /**
-     设置索引
-     
-     - returns: 索引数组
-     */
-    override static func indexedProperties() -> [String]{
-        return ["id","name"]
-    }
-    
-    required convenience init(unboxer: Unboxer){
-        self.init()
-        fullName        = unboxer.unbox("full_name")
-        decription      = unboxer.unbox("description")
-        language        = unboxer.unbox("language")
-        forksCount      = unboxer.unbox("forks_count")
-        stargazersCount = unboxer.unbox("stargazers_count")
-        avatarURL       = unboxer.unbox("owner.avatar_url")
-        htmlURL         = unboxer.unbox("owner.html_url")
-        html            = unboxer.unbox("html_url")
-        openIssuesCount = unboxer.unbox("open_issues_count")
-        pushedTime      = unboxer.unbox("updated_at")
-        homePage        = unboxer.unbox("homepage")
-        name            = unboxer.unbox("name")
-        autherURL       = unboxer.unbox("owner.url")
-        id              = unboxer.unbox("id")
-        default_branch  = unboxer.unbox("default_branch")
-        autherName      = unboxer.unbox("owner.login")
-    }
-}
 
 //MARK: GithubStarReadMe
 class GithubStarReadMe: Object {
@@ -327,7 +186,63 @@ class GithubGroupRealm: Object {
     }
 }
 
+class TrendingDelevlopeRealm: Object {
+    dynamic var githubname = ""
+    dynamic var imageURL = ""
+    dynamic var fullName = ""
+    dynamic var githubURL = ""
+    dynamic var repoRUL = ""
+    dynamic var repoName = ""
+    dynamic var repoDec = ""
+    dynamic var typename = ""
+    override static func primaryKey() -> String?{
+        return "typename"
+    }
+}
 
+class TrendingDelevlopeRealmAction {
+    class func insert(type:Int,item:[TrendingDelevlopeRealm]) {
+        
+        delete(type)
+        
+        item.forEach { (item) -> () in
+            let ms = NSDate().timeIntervalSince1970
+            switch type {
+            case 0:
+                item.typename = "today" + String(ms)
+            case 1:
+                item.typename = "week" + String(ms)
+            default:
+                item.typename = "month" + String(ms)
+            }
+        }
+        
+        try! realm.write({ () -> Void in
+            realm.add(item, update: true)
+        })
+    }
+    
+    class func select(type: Int) -> Results<(TrendingDelevlopeRealm)> {
+        switch type {
+        case 0:
+            let predicate = NSPredicate(format: "typename CONTAINS %@", "today")
+            return realm.objects(TrendingDelevlopeRealm).filter(predicate)
+        case 1:
+            let predicate = NSPredicate(format: "typename CONTAINS %@", "week")
+            return realm.objects(TrendingDelevlopeRealm).filter(predicate)
+        default:
+            let predicate = NSPredicate(format: "typename CONTAINS %@", "month")
+            return realm.objects(TrendingDelevlopeRealm).filter(predicate)
+        }
+    }
+    
+    class func delete(type:Int) {
+        let res = select(type)
+        try! realm.write({ () -> Void in
+            realm.delete(res)
+        })
+    }
+}
 
 //MARK: Realm Action
 /// 对GitubStarsRealm进行操作
@@ -358,10 +273,21 @@ class GithubStarsRealmAction{
      - parameter data:  数据
      - parameter block: complete block
      */
-    class func insertStarTrending(starsModelArray:[GithubStarTrending],callblocak:(Bool) -> Void) {
+    class func insertStarTrending(type: Int,starsModel:GithubStarTrending,callblocak:(Bool) -> Void) {
+        
+        
+        let ms = NSDate().timeIntervalSince1970
+        switch type {
+        case 0:
+            starsModel.typename = "today" + String(ms)
+        case 1:
+            starsModel.typename = "week" + String(ms)
+        default:
+            starsModel.typename = "month" + String(ms)
+        }
         do{
             try realm.write({ () -> Void in
-                realm.add(starsModelArray, update: true)
+                realm.add(starsModel, update: true)
                 callblocak(true)
             })
         }catch{
@@ -369,37 +295,30 @@ class GithubStarsRealmAction{
         }
     }
     
-    class func insertStarWeekTrending(starsModelArray:[GithubStarWeekTrending],callblocak:(Bool) -> Void) {
-        do{
-            try realm.write({ () -> Void in
-                realm.add(starsModelArray, update: true)
-                callblocak(true)
-            })
-        }catch{
-            callblocak(false)
+   
+    
+    class func selectTrengind(type: Int) -> Results<(GithubStarTrending)> {
+        switch type {
+        case 0:
+            let predicate = NSPredicate(format: "typename CONTAINS %@", "today")
+            return realm.objects(GithubStarTrending).filter(predicate)
+        case 1:
+            let predicate = NSPredicate(format: "typename CONTAINS %@", "week")
+            return realm.objects(GithubStarTrending).filter(predicate)
+        default:
+            let predicate = NSPredicate(format: "typename CONTAINS %@", "month")
+            return realm.objects(GithubStarTrending).filter(predicate)
         }
     }
     
-    class func insertStarMontyTrending(starsModelArray:[GithubStarMonthyTrending],callblocak:(Bool) -> Void) {
-        do{
-            try realm.write({ () -> Void in
-                realm.add(starsModelArray, update: true)
-                callblocak(true)
-            })
-        }catch{
-            callblocak(false)
-        }
+    
+    class func deleteTrending(type: Int) {
+        let res = selectTrengind(type)
+        try! realm.write({ () -> Void in
+            realm.delete(res)
+        })
     }
     
-    class func selectTrengind() -> Results<(GithubStarTrending)> {
-        return realm.objects(GithubStarTrending)
-    }
-    class func selectWeekTrengind() -> Results<(GithubStarWeekTrending)> {
-        return realm.objects(GithubStarWeekTrending)
-    }
-    class func selectMonthyTrengind() -> Results<(GithubStarMonthyTrending)> {
-        return realm.objects(GithubStarMonthyTrending)
-    }
     
     //选择数据
     

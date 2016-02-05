@@ -66,7 +66,6 @@ enum GithubAPI{
     
     case starredCount
     
-  
 }
 
 extension GithubAPI:URLRequestConvertible{
