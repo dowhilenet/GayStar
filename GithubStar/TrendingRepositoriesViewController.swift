@@ -11,13 +11,14 @@ import SnapKit
 import Alamofire
 import Unbox
 import RealmSwift
+import SafariServices
 
 class TrendingRepositoriesViewController: UITableViewController{
     
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     
     var repositoriesModel: Results<(GithubStarTrending)>!
-   
+    var safari: SFSafariViewController!
     var lang: String?
     var currType = 0
     override func viewDidLoad() {
@@ -71,6 +72,11 @@ class TrendingRepositoriesViewController: UITableViewController{
         return cell
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let url = repositoriesModel[indexPath.row].html
+        safari = SFSafariViewController(URL: NSURL(string: url)!)
+        presentViewController(safari, animated: true, completion: nil)
+    }
     func pulldowndata(){
         
         switch currType {

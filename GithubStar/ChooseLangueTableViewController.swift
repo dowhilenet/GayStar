@@ -8,7 +8,6 @@
 
 import UIKit
 
-import Ji
 import SwiftyUserDefaults
 protocol ChooseLangueTableViewControllerDelegate{
     func didSelectLan(lan:String)

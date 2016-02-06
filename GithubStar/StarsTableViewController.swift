@@ -25,7 +25,8 @@ extension String{
 }
 
 //给下一个页面传递数据
-protocol PushStarProtocol:class{
+
+protocol PushStarProtocol {
     func didSelectedStar(item:GithubStarsRealm)
 }
 

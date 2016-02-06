@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import Alamofire
 class RootTabBarViewController: UITabBarController {
     
    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //配置 nav 样式
         UINavigationBar.appearance().barTintColor = UIColor.blackColor()
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
@@ -45,10 +45,19 @@ class RootTabBarViewController: UITabBarController {
         let thirdViewController = UINavigationController(rootViewController: PageMenuViewController())
         
         let thirdTabBarItem = UITabBarItem()
-        thirdTabBarItem.title = "Explore"
+        thirdTabBarItem.title = "Trending"
+        thirdTabBarItem.image = UIImage(named: "Oval 32")
         thirdViewController.tabBarItem = thirdTabBarItem
         
-        self.viewControllers = [firstViewController,secViewController,thirdViewController]
+        
+        //4
+        let fourViewController = UINavigationController(rootViewController: TestViewController())
+        let fourTabBarItem = UITabBarItem()
+        fourTabBarItem.title = "Showcase"
+        fourViewController.tabBarItem = fourTabBarItem
+        
+        self.viewControllers = [firstViewController,secViewController,thirdViewController,fourViewController]
+        
     }
 
     override func didReceiveMemoryWarning() {

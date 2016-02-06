@@ -16,6 +16,7 @@ class TrendingDevTableViewCell: UITableViewCell {
     var repodec: UILabel!
     var githubname: UILabel!
     var fullname: UILabel!
+    var repoName: UILabel!
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configCell()
@@ -31,6 +32,7 @@ class TrendingDevTableViewCell: UITableViewCell {
         githubname.text = dev[index.row].fullName
         fullname.text = dev[index.row].githubname
         repodec.text = dev[index.row].repoDec
+        repoName.text = dev[index.row].repoName
     }
     
     
@@ -67,14 +69,23 @@ class TrendingDevTableViewCell: UITableViewCell {
             make.bottom.equalTo(phoneimage.snp_bottom)
         }
         
+        repoName = UILabel()
+        repoName.font = UIFont(name: "Candal", size: 16)
+        self.addSubview(repoName)
+        repoName.snp_makeConstraints { (make) -> Void in
+            make.leading.equalTo(phoneimage.snp_leading)
+            make.top.equalTo(phoneimage.snp_bottom).offset(8)
+            make.trailing.equalTo(self.snp_trailing).offset(-3)
+        }
+        
         repodec = UILabel()
         repodec.numberOfLines = 0
-        repodec.font = UIFont.systemFontOfSize(16)
+        repodec.font = UIFont.systemFontOfSize(14)
         self.addSubview(repodec)
         repodec.snp_makeConstraints { (make) -> Void in
             make.leading.equalTo(phoneimage.snp_leading)
             make.trailing.equalTo(self.snp_trailing).offset(-3)
-            make.top.equalTo(phoneimage.snp_bottom).offset(8)
+            make.top.equalTo(repoName.snp_bottom).offset(5)
             make.bottom.equalTo(self.snp_bottom).offset(-8)
         }
     }

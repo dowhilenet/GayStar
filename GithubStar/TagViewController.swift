@@ -112,4 +112,5 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
     func didSelectedStar(item:GithubStarsRealm){
         self.item = item
     }
+    
 }

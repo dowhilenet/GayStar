@@ -3,6 +3,11 @@
     {
       "idiom" : "iphone",
       "size" : "29x29",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "29x29",
       "scale" : "2x"
     },
     {
@@ -21,12 +26,37 @@
       "scale" : "3x"
     },
     {
+      "size" : "57x57",
       "idiom" : "iphone",
-      "size" : "60x60",
+      "filename" : "gitGay57.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "gitGay57@2x.png",
       "scale" : "2x"
     },
     {
+      "size" : "60x60",
       "idiom" : "iphone",
+      "filename" : "gitGay120-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "gitGay.png",
+      "scale" : "3x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "car",
+      "filename" : "gitGay120.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "car",
       "size" : "60x60",
       "scale" : "3x"
     }

@@ -200,6 +200,32 @@ class TrendingDelevlopeRealm: Object {
     }
 }
 
+
+
+class ShowcasesRealm: Object {
+    dynamic var title = ""
+    dynamic var url = ""
+    dynamic var imageurl = ""
+    
+    override static func primaryKey() -> String?{
+        return "title"
+    }
+}
+
+class ShowcasesRealmAction {
+    class func insert(data: [ShowcasesRealm]) {
+        try! realm.write({ () -> Void in
+            realm.add(data)
+        })
+    }
+    
+    class func select() -> Results<(ShowcasesRealm)> {
+        return realm.objects(ShowcasesRealm)
+    }
+}
+
+
+
 class TrendingDelevlopeRealmAction {
     class func insert(type:Int,item:[TrendingDelevlopeRealm]) {
         

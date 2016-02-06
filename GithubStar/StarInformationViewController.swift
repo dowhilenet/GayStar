@@ -23,7 +23,7 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
     var html: String!
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     var toolView: UIToolbar!
-    
+    var safari: SFSafariViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,7 +100,7 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
     func didSelectedStar(item:GithubStarsRealm){
         self.item = item
     }
-
+    
 
     func pullView(){
         //圈圈颜色
@@ -288,22 +288,10 @@ extension StarInformationViewController{
     }
     
     func showSafari(url:String){
-        let safari = SFSafariViewController(URL: NSURL(string: url)!)
+        safari = SFSafariViewController(URL: NSURL(string: url)!)
         presentViewController(safari, animated: true, completion: nil)
     }
     
-    
-    //   open  SafariServices
-    func readmeOnGithub(){
-        let url = GithubStarsRealmAction.selectReadMeHTMLUrl(item.id)?.html_url
-        guard let htmlurl = url else{
-            ProgressHUD.showError("404")
-            return
-        }
-        let safari = SFSafariViewController(URL: NSURL(string: htmlurl)!,entersReaderIfAvailable: true)
-        safari.delegate = self
-        self.presentViewController(safari, animated: true, completion: nil)
-    }
 }
 
 

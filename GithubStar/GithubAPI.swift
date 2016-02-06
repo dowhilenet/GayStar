@@ -152,7 +152,8 @@ class GetStarredCount{
         Alamofire.request(GithubAPI.starredCount)
             .validate()
             .responseData { (res) -> Void in
-                let link = res.response!.allHeaderFields["Link"] as! String
+                guard let response = res.response else { return }
+                let link = response.allHeaderFields["Link"] as! String
                 let range = link.rangeOfString(",", options: NSStringCompareOptions.BackwardsSearch)
                 let last = String(link.characters.suffixFrom(range!.endIndex))
                 let star = last.rangeOfString("&page=", options: NSStringCompareOptions.BackwardsSearch)!

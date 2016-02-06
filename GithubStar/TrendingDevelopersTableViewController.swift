@@ -8,13 +8,13 @@
 
 import UIKit
 import RealmSwift
-
-class TrendingDevelopersTableViewController: UITableViewController {
+import SafariServices
+class TrendingDevelopersTableViewController: UITableViewController{
 
     var devs: Results<(TrendingDelevlopeRealm)>!
     var currType = 0
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-    
+    var safari: SFSafariViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
         devs = TrendingDelevlopeRealmAction.select(currType)
@@ -37,7 +37,6 @@ class TrendingDevelopersTableViewController: UITableViewController {
     }
     
     func pulldowndata() {
-        
         
         func falseOrTrue(res:Bool) {
             guard res else {
@@ -92,5 +91,11 @@ class TrendingDevelopersTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       
+        let url = devs[indexPath.row].githubURL
+        safari = SFSafariViewController(URL: NSURL(string: url)!)
+        presentViewController(safari, animated: true, completion: nil)
+    }
 
 }
