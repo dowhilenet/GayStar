@@ -32,9 +32,7 @@ class GroupItemsTableViewController: UITableViewController {
         self.tableView.separatorColor = UIColor(red:
             240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0,
             alpha: 0.8)
-        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addRepository")
-        let deletebuttonItem = editButtonItem()
-        self.navigationItem.rightBarButtonItems = [addButtonItem,deletebuttonItem]
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addRepository")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         self.title = name.name
@@ -105,7 +103,8 @@ extension GroupItemsTableViewController{
         let showListView = ShowRepositoryListTableViewController()
         self.groupdelegate = showListView
         groupdelegate?.groupName(name)
-        presentViewController(showListView, animated: true, completion: nil)
+        navigationController?.pushViewController(showListView, animated: true)
+//        presentViewController(showListView, animated: true, completion: nil)
     }
 }
 

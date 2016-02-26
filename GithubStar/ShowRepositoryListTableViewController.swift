@@ -21,7 +21,7 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "Repositories"
         self.tableView.registerClass(StarsTableViewCell.classForCoder(), forCellReuseIdentifier: "starlist")
         self.tableView.estimatedRowHeight = 88
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -29,10 +29,6 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
         stars = GithubStarsRealmAction.selectStarsSortByName()
         createStarsDic()
         
-        let left = UISwipeGestureRecognizer(target: self, action: "leftBack")
-        left.direction = .Right
-        
-        self.tableView.addGestureRecognizer(left)
         
     }
 
@@ -82,14 +78,14 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
         return index
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
+//    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 30
+//    }
     
     
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView = view as! UITableViewHeaderFooterView
-        headerView.textLabel?.font = UIFont(name: "FrederickatheGreat", size: 20.0)
+        headerView.textLabel?.font = UIFont(name: "FrederickatheGreat", size: 18.0)
     }
     
     
@@ -106,9 +102,7 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
                 
             }
         }
-        self.dismissViewControllerAnimated(true) { () -> Void in
-            //TODO
-        }
+        navigationController?.popViewControllerAnimated(true)
     }
     
     
@@ -126,11 +120,7 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
         starsSectionTitles.sortInPlace({$0 < $1})
     }
     
-    func leftBack(){
-        self.dismissViewControllerAnimated(true) { () -> Void in
-            
-        }
-    }
+
     
     func groupName(name:GithubGroupRealm){
         groupName = name

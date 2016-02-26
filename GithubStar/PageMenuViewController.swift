@@ -11,7 +11,7 @@ import PageMenuFramework
 
 
 class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
-
+    
     var pageMenu : CAPSPageMenu?
     var showcasesPageMenu: CAPSPageMenu?
     let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Repository", rightTitle: "Developer")
@@ -26,9 +26,9 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
         //分离器变成小圆点
         .MenuItemSeparatorRoundEdges(true),
         //背景颜色
-        .ViewBackgroundColor(UIColor.blackColor()),
+        .ViewBackgroundColor(UIColor.whiteColor()),
         //Menu 背景颜色
-        .ScrollMenuBackgroundColor(UIColor.blackColor()),
+        .ScrollMenuBackgroundColor(UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)),
         //横向滚动条的颜色
         .SelectionIndicatorColor(UIColor.orangeColor()),
         //选中的Menu文字颜色
@@ -46,9 +46,17 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.whiteColor()
         pageMenuConfig()
         runkeepeSwitch()
-        // Do any additional setup after loading the view.
+        
+        let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "choocelang")
+        self.navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    func choocelang(){
+        let vc = ChooseLangueTableViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,10 +69,10 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
      配置 switch
      */
     private func runkeepeSwitch(){
-        runkeeperSwitch.backgroundColor = .blackColor()
+        runkeeperSwitch.backgroundColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
         runkeeperSwitch.selectedBackgroundColor = .whiteColor()
         runkeeperSwitch.tintColor = .whiteColor()
-        runkeeperSwitch.selectedTitleColor = .blackColor()
+        runkeeperSwitch.selectedTitleColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
         runkeeperSwitch.titleFont = UIFont(name: "OpenSans", size: 13.0)
         runkeeperSwitch.frame = CGRect(x: 30.0, y: 40.0, width: 200.0, height: 30.0)
         runkeeperSwitch.autoresizingMask = [.FlexibleWidth]

@@ -15,14 +15,14 @@ class RootTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //配置 nav 样式
-        UINavigationBar.appearance().barTintColor = UIColor.blackColor()
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-//        UINavigationBar.appearance().translucent = true
+        UINavigationBar.appearance().translucent = true
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
        //配置 TabBar 样式
-//        UITabBar.appearance().translucent = true
-        UITabBar.appearance().tintColor = UIColor.whiteColor()
-        UITabBar.appearance().barTintColor = UIColor.blackColor()
+        UITabBar.appearance().translucent = true
+        UITabBar.appearance().tintColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
+//        UITabBar.appearance().barTintColor = UIColor.whiteColor()
         
         //1
         let firstViewController = UINavigationController(rootViewController: StarsTableViewController())
@@ -51,12 +51,12 @@ class RootTabBarViewController: UITabBarController {
         
         
         //4
-        let fourViewController = UINavigationController(rootViewController: TestViewController())
-        let fourTabBarItem = UITabBarItem()
-        fourTabBarItem.title = "Showcase"
-        fourViewController.tabBarItem = fourTabBarItem
+//        let fourViewController = UINavigationController(rootViewController: ShowcasesViewController())
+//        let fourTabBarItem = UITabBarItem()
+//        fourTabBarItem.title = "Showcase"
+//        fourViewController.tabBarItem = fourTabBarItem
         
-        self.viewControllers = [firstViewController,secViewController,thirdViewController,fourViewController]
+        self.viewControllers = [firstViewController,secViewController,thirdViewController]
         
     }
 

@@ -88,10 +88,10 @@ class StarsTableViewController: UITableViewController{
      配置 switch
      */
     private func runkeepeSwitch(){
-    runkeeperSwitch.backgroundColor = .blackColor()
+    runkeeperSwitch.backgroundColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
     runkeeperSwitch.selectedBackgroundColor = .whiteColor()
     runkeeperSwitch.tintColor = .whiteColor()
-    runkeeperSwitch.selectedTitleColor = .blackColor()
+    runkeeperSwitch.selectedTitleColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
     runkeeperSwitch.titleFont = UIFont(name: "OpenSans", size: 13.0)
     runkeeperSwitch.frame = CGRect(x: 30.0, y: 40.0, width: 200.0, height: 30.0)
     runkeeperSwitch.autoresizingMask = [.FlexibleWidth]

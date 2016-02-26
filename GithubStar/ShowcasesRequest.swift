@@ -15,7 +15,7 @@ class ShowcasesRequest {
     
     class func requestShowcases() {
         var dataa = [ShowcasesRealm]()
-        var url = baseurl + "/showcases"
+        let url = baseurl + "/showcases"
         Alamofire.request(.GET, url).responseData { (res) -> Void in
             guard let data = res.data , cards = try? HTMLDocument(data: data).css(".collection-card") else {  return }
             cards.forEach({ (card) -> () in
