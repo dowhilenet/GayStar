@@ -11,16 +11,19 @@ import SnapKit
 import Alamofire
 import Unbox
 import RealmSwift
-import SafariServices
+
 
 class TrendingRepositoriesViewController: UITableViewController{
     
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     
     var repositoriesModel: Results<(GithubStarTrending)>!
-    var safari: SFSafariViewController!
+ 
     var lang: String?
     var currType = 0
+    
+    var contantView: PageMenuViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         repositoriesModel = GithubStarsRealmAction.selectTrengind(currType)
@@ -42,10 +45,6 @@ class TrendingRepositoriesViewController: UITableViewController{
     
 
   
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,9 +72,13 @@ class TrendingRepositoriesViewController: UITableViewController{
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let url = repositoriesModel[indexPath.row].html
-        safari = SFSafariViewController(URL: NSURL(string: url)!)
-        presentViewController(safari, animated: true, completion: nil)
+        
+        let vc = TrendingRepositionInfoViewController()
+        vc.hidesBottomBarWhenPushed = true
+        let model = repositoriesModel[indexPath.row]
+        vc.repositionModel = model
+        contantView.navigationController?.pushViewController(vc, animated: true)
+
     }
     func pulldowndata(){
         
@@ -122,11 +125,13 @@ class TrendingRepositoriesViewController: UITableViewController{
     
     func switchInsertType(data:NSData) {
         
-            guard let stars: GithubStarTrending = Unbox(data) else {
+        
+        guard let stars: GithubStarTrending = Unbox(data) else {
                 self.tableView.dg_stopLoading()
                 ProgressHUD.showError("Error1")
                 return
             }
+        
         GithubStarsRealmAction.insertStarTrending(currType,starsModel: stars, callblocak: { (success) -> Void in
                 guard success else {
                     self.tableView.dg_stopLoading()
@@ -135,5 +140,7 @@ class TrendingRepositoriesViewController: UITableViewController{
                 }
             })
     }
+    
+  
 
 }

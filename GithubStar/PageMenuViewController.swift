@@ -10,11 +10,12 @@ import UIKit
 import PageMenuFramework
 
 
-class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
+class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLangueTableViewControllerDelegate{
     
     var pageMenu : CAPSPageMenu?
     var showcasesPageMenu: CAPSPageMenu?
     let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Repository", rightTitle: "Developer")
+    var lang: String?
     
     let parameters: [CAPSPageMenuOption] = [
         //分离器的宽度
@@ -49,15 +50,16 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
         self.view.backgroundColor = UIColor.whiteColor()
         pageMenuConfig()
         runkeepeSwitch()
-        
-        let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "choocelang")
-        self.navigationItem.rightBarButtonItem = rightButton
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+//        let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "choocelang")
+//        self.navigationItem.rightBarButtonItem = rightButton
     }
     
-    func choocelang(){
-        let vc = ChooseLangueTableViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    func choocelang(){
+//        let vc = ChooseLangueTableViewController()
+//        vc.rootviewcontroller = self
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -99,14 +101,17 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
         var controllerArray = [UIViewController]()
         let today = TrendingRepositoriesViewController()
         today.title = "Today"
+        today.contantView = self
         controllerArray.append(today)
         
         let week = TrendingRepositoriesViewController()
         week.title = "Week"
+        week.contantView = self
         controllerArray.append(week)
         
         let month = TrendingRepositoriesViewController()
         month.title = "Month"
+        month.contantView = self
         controllerArray.append(month)
         
         pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 64.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)
@@ -119,15 +124,19 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
         var controllerArray = [UIViewController]()
         
         let today = TrendingDevelopersTableViewController()
+        today.contantView = self
         today.title = "Today"
+        
         controllerArray.append(today)
         
         let week = TrendingDevelopersTableViewController()
         week.title = "Week"
+        today.contantView = self
         controllerArray.append(week)
         
         let month = TrendingDevelopersTableViewController()
         month.title = "Month"
+        today.contantView = self
         controllerArray.append(month)
         
         showcasesPageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 64.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)
@@ -136,7 +145,7 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
     }
     
     func willMoveToPage(controller: UIViewController, index: Int){
-        
+       
         if controller is TrendingRepositoriesViewController {
             let TrendingController = controller as! TrendingRepositoriesViewController
             TrendingController.currType = index
@@ -146,4 +155,7 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate{
         }
     }
 
+    func didSelectLan(lan:String) {
+        lang = lan
+    }
 }

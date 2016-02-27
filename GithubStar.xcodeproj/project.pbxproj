@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */; };
+		AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */; };
 		AB552E711C60611500D6914C /* Orbitron-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E701C60611500D6914C /* Orbitron-Regular.ttf */; };
 		AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */; };
 		AB552E751C6064FD00D6914C /* Candal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E741C6064FD00D6914C /* Candal.ttf */; };
@@ -55,6 +57,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositionInfoViewController.swift; sourceTree = "<group>"; };
+		AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevelopinfoViewController.swift; sourceTree = "<group>"; };
 		AB552E701C60611500D6914C /* Orbitron-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Orbitron-Regular.ttf"; path = "../Orbitron-Regular.ttf"; sourceTree = "<group>"; };
 		AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		AB552E741C6064FD00D6914C /* Candal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Candal.ttf; path = ../Candal.ttf; sourceTree = "<group>"; };
@@ -289,10 +293,12 @@
 			isa = PBXGroup;
 			children = (
 				ABDA1C491C4733220026A3AC /* ChooseLangueTableViewController.swift */,
+				AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */,
 				ABDA1C4A1C4733220026A3AC /* RequestData.swift */,
 				ABE5A69B1C63736C00CB7B5D /* PageMenuViewController.swift */,
 				ABDA1C4B1C4733220026A3AC /* TrendingRepositoriesViewController.swift */,
 				ABDFAA441C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift */,
+				AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */,
 				AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */,
 			);
 			name = Explore;
@@ -433,8 +439,10 @@
 				ABDA1C451C4732F70026A3AC /* StarsTableViewCell.swift in Sources */,
 				ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */,
 				AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */,
+				AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */,
 				AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */,
 				ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */,
+				AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */,
 				ABE5A69C1C63736C00CB7B5D /* PageMenuViewController.swift in Sources */,
 				ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */,
 				ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */,

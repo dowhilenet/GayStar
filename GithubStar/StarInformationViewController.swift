@@ -12,7 +12,6 @@ import Alamofire
 import WebKit
 import RealmSwift
 import Unbox
-import Kingfisher
 import SafariServices
 
 class StarInformationViewController: UIViewController,PushStarProtocol{
@@ -175,7 +174,7 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
     private func loadreadMefromRealm(id:Int){
         self.starReadMe = GithubStarsRealmAction.selectReadMe(id)
         if self.starReadMe.first?.htmlString != nil{
-            self.html = self.htmlheader(self.starReadMe.first!.htmlString)
+            self.html = htmlheader(self.starReadMe.first!.htmlString)
             self.webview.loadHTMLString(self.html, baseURL: nil)
             ProgressHUD.dismiss()
         }else{
@@ -195,53 +194,9 @@ class StarInformationViewController: UIViewController,PushStarProtocol{
     
     
     
-    /**
-     html 的内容
-     
-     - parameter boday: body neirong
-     
-     - returns: 完整的html
-     */
     
-    private func htmlheader(boday:String) -> String{
-        
-        var  css:String{
-            let star = "<style>"
-            let end = "</style>"
-            let cssfilePatch = NSBundle.mainBundle().pathForResource("bootstrap.min", ofType: "css")!
-            let cssString = try! NSString(contentsOfFile: cssfilePatch, encoding:NSUTF8StringEncoding) as String
-            
-            let mycss = "<style>" + "  .container-fluid{margin:8px;}" + "</style>"
-            
-            return star + cssString + end + mycss
-        }
-        
-        var markdwoncss:String{
-            let star = "<style>"
-            
-            let cssfilePatch = NSBundle.mainBundle().pathForResource("markdown", ofType: "css")!
-            let cssString = try! NSString(contentsOfFile: cssfilePatch, encoding:NSUTF8StringEncoding) as String
-            let end = "</style>"
-            return star + cssString + end
-        }
-        
-        var javascript:String{
-            let star = "<script>"
-            let end = "</script>"
-            let jsfilepatch = NSBundle.mainBundle().pathForResource("jquery.min", ofType: "js")!
-            let jsString = try! NSString(contentsOfFile: jsfilepatch, encoding: NSUTF8StringEncoding) as String
-            return star + jsString + end
-        }
-        
-        let htmlhead = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\">  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">" + css + markdwoncss
-        let htmbody = "</head><body>" + "<div class=\"container-fluid\"> <div class=\"row\"> <div class\"col-xs-12\">" + boday + "</div></div></div>"
-        
-        let scriptstar = "<script>" + "$(function(){$('img').addClass(\"img-responsive\");$('a').click(function(){return false})})"
-        
-        let htmlend = "</script></body></html>"
-        
-        return htmlhead + htmbody + javascript + scriptstar + htmlend
-    }
+    
+   
 }
 
 //MARK: SFSafariViewControllerDelegate

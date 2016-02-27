@@ -230,7 +230,6 @@ class StarsTableViewController: UITableViewController{
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
         let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Group") { (UITableaction, indexpath) -> Void in
-
             let vc = TagViewController()
             self.stardelegate = vc
             self.stardelegate?.didSelectedStar(self.items[indexPath.row])
