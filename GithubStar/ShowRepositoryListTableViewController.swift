@@ -25,7 +25,7 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
         self.tableView.registerClass(StarsTableViewCell.classForCoder(), forCellReuseIdentifier: "starlist")
         self.tableView.estimatedRowHeight = 88
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
         stars = GithubStarsRealmAction.selectStarsSortByName()
         createStarsDic()
         

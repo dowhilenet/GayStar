@@ -14,7 +14,8 @@ import RealmSwift
 import Unbox
 import SafariServices
 
-class StarInformationViewController: UIViewController,PushStarProtocol{
+
+class StarInformationViewController: UIViewController, PushStarProtocol{
     
     var item: GithubStarsRealm!
     var starReadMe: Results<GithubStarReadMe>!
