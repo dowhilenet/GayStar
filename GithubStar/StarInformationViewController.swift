@@ -11,9 +11,8 @@ import SnapKit
 import Alamofire
 import WebKit
 import RealmSwift
-import Unbox
 import SafariServices
-
+import SwiftyJSON
 
 class StarInformationViewController: UIViewController, PushStarProtocol{
     
@@ -26,7 +25,7 @@ class StarInformationViewController: UIViewController, PushStarProtocol{
     var safari: SFSafariViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
         //配置视图
         configView()
         //下拉刷新控件的配置
@@ -61,6 +60,7 @@ class StarInformationViewController: UIViewController, PushStarProtocol{
         webview.snp_makeConstraints { (make) -> Void in
             make.top.leading.trailing.equalTo(self.view)
         }
+        webview.scrollView.alwaysBounceHorizontal = false
         
         toolView = UIToolbar()
         self.view.addSubview(toolView)
@@ -115,12 +115,12 @@ class StarInformationViewController: UIViewController, PushStarProtocol{
         Alamofire.request(url)
         .validate()
         .responseData({ (res) -> Void in
-        guard let data = res.data,star:GithubStarsRealm = Unbox(data) else{
+        guard let data = res.data else{
         ProgressHUD.showError("No Data")
                 return
         }
-        let stars = [star]
-        GithubStarsRealmAction.insertStars(stars, callblocak: { (boole) -> Void in
+        let stars = GithubStarsRealm(data: JSON(data:data))
+        GithubStarsRealmAction.insertStars([stars], callblocak: { (boole) -> Void in
             if boole{
                 self.item = GithubStarsRealmAction.selectStarByID(self.item.id).first
                 self.loadReadme()
@@ -144,22 +144,20 @@ class StarInformationViewController: UIViewController, PushStarProtocol{
         .responseData { (res) -> Void in
         guard let data                = res.data else {
                 self.load404()
-                ProgressHUD.dismiss()
                 return
         }
-        let urlmodel:ReadMeDownModel? = Unbox(data)
+        let urlmodel:ReadMeDownModel? = ReadMeDownModel(unboxer: data)
         if let urlmodel               = urlmodel{
         ReadMeDown.request(self.item.id, url: urlmodel.download_url, html_url: urlmodel.html_url ,callback: { (boole) -> Void in
         if boole{
         self.loadreadMefromRealm(self.item.id)
         }else{
         self.load404()
-        ProgressHUD.dismiss()
         }
         })
         }else{
         self.load404()
-        ProgressHUD.dismiss()
+        
         }
 
         }
@@ -180,7 +178,6 @@ class StarInformationViewController: UIViewController, PushStarProtocol{
             ProgressHUD.dismiss()
         }else{
             self.load404()
-            ProgressHUD.dismiss()
         }
     }
     
@@ -191,6 +188,7 @@ class StarInformationViewController: UIViewController, PushStarProtocol{
         let html404 = NSBundle.mainBundle().URLForResource("404", withExtension: "html")!
         self.html = try! NSString(contentsOfURL: html404, encoding: NSUTF8StringEncoding) as String
         self.webview.loadHTMLString(self.html, baseURL: nil)
+        ProgressHUD.dismiss()
     }
     
     

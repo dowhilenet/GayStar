@@ -9,9 +9,8 @@
 import UIKit
 import SnapKit
 import Alamofire
-import Unbox
 import RealmSwift
-
+import SwiftyJSON
 
 class TrendingRepositoriesViewController: UITableViewController{
     
@@ -125,13 +124,8 @@ class TrendingRepositoriesViewController: UITableViewController{
     
     func switchInsertType(data:NSData) {
         
-        
-        guard let stars: GithubStarTrending = Unbox(data) else {
-                self.tableView.dg_stopLoading()
-                ProgressHUD.showError("Error1")
-                return
-            }
-        
+        let stars = GithubStarTrending(data: JSON(data:data))
+       
         GithubStarsRealmAction.insertStarTrending(currType,starsModel: stars, callblocak: { (success) -> Void in
                 guard success else {
                     self.tableView.dg_stopLoading()

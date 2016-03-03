@@ -61,11 +61,12 @@ enum GithubAPI{
      *  @return JOSN
      */
     case events(user:String)
-    
+
     case readme(name:String)
     
     case starredCount
-    
+
+    case feeds
 }
 
 extension GithubAPI:URLRequestConvertible{
@@ -87,6 +88,8 @@ extension GithubAPI:URLRequestConvertible{
             return "/repos/\(name)/readme"
         case .starredCount:
             return "/user/starred"
+        case .feeds:
+            return  "/feeds"
         }
     }
     
@@ -106,6 +109,8 @@ extension GithubAPI:URLRequestConvertible{
             return nil
         case .starredCount:
             return ["per_page":1]
+        case .feeds:
+            return  nil
         }
     }
     

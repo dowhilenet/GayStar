@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+
 class RootTabBarViewController: UITabBarController {
     
    
@@ -57,6 +57,8 @@ class RootTabBarViewController: UITabBarController {
 //        fourViewController.tabBarItem = fourTabBarItem
         
         self.viewControllers = [firstViewController,secViewController,thirdViewController]
+
+
         
     }
 

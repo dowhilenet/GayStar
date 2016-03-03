@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import Unbox
 import Fuzi
 
 enum TrendingRepositories:String{

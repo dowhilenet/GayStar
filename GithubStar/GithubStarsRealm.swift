@@ -8,10 +8,11 @@
 
 import Foundation
 import RealmSwift
-import Unbox
+import SwiftyJSON
 
-//MARK: GithubStarsRealm
-class GithubStarsRealm:Object,Unboxable{
+
+
+class StarRealm: Object {
     /// 项目ID
     dynamic var id                    = 0
     /// Open Iss
@@ -44,6 +45,12 @@ class GithubStarsRealm:Object,Unboxable{
     dynamic var default_branch:String = ""
     
     dynamic var autherName            = ""
+}
+
+//MARK: GithubStarsRealm
+class GithubStarsRealm: StarRealm{
+
+    //other
     dynamic var groupsNmae:String?    = nil
     
     /**
@@ -63,98 +70,80 @@ class GithubStarsRealm:Object,Unboxable{
         return ["id","name"]
     }
     
-    required convenience init(unboxer: Unboxer){
+   
+    class func dataToArray(data:NSData) -> [GithubStarsRealm] {
+        var restuts = Array<GithubStarsRealm>()
+        let jsondata = JSON(data: data).array
+        guard let jsondataArray = jsondata else { return restuts}
+        for json in jsondataArray {
+            let oneObject = GithubStarsRealm(data: json)
+            restuts.append(oneObject)
+        }
+        return restuts
+    }
+    
+    required convenience init(data:JSON) {
         self.init()
-        fullName        = unboxer.unbox("full_name")
-        decription      = unboxer.unbox("description")
-        language        = unboxer.unbox("language")
-        forksCount      = unboxer.unbox("forks_count")
-        stargazersCount = unboxer.unbox("stargazers_count")
-        avatarURL       = unboxer.unbox("owner.avatar_url")
-        htmlURL         = unboxer.unbox("owner.html_url")
-        html            = unboxer.unbox("html_url")
-        openIssuesCount = unboxer.unbox("open_issues_count")
-        pushedTime      = unboxer.unbox("updated_at")
-        homePage        = unboxer.unbox("homepage")
-        name            = unboxer.unbox("name")
-        autherURL       = unboxer.unbox("owner.url")
-        id              = unboxer.unbox("id")
-        default_branch  = unboxer.unbox("default_branch")
-        autherName      = unboxer.unbox("owner.login")
+        let jsonData = data
+        id = jsonData["id"].intValue
+        openIssuesCount = jsonData["open_issues_count"].intValue
+        forksCount = jsonData["forks_count"].intValue
+        stargazersCount = jsonData["stargazers_count"].intValue
+        name = jsonData["name"].stringValue
+        autherURL = jsonData["owner","url"].stringValue
+        fullName = jsonData["full_name"].stringValue
+        decription = jsonData["description"].string
+        language = jsonData["language"].string
+        avatarURL = jsonData["owner","avatar_url"].stringValue
+        htmlURL = jsonData["owner","html_url"].stringValue
+        pushedTime = jsonData["updated_at"].stringValue
+        homePage = jsonData["homepage"].string
+        html = jsonData["html_url"].stringValue
+        default_branch = jsonData["default_branch"].stringValue
+        autherName = jsonData["owner","login"].stringValue
     }
 }
 
 
-class GithubStarTrending:Object,Unboxable{
-    /// 项目ID
-    dynamic var id                    = 0
-    /// Open Iss
-    dynamic var openIssuesCount       = 0
-    /// Fork Count
-    dynamic var forksCount            = 0
-    /// Stars Count
-    dynamic var stargazersCount       = 0
-    /// Name
-    dynamic var name                  = ""
-    /// Auther URL
-    dynamic var autherURL             = ""
-    /// Full Name
-    dynamic var fullName              = ""
-    /// Description
-    dynamic var decription:String?    = nil
-    /// Language
-    dynamic var language:String?      = nil
-    /// Avatar URL
-    dynamic var avatarURL             = ""
-    /// HTML URL
-    dynamic var htmlURL               = ""
-    /// Pushed Time
-    dynamic var pushedTime            = ""
-    /// Home Page
-    dynamic var homePage:String?      = nil
-    
-    dynamic var html                  = ""
-    
-    dynamic var default_branch:String = ""
-    
-    dynamic var autherName            = ""
-    
+class GithubStarTrending: StarRealm{
+//    
     dynamic var typename              = ""
-    /**
-     设置主键
-     
-     - returns: 主键
-     */
+//    /**
+//     设置主键
+//     
+//     - returns: 主键
+//     */
     override static func primaryKey() -> String?{
         return "typename"
     }
-    /**
-     设置索引
-     
-     - returns: 索引数组
-     */
+//    /**
+//     设置索引
+//     
+//     - returns: 索引数组
+//     */
     override static func indexedProperties() -> [String]{
         return ["id","name"]
     }
     
-    required convenience init(unboxer: Unboxer){
+    required convenience init(data:JSON) {
         self.init()
-        fullName        = unboxer.unbox("full_name")
-        decription      = unboxer.unbox("description")
-        language        = unboxer.unbox("language")
-        forksCount      = unboxer.unbox("forks_count")
-        stargazersCount = unboxer.unbox("stargazers_count")
-        avatarURL       = unboxer.unbox("owner.avatar_url")
-        htmlURL         = unboxer.unbox("owner.html_url")
-        html            = unboxer.unbox("html_url")
-        openIssuesCount = unboxer.unbox("open_issues_count")
-        pushedTime      = unboxer.unbox("updated_at")
-        homePage        = unboxer.unbox("homepage")
-        name            = unboxer.unbox("name")
-        autherURL       = unboxer.unbox("owner.url")
-        id              = unboxer.unbox("id")
-        default_branch  = unboxer.unbox("default_branch")
-        autherName      = unboxer.unbox("owner.login")
+        let jsonData = data
+        id = jsonData["id"].intValue
+        openIssuesCount = jsonData["open_issues_count"].intValue
+        forksCount = jsonData["forks_count"].intValue
+        stargazersCount = jsonData["stargazers_count"].intValue
+        name = jsonData["name"].stringValue
+        autherURL = jsonData["owner","url"].stringValue
+        fullName = jsonData["full_name"].stringValue
+        decription = jsonData["description"].string
+        language = jsonData["language"].string
+        avatarURL = jsonData["owner","avatar_url"].stringValue
+        htmlURL = jsonData["owner","html_url"].stringValue
+        pushedTime = jsonData["updated_at"].stringValue
+        homePage = jsonData["homepage"].string
+        html = jsonData["html_url"].stringValue
+        default_branch = jsonData["default_branch"].stringValue
+        autherName = jsonData["owner","login"].stringValue
     }
 }
 

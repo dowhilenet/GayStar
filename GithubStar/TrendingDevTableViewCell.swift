@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 import RealmSwift
+
 class TrendingDevTableViewCell: UITableViewCell {
 
     var phoneimage: UIImageView!

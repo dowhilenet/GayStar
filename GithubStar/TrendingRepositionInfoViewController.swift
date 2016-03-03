@@ -10,7 +10,6 @@ import UIKit
 import SnapKit
 import WebKit
 import Alamofire
-import Unbox
 import RealmSwift
 import SafariServices
 
@@ -82,7 +81,7 @@ class TrendingRepositionInfoViewController: UIViewController {
                     self.load404()
                     return
                 }
-                let urlmodel:ReadMeDownModel? = Unbox(data)
+                let urlmodel:ReadMeDownModel? = ReadMeDownModel(unboxer: data)
                 if let urlmodel =  urlmodel {
                     ReadMeDown.request(self.repositionModel.id, url: urlmodel.download_url, html_url: urlmodel.html_url, callback: { (success) -> Void in
                         if success {

@@ -10,20 +10,8 @@ import UIKit
 import RealmSwift
 import Alamofire
 import SwiftyUserDefaults
-import Unbox
+import SwiftyJSON
 
-
-extension Int{
-    func toString() -> String{
-        return String(self)
-    }
-}
-
-extension String{
-    func toInt() -> Int?{
-        return Int(self)
-    }
-}
 
 //给下一个页面传递数据
 
@@ -32,8 +20,9 @@ protocol PushStarProtocol {
 }
 
 
-class StarsTableViewController: UITableViewController{
-    
+
+class StarsTableViewController: UITableViewController {
+   
     let cellId = "StarsCell"
     //realm 选择 结果
     var items:Results<(GithubStarsRealm)>!
@@ -49,7 +38,7 @@ class StarsTableViewController: UITableViewController{
         super.viewDidLoad()
         let home = NSHomeDirectory()
             print(home)
-        
+      
         runkeepeSwitch()
         tableviewConfig()
         pulldownConfig()
@@ -72,11 +61,6 @@ class StarsTableViewController: UITableViewController{
         self.tableView.dg_removePullToRefresh()
     }
     
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-      
-    }
     
     
     override func didReceiveMemoryWarning() {
@@ -165,7 +149,6 @@ class StarsTableViewController: UITableViewController{
     }
     
     
-
    
     /**
      下载数据
@@ -182,13 +165,14 @@ class StarsTableViewController: UITableViewController{
             .validate()
             .responseData { (response) -> Void in
                 
-                guard let data = response.data , stars:[GithubStarsRealm] = Unbox(data)
+                guard let data = response.data
                     else{
                         ProgressHUD.showError("No Data", interaction: true)
                         self.tableView.dg_stopLoading()
                         return
                 }
                 
+                let stars = GithubStarsRealm.dataToArray(data)
                 
                 guard stars.count > 0 else{
                     Defaults[.HaveDownAllPagesStars] = true

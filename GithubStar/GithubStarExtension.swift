@@ -10,6 +10,20 @@ import Foundation
 import Fuzi
 import Alamofire
 
+
+extension Int{
+    func toString() -> String{
+        return String(self)
+    }
+}
+
+extension String{
+    func toInt() -> Int?{
+        return Int(self)
+    }
+}
+
+
 let PullToRefreshTintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
 let PullToRefreshFillColor = UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.5)
 
@@ -42,10 +56,10 @@ func htmlheader(boday:String) -> String{
     
     var  css:String{
         let star = "<style>"
-        let end = "</style>"
+        
         let cssfilePatch = NSBundle.mainBundle().pathForResource("bootstrap.min", ofType: "css")!
         let cssString = try! NSString(contentsOfFile: cssfilePatch, encoding:NSUTF8StringEncoding) as String
-        
+        let end = "</style>"
         let mycss = "<style>" + "  .container-fluid{margin:8px;}" + "</style>"
         
         return star + cssString + end + mycss

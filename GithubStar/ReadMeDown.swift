@@ -9,17 +9,17 @@
 import Foundation
 import Alamofire
 import RealmSwift
-import Unbox
+import SwiftyJSON
 
 
-
-struct ReadMeDownModel:Unboxable{
+struct ReadMeDownModel{
     let download_url: String
     let html_url: String?
     
-    init(unboxer: Unboxer){
-    download_url = unboxer.unbox("download_url")
-    html_url = unboxer.unbox("html_url")
+    init(unboxer: NSData){
+        let data = JSON(data:unboxer)
+    download_url = data["download_url"].stringValue
+    html_url = data["html_url"].stringValue
     }
 }
 
@@ -35,9 +35,10 @@ class ReadMeDown{
                 var options                = MarkdownOptions()
                 options.autoHyperlink      = false
                 options.autoNewlines       = true
-                options.linkEmails         = true
-                options.emptyElementSuffix = ">"
+                options.linkEmails         = false
+                options.emptyElementSuffix = "/>"
                 options.strictBoldItalic   = true
+                options.encodeProblemUrlCharacters = true
                 var markdown               = Markdown(options: options)
                 let outputhtml             = markdown.transform(readmeString)
 
