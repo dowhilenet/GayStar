@@ -11,7 +11,7 @@ import RealmSwift
 import SnapKit
 
 
-class TagViewController: UIViewController , UITableViewDelegate , UITableViewDataSource , PushStarProtocol{
+class TagViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
 
     var tb: UITableView!
     var names: Results<(GithubGroupRealm)>!
@@ -109,8 +109,6 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
         
     }
     
-    func didSelectedStar(item:GithubStarsRealm){
-        self.item = item
-    }
+
     
 }

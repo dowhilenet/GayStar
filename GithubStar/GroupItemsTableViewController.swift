@@ -20,9 +20,7 @@ class GroupItemsTableViewController: UITableViewController {
     var items:Results<(GithubStarsRealm)>!
     var name: GithubGroupRealm!
     var groupdelegate: GroupItemsTableViewControllerDelegate?
-    var starDelegate: PushStarProtocol?
-   
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,8 +72,8 @@ class GroupItemsTableViewController: UITableViewController {
         let star = items[indexPath.row]
         let vc = StarInformationViewController()
         vc.hidesBottomBarWhenPushed = true
-        starDelegate = vc
-        starDelegate?.didSelectedStar(star)
+        vc.item = star
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

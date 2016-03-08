@@ -1,11 +1,11 @@
 github "uacaps/PageMenu"
 github "onevcat/Kingfisher" ~> 2.0
-github "dzenbot/DZNEmptyDataSet"
+#github "dzenbot/DZNEmptyDataSet"
 github "Alamofire/Alamofire"
 github "JohnSundell/Unbox"
 github "SnapKit/SnapKit"
 github "radex/SwiftyUserDefaults"
 github "dongri/OAuthSwift"
 github "cezheng/Fuzi" ~> 0.3.0
-github "hyperoslo/Presentation"
+#github "hyperoslo/Presentation"
 github "SwiftyJSON/SwiftyJSON"

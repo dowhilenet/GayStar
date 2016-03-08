@@ -14,7 +14,7 @@ import RealmSwift
 import SafariServices
 import SwiftyJSON
 
-class StarInformationViewController: UIViewController, PushStarProtocol{
+class StarInformationViewController: UIViewController{
     
     var item: GithubStarsRealm!
     var starReadMe: Results<GithubStarReadMe>!
@@ -92,14 +92,7 @@ class StarInformationViewController: UIViewController, PushStarProtocol{
     
   
     
-    /**
-     代理传值
-     
-     - parameter item: 用户选择的项目
-     */
-    func didSelectedStar(item:GithubStarsRealm){
-        self.item = item
-    }
+  
     
 
     func pullView(){
@@ -137,7 +130,7 @@ class StarInformationViewController: UIViewController, PushStarProtocol{
     /**
      WKWebView 加载readme
      */
-    private func loadReadme(){
+     func loadReadme(){
         
         Alamofire.request(GithubAPI.readme(name: self.item.fullName))
         .validate()
@@ -170,7 +163,7 @@ class StarInformationViewController: UIViewController, PushStarProtocol{
      - parameter id: 项目ID
      */
     
-    private func loadreadMefromRealm(id:Int){
+     func loadreadMefromRealm(id:Int){
         self.starReadMe = GithubStarsRealmAction.selectReadMe(id)
         if self.starReadMe.first?.htmlString != nil{
             self.html = htmlheader(self.starReadMe.first!.htmlString)

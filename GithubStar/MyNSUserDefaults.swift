@@ -11,8 +11,8 @@ import SwiftyUserDefaults
 
 extension DefaultsKeys{
     static let token                 = DefaultsKey<String?>("token")
-    static let HaveDownAllPagesStars = DefaultsKey<Bool>("isAll")
     static let starredCount          = DefaultsKey<Int>("starredCount")
+    static let updateCount          = DefaultsKey<Int>("updateCount")
 }
 
 

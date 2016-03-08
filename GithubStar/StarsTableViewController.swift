@@ -13,11 +13,11 @@ import SwiftyUserDefaults
 import SwiftyJSON
 
 
-//给下一个页面传递数据
+////给下一个页面传递数据
 
-protocol PushStarProtocol {
-    func didSelectedStar(item:GithubStarsRealm)
-}
+//protocol PushStarProtocol {
+//    func didSelectedStar(item:GithubStarsRealm)
+//}
 
 
 
@@ -26,12 +26,12 @@ class StarsTableViewController: UITableViewController {
     let cellId = "StarsCell"
     //realm 选择 结果
     var items:Results<(GithubStarsRealm)>!
-    //代理
-    var stardelegate: PushStarProtocol?
+ 
     //下拉刷新控件
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     
     var page = 1
+    var downpages = 0
     let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Stared", rightTitle: "Ungrouped")
     
     override func viewDidLoad() {
@@ -43,19 +43,15 @@ class StarsTableViewController: UITableViewController {
         tableviewConfig()
         pulldownConfig()
         guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
-        //获取Starred 总数
-        GetStarredCount.starredCount { (count) -> Void in
-            if let count = count {
-                Defaults[.starredCount] = count
-                Defaults.synchronize()
-            }
-
-        }
+        
         //获取table 数据
         self.items = GithubStarsRealmAction.selectStars()
     }
 
-    
+    override func viewDidAppear(animated: Bool) {
+        guard let _ = Defaults[.token] else{ return}
+        updatestar()
+    }
     
     deinit {
         self.tableView.dg_removePullToRefresh()
@@ -68,7 +64,30 @@ class StarsTableViewController: UITableViewController {
         
     }
     
-    
+    func updatestar() {
+        let localcount = Defaults[.starredCount]
+        //判断是否已经第一次加载
+        if localcount > 0 {
+            GetStarredCount.starredCount({ (count) -> Void in
+                if let remoteCount = count {
+                    let cuonts = remoteCount - localcount
+                    if cuonts > 0 {
+                        Defaults[.updateCount] = remoteCount
+                        Defaults.synchronize()
+                        ProgressHUD.showSuccess("Have Update, Please Pull")
+                    }
+                }
+            })
+        } else {
+            //获取Starred 总数
+            GetStarredCount.starredCount { (count) -> Void in
+                if let count = count {
+                    Defaults[.starredCount] = count
+                    Defaults.synchronize()
+                }
+            }
+        }
+    }
     /**
      配置 switch
      */
@@ -141,6 +160,7 @@ class StarsTableViewController: UITableViewController {
         GetStarredCount.starredCount { (page) -> Void in
             if let page = page {
                 Defaults[.starredCount] = page
+                Defaults[.updateCount] = page
                 Defaults.synchronize()
             }
         }
@@ -156,11 +176,35 @@ class StarsTableViewController: UITableViewController {
 //    MARK: downData
     
     private func downData(){
-        if Defaults[.HaveDownAllPagesStars]{
-        self.page = 1
-        Defaults[.HaveDownAllPagesStars] = false
-        Defaults.synchronize()
+        let updateCount = Defaults[.updateCount]
+        let count = Defaults[.starredCount]
+        
+        if updateCount > count {
+            downpages = (updateCount - count) / 100 + 1
+        }else {
+            downpages = count / 100 + 1
         }
+        requestPagedata()
+    }
+    
+    func requestPagedata() {
+        
+        func downalltip() {
+            ProgressHUD.showSuccess("Have Down All Data")
+            if self.runkeeperSwitch.selectedIndex == 0{
+                self.items = GithubStarsRealmAction.selectStars()
+            }else{
+                self.items = GithubStarsRealmAction.selectStarsSortByName()
+            }
+            
+            self.tableView.reloadData()
+            self.tableView.dg_stopLoading()
+
+        }
+        
+        
+        guard page <= downpages else { downalltip() ; return }
+        
         Alamofire.request(GithubAPI.star(page: "\(page++)"))
             .validate()
             .responseData { (response) -> Void in
@@ -175,35 +219,21 @@ class StarsTableViewController: UITableViewController {
                 let stars = GithubStarsRealm.dataToArray(data)
                 
                 guard stars.count > 0 else{
-                    Defaults[.HaveDownAllPagesStars] = true
-                    Defaults.synchronize()
-                    ProgressHUD.showSuccess("Have Down All Data")
-                    if self.runkeeperSwitch.selectedIndex == 0{
-                    self.items = GithubStarsRealmAction.selectStars()
-                    }else{
-                    self.items = GithubStarsRealmAction.selectStarsSortByName()
-                    }
-                    
-                    self.tableView.reloadData()
-                    self.tableView.dg_stopLoading()
+                    downalltip()
                     return
                 }
                 
                 GithubStarsRealmAction.insertStars(stars, callblocak: { (bool) -> Void in
                     if bool {
-
-                            ProgressHUD.showSuccess("Down \(self.page - 1) Page Data")
-                            self.downData()
-//                        }
+                        self.requestPagedata()
+                        
                     }else{
                         ProgressHUD.showError("No Data", interaction: true)
                         self.tableView.dg_stopLoading()
                     }
                 })
-                
         }
     }
-    
     
     
     // MARK: - Table view data source
@@ -216,8 +246,7 @@ class StarsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
         let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Group") { (UITableaction, indexpath) -> Void in
             let vc = TagViewController()
-            self.stardelegate = vc
-            self.stardelegate?.didSelectedStar(self.items[indexPath.row])
+            vc.item = self.items[indexPath.row]
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -253,10 +282,8 @@ class StarsTableViewController: UITableViewController {
             
             let starView = StarInformationViewController()
             starView.hidesBottomBarWhenPushed = true
+            starView.item = star
             self.navigationController?.pushViewController(starView, animated: true)
-            self.stardelegate = starView
-            self.stardelegate?.didSelectedStar(star)
-        
     }
     
      override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

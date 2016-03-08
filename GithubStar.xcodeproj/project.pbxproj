@@ -13,6 +13,8 @@
 		AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */; };
 		AB552E751C6064FD00D6914C /* Candal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E741C6064FD00D6914C /* Candal.ttf */; };
 		AB552E771C60674100D6914C /* FrederickatheGreat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E761C60674100D6914C /* FrederickatheGreat-Regular.ttf */; };
+		AB5814F31C8E60500011B2CF /* cssstyle.css in Resources */ = {isa = PBXBuildFile; fileRef = AB5814F11C8E60500011B2CF /* cssstyle.css */; };
+		AB5814F41C8E60500011B2CF /* cssstyle2.css in Resources */ = {isa = PBXBuildFile; fileRef = AB5814F21C8E60500011B2CF /* cssstyle2.css */; };
 		AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */; };
 		AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */; };
 		AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */; };
@@ -30,8 +32,6 @@
 		ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C0C1C4731640026A3AC /* DGElasticPullToRefreshView.swift */; };
 		ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C0D1C4731640026A3AC /* DGRunkeeperSwitch.swift */; };
 		ABDA1C1A1C47319D0026A3AC /* 404.html in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C151C47319D0026A3AC /* 404.html */; };
-		ABDA1C1B1C47319D0026A3AC /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C161C47319D0026A3AC /* bootstrap.min.css */; };
-		ABDA1C1C1C47319D0026A3AC /* markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C171C47319D0026A3AC /* markdown.css */; };
 		ABDA1C1D1C47319D0026A3AC /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C181C47319D0026A3AC /* jquery.min.js */; };
 		ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C191C47319D0026A3AC /* Markdown.swift */; };
 		ABDA1C241C47320D0026A3AC /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */; };
@@ -63,6 +63,8 @@
 		AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		AB552E741C6064FD00D6914C /* Candal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Candal.ttf; path = ../Candal.ttf; sourceTree = "<group>"; };
 		AB552E761C60674100D6914C /* FrederickatheGreat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FrederickatheGreat-Regular.ttf"; path = "../FrederickatheGreat-Regular.ttf"; sourceTree = "<group>"; };
+		AB5814F11C8E60500011B2CF /* cssstyle.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = cssstyle.css; sourceTree = "<group>"; };
+		AB5814F21C8E60500011B2CF /* cssstyle2.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = cssstyle2.css; sourceTree = "<group>"; };
 		AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevTableViewCell.swift; sourceTree = "<group>"; };
 		AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowRepositoryListTableViewController.swift; sourceTree = "<group>"; };
@@ -82,8 +84,6 @@
 		ABDA1C0C1C4731640026A3AC /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
 		ABDA1C0D1C4731640026A3AC /* DGRunkeeperSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGRunkeeperSwitch.swift; sourceTree = "<group>"; };
 		ABDA1C151C47319D0026A3AC /* 404.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404.html; sourceTree = "<group>"; };
-		ABDA1C161C47319D0026A3AC /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.min.css; sourceTree = "<group>"; };
-		ABDA1C171C47319D0026A3AC /* markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = markdown.css; sourceTree = "<group>"; };
 		ABDA1C181C47319D0026A3AC /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
 		ABDA1C191C47319D0026A3AC /* Markdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 		ABDA1C201C47320C0026A3AC /* GithubStar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubStar-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -222,8 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				ABDA1C151C47319D0026A3AC /* 404.html */,
-				ABDA1C161C47319D0026A3AC /* bootstrap.min.css */,
-				ABDA1C171C47319D0026A3AC /* markdown.css */,
+				AB5814F11C8E60500011B2CF /* cssstyle.css */,
+				AB5814F21C8E60500011B2CF /* cssstyle2.css */,
 				ABDA1C181C47319D0026A3AC /* jquery.min.js */,
 				ABDA1C191C47319D0026A3AC /* Markdown.swift */,
 			);
@@ -382,12 +382,12 @@
 				AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */,
 				AB552E711C60611500D6914C /* Orbitron-Regular.ttf in Resources */,
 				ABDA1C241C47320D0026A3AC /* ProgressHUD.bundle in Resources */,
-				ABDA1C1B1C47319D0026A3AC /* bootstrap.min.css in Resources */,
 				ABDA1BFF1C4730890026A3AC /* LaunchScreen.storyboard in Resources */,
 				ABDA1C1D1C47319D0026A3AC /* jquery.min.js in Resources */,
 				ABDA1BFC1C4730890026A3AC /* Assets.xcassets in Resources */,
+				AB5814F41C8E60500011B2CF /* cssstyle2.css in Resources */,
+				AB5814F31C8E60500011B2CF /* cssstyle.css in Resources */,
 				AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */,
-				ABDA1C1C1C47319D0026A3AC /* markdown.css in Resources */,
 				ABDA1C1A1C47319D0026A3AC /* 404.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,16 +402,15 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OAuthSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PageMenuFramework.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Fuzi.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			outputPaths = (
 			);
