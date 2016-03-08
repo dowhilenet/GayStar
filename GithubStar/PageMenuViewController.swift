@@ -50,6 +50,7 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLa
         self.view.backgroundColor = UIColor.whiteColor()
         pageMenuConfig()
         runkeepeSwitch()
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
 //        let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "choocelang")
 //        self.navigationItem.rightBarButtonItem = rightButton
@@ -131,12 +132,12 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLa
         
         let week = TrendingDevelopersTableViewController()
         week.title = "Week"
-        today.contantView = self
+        week.contantView = self
         controllerArray.append(week)
         
         let month = TrendingDevelopersTableViewController()
         month.title = "Month"
-        today.contantView = self
+        month.contantView = self
         controllerArray.append(month)
         
         showcasesPageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 64.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)

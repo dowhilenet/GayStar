@@ -24,6 +24,7 @@ class TrendingDevelopinfoViewController: UIViewController {
             make.edges.equalTo(self.view)
         }
         webview.loadRequest(NSURLRequest(URL: NSURL(string: dev.githubURL)!))
+       
     }
 
     override func didReceiveMemoryWarning() {

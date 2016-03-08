@@ -22,6 +22,7 @@ class TrendingDevelopersTableViewController: UITableViewController{
         super.viewDidLoad()
         devs = TrendingDelevlopeRealmAction.select(currType)
         tableViewConfig()
+        
     }
 
     func tableViewConfig(){
@@ -97,6 +98,7 @@ class TrendingDevelopersTableViewController: UITableViewController{
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = TrendingDevelopinfoViewController()
         vc.dev = devs[indexPath.row]
+        vc.hidesBottomBarWhenPushed = true
         contantView.navigationController?.pushViewController(vc, animated: true)
     }
 

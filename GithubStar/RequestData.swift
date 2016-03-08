@@ -70,6 +70,7 @@ enum TrendingDevelopers:String{
             .responseData { (res) -> Void in
                 
                 guard let data = res.data , doc = try? HTMLDocument(data: data) else {
+                    
                     back(false)
                     return }
                 let repos = doc.css(".user-leaderboard-list-item")
@@ -83,7 +84,7 @@ enum TrendingDevelopers:String{
                         repoURL = element.css(".repo-snipit").first?["href"],
                         repoName = element.css(".repo").first?["title"],
                         repoDesc = element.css(".repo-snipit-description").first?.stringValue
-                        else { back(false) ; return }
+                        else {  return }
                     githubName.removeAtIndex(githubName.startIndex)
                     let fullnameOne = fullName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                     let fullnameTwo = fullnameOne.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "()"))
@@ -99,9 +100,10 @@ enum TrendingDevelopers:String{
                     delevlopes.append(dev)
                 })//end for each 
                 
-                guard delevlopes.count > 0 else { back(false) ; return }
+                guard delevlopes.count > 0 else { back(false) ;return }
                 TrendingDelevlopeRealmAction.insert(type, item: delevlopes)
                 back(true)
+                
         }
     }
     

@@ -21,6 +21,11 @@ extension String{
     func toInt() -> Int?{
         return Int(self)
     }
+    
+     mutating func addHTMLTag( html:String) -> String{
+        self.appendContentsOf(html)
+        return self
+    }
 }
 
 
@@ -53,41 +58,50 @@ func requestShowcasesData(){
  */
 
 func htmlheader(boday:String) -> String{
+    var html = ""
     
-    var  css:String{
-        let star = "<style>"
-        
-        let cssfilePatch = NSBundle.mainBundle().pathForResource("bootstrap.min", ofType: "css")!
-        let cssString = try! NSString(contentsOfFile: cssfilePatch, encoding:NSUTF8StringEncoding) as String
-        let end = "</style>"
-        let mycss = "<style>" + "  .container-fluid{margin:8px;}" + "</style>"
-        
-        return star + cssString + end + mycss
+    func loadCSS(fileName:String) -> String {
+        let cssfilePatch = NSBundle.mainBundle().pathForResource(fileName, ofType: "css")
+        let cssString = try! NSString(contentsOfFile: cssfilePatch!, encoding:NSUTF8StringEncoding) as String
+        return "<style>" + cssString + "</style>"
     }
     
-    var markdwoncss:String{
-        let star = "<style>"
-        
-        let cssfilePatch = NSBundle.mainBundle().pathForResource("markdown", ofType: "css")!
-        let cssString = try! NSString(contentsOfFile: cssfilePatch, encoding:NSUTF8StringEncoding) as String
-        let end = "</style>"
-        return star + cssString + end
-    }
-    
-    var javascript:String{
-        let star = "<script>"
-        let end = "</script>"
-        let jsfilepatch = NSBundle.mainBundle().pathForResource("jquery.min", ofType: "js")!
+    func loadjsfile(fileName:String) -> String {
+        let jsfilepatch = NSBundle.mainBundle().pathForResource(fileName, ofType: "js")!
         let jsString = try! NSString(contentsOfFile: jsfilepatch, encoding: NSUTF8StringEncoding) as String
-        return star + jsString + end
+        return "<script>" + jsString + "</script>"
     }
     
-    let htmlhead = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\">  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">" + css + markdwoncss
-    let htmbody = "</head><body>" + "<div class=\"container-fluid\"> <div class=\"row\"> <div class\"col-xs-12\">" + boday + "</div></div></div>"
+    func loadjs(string:String) -> String{
+        
+        return "<script>" + string + "</script>"
+    }
     
-    let scriptstar = "<script>" + "$(function(){$('img').addClass(\"img-responsive\");$('a').click(function(){return false})})"
+    let css = loadCSS("cssstyle2")
+    let markdownCss = loadCSS("cssstyle")
+    let javascript = loadjsfile("jquery.min")
+    let ajs = loadjs("$(function(){$('img').addClass(\"img-responsive\");$('a').click(function(){return false})})")
+    html.addHTMLTag("<!DOCTYPE html>")
+    html.addHTMLTag("<html>")
+    html.addHTMLTag("<head>")
+    html.addHTMLTag("<meta charset=\"UTF-8\">")
+    html.addHTMLTag("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">")
+    html.addHTMLTag(css)
+    html.addHTMLTag(markdownCss)
+    html.addHTMLTag("</head>")
+    html.addHTMLTag("<body>")
+    html.addHTMLTag("<div class=\"main-content\">")
+    html.addHTMLTag("<div class=\"context-loader-container js-repo-nav-next\">")
+    html.addHTMLTag("<div class=\"container new-discussion-timeline experiment-repo-nav\">")
+    html.addHTMLTag("<div class=\"repository-content\">")
+    html.addHTMLTag("<div class=\"readme boxed-group clearfix announce instapaper_body md\">")
+    html.addHTMLTag("<article class=\"markdown-body entry-content\" itemprop=\"text\">")
+    html.addHTMLTag(boday)
+    html.addHTMLTag("</article>")
+    html.addHTMLTag("</div></div></div></div></div>")
+    html.addHTMLTag(javascript)
+    html.addHTMLTag(ajs)
+    html.addHTMLTag("</body></html>")
     
-    let htmlend = "</script></body></html>"
-    
-    return htmlhead + htmbody + javascript + scriptstar + htmlend
+    return html
 }

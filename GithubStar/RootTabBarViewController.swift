@@ -51,7 +51,7 @@ class RootTabBarViewController: UITabBarController {
         
         
         //4
-//        let fourViewController = UINavigationController(rootViewController: ShowcasesViewController())
+//        let fourViewController = UINavigationController(rootViewController: ShowcaseViewController())
 //        let fourTabBarItem = UITabBarItem()
 //        fourTabBarItem.title = "Showcase"
 //        fourViewController.tabBarItem = fourTabBarItem
