@@ -13,14 +13,6 @@ import SwiftyUserDefaults
 import SwiftyJSON
 
 
-////给下一个页面传递数据
-
-//protocol PushStarProtocol {
-//    func didSelectedStar(item:GithubStarsRealm)
-//}
-
-
-
 class StarsTableViewController: UITableViewController {
    
     let cellId = "StarsCell"
@@ -42,6 +34,7 @@ class StarsTableViewController: UITableViewController {
         runkeepeSwitch()
         tableviewConfig()
         pulldownConfig()
+        
         guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
         
         //获取table 数据
@@ -72,6 +65,7 @@ class StarsTableViewController: UITableViewController {
                 if let remoteCount = count {
                     let cuonts = remoteCount - localcount
                     if cuonts > 0 {
+                        // TODO: 使用 swift－Prompts 来做一个提示。提醒用户有新的项目被添加
                         Defaults[.updateCount] = remoteCount
                         Defaults.synchronize()
                         ProgressHUD.showSuccess("Have Update, Please Pull")
@@ -151,12 +145,13 @@ class StarsTableViewController: UITableViewController {
     func pulldowndata(){
         //查看是否有 token
         guard let _ = Defaults[.token] else{
-            
+        
             ProgressHUD.showError("Not Logged in", interaction: true)
             GithubOAuth.GithubOAuth(self)
             self.tableView.dg_stopLoading()
             return
         }
+        
         GetStarredCount.starredCount { (page) -> Void in
             if let page = page {
                 Defaults[.starredCount] = page

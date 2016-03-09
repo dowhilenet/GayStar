@@ -40,6 +40,7 @@ class TrendingRepositoriesViewController: UITableViewController{
         tableView.dg_addPullToRefreshWithActionHandler(pulldowndata, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PullToRefreshFillColor)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
     }
     
 
