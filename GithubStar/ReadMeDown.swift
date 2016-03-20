@@ -11,10 +11,9 @@ import Alamofire
 import RealmSwift
 import SwiftyJSON
 
-
 struct ReadMeDownModel{
-    let download_url: String
-    let html_url: String?
+    var download_url: String = ""
+    var html_url: String? = ""
     
     init(unboxer: NSData){
         let data = JSON(data:unboxer)
@@ -32,6 +31,7 @@ class ReadMeDown{
         .responseString { (response) -> Void in
             
             if let readmeString = response.result.value{
+               
                 var options                = MarkdownOptions()
                 options.autoHyperlink      = false
                 options.autoNewlines       = true

@@ -324,7 +324,7 @@
 				ABDA1BED1C4730890026A3AC /* Sources */,
 				ABDA1BEE1C4730890026A3AC /* Frameworks */,
 				ABDA1BEF1C4730890026A3AC /* Resources */,
-				AB50AD1B1C5AE585007702EF /* ShellScript */,
+				AB50AD1B1C5AE585007702EF /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -395,7 +395,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AB50AD1B1C5AE585007702EF /* ShellScript */ = {
+		AB50AD1B1C5AE585007702EF /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -412,6 +412,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,6 +565,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -579,7 +581,7 @@
 					"$(PROJECT_DIR)/GithubStar",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = net.dowhile.GithubStar;
+				PRODUCT_BUNDLE_IDENTIFIER = net.dowhile.GitStar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GithubStar/GithubStar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -592,6 +594,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -607,7 +610,7 @@
 					"$(PROJECT_DIR)/GithubStar",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = net.dowhile.GithubStar;
+				PRODUCT_BUNDLE_IDENTIFIER = net.dowhile.GitStar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GithubStar/GithubStar-Bridging-Header.h";
 			};
