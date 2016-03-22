@@ -21,19 +21,20 @@
 		AB72320C1C620819004565BC /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72320B1C620819004565BC /* TagViewController.swift */; };
 		AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */; };
 		AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8253C31C73F60900A0E3C0 /* lang.plist */; };
+		AB8395E11CA127E800DE70AD /* GithubStarTrending+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395DD1CA127E800DE70AD /* GithubStarTrending+CoreDataProperties.swift */; };
+		AB8395E21CA127E800DE70AD /* GithubStarTrending.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395DE1CA127E800DE70AD /* GithubStarTrending.swift */; };
+		AB8395E31CA127E800DE70AD /* GitubStars+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395DF1CA127E800DE70AD /* GitubStars+CoreDataProperties.swift */; };
+		AB8395E41CA127E800DE70AD /* GitubStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395E01CA127E800DE70AD /* GitubStars.swift */; };
+		AB8395E71CA1281700DE70AD /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395E51CA1281700DE70AD /* Star+CoreDataProperties.swift */; };
+		AB8395E81CA1281700DE70AD /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395E61CA1281700DE70AD /* Star.swift */; };
+		AB8395EA1CA128F800DE70AD /* StarTableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */; };
 		AB9131CE1CA0F929001D7C34 /* GithubStar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB9131CC1CA0F929001D7C34 /* GithubStar.xcdatamodeld */; };
 		AB9131DD1CA11099001D7C34 /* GithubGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131CF1CA11099001D7C34 /* GithubGroup+CoreDataProperties.swift */; };
 		AB9131DE1CA11099001D7C34 /* GithubGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D01CA11099001D7C34 /* GithubGroup.swift */; };
-		AB9131DF1CA11099001D7C34 /* GitubStars+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D11CA11099001D7C34 /* GitubStars+CoreDataProperties.swift */; };
-		AB9131E01CA11099001D7C34 /* GitubStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D21CA11099001D7C34 /* GitubStars.swift */; };
 		AB9131E11CA11099001D7C34 /* Showcases+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D31CA11099001D7C34 /* Showcases+CoreDataProperties.swift */; };
 		AB9131E21CA11099001D7C34 /* Showcases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D41CA11099001D7C34 /* Showcases.swift */; };
 		AB9131E31CA11099001D7C34 /* TrendingDevelope+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D51CA11099001D7C34 /* TrendingDevelope+CoreDataProperties.swift */; };
 		AB9131E41CA11099001D7C34 /* TrendingDevelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D61CA11099001D7C34 /* TrendingDevelope.swift */; };
-		AB9131E51CA11099001D7C34 /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D71CA11099001D7C34 /* Star+CoreDataProperties.swift */; };
-		AB9131E61CA11099001D7C34 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D81CA11099001D7C34 /* Star.swift */; };
-		AB9131E71CA11099001D7C34 /* GithubStarTrending+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D91CA11099001D7C34 /* GithubStarTrending+CoreDataProperties.swift */; };
-		AB9131E81CA11099001D7C34 /* GithubStarTrending.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131DA1CA11099001D7C34 /* GithubStarTrending.swift */; };
 		AB9131E91CA11099001D7C34 /* GithubStarReadMe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131DB1CA11099001D7C34 /* GithubStarReadMe+CoreDataProperties.swift */; };
 		AB9131EA1CA11099001D7C34 /* GithubStarReadMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131DC1CA11099001D7C34 /* GithubStarReadMe.swift */; };
 		ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */; };
@@ -86,19 +87,20 @@
 		AB72320B1C620819004565BC /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcasesRequest.swift; sourceTree = "<group>"; };
 		AB8253C31C73F60900A0E3C0 /* lang.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = lang.plist; sourceTree = "<group>"; };
+		AB8395DD1CA127E800DE70AD /* GithubStarTrending+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GithubStarTrending+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AB8395DE1CA127E800DE70AD /* GithubStarTrending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubStarTrending.swift; sourceTree = "<group>"; };
+		AB8395DF1CA127E800DE70AD /* GitubStars+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitubStars+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AB8395E01CA127E800DE70AD /* GitubStars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitubStars.swift; sourceTree = "<group>"; };
+		AB8395E51CA1281700DE70AD /* Star+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Star+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AB8395E61CA1281700DE70AD /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarTableProtocol.swift; sourceTree = "<group>"; };
 		AB9131CD1CA0F929001D7C34 /* GithubStar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GithubStar.xcdatamodel; sourceTree = "<group>"; };
 		AB9131CF1CA11099001D7C34 /* GithubGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GithubGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AB9131D01CA11099001D7C34 /* GithubGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubGroup.swift; sourceTree = "<group>"; };
-		AB9131D11CA11099001D7C34 /* GitubStars+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitubStars+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AB9131D21CA11099001D7C34 /* GitubStars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitubStars.swift; sourceTree = "<group>"; };
 		AB9131D31CA11099001D7C34 /* Showcases+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Showcases+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AB9131D41CA11099001D7C34 /* Showcases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Showcases.swift; sourceTree = "<group>"; };
 		AB9131D51CA11099001D7C34 /* TrendingDevelope+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrendingDevelope+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AB9131D61CA11099001D7C34 /* TrendingDevelope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevelope.swift; sourceTree = "<group>"; };
-		AB9131D71CA11099001D7C34 /* Star+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Star+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AB9131D81CA11099001D7C34 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
-		AB9131D91CA11099001D7C34 /* GithubStarTrending+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GithubStarTrending+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AB9131DA1CA11099001D7C34 /* GithubStarTrending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubStarTrending.swift; sourceTree = "<group>"; };
 		AB9131DB1CA11099001D7C34 /* GithubStarReadMe+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GithubStarReadMe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AB9131DC1CA11099001D7C34 /* GithubStarReadMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubStarReadMe.swift; sourceTree = "<group>"; };
 		ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemsTableViewController.swift; sourceTree = "<group>"; };
@@ -278,16 +280,16 @@
 				AB9131CC1CA0F929001D7C34 /* GithubStar.xcdatamodeld */,
 				AB9131CF1CA11099001D7C34 /* GithubGroup+CoreDataProperties.swift */,
 				AB9131D01CA11099001D7C34 /* GithubGroup.swift */,
-				AB9131D11CA11099001D7C34 /* GitubStars+CoreDataProperties.swift */,
-				AB9131D21CA11099001D7C34 /* GitubStars.swift */,
 				AB9131D31CA11099001D7C34 /* Showcases+CoreDataProperties.swift */,
+				AB8395DD1CA127E800DE70AD /* GithubStarTrending+CoreDataProperties.swift */,
+				AB8395DE1CA127E800DE70AD /* GithubStarTrending.swift */,
+				AB8395E51CA1281700DE70AD /* Star+CoreDataProperties.swift */,
+				AB8395E61CA1281700DE70AD /* Star.swift */,
+				AB8395DF1CA127E800DE70AD /* GitubStars+CoreDataProperties.swift */,
+				AB8395E01CA127E800DE70AD /* GitubStars.swift */,
 				AB9131D41CA11099001D7C34 /* Showcases.swift */,
 				AB9131D51CA11099001D7C34 /* TrendingDevelope+CoreDataProperties.swift */,
 				AB9131D61CA11099001D7C34 /* TrendingDevelope.swift */,
-				AB9131D71CA11099001D7C34 /* Star+CoreDataProperties.swift */,
-				AB9131D81CA11099001D7C34 /* Star.swift */,
-				AB9131D91CA11099001D7C34 /* GithubStarTrending+CoreDataProperties.swift */,
-				AB9131DA1CA11099001D7C34 /* GithubStarTrending.swift */,
 				AB9131DB1CA11099001D7C34 /* GithubStarReadMe+CoreDataProperties.swift */,
 				AB9131DC1CA11099001D7C34 /* GithubStarReadMe.swift */,
 			);
@@ -329,6 +331,7 @@
 				ABDA1C3B1C4732F70026A3AC /* StarInformationViewController.swift */,
 				ABDA1C3E1C4732F70026A3AC /* StarsTableViewCell.swift */,
 				ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */,
+				AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */,
 				AB72320B1C620819004565BC /* TagViewController.swift */,
 			);
 			name = Star;
@@ -470,18 +473,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE5A6991C63548A00CB7B5D /* SwiftPromptsView.swift in Sources */,
-				AB9131E71CA11099001D7C34 /* GithubStarTrending+CoreDataProperties.swift in Sources */,
-				AB9131E61CA11099001D7C34 /* Star.swift in Sources */,
 				ABDFAA451C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift in Sources */,
 				ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */,
-				AB9131E01CA11099001D7C34 /* GitubStars.swift in Sources */,
 				ABDA1C411C4732F70026A3AC /* ReferenceTableViewController.swift in Sources */,
 				AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */,
 				ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */,
 				ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */,
 				ABDA1C2B1C4732720026A3AC /* MyNSUserDefaults.swift in Sources */,
-				AB9131E81CA11099001D7C34 /* GithubStarTrending.swift in Sources */,
 				ABDA1C371C4732C10026A3AC /* RootTabBarViewController.swift in Sources */,
+				AB8395E21CA127E800DE70AD /* GithubStarTrending.swift in Sources */,
 				ABDA1C4F1C4733220026A3AC /* RequestData.swift in Sources */,
 				ABDA1C451C4732F70026A3AC /* StarsTableViewCell.swift in Sources */,
 				AB9131E41CA11099001D7C34 /* TrendingDevelope.swift in Sources */,
@@ -495,28 +495,32 @@
 				AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */,
 				ABE5A69C1C63736C00CB7B5D /* PageMenuViewController.swift in Sources */,
 				AB9131E11CA11099001D7C34 /* Showcases+CoreDataProperties.swift in Sources */,
+				AB8395E81CA1281700DE70AD /* Star.swift in Sources */,
 				ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */,
 				ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */,
 				ABE5A6981C63548A00CB7B5D /* SwiftPrompts.swift in Sources */,
 				AB72320C1C620819004565BC /* TagViewController.swift in Sources */,
 				ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */,
 				AB9131E91CA11099001D7C34 /* GithubStarReadMe+CoreDataProperties.swift in Sources */,
+				AB8395E31CA127E800DE70AD /* GitubStars+CoreDataProperties.swift in Sources */,
 				ABDA1C0F1C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				ABE5A69A1C63548A00CB7B5D /* UIImageEffects.swift in Sources */,
 				ABDA1C2C1C4732720026A3AC /* GithubStarsRealm.swift in Sources */,
+				AB8395E11CA127E800DE70AD /* GithubStarTrending+CoreDataProperties.swift in Sources */,
 				AB9131DD1CA11099001D7C34 /* GithubGroup+CoreDataProperties.swift in Sources */,
+				AB8395EA1CA128F800DE70AD /* StarTableProtocol.swift in Sources */,
+				AB8395E41CA127E800DE70AD /* GitubStars.swift in Sources */,
 				ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */,
 				ABDA1C4E1C4733220026A3AC /* ChooseLangueTableViewController.swift in Sources */,
 				ABDA1C0E1C4731640026A3AC /* DGElasticPullToRefreshConstants.swift in Sources */,
 				ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */,
 				AB9131E31CA11099001D7C34 /* TrendingDevelope+CoreDataProperties.swift in Sources */,
-				AB9131DF1CA11099001D7C34 /* GitubStars+CoreDataProperties.swift in Sources */,
 				ABDA1C501C4733220026A3AC /* TrendingRepositoriesViewController.swift in Sources */,
 				AB9131E21CA11099001D7C34 /* Showcases.swift in Sources */,
 				ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				AB9131CE1CA0F929001D7C34 /* GithubStar.xcdatamodeld in Sources */,
+				AB8395E71CA1281700DE70AD /* Star+CoreDataProperties.swift in Sources */,
 				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
-				AB9131E51CA11099001D7C34 /* Star+CoreDataProperties.swift in Sources */,
 				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
 				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 			);

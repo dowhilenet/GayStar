@@ -123,6 +123,7 @@ class StarsTableViewController: UITableViewController {
             alpha: 0.8)
         self.tableView.registerClass(StarsTableViewCell.classForCoder(), forCellReuseIdentifier: cellId)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    
     }
     
    
@@ -210,7 +211,7 @@ class StarsTableViewController: UITableViewController {
                         self.tableView.dg_stopLoading()
                         return
                 }
-                
+                // 获取数据 匹配模型。
                 let stars = GithubStarsRealm.dataToArray(data)
                 
                 guard stars.count > 0 else{

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class GitubStars: NSManagedObject {
+class GitubStars: Star {
 
 // Insert code here to add functionality to your managed object subclass
 

@@ -20,7 +20,7 @@
         <attribute name="title" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Star" representedClassName=".Star" syncable="YES">
+    <entity name="Star" representedClassName=".Star" isAbstract="YES" syncable="YES">
         <attribute name="autherName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="autherURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="avatarURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -49,12 +49,12 @@
         <attribute name="typeName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Star" positionX="-63" positionY="-18" width="128" height="285"/>
-        <element name="GitubStars" positionX="-54" positionY="108" width="128" height="60"/>
-        <element name="GithubStarTrending" positionX="-36" positionY="117" width="128" height="60"/>
-        <element name="GithubStarReadMe" positionX="-18" positionY="126" width="128" height="90"/>
         <element name="GithubGroup" positionX="0" positionY="135" width="128" height="75"/>
-        <element name="TrendingDevelope" positionX="18" positionY="144" width="128" height="165"/>
+        <element name="GithubStarReadMe" positionX="-18" positionY="126" width="128" height="90"/>
+        <element name="GithubStarTrending" positionX="-36" positionY="117" width="128" height="60"/>
+        <element name="GitubStars" positionX="-54" positionY="108" width="128" height="60"/>
         <element name="Showcases" positionX="36" positionY="180" width="128" height="90"/>
+        <element name="Star" positionX="-63" positionY="-18" width="128" height="285"/>
+        <element name="TrendingDevelope" positionX="18" positionY="144" width="128" height="165"/>
     </elements>
 </model>

@@ -8,10 +8,13 @@
 
 import Foundation
 import CoreData
-
+import SwiftyJSON
 
 class GithubStarTrending: Star {
 
 // Insert code here to add functionality to your managed object subclass
-
+    func downDataIntoCoreData(data:NSData) {
+        let jsondata = JSON(data: data)
+        
+    }
 }

@@ -14,21 +14,21 @@ import CoreData
 
 extension Star {
 
-    @NSManaged var id: NSNumber?
-    @NSManaged var openIssuesCount: NSNumber?
-    @NSManaged var forksCount: NSNumber?
-    @NSManaged var stargazersCount: NSNumber?
-    @NSManaged var name: String?
+    @NSManaged var autherName: String?
     @NSManaged var autherURL: String?
-    @NSManaged var fullName: String?
-    @NSManaged var decription: String?
-    @NSManaged var language: String?
     @NSManaged var avatarURL: String?
-    @NSManaged var htmlURL: String?
-    @NSManaged var pushedTime: String?
+    @NSManaged var decription: String?
+    @NSManaged var default_branch: String?
+    @NSManaged var forksCount: NSNumber?
+    @NSManaged var fullName: String?
     @NSManaged var homePage: String?
     @NSManaged var html: String?
-    @NSManaged var default_branch: String?
-    @NSManaged var autherName: String?
+    @NSManaged var htmlURL: String?
+    @NSManaged var id: NSNumber?
+    @NSManaged var language: String?
+    @NSManaged var name: String?
+    @NSManaged var openIssuesCount: NSNumber?
+    @NSManaged var pushedTime: String?
+    @NSManaged var stargazersCount: NSNumber?
 
 }
