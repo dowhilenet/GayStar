@@ -9,3 +9,4 @@ github "dongri/OAuthSwift"
 github "cezheng/Fuzi" ~> 0.3.0
 #github "hyperoslo/Presentation"
 github "SwiftyJSON/SwiftyJSON"
+github "realm/realm-cocoa"
