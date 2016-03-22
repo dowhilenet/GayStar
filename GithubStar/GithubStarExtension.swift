@@ -9,7 +9,7 @@
 import Foundation
 import Fuzi
 import Alamofire
-
+import SwiftyUserDefaults
 
 extension Int{
     func toString() -> String{
@@ -105,3 +105,46 @@ func htmlheader(boday:String) -> String{
     
     return html
 }
+
+
+func updatestar() {
+    let localcount = Defaults[.starredCount]
+    //判断是否已经第一次加载
+    if localcount > 0 {
+        GetStarredCount.starredCount({ (count) -> Void in
+            if let remoteCount = count {
+                let cuonts = remoteCount - localcount
+                if cuonts > 0 {
+                    // TODO: 使用 swift－Prompts 来做一个提示。提醒用户有新的项目被添加
+                    Defaults[.updateCount] = remoteCount
+                    Defaults.synchronize()
+                    ProgressHUD.showSuccess("Have Update, Please Pull")
+                }
+            }
+        })
+    } else {
+        //获取Starred 总数
+        GetStarredCount.starredCount { (count) -> Void in
+            if let count = count {
+                Defaults[.starredCount] = count
+                Defaults.synchronize()
+            }
+        }
+    }
+}
+
+
+extension UITableView{
+    func configKongTable(title:String){
+        let messageLbl = UILabel(frame:CGRectMake(0, 0,self.bounds.size.width,self.bounds.size.height))
+        messageLbl.backgroundColor = UIColor.clearColor()
+        messageLbl.text = title
+        messageLbl.numberOfLines = 0
+        messageLbl.textAlignment = .Center
+        messageLbl.font = UIFont(name: "FrederickatheGreat", size: 18)
+        messageLbl.sizeToFit()
+        self.backgroundView = messageLbl
+        self.separatorStyle = .None
+    }
+}
+

@@ -10,14 +10,14 @@ import UIKit
 import SnapKit
 import Alamofire
 import WebKit
-import RealmSwift
+//import RealmSwift
 import SafariServices
 import SwiftyJSON
 
 class StarInformationViewController: UIViewController{
     
-    var item: GithubStarsRealm!
-    var starReadMe: Results<GithubStarReadMe>!
+//    var item: GithubStarsRealm!
+//    var starReadMe: Results<GithubStarReadMe>!
     var webview: WKWebView!
     var html: String!
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -31,13 +31,13 @@ class StarInformationViewController: UIViewController{
         //下拉刷新控件的配置
         pullView()
         //获取这个项目的README 文件。
-        let tryloadReadme = GithubStarsRealmAction.selectReadMe(self.item.id)
-        if tryloadReadme.first?.id == nil{
-            ProgressHUD.show("Loading...")
-            loadReadme()
-        }else{
-            loadreadMefromRealm(item.id)
-        }
+//        let tryloadReadme = GithubStarsRealmAction.selectReadMe(self.item.id)
+//        if tryloadReadme.first?.id == nil{
+//            ProgressHUD.show("Loading...")
+//            loadReadme()
+//        }else{
+//            loadreadMefromRealm(item.id)
+//        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -103,23 +103,24 @@ class StarInformationViewController: UIViewController{
     
     webview.scrollView.dg_addPullToRefreshWithActionHandler({ () -> Void in
         //刷新当前仓库的状态
-        let urlString = self.item.fullName
-        let url = GithubAPI.repos(repos: urlString)
-        Alamofire.request(url)
-        .validate()
-        .responseData({ (res) -> Void in
-        guard let data = res.data else{
-        ProgressHUD.showError("No Data")
-                return
-        }
-        let stars = GithubStarsRealm(data: JSON(data:data))
-        GithubStarsRealmAction.insertStars([stars], callblocak: { (boole) -> Void in
-            if boole{
-                self.item = GithubStarsRealmAction.selectStarByID(self.item.id).first
-                self.loadReadme()
-            }
-        })
-        })
+//        let urlString = self.item.fullName
+//        let url = GithubAPI.repos(repos: urlString)
+        
+//        Alamofire.request(url)
+//        .validate()
+//        .responseData({ (res) -> Void in
+//        guard let data = res.data else{
+//        ProgressHUD.showError("No Data")
+//                return
+//        }
+//        let stars = GithubStarsRealm(data: JSON(data:data))
+//        GithubStarsRealmAction.insertStars([stars], callblocak: { (boole) -> Void in
+//            if boole{
+//                self.item = GithubStarsRealmAction.selectStarByID(self.item.id).first
+//                self.loadReadme()
+//            }
+//        })
+//        })
         self.webview.scrollView.dg_stopLoading()
         }, loadingView: loadingView)
     }
@@ -132,28 +133,28 @@ class StarInformationViewController: UIViewController{
      */
      func loadReadme(){
         
-        Alamofire.request(GithubAPI.readme(name: self.item.fullName))
-        .validate()
-        .responseData { (res) -> Void in
-        guard let data                = res.data else {
-                self.load404()
-                return
-        }
-        let urlmodel:ReadMeDownModel? = ReadMeDownModel(unboxer: data)
-        if let urlmodel               = urlmodel{
-        ReadMeDown.request(self.item.id, url: urlmodel.download_url, html_url: urlmodel.html_url ,callback: { (boole) -> Void in
-        if boole{
-        self.loadreadMefromRealm(self.item.id)
-        }else{
-        self.load404()
-        }
-        })
-        }else{
-        self.load404()
-        
-        }
-
-        }
+//        Alamofire.request(GithubAPI.readme(name: self.item.fullName))
+//        .validate()
+//        .responseData { (res) -> Void in
+//        guard let data                = res.data else {
+//                self.load404()
+//                return
+//        }
+//        let urlmodel:ReadMeDownModel? = ReadMeDownModel(unboxer: data)
+//        if let urlmodel               = urlmodel{
+//        ReadMeDown.request(self.item.id, url: urlmodel.download_url, html_url: urlmodel.html_url ,callback: { (boole) -> Void in
+//        if boole{
+//        self.loadreadMefromRealm(self.item.id)
+//        }else{
+//        self.load404()
+//        }
+//        })
+//        }else{
+//        self.load404()
+//        
+//        }
+//
+//        }
     }
     
     
@@ -164,14 +165,14 @@ class StarInformationViewController: UIViewController{
      */
     
      func loadreadMefromRealm(id:Int){
-        self.starReadMe = GithubStarsRealmAction.selectReadMe(id)
-        if self.starReadMe.first?.htmlString != nil{
-            self.html = htmlheader(self.starReadMe.first!.htmlString)
-            self.webview.loadHTMLString(self.html, baseURL: nil)
-            ProgressHUD.dismiss()
-        }else{
-            self.load404()
-        }
+//        self.starReadMe = GithubStarsRealmAction.selectReadMe(id)
+//        if self.starReadMe.first?.htmlString != nil{
+//            self.html = htmlheader(self.starReadMe.first!.htmlString)
+//            self.webview.loadHTMLString(self.html, baseURL: nil)
+//            ProgressHUD.dismiss()
+//        }else{
+//            self.load404()
+//        }
     }
     
     /**
@@ -203,35 +204,35 @@ extension StarInformationViewController:SFSafariViewControllerDelegate{
 extension StarInformationViewController{
     
     func goHome(){
-        let homeUrl = item.homePage
-        guard let homeurl = homeUrl else{
-            ProgressHUD.showError("No Home Page")
-            return
-        }
-        if homeurl.isEmpty{
-            ProgressHUD.showError("No Home Page")
-            return
-        }
-        showSafari(homeurl)
+//        let homeUrl = item.homePage
+//        guard let homeurl = homeUrl else{
+//            ProgressHUD.showError("No Home Page")
+//            return
+//        }
+//        if homeurl.isEmpty{
+//            ProgressHUD.showError("No Home Page")
+//            return
+//        }
+//        showSafari(homeurl)
     }
     
     func readMeOnGithub(){
-        let readmehtmlurl = GithubStarsRealmAction.selectReadMeHTMLUrl(item.id)
-        guard let url = readmehtmlurl?.html_url else {
-            ProgressHUD.showError("404")
-            return
-        }
-        showSafari(url)
+//        let readmehtmlurl = GithubStarsRealmAction.selectReadMeHTMLUrl(item.id)
+//        guard let url = readmehtmlurl?.html_url else {
+//            ProgressHUD.showError("404")
+//            return
+//        }
+//        showSafari(url)
     }
     
     func onGithub(){
-        let userurl = item.html
-        showSafari(userurl)
+//        let userurl = item.html
+//        showSafari(userurl)
     }
     
     func user(){
-        let userurl = item.htmlURL
-        showSafari(userurl)
+//        let userurl = item.htmlURL
+//        showSafari(userurl)
     }
     
     func showSafari(url:String){

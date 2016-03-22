@@ -14,7 +14,7 @@ class ShowcasesRequest {
     private static let baseurl = "https://github.com"
     
     class func requestShowcases() {
-        var dataa = [ShowcasesRealm]()
+//        var dataa = [ShowcasesRealm]()
         let url = baseurl + "/showcases"
         Alamofire.request(.GET, url).responseData { (res) -> Void in
             guard let data = res.data , cards = try? HTMLDocument(data: data).css(".collection-card") else {  return }
@@ -28,15 +28,15 @@ class ShowcasesRequest {
                 imageURL.removeAtIndex(imageURL.endIndex.predecessor())
                 imageURL.removeAtIndex(imageURL.endIndex.predecessor())
                 
-                let one = ShowcasesRealm()
-                one.title = title
-                one.url = carURL
-                one.imageurl = imageURL
-                dataa.append(one)
+//                let one = ShowcasesRealm()
+//                one.title = title
+//                one.url = carURL
+//                one.imageurl = imageURL
+//                dataa.append(one)
                 
             })
-            guard dataa.count > 0 else { return }
-            ShowcasesRealmAction.insert(dataa)
+//            guard dataa.count > 0 else { return }
+//            ShowcasesRealmAction.insert(dataa)
         }
     }
     

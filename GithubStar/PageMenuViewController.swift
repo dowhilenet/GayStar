@@ -79,7 +79,7 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLa
         runkeeperSwitch.titleFont = UIFont(name: "OpenSans", size: 13.0)
         runkeeperSwitch.frame = CGRect(x: 30.0, y: 40.0, width: 200.0, height: 30.0)
         runkeeperSwitch.autoresizingMask = [.FlexibleWidth]
-        runkeeperSwitch.addTarget(self, action: Selector("switchValueDidChange:"), forControlEvents: .ValueChanged)
+        runkeeperSwitch.addTarget(self, action: #selector(PageMenuViewController.switchValueDidChange(_:)), forControlEvents: .ValueChanged)
         self.navigationItem.titleView = runkeeperSwitch
     }
     

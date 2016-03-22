@@ -19,6 +19,6 @@ extension StarTabelProtocol {
         tableView.separatorColor = UIColor(red:
             240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0,
                          alpha: 0.8)
-        tableView.registerClass(cellType.classForCoder(), forCellReuseIdentifier: cellID)
+//        tableView.registerClass(cellType.classForCoder(), forCellReuseIdentifier: cellID)
     }
 }

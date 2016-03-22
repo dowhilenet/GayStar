@@ -28,6 +28,7 @@
 		AB8395E71CA1281700DE70AD /* Star+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395E51CA1281700DE70AD /* Star+CoreDataProperties.swift */; };
 		AB8395E81CA1281700DE70AD /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395E61CA1281700DE70AD /* Star.swift */; };
 		AB8395EA1CA128F800DE70AD /* StarTableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */; };
+		AB8395EC1CA1564600DE70AD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395EB1CA1564500DE70AD /* CoreDataStack.swift */; };
 		AB9131CE1CA0F929001D7C34 /* GithubStar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB9131CC1CA0F929001D7C34 /* GithubStar.xcdatamodeld */; };
 		AB9131DD1CA11099001D7C34 /* GithubGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131CF1CA11099001D7C34 /* GithubGroup+CoreDataProperties.swift */; };
 		AB9131DE1CA11099001D7C34 /* GithubGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9131D01CA11099001D7C34 /* GithubGroup.swift */; };
@@ -94,6 +95,7 @@
 		AB8395E51CA1281700DE70AD /* Star+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Star+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AB8395E61CA1281700DE70AD /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarTableProtocol.swift; sourceTree = "<group>"; };
+		AB8395EB1CA1564500DE70AD /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		AB9131CD1CA0F929001D7C34 /* GithubStar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GithubStar.xcdatamodel; sourceTree = "<group>"; };
 		AB9131CF1CA11099001D7C34 /* GithubGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GithubGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AB9131D01CA11099001D7C34 /* GithubGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubGroup.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				ABDA1C261C4732640026A3AC /* Model */,
 				ABDA1C061C4731360026A3AC /* Frame */,
 				ABDA1BF41C4730890026A3AC /* AppDelegate.swift */,
+				AB8395EB1CA1564500DE70AD /* CoreDataStack.swift */,
 				ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */,
 				ABDA1C201C47320C0026A3AC /* GithubStar-Bridging-Header.h */,
 				ABDA1BFB1C4730890026A3AC /* Assets.xcassets */,
@@ -491,6 +494,7 @@
 				AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */,
 				AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */,
 				ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */,
+				AB8395EC1CA1564600DE70AD /* CoreDataStack.swift in Sources */,
 				AB9131EA1CA11099001D7C34 /* GithubStarReadMe.swift in Sources */,
 				AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */,
 				ABE5A69C1C63736C00CB7B5D /* PageMenuViewController.swift in Sources */,

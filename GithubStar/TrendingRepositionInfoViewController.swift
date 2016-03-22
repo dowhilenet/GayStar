@@ -10,13 +10,13 @@ import UIKit
 import SnapKit
 import WebKit
 import Alamofire
-import RealmSwift
+//import RealmSwift
 import SafariServices
 
 class TrendingRepositionInfoViewController: UIViewController {
     
     var repositionModel: GithubStarTrending!
-    var starReadMe: Results<GithubStarReadMe>!
+//    var starReadMe: Results<GithubStarReadMe>!
     var readmeView: WKWebView!
     var html: String!
     var toolView: UIToolbar!
@@ -57,12 +57,12 @@ class TrendingRepositionInfoViewController: UIViewController {
         toolView.items = [flexibleSpace,tab1,flexibleSpace,tab2,flexibleSpace,tab3,flexibleSpace,tab4,flexibleSpace]
         
         //获取这个项目的README 文件。
-        let tryloadReadme = GithubStarsRealmAction.selectReadMe(repositionModel.id)
-        if tryloadReadme.first?.id == nil{
-            loadReadMe()
-        }else{
-            loadreadMefromRealm(repositionModel.id)
-        }
+//        let tryloadReadme = GithubStarsRealmAction.selectReadMe(repositionModel.id)
+//        if tryloadReadme.first?.id == nil{
+//            loadReadMe()
+//        }else{
+//            loadreadMefromRealm(repositionModel.id)
+//        }
         
     }
 
@@ -74,7 +74,7 @@ class TrendingRepositionInfoViewController: UIViewController {
     
     func loadReadMe() {
         ProgressHUD.show("Loading")
-        Alamofire.request(GithubAPI.readme(name: repositionModel.fullName))
+        Alamofire.request(GithubAPI.readme(name: repositionModel.fullName!))
             .validate()
             .responseData { (response) -> Void in
                 guard let data = response.data else {
@@ -83,13 +83,13 @@ class TrendingRepositionInfoViewController: UIViewController {
                 }
                 let urlmodel:ReadMeDownModel? = ReadMeDownModel(unboxer: data)
                 if let urlmodel =  urlmodel {
-                    ReadMeDown.request(self.repositionModel.id, url: urlmodel.download_url, html_url: urlmodel.html_url, callback: { (success) -> Void in
-                        if success {
-                            self.loadreadMefromRealm(self.repositionModel.id)
-                        }else {
-                            self.load404()
-                        }
-                    })
+//                    ReadMeDown.request(self.repositionModel.id, url: urlmodel.download_url, html_url: urlmodel.html_url, callback: { (success) -> Void in
+//                        if success {
+//                            self.loadreadMefromRealm(self.repositionModel.id)
+//                        }else {
+//                            self.load404()
+//                        }
+//                    })
                 } else {
                     self.load404()
                 }
@@ -104,14 +104,14 @@ class TrendingRepositionInfoViewController: UIViewController {
     
     private func loadreadMefromRealm(id:Int){
         
-        self.starReadMe = GithubStarsRealmAction.selectReadMe(id)
-        if self.starReadMe.first?.htmlString != nil{
-            self.html = htmlheader(self.starReadMe.first!.htmlString)
-            self.readmeView.loadHTMLString(self.html, baseURL: nil)
-            ProgressHUD.dismiss()
-        }else{
-            self.load404()
-        }
+//        self.starReadMe = GithubStarsRealmAction.selectReadMe(id)
+//        if self.starReadMe.first?.htmlString != nil{
+//            self.html = htmlheader(self.starReadMe.first!.htmlString)
+//            self.readmeView.loadHTMLString(self.html, baseURL: nil)
+//            ProgressHUD.dismiss()
+//        }else{
+//            self.load404()
+//        }
     }
     
     /**
@@ -139,22 +139,22 @@ class TrendingRepositionInfoViewController: UIViewController {
     }
     
     func readMeOnGithub(){
-        let readmehtmlurl = GithubStarsRealmAction.selectReadMeHTMLUrl(repositionModel.id)
-        guard let url = readmehtmlurl?.html_url else {
-            ProgressHUD.showError("404")
-            return
-        }
-        showSafari(url)
+//        let readmehtmlurl = GithubStarsRealmAction.selectReadMeHTMLUrl(repositionModel.id)
+//        guard let url = readmehtmlurl?.html_url else {
+//            ProgressHUD.showError("404")
+//            return
+//        }
+//        showSafari(url)
     }
     
     func onGithub(){
         let userurl = repositionModel.html
-        showSafari(userurl)
+        showSafari(userurl!)
     }
     
     func user(){
         let userurl = repositionModel.htmlURL
-        showSafari(userurl)
+        showSafari(userurl!)
     }
     
     func showSafari(url:String){

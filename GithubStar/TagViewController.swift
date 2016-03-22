@@ -7,24 +7,24 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 import SnapKit
 
 
 class TagViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
 
     var tb: UITableView!
-    var names: Results<(GithubGroupRealm)>!
-    var item: GithubStarsRealm!
+//    var names: Results<(GithubGroupRealm)>!
+//    var item: GithubStarsRealm!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Group"
-        names = GithubGroupRealmAction.select()
+//        names = GithubGroupRealmAction.select()
         
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add")
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add")
         
         tb = UITableView()
         self.view.addSubview(tb)
@@ -51,17 +51,17 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
         
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             guard let name = alert.textFields?.first?.text else{ return }
-    
-            if let _ = self.names.indexOf(NSPredicate(format: "name = %@", name)){
-                ProgressHUD.showError("Error")
-                return
-            }
-            GithubGroupRealmAction.insert(name, callbock: { (res) -> Void in
-                if res {
-                    self.names = GithubGroupRealmAction.select()
-                    self.tb.reloadData()
-                }
-            })
+//    
+//            if let _ = self.names.indexOf(NSPredicate(format: "name = %@", name)){
+//                ProgressHUD.showError("Error")
+//                return
+//            }
+//            GithubGroupRealmAction.insert(name, callbock: { (res) -> Void in
+//                if res {
+//                    self.names = GithubGroupRealmAction.select()
+//                    self.tb.reloadData()
+//                }
+//            })
             
         }))
         presentViewController(alert, animated: true, completion: nil)
@@ -74,20 +74,21 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if names.count == 0 {
-            tb.configKongTable("There is no data  try add groups")
-            return 0
-        }
+//        if names.count == 0 {
+//            tb.configKongTable("There is no data  try add groups")
+//            return 0
+//        }
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+//        return names.count
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as! GroupTableViewCell
-        cell.setButtonTitle(names[indexPath.row].name)
+//        cell.setButtonTitle(names[indexPath.row].name)
         return cell
     }
     
@@ -96,16 +97,16 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let name = names[indexPath.row].name
-        GithubStarsRealmAction.updateStarOwnGroup(item, groupName: name) { (isSuccess) -> Void in
-            if isSuccess {
-                ProgressHUD.showSuccess("Success")
-                self.navigationController?.popViewControllerAnimated(true)
-            }else{
-                ProgressHUD.showSuccess("Error")
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-        }
+//        let name = names[indexPath.row].name
+//        GithubStarsRealmAction.updateStarOwnGroup(item, groupName: name) { (isSuccess) -> Void in
+//            if isSuccess {
+//                ProgressHUD.showSuccess("Success")
+//                self.navigationController?.popViewControllerAnimated(true)
+//            }else{
+//                ProgressHUD.showSuccess("Error")
+//                self.navigationController?.popViewControllerAnimated(true)
+//            }
+//        }
         
     }
     

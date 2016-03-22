@@ -7,24 +7,25 @@
 //
 
 import UIKit
-import RealmSwift
 import Alamofire
 import SwiftyUserDefaults
 import SwiftyJSON
-
+import Graph
+import CoreData
 
 class StarsTableViewController: UITableViewController {
    
     let cellId = "StarsCell"
-    //realm 选择 结果
-    var items:Results<(GithubStarsRealm)>!
+    var fetchedResultsController: NSFetchedResultsController!
+    let managedContext = CoreDadaStack.sharedInstance.context
+
  
     //下拉刷新控件
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-    
+    //选择控件
+    let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Stared", rightTitle: "Ungrouped")
     var page = 1
     var downpages = 0
-    let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Stared", rightTitle: "Ungrouped")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +35,13 @@ class StarsTableViewController: UITableViewController {
         runkeepeSwitch()
         tableviewConfig()
         pulldownConfig()
-        
+        configFetchedResultsCon()
         guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
-        
-        //获取table 数据
-        self.items = GithubStarsRealmAction.selectStars()
     }
 
     override func viewDidAppear(animated: Bool) {
-        guard let _ = Defaults[.token] else{ return}
+        guard let _ = Defaults[.token] else{ return }
+        //检查是否需要更新。
         updatestar()
     }
     
@@ -56,32 +55,22 @@ class StarsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         
     }
-    
-    func updatestar() {
-        let localcount = Defaults[.starredCount]
-        //判断是否已经第一次加载
-        if localcount > 0 {
-            GetStarredCount.starredCount({ (count) -> Void in
-                if let remoteCount = count {
-                    let cuonts = remoteCount - localcount
-                    if cuonts > 0 {
-                        // TODO: 使用 swift－Prompts 来做一个提示。提醒用户有新的项目被添加
-                        Defaults[.updateCount] = remoteCount
-                        Defaults.synchronize()
-                        ProgressHUD.showSuccess("Have Update, Please Pull")
-                    }
-                }
-            })
-        } else {
-            //获取Starred 总数
-            GetStarredCount.starredCount { (count) -> Void in
-                if let count = count {
-                    Defaults[.starredCount] = count
-                    Defaults.synchronize()
-                }
-            }
+    //fetchedResultsController 初始化
+    func configFetchedResultsCon() {
+        let fetchRequest = NSFetchRequest(entityName: "GitubStars")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        }catch let eror as NSError {
+            print("Error: \(eror.localizedDescription)")
         }
+        
+        
     }
+
     /**
      配置 switch
      */
@@ -93,7 +82,7 @@ class StarsTableViewController: UITableViewController {
     runkeeperSwitch.titleFont = UIFont(name: "OpenSans", size: 13.0)
     runkeeperSwitch.frame = CGRect(x: 30.0, y: 40.0, width: 200.0, height: 30.0)
     runkeeperSwitch.autoresizingMask = [.FlexibleWidth]
-    runkeeperSwitch.addTarget(self, action: Selector("switchValueDidChange:"), forControlEvents: .ValueChanged)
+    runkeeperSwitch.addTarget(self, action: #selector(StarsTableViewController.switchValueDidChange(_:)), forControlEvents: .ValueChanged)
     self.navigationItem.titleView = runkeeperSwitch
     }
 
@@ -104,10 +93,10 @@ class StarsTableViewController: UITableViewController {
      */
     func switchValueDidChange(sender:DGRunkeeperSwitch){
         if self.runkeeperSwitch.selectedIndex == 0{
-            self.items = GithubStarsRealmAction.selectStars()
+//            self.items = GithubStarsRealmAction.selectStars()
             self.tableView.reloadData()
         }else{
-            self.items = GithubStarsRealmAction.selectStarsSortByUngrouped()
+//            self.items = GithubStarsRealmAction.selectStarsSortByUngrouped()
             self.tableView.reloadData()
         }
     }
@@ -123,7 +112,6 @@ class StarsTableViewController: UITableViewController {
             alpha: 0.8)
         self.tableView.registerClass(StarsTableViewCell.classForCoder(), forCellReuseIdentifier: cellId)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-    
     }
     
    
@@ -136,6 +124,7 @@ class StarsTableViewController: UITableViewController {
         loadingView.tintColor = PullToRefreshTintColor
         self.tableView.dg_setPullToRefreshFillColor(PullToRefreshFillColor)
         self.tableView.dg_setPullToRefreshBackgroundColor(self.tableView.backgroundColor!)
+        //下拉刷新执行的函数
         self.tableView.dg_addPullToRefreshWithActionHandler(pulldowndata, loadingView: loadingView)
     }
     
@@ -152,15 +141,14 @@ class StarsTableViewController: UITableViewController {
             self.tableView.dg_stopLoading()
             return
         }
-        
+        //获取总共的页数
         GetStarredCount.starredCount { (page) -> Void in
             if let page = page {
-                Defaults[.starredCount] = page
                 Defaults[.updateCount] = page
                 Defaults.synchronize()
             }
         }
-   
+        //执行下载
         downData()
     }
     
@@ -174,65 +162,107 @@ class StarsTableViewController: UITableViewController {
     private func downData(){
         let updateCount = Defaults[.updateCount]
         let count = Defaults[.starredCount]
-        
+        // 判断服务器页书和本地页书，服务器大于本地则更新
+        //小于的话，暂不更新
         if updateCount > count {
             downpages = (updateCount - count) / 100 + 1
+            Defaults[.starredCount] = page
+            Defaults.synchronize()
         }else {
-            downpages = count / 100 + 1
+            self.tableView.dg_stopLoading()
+            return
         }
+        //请求服务器数据
         requestPagedata()
     }
     
     func requestPagedata() {
         
+        //下载完成后刷新界面
         func downalltip() {
-            ProgressHUD.showSuccess("Have Down All Data")
+            ProgressHUD.showSuccess("Having Down All Data")
             if self.runkeeperSwitch.selectedIndex == 0{
-                self.items = GithubStarsRealmAction.selectStars()
+//                self.items = GithubStarsRealmAction.selectStars()
             }else{
-                self.items = GithubStarsRealmAction.selectStarsSortByName()
+//                self.items = GithubStarsRealmAction.selectStarsSortByName()
             }
             
-            self.tableView.reloadData()
             self.tableView.dg_stopLoading()
-
         }
-        
-        
+        //如果 所有数据已经下载完成则退出下载
         guard page <= downpages else { downalltip() ; return }
         
-        Alamofire.request(GithubAPI.star(page: "\(page++)"))
+        Alamofire.request(GithubAPI.star(page: "\(page)"))
             .validate()
             .responseData { (response) -> Void in
-                
+                //请求页书加一
+                self.page += 1
+                // 判断是否请求到了数据
                 guard let data = response.data
                     else{
                         ProgressHUD.showError("No Data", interaction: true)
                         self.tableView.dg_stopLoading()
+                        self.tableView.reloadData()
                         return
                 }
-                // 获取数据 匹配模型。
-                let stars = GithubStarsRealm.dataToArray(data)
                 
-                guard stars.count > 0 else{
-                    downalltip()
-                    return
-                }
+                let starEntity = NSEntityDescription.entityForName("GitubStars", inManagedObjectContext: CoreDadaStack.sharedInstance.context)
                 
-                GithubStarsRealmAction.insertStars(stars, callblocak: { (bool) -> Void in
-                    if bool {
-                        self.requestPagedata()
+                let jsonArray = JSON(data: data).arrayValue
+                
+                    jsonArray.forEach({ (json) in
                         
-                    }else{
-                        ProgressHUD.showError("No Data", interaction: true)
-                        self.tableView.dg_stopLoading()
-                    }
-                })
+                        let star =  GitubStars(entity: starEntity!, insertIntoManagedObjectContext: CoreDadaStack.sharedInstance.context)
+                        star.initData(json)
+                        do {
+                            try self.managedContext.save()
+                        } catch let error as NSError {
+                            print("Error: \(error.localizedDescription)")
+                        }
+                    })
+                self.requestPagedata()
+        }
+        
+    }
+
+}
+
+typealias NSFetchedResultsDelegate = StarsTableViewController
+
+extension NSFetchedResultsDelegate:NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
+        if type == .Insert {
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
         }
     }
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+}
+
+
+typealias UItableviewDataSource = StarsTableViewController
+
+extension UItableviewDataSource {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return fetchedResultsController.sections!.count
+    }
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return fetchedResultsController.sections![section].numberOfObjects
+    }
     
-    
-    // MARK: - Table view data source
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! StarsTableViewCell
+        let star = fetchedResultsController.objectAtIndexPath(indexPath) as! GitubStars
+        cell.initCellItems(star)
+        return cell
+        
+    }
     
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
@@ -242,7 +272,7 @@ class StarsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
         let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Group") { (UITableaction, indexpath) -> Void in
             let vc = TagViewController()
-            vc.item = self.items[indexPath.row]
+            //            vc.item = self.items[indexPath.row]
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -251,61 +281,19 @@ class StarsTableViewController: UITableViewController {
         return [groupAction]
     }
     
-    
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //取消点击状态
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if items == nil || items.count == 0{
-        self.tableView.configKongTable("There is no data. try the drop-down refresh")
-        return 0
-        }
+        //            let star = items[indexPath.row]
+        //初始化项目详细信息界面
         
-        return 1
-    }
-
-     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        
-           return items.count
-        
-    }
-
-     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            //取消点击状态
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-            let star = items[indexPath.row]
-            //初始化项目详细信息界面
-            
-            let starView = StarInformationViewController()
-            starView.hidesBottomBarWhenPushed = true
-            starView.item = star
-            self.navigationController?.pushViewController(starView, animated: true)
-    }
-    
-     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! StarsTableViewCell
-            cell.initCellItems(items, index: indexPath)
-        return cell
-        
-    }
-
-}
-
-
-extension UITableView{
-    func configKongTable(title:String){
-        let messageLbl = UILabel(frame:CGRectMake(0, 0,self.bounds.size.width,self.bounds.size.height))
-        messageLbl.backgroundColor = UIColor.clearColor()
-        messageLbl.text = title
-        messageLbl.numberOfLines = 0
-        messageLbl.textAlignment = .Center
-        messageLbl.font = UIFont(name: "FrederickatheGreat", size: 18)
-        messageLbl.sizeToFit()
-        self.backgroundView = messageLbl
-        self.separatorStyle = .None
+        let starView = StarInformationViewController()
+        starView.hidesBottomBarWhenPushed = true
+        //            starView.item = star
+        self.navigationController?.pushViewController(starView, animated: true)
     }
 }
-
 
 
 

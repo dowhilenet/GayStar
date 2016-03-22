@@ -59,7 +59,7 @@ enum TrendingDevelopers:String{
     func getRepo(type:Int, name:String?,back: (Bool) -> Void ) {
         
         var url = ""
-        var delevlopes = [TrendingDelevlopeRealm]()
+//        var delevlopes = [TrendingDelevlopeRealm]()
         if let name = name {
             url = baseurl + "/\(name)" + self.rawValue
         }else{
@@ -89,19 +89,19 @@ enum TrendingDevelopers:String{
                     let fullnameOne = fullName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                     let fullnameTwo = fullnameOne.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "()"))
                     let repoDescOne = repoDesc.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                    let dev = TrendingDelevlopeRealm()
-                    dev.imageURL = imageurl
-                    dev.githubname = githubName
-                    dev.repoName = repoName
-                    dev.fullName = fullnameTwo
-                    dev.repoDec = repoDescOne
-                    dev.githubURL = "https://github.com/" + githubName
-                    dev.repoRUL = "https://github.com" + repoURL
-                    delevlopes.append(dev)
-                })//end for each 
+//                    let dev = TrendingDelevlopeRealm()
+//                    dev.imageURL = imageurl
+//                    dev.githubname = githubName
+//                    dev.repoName = repoName
+//                    dev.fullName = fullnameTwo
+//                    dev.repoDec = repoDescOne
+//                    dev.githubURL = "https://github.com/" + githubName
+//                    dev.repoRUL = "https://github.com" + repoURL
+//                    delevlopes.append(dev)
+                })//end for each
                 
-                guard delevlopes.count > 0 else { back(false) ;return }
-                TrendingDelevlopeRealmAction.insert(type, item: delevlopes)
+//                guard delevlopes.count > 0 else { back(false) ;return }
+//                TrendingDelevlopeRealmAction.insert(type, item: delevlopes)
                 back(true)
                 
         }

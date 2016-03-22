@@ -7,18 +7,18 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 protocol GroupItemsTableViewControllerDelegate{
-    func groupName(name:GithubGroupRealm)
+//    func groupName(name:GithubGroupRealm)
 }
 
 class GroupItemsTableViewController: UITableViewController {
     
     
     //realm 选择 结果
-    var items:Results<(GithubStarsRealm)>!
-    var name: GithubGroupRealm!
+//    var items:Results<(GithubStarsRealm)>!
+//    var name: GithubGroupRealm!
     var groupdelegate: GroupItemsTableViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -31,15 +31,15 @@ class GroupItemsTableViewController: UITableViewController {
             240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0,
             alpha: 0.8)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addRepository")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(GroupItemsTableViewController.addRepository))
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        self.title = name.name
-        items = GithubStarsRealmAction.selectStarByGroupNameSortedByName(name.name)
+//        self.title = name.name
+//        items = GithubStarsRealmAction.selectStarByGroupNameSortedByName(name.name)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        items = GithubStarsRealmAction.selectStarByGroupNameSortedByName(name.name)
+//        items = GithubStarsRealmAction.selectStarByGroupNameSortedByName(name.name)
         self.tableView.reloadData()
     }
     override func didReceiveMemoryWarning() {
@@ -50,29 +50,30 @@ class GroupItemsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if items.count == 0 {
-            self.tableView.configKongTable("There is no data  try add a repository")
-            return 0
-        }
+//        if items.count == 0 {
+//            self.tableView.configKongTable("There is no data  try add a repository")
+//            return 0
+//        }
         
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+//        return items.count
+        return 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("groupItems", forIndexPath: indexPath) as! StarsTableViewCell
-        cell.initCellItems(items, index: indexPath)
+//        cell.initCellItems(items, index: indexPath)
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let star = items[indexPath.row]
+//        let star = items[indexPath.row]
         let vc = StarInformationViewController()
         vc.hidesBottomBarWhenPushed = true
-        vc.item = star
+//        vc.item = star
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -80,14 +81,14 @@ class GroupItemsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if editingStyle == .Delete {
-            GithubStarsRealmAction.updateStarOwnGroup(items[indexPath.row], groupName: "", back: { (ok) -> Void in
-                if ok {
-                    ProgressHUD.showSuccess("Success")
-                    }else{
-                    ProgressHUD.showError("Error")
-                    }
-                })
-            items = GithubStarsRealmAction.selectStarByGroupNameSortedByName(name.name)
+//            GithubStarsRealmAction.updateStarOwnGroup(items[indexPath.row], groupName: "", back: { (ok) -> Void in
+//                if ok {
+//                    ProgressHUD.showSuccess("Success")
+//                    }else{
+//                    ProgressHUD.showError("Error")
+//                    }
+//                })
+//            items = GithubStarsRealmAction.selectStarByGroupNameSortedByName(name.name)
             self.tableView.reloadData()
         }
     }
@@ -100,7 +101,7 @@ extension GroupItemsTableViewController{
     func addRepository(){
         let showListView = ShowRepositoryListTableViewController()
         self.groupdelegate = showListView
-        groupdelegate?.groupName(name)
+//        groupdelegate?.groupName(name)
         navigationController?.pushViewController(showListView, animated: true)
 //        presentViewController(showListView, animated: true, completion: nil)
     }
@@ -108,9 +109,9 @@ extension GroupItemsTableViewController{
 
 
 extension GroupItemsTableViewController:ReferenceTableViewControllerDelegate{
-    func didSelectedGroupDelegate(group: GithubGroupRealm) {
-        name = group
-    }
+//    func didSelectedGroupDelegate(group: GithubGroupRealm) {
+//        name = group
+//    }
 }
 
 

@@ -9,14 +9,14 @@
 import UIKit
 import SnapKit
 import Alamofire
-import RealmSwift
+//import RealmSwift
 import SwiftyJSON
 
 class TrendingRepositoriesViewController: UITableViewController{
     
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     
-    var repositoriesModel: Results<(GithubStarTrending)>!
+//    var repositoriesModel: Results<(GithubStarTrending)>!
  
     var lang: String?
     var currType = 0
@@ -25,7 +25,7 @@ class TrendingRepositoriesViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repositoriesModel = GithubStarsRealmAction.selectTrengind(currType)
+//        repositoriesModel = GithubStarsRealmAction.selectTrengind(currType)
         tableViewConfig()
     }
 
@@ -51,22 +51,22 @@ class TrendingRepositoriesViewController: UITableViewController{
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if repositoriesModel.count == 0 {
-            self.tableView.configKongTable("There is no data. try the drop-down refresh")
-            return 0
-        }
+//        if repositoriesModel.count == 0 {
+//            self.tableView.configKongTable("There is no data. try the drop-down refresh")
+//            return 0
+//        }
         return 1
     }
      override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-   
-           return repositoriesModel.count
+   return 1
+//           return repositoriesModel.count
     }
     
      override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TodayCell", forIndexPath: indexPath) as! StarsTableViewCell
 
-            cell.initCellItemsToTrending(repositoriesModel, index: indexPath)
+//            cell.initCellItemsToTrending(repositoriesModel, index: indexPath)
         
         return cell
     }
@@ -75,8 +75,8 @@ class TrendingRepositoriesViewController: UITableViewController{
         
         let vc = TrendingRepositionInfoViewController()
         vc.hidesBottomBarWhenPushed = true
-        let model = repositoriesModel[indexPath.row]
-        vc.repositionModel = model
+//        let model = repositoriesModel[indexPath.row]
+//        vc.repositionModel = model
         contantView.navigationController?.pushViewController(vc, animated: true)
 
     }
@@ -106,7 +106,7 @@ class TrendingRepositoriesViewController: UITableViewController{
             self.tableView.dg_stopLoading()
             return
         }
-        GithubStarsRealmAction.deleteTrending(currType)
+//        GithubStarsRealmAction.deleteTrending(currType)
         names.forEach { (name) -> () in
             Alamofire.request(GithubAPI.repos(repos: name))
                 .responseData({ (res) -> Void in
@@ -117,7 +117,7 @@ class TrendingRepositoriesViewController: UITableViewController{
                     }
                     self.switchInsertType(data)
                     self.tableView.dg_stopLoading()
-                    self.repositoriesModel = GithubStarsRealmAction.selectTrengind(self.currType)
+//                    self.repositoriesModel = GithubStarsRealmAction.selectTrengind(self.currType)
                     self.tableView.reloadData()
                 })
         }
@@ -125,15 +125,15 @@ class TrendingRepositoriesViewController: UITableViewController{
     
     func switchInsertType(data:NSData) {
         
-        let stars = GithubStarTrending(data: JSON(data:data))
+//        let stars = GithubStarTrending(data: JSON(data:data))
        
-        GithubStarsRealmAction.insertStarTrending(currType,starsModel: stars, callblocak: { (success) -> Void in
-                guard success else {
-                    self.tableView.dg_stopLoading()
-                    ProgressHUD.showError("Error2")
-                    return
-                }
-            })
+//        GithubStarsRealmAction.insertStarTrending(currType,starsModel: stars, callblocak: { (success) -> Void in
+//                guard success else {
+//                    self.tableView.dg_stopLoading()
+//                    ProgressHUD.showError("Error2")
+//                    return
+//                }
+//            })
     }
     
   

@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-import RealmSwift
+//import RealmSwift
 import SwiftyJSON
 
 struct ReadMeDownModel{
@@ -42,20 +42,20 @@ class ReadMeDown{
                 var markdown               = Markdown(options: options)
                 let outputhtml             = markdown.transform(readmeString)
 
-                let starReadMeHtml         = GithubStarReadMe(value:
-                    ["id" : id ,
-                    "htmlString" : outputhtml ,
-                    ])
-                starReadMeHtml.html_url = html_url
+//                let starReadMeHtml         = GithubStarReadMe(value:
+//                    ["id" : id ,
+//                    "htmlString" : outputhtml ,
+//                    ])
+//                starReadMeHtml.html_url = html_url
                 
-                do{
-                    try realm.write({ () -> Void in
-                        realm.add(starReadMeHtml, update: true)
-                        callback(true)
-                    })
-                }catch{
-                        callback(false)
-                }
+//                do{
+//                    try realm.write({ () -> Void in
+//                        realm.add(starReadMeHtml, update: true)
+//                        callback(true)
+//                    })
+//                }catch{
+//                        callback(false)
+//                }
             }else{
                 callback(false)
             }
