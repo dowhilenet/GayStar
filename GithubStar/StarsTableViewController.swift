@@ -10,15 +10,14 @@ import UIKit
 import Alamofire
 import SwiftyUserDefaults
 import SwiftyJSON
-import Graph
-import CoreData
+
+
 
 class StarsTableViewController: UITableViewController {
    
     let cellId = "StarsCell"
-    var fetchedResultsController: NSFetchedResultsController!
-    let managedContext = CoreDadaStack.sharedInstance.context
-
+  
+    var stars = [StarDataModel]()
  
     //下拉刷新控件
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -35,8 +34,9 @@ class StarsTableViewController: UITableViewController {
         runkeepeSwitch()
         tableviewConfig()
         pulldownConfig()
-        configFetchedResultsCon()
+        
         guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
+        stars = StarSQLiteModel.selectStars()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -55,21 +55,7 @@ class StarsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         
     }
-    //fetchedResultsController 初始化
-    func configFetchedResultsCon() {
-        let fetchRequest = NSFetchRequest(entityName: "GitubStars")
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
-        do {
-            try fetchedResultsController.performFetch()
-        }catch let eror as NSError {
-            print("Error: \(eror.localizedDescription)")
-        }
-        
-        
-    }
+  
 
     /**
      配置 switch
@@ -93,10 +79,10 @@ class StarsTableViewController: UITableViewController {
      */
     func switchValueDidChange(sender:DGRunkeeperSwitch){
         if self.runkeeperSwitch.selectedIndex == 0{
-//            self.items = GithubStarsRealmAction.selectStars()
+            stars = StarSQLiteModel.selectStars()
             self.tableView.reloadData()
         }else{
-//            self.items = GithubStarsRealmAction.selectStarsSortByUngrouped()
+            stars = StarSQLiteModel.selectStarsByGroups()
             self.tableView.reloadData()
         }
     }
@@ -141,38 +127,17 @@ class StarsTableViewController: UITableViewController {
             self.tableView.dg_stopLoading()
             return
         }
-        //获取总共的页数
-        GetStarredCount.starredCount { (page) -> Void in
-            if let page = page {
-                Defaults[.updateCount] = page
-                Defaults.synchronize()
-            }
-        }
-        //执行下载
-        downData()
-    }
-    
-    
-   
-    /**
-     下载数据
-     */
-//    MARK: downData
-    
-    private func downData(){
-        let updateCount = Defaults[.updateCount]
-        let count = Defaults[.starredCount]
-        // 判断服务器页书和本地页书，服务器大于本地则更新
-        //小于的话，暂不更新
-        if updateCount > count {
-            downpages = (updateCount - count) / 100 + 1
-            Defaults[.starredCount] = page
-            Defaults.synchronize()
-        }else {
+        
+        let remoteCount = Defaults[.updateCount]
+        let localcount = Defaults[.starredCount]
+        if remoteCount < localcount {
             self.tableView.dg_stopLoading()
             return
         }
-        //请求服务器数据
+        
+        downpages = (remoteCount - localcount) / 100 + 1
+        Defaults[.starredCount] = remoteCount
+        Defaults.synchronize()
         requestPagedata()
     }
     
@@ -186,7 +151,8 @@ class StarsTableViewController: UITableViewController {
             }else{
 //                self.items = GithubStarsRealmAction.selectStarsSortByName()
             }
-            
+            stars = StarSQLiteModel.selectStars()
+            self.tableView.reloadData()
             self.tableView.dg_stopLoading()
         }
         //如果 所有数据已经下载完成则退出下载
@@ -206,20 +172,10 @@ class StarsTableViewController: UITableViewController {
                         return
                 }
                 
-                let starEntity = NSEntityDescription.entityForName("GitubStars", inManagedObjectContext: CoreDadaStack.sharedInstance.context)
-                
-                let jsonArray = JSON(data: data).arrayValue
-                
-                    jsonArray.forEach({ (json) in
-                        
-                        let star =  GitubStars(entity: starEntity!, insertIntoManagedObjectContext: CoreDadaStack.sharedInstance.context)
-                        star.initData(json)
-                        do {
-                            try self.managedContext.save()
-                        } catch let error as NSError {
-                            print("Error: \(error.localizedDescription)")
-                        }
-                    })
+                let stars = StarDataModel.initStarArray(data)
+                stars.forEach({ (star) in
+                    StarSQLiteModel.intsertStar(star)
+                })
                 self.requestPagedata()
         }
         
@@ -227,39 +183,23 @@ class StarsTableViewController: UITableViewController {
 
 }
 
-typealias NSFetchedResultsDelegate = StarsTableViewController
 
-extension NSFetchedResultsDelegate:NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates()
-    }
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        
-        if type == .Insert {
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        }
-    }
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
-    }
-}
 
 
 typealias UItableviewDataSource = StarsTableViewController
 
 extension UItableviewDataSource {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultsController.sections!.count
+        return 1
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return fetchedResultsController.sections![section].numberOfObjects
+        return stars.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! StarsTableViewCell
-        let star = fetchedResultsController.objectAtIndexPath(indexPath) as! GitubStars
-        cell.initCellItems(star)
+        let star = stars[indexPath.row]
+        cell.initCell(star)
         return cell
         
     }

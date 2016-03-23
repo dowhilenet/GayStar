@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootview = RootTabBarViewController()        
         window!.rootViewController = rootview
         window!.makeKeyAndVisible()
+        
+        ConnectingDataBase.sharedObject.db
+        
+        StarSQLiteModel.createTable()
+        TrendingStarSQLiteModel.createTable()
         return true
     }
     
@@ -48,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(application: UIApplication) {
     
-        CoreDadaStack.sharedInstance.saveContext()
+        
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -62,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(application: UIApplication) {
   
-        CoreDadaStack.sharedInstance.saveContext()
+        
     }
     
     

@@ -13,7 +13,7 @@ import UIKit
 
 class TrendingDevelopersTableViewController: UITableViewController{
 
-//    var devs: Results<(TrendingDelevlopeRealm)>!
+
     var currType = 0
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     var contantView: PageMenuViewController!

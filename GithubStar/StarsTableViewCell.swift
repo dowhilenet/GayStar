@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-//import RealmSwift
 import Kingfisher
 
 class StarsTableViewCell: UITableViewCell {
@@ -35,34 +34,14 @@ class StarsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func initCellItems(item:GitubStars){
-        self.name.text = item.name
-        self.desText.text = item.decription
-        self.starLabel.text = (item.stargazersCount as! Int).toString()
-        self.langLabel.text = item.language ?? "NULL"
-        self.imageview.kf_setImageWithURL(NSURL(string: item.avatarURL!)!)
-        self.autherName.text = item.autherName
+    func initCell(star:StarModelJsonProtocol) {
+        imageview.kf_setImageWithURL(NSURL(string: star.avatarURLjson)!)
+        autherName.text = star.autherNamejson
+        desText.text = star.decriptionjson
+        name.text = star.namejson
+        langLabel.text = star.languagejson
+        starLabel.text = String(star.stargazersCountjson)
     }
-//
-//    func initCellByStarModel(res:[GithubStarsRealm],index:NSIndexPath){
-//        name.text = res[index.row].name
-//        desText.text = res[index.row].decription ?? ""
-//        starLabel.text = res[index.row].stargazersCount.toString()
-//        langLabel.text = res[index.row].language ?? "NULL"
-//        imageview.kf_setImageWithURL(NSURL(string: res[index.row].avatarURL)!)
-//        autherName.text = res[index.row].autherName
-//    }
-//    
-//    func initCellItemsToTrending(items:Results<(GithubStarTrending)>,index:NSIndexPath){
-//        self.name.text = items[index.row].name
-//        self.desText.text = items[index.row].decription ?? ""
-//        self.starLabel.text = items[index.row].stargazersCount.toString()
-//        self.langLabel.text = items[index.row].language ?? "NULL"
-//        self.imageview.kf_setImageWithURL(NSURL(string: items[index.row].avatarURL)!)
-//        self.autherName.text = items[index.row].autherName
-//    }
-    
-    
     
     func configTableCell(){
         self.selectionStyle = .None

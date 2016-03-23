@@ -15,7 +15,7 @@ import SafariServices
 
 class TrendingRepositionInfoViewController: UIViewController {
     
-    var repositionModel: GithubStarTrending!
+//    var repositionModel: GithubStarTrending!
 //    var starReadMe: Results<GithubStarReadMe>!
     var readmeView: WKWebView!
     var html: String!
@@ -25,7 +25,7 @@ class TrendingRepositionInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
-        title = repositionModel.name
+//        title = repositionModel.name
         
         readmeView = WKWebView()
         self.view.addSubview(readmeView)
@@ -74,26 +74,26 @@ class TrendingRepositionInfoViewController: UIViewController {
     
     func loadReadMe() {
         ProgressHUD.show("Loading")
-        Alamofire.request(GithubAPI.readme(name: repositionModel.fullName!))
-            .validate()
-            .responseData { (response) -> Void in
-                guard let data = response.data else {
-                    self.load404()
-                    return
-                }
-                let urlmodel:ReadMeDownModel? = ReadMeDownModel(unboxer: data)
-                if let urlmodel =  urlmodel {
-//                    ReadMeDown.request(self.repositionModel.id, url: urlmodel.download_url, html_url: urlmodel.html_url, callback: { (success) -> Void in
-//                        if success {
-//                            self.loadreadMefromRealm(self.repositionModel.id)
-//                        }else {
-//                            self.load404()
-//                        }
-//                    })
-                } else {
-                    self.load404()
-                }
-        }
+//        Alamofire.request(GithubAPI.readme(name: repositionModel.fullName!))
+//            .validate()
+//            .responseData { (response) -> Void in
+//                guard let data = response.data else {
+//                    self.load404()
+//                    return
+//                }
+//                let urlmodel:ReadMeDownModel? = ReadMeDownModel(unboxer: data)
+//                if let urlmodel =  urlmodel {
+////                    ReadMeDown.request(self.repositionModel.id, url: urlmodel.download_url, html_url: urlmodel.html_url, callback: { (success) -> Void in
+////                        if success {
+////                            self.loadreadMefromRealm(self.repositionModel.id)
+////                        }else {
+////                            self.load404()
+////                        }
+////                    })
+//                } else {
+//                    self.load404()
+//                }
+//        }
     }
     
     /**
@@ -126,16 +126,16 @@ class TrendingRepositionInfoViewController: UIViewController {
     
     
     func goHome(){
-        let homeUrl = repositionModel.homePage
-        guard let homeurl = homeUrl else{
-            ProgressHUD.showError("No Home Page")
-            return
-        }
-        if homeurl.isEmpty{
-            ProgressHUD.showError("No Home Page")
-            return
-        }
-        showSafari(homeurl)
+//        let homeUrl = repositionModel.homePage
+//        guard let homeurl = homeUrl else{
+//            ProgressHUD.showError("No Home Page")
+//            return
+//        }
+//        if homeurl.isEmpty{
+//            ProgressHUD.showError("No Home Page")
+//            return
+//        }
+//        showSafari(homeurl)
     }
     
     func readMeOnGithub(){
@@ -148,13 +148,13 @@ class TrendingRepositionInfoViewController: UIViewController {
     }
     
     func onGithub(){
-        let userurl = repositionModel.html
-        showSafari(userurl!)
+//        let userurl = repositionModel.html
+//        showSafari(userurl!)
     }
     
     func user(){
-        let userurl = repositionModel.htmlURL
-        showSafari(userurl!)
+//        let userurl = repositionModel.htmlURL
+//        showSafari(userurl!)
     }
     
     func showSafari(url:String){

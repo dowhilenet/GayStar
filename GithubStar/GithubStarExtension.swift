@@ -18,8 +18,12 @@ extension Int{
 }
 
 extension String{
-    func toInt() -> Int?{
+    func toInt() -> Int? {
         return Int(self)
+    }
+    
+    func toInt64() -> Int64? {
+        return Int64(self)
     }
     
      mutating func addHTMLTag( html:String) -> String{
@@ -108,28 +112,17 @@ func htmlheader(boday:String) -> String{
 
 
 func updatestar() {
-    let localcount = Defaults[.starredCount]
-    //判断是否已经第一次加载
-    if localcount > 0 {
-        GetStarredCount.starredCount({ (count) -> Void in
-            if let remoteCount = count {
-                let cuonts = remoteCount - localcount
-                if cuonts > 0 {
-                    // TODO: 使用 swift－Prompts 来做一个提示。提醒用户有新的项目被添加
-                    Defaults[.updateCount] = remoteCount
-                    Defaults.synchronize()
-                    ProgressHUD.showSuccess("Have Update, Please Pull")
-                }
-            }
-        })
-    } else {
-        //获取Starred 总数
-        GetStarredCount.starredCount { (count) -> Void in
-            if let count = count {
-                Defaults[.starredCount] = count
+     let localcount = Defaults[.starredCount]
+    //获取Starred 总数
+    GetStarredCount.starredCount { (count) -> Void in
+        if let count = count {
+            if localcount < count {
+                Defaults[.updateCount] = count
                 Defaults.synchronize()
+                ProgressHUD.showSuccess("Have Update, Please Pull")
             }
         }
+        
     }
 }
 
