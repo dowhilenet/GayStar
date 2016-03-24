@@ -209,7 +209,7 @@ extension UItableviewDataSource {
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
         let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Group") { (UITableaction, indexpath) -> Void in
             let vc = TagViewController()
-            //            vc.item = self.items[indexPath.row]
+//            vc.item = self.items[indexPath.row]
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             

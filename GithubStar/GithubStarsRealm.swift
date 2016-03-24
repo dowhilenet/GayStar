@@ -1,15 +1,5 @@
 
-////MARK: GithubStarReadMe
-//class GithubStarReadMe: Object {
-//    dynamic var id         = 0
-//    dynamic var htmlString = ""
-//    dynamic var html_url:String?   = nil
-//    override static func primaryKey() -> String?{
-//        return "id"
-//    }
-//}
-//
-//
+
 ////MARK: GithubGroupRealm
 //class GithubGroupRealm: Object {
 //    

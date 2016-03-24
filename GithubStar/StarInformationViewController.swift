@@ -168,39 +168,30 @@ extension StarInformationViewController:SFSafariViewControllerDelegate{
 extension StarInformationViewController{
     
     func goHome(){
-//        let homeUrl = item.homePage
-//        guard let homeurl = homeUrl else{
-//            ProgressHUD.showError("No Home Page")
-//            return
-//        }
-//        if homeurl.isEmpty{
-//            ProgressHUD.showError("No Home Page")
-//            return
-//        }
-//        showSafari(homeurl)
+        let homeUrl = item.homePagejson
+        showSafari(homeUrl)
     }
     
     func readMeOnGithub(){
-//        let readmehtmlurl = GithubStarsRealmAction.selectReadMeHTMLUrl(item.id)
-//        guard let url = readmehtmlurl?.html_url else {
-//            ProgressHUD.showError("404")
-//            return
-//        }
-//        showSafari(url)
+        let url = starReadMe.readmeURL
+        showSafari(url)
     }
     
     func onGithub(){
-//        let userurl = item.html
-//        showSafari(userurl)
+        let userurl = item.htmljson
+        showSafari(userurl)
     }
     
     func user(){
-//        let userurl = item.htmlURL
-//        showSafari(userurl)
+        let userurl = item.htmlURLjson
+        showSafari(userurl)
     }
     
-    func showSafari(url:String){
-        safari = SFSafariViewController(URL: NSURL(string: url)!)
+    func showSafari(url:String?){
+        guard let url = url else { ProgressHUD.showError("404") ;return }
+        guard url != " " else { ProgressHUD.showError("404") ;return }
+        guard let _url = NSURL(string: url) else { ProgressHUD.showError("404") ;return }
+        safari = SFSafariViewController(URL: _url)
         presentViewController(safari, animated: true, completion: nil)
     }
     

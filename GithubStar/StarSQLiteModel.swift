@@ -148,7 +148,7 @@ extension StarSQLiteModel {
             return starArray
         }
     }
-    
+    //选择没有被分组的star
     static func selectStarsByGroups() -> [StarDataModel] {
         var starArray = [StarDataModel]()
         do {
@@ -163,6 +163,47 @@ extension StarSQLiteModel {
         }catch {
             print("Select Model Error")
             return starArray
+        }
+    }
+    
+    static func selecCount(name: String) -> Int64 {
+        var counts:Int64 = 0
+        let query = table.filter(groupsNmae == name).count
+        counts = Int64(db.scalar(query))
+        return counts
+    }
+    
+    static func selectStarByGroupName(name:String) -> [StarDataModel] {
+        var stars = [StarDataModel]()
+        
+        do {
+            let query = table.filter(groupsNmae == name).order(name)
+            let results = try db.prepare(query)
+            results.forEach({ (row) in
+                let star = rowToStar(row)
+                stars.append(star)
+            })
+        }catch let error as NSError {
+            print("error : \(error.localizedDescription)")
+        }
+        
+        return stars
+    }
+    
+    static func deleteStarFromGroup(id: Int64) {
+        do {
+            
+            try db.run(table.filter(self.id == id).update(groupsNmae <- nil))
+            
+        }catch let error as NSError {
+            print("error: \(error.localizedDescription)")
+        }
+    }
+    static func updateStarGroup(id: Int64,name:String) {
+        do {
+            try db.run(table.filter(self.id == id).update(groupsNmae <- name))
+        }catch let error as NSError {
+            print("error \(error.localizedDescription)")
         }
     }
 }
@@ -322,6 +363,64 @@ struct StarReadMeSQLite {
         readme.readmeValue = rowread[htmlValue]
         readme.readmeURL = rowread[htmlUrl]
         return readme
+    }
+}
+
+struct StarGroupSQLite {
+    static private let table = Table("stargroup")
+    static private let db = ConnectingDataBase.sharedObject.db
+    
+    static private let count = Expression<Int64>("count")
+    static private let name = Expression<String>("name")
+    
+    static  func createTable() {
+        do {
+            try db.run(table.create(temporary: false, ifNotExists: true, block: { (t) in
+                t.column(name, primaryKey: true)
+                t.column(count)
+            }))
+        }catch let error as NSError {
+            print("error:\(error.localizedDescription)")
+        }
+    }
+    
+    static  func insert(group:StarGroup) -> Bool{
+        let flag = false
+        do {
+            try db.run(table.insert(
+                    name <- group.name,
+                    count <- group.count
+                ))
+            return !flag
+        }catch let error as NSError {
+            print("error \(error.localizedDescription)")
+        }
+        return flag
+    }
+    
+    static  func select() -> [StarGroup] {
+        var groups = [StarGroup]()
+        do {
+            let query = table.order(name)
+            let groupss = try db.prepare(query)
+            groupss.forEach({ (row) in
+                let group = StarGroup(name: row[name], count: row[count])
+                groups.append(group)
+            })
+            
+        }catch let error as NSError {
+            print("error \(error.localizedDescription)")
+        }
+        return groups
+    }
+    
+    static func delete(name:String) {
+        do {
+            try db.run(table.filter(self.name == name).delete())
+        }catch let error as NSError {
+            print("error\(error.localizedDescription)")
+        }
+        
     }
 }
 

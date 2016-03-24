@@ -7,17 +7,15 @@
 //
 
 import UIKit
-//import RealmSwift
-
 
 class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTableViewControllerDelegate{
 
     
-//    var stars: Results<(GithubStarsRealm)>!
-//    var starsdic = [String:[GithubStarsRealm]]()
+    var stars = [StarDataModel]()
+    var starsdic = [String:[StarDataModel]]()
     var starsSectionTitles = [String]()
     let starsIndexTitles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-//    var groupName: GithubGroupRealm!
+    var groupName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +24,8 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
         self.tableView.estimatedRowHeight = 88
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-//        stars = GithubStarsRealmAction.selectStarsSortByName()
+        stars = StarSQLiteModel.selectStarsByGroups()
         createStarsDic()
-        
-        
     }
 
     
@@ -46,9 +42,9 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let starkey = starsSectionTitles[section]
-//        if let stars = starsdic[starkey] {
-//            return stars.count
-//        }
+        if let stars = starsdic[starkey] {
+            return stars.count
+        }
         return 0
     }
 
@@ -57,9 +53,10 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
         let cell = tableView.dequeueReusableCellWithIdentifier("starlist", forIndexPath: indexPath) as! StarsTableViewCell
         
         let starkey = starsSectionTitles[indexPath.section]
-//        if let stars = starsdic[starkey] {
-//            cell.initCellByStarModel(stars, index: indexPath)
-//        }
+        if let stars = starsdic[starkey] {
+            let star = stars[indexPath.row]
+            cell.initCell(star)
+        }
         return cell
     }
     
@@ -91,38 +88,30 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let starkey = starsSectionTitles[indexPath.section]
-//        let stars = starsdic[starkey]
-//        let selectstar = stars![indexPath.row]
-//        GithubStarsRealmAction.updateStarOwnGroup(selectstar, groupName: groupName.name) { (success) -> Void in
-//            if success {
-//                ProgressHUD.showSuccess("Success")
-//                
-//            }else{
-//                ProgressHUD.showError("Error")
-//                
-//            }
-//        }
+        let stars = starsdic[starkey]
+        let selectstar = stars![indexPath.row]
+        StarSQLiteModel.updateStarGroup(selectstar.idjson, name: groupName)
         navigationController?.popViewControllerAnimated(true)
     }
     
     
     func createStarsDic() {
-//        stars.forEach { (star) -> () in
-//            let starKey = star.name.substringToIndex(star.name.startIndex.advancedBy(1)).uppercaseString
-//            if var starValue = starsdic[starKey]{
-//                starValue.append(star)
-//                starsdic[starKey] = starValue
-//            }else{
-//                starsdic[starKey] = [star]
-//            }
-//        }
-//        starsSectionTitles = [String](starsdic.keys)
+        stars.forEach { (star) -> () in
+            let starKey = star.namejson.substringToIndex(star.namejson.startIndex.advancedBy(1)).uppercaseString
+            if var starValue = starsdic[starKey]{
+                starValue.append(star)
+                starsdic[starKey] = starValue
+            }else{
+                starsdic[starKey] = [star]
+            }
+        }
+        starsSectionTitles = [String](starsdic.keys)
         starsSectionTitles.sortInPlace({$0 < $1})
     }
     
 
     
-//    func groupName(name:GithubGroupRealm){
-//        groupName = name
-//    }
+    func groupName(name:String){
+        groupName = name
+    }
 }

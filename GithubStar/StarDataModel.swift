@@ -130,3 +130,18 @@ struct StarReadMe {
     var readmeURL: String?
 }
 
+struct StarGroup {
+    var name = ""
+    var count:Int64 = 0
+    
+    init(name:String,count:Int64) {
+        self.name = name
+        self.count = count
+    }
+    
+    init(name:String) {
+        let counts = StarSQLiteModel.selecCount(name)
+        self.init(name: name,count:counts)
+    }
+}
+

@@ -8,9 +8,6 @@
 
 import UIKit
 import OAuthSwift
-//import RealmSwift
-//全局变量 realm   默认数据库
-//let realm = try! Realm()
 
 
 @UIApplicationMain
@@ -31,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         StarSQLiteModel.createTable()
         TrendingStarSQLiteModel.createTable()
         StarReadMeSQLite.createTable()
+        StarGroupSQLite.createTable()
         return true
     }
     

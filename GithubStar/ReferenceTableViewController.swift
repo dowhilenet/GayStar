@@ -8,11 +8,10 @@
 
 import UIKit
 import SnapKit
-//import RealmSwift
 import SwiftyUserDefaults
 
 protocol ReferenceTableViewControllerDelegate{
-//    func didSelectedGroupDelegate(group:GithubGroupRealm)
+    func didSelectedGroupDelegate(group:StarGroup)
 }
 
 
@@ -22,20 +21,20 @@ class ReferenceTableViewController: UIViewController, UITableViewDataSource,UITa
     
     var tb: UITableView!
     var groupdelegate: ReferenceTableViewControllerDelegate?
-//    var names: Results<(GithubGroupRealm)>!
+    var names = [StarGroup]()
     var prompt = SwiftPromptsView()
     var deleteIndex = NSIndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Group"
-//        self.names = GithubGroupRealmAction.select()
+        names = StarGroupSQLite.select()
         configTB()
         guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
     }
     
     override func viewDidAppear(animated: Bool) {
-//        self.names = GithubGroupRealmAction.select()
+        names = StarGroupSQLite.select()
         tb.reloadData()
     }
     override func didReceiveMemoryWarning() {
@@ -86,7 +85,7 @@ extension ReferenceTableViewController{
 
         guard let  index = tb.indexPathForRowAtPoint(tapPoint) else {  return }
         
-//        deletePrompts(self.view,title: "Delete", message: "You will remove \n \(names[index.row].name)")
+        deletePrompts(self.view,title: "Delete", message: "You will remove \n \(names[index.row].name)")
         deleteIndex = index
     }
     
@@ -104,18 +103,17 @@ extension ReferenceTableViewController{
         
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             guard let name = alert.textFields?.first?.text else{ return }
-            
-//            if let _ = self.names.indexOf(NSPredicate(format: "name = %@", name)){
-//                ProgressHUD.showError("Error")
-//                return
-//            }
-//            GithubGroupRealmAction.insert(name, callbock: { (res) -> Void in
-//                if res {
-//                    self.names = GithubGroupRealmAction.select()
-//                    self.tb.reloadData()
-//                }
-//            })
-            
+            let newChars = name.characters.filter({ (char) -> Bool in
+                return char != " "
+            })
+            guard newChars.count > 0 else { return }
+            let res = StarGroupSQLite.insert(StarGroup(name: name, count: 0))
+            if res {
+                self.names = StarGroupSQLite.select()
+                self.tb.reloadData()
+            }else {
+                print("inset groups error")
+            }
         }))
         presentViewController(alert, animated: true, completion: nil)
     }
@@ -124,23 +122,21 @@ extension ReferenceTableViewController{
 extension ReferenceTableViewController{
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int{
-//        if names.count == 0{
-//            tb.configKongTable("There is no data  try add group")
-//            return 0
-//        }
-        
+        if names.count == 0{
+            tb.configKongTable("There is no data  try add group")
+            return 0
+        }
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return names.count
-        return 1
+        return names.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("groupCell", forIndexPath: indexPath) as! GroupTableViewCell
-//        cell.setButtonTitle(names[indexPath.row].name)
+        cell.setButtonTitle(names[indexPath.row].name)
         return cell
     }
 }
@@ -152,7 +148,7 @@ extension ReferenceTableViewController{
         let controller = GroupItemsTableViewController()
         controller.hidesBottomBarWhenPushed = true
         self.groupdelegate = controller
-//        self.groupdelegate?.didSelectedGroupDelegate(names[indexPath.row])
+        self.groupdelegate?.didSelectedGroupDelegate(names[indexPath.row])
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -166,8 +162,8 @@ extension ReferenceTableViewController:SwiftPromptsProtocol{
     // MARK: - Delegate functions for the prompt
     
     func clickedOnTheMainButton() {
-//        GithubGroupRealmAction.removeAgroup(names[deleteIndex.row])
-//        names = GithubGroupRealmAction.select()
+        StarGroupSQLite.delete(names[deleteIndex.row].name)
+        names = StarGroupSQLite.select()
         self.tb.reloadData()
         prompt.dismissPrompt()
     }
