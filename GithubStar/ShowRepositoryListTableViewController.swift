@@ -81,8 +81,8 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
     
     
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let headerView = view as! UITableViewHeaderFooterView
-        headerView.textLabel?.font = UIFont(name: "FrederickatheGreat", size: 18.0)
+//        let headerView = view as! UITableViewHeaderFooterView
+//        headerView.textLabel?.font = UIFont(name: "FrederickatheGreat", size: 18.0)
     }
     
     
@@ -110,7 +110,6 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
     }
     
 
-    
     func groupName(name:String){
         groupName = name
     }

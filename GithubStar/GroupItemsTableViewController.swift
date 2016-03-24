@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import RealmSwift
+
 
 protocol GroupItemsTableViewControllerDelegate{
     func groupName(name:String)
@@ -95,7 +95,6 @@ extension GroupItemsTableViewController{
         self.groupdelegate = showListView
         groupdelegate?.groupName(name)
         navigationController?.pushViewController(showListView, animated: true)
-        presentViewController(showListView, animated: true, completion: nil)
     }
 }
 

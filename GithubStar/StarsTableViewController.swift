@@ -45,12 +45,9 @@ class StarsTableViewController: UITableViewController {
     deinit {
         self.tableView.dg_removePullToRefresh()
     }
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
   
 
@@ -209,7 +206,7 @@ extension UItableviewDataSource {
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
         let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Group") { (UITableaction, indexpath) -> Void in
             let vc = TagViewController()
-//            vc.item = self.items[indexPath.row]
+            vc.item = self.stars[indexPath.row]
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             

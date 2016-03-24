@@ -7,24 +7,22 @@
 //
 
 import UIKit
-//import RealmSwift
 import SnapKit
 
 
 class TagViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
 
     var tb: UITableView!
-//    var names: Results<(GithubGroupRealm)>!
-//    var item: GithubStarsRealm!
+    var item: StarDataModel!
+    var names = [StarGroup]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Group"
-//        names = GithubGroupRealmAction.select()
+        names = StarGroupSQLite.select()
         
-        
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(TagViewController.add))
         
         tb = UITableView()
         self.view.addSubview(tb)
@@ -35,8 +33,6 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
         tb.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(self.view)
         }
-        
-        
     }
     
     func add(){
@@ -51,17 +47,17 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
         
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             guard let name = alert.textFields?.first?.text else{ return }
-//    
-//            if let _ = self.names.indexOf(NSPredicate(format: "name = %@", name)){
-//                ProgressHUD.showError("Error")
-//                return
-//            }
-//            GithubGroupRealmAction.insert(name, callbock: { (res) -> Void in
-//                if res {
-//                    self.names = GithubGroupRealmAction.select()
-//                    self.tb.reloadData()
-//                }
-//            })
+            let newChars = name.characters.filter({ (char) -> Bool in
+                return char != " "
+            })
+            guard newChars.count > 0 else { return }
+            let res = StarGroupSQLite.insert(StarGroup(name: name, count: 0))
+            if res {
+                self.names = StarGroupSQLite.select()
+                self.tb.reloadData()
+            }else {
+                print("inset groups error")
+            }
             
         }))
         presentViewController(alert, animated: true, completion: nil)
@@ -74,21 +70,20 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        if names.count == 0 {
-//            tb.configKongTable("There is no data  try add groups")
-//            return 0
-//        }
+        if names.count == 0 {
+            tb.configKongTable("There is no data  try add groups")
+            return 0
+        }
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return names.count
-        return 1
+        return names.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tagCell", forIndexPath: indexPath) as! GroupTableViewCell
-//        cell.setButtonTitle(names[indexPath.row].name)
+        cell.setButtonTitle(names[indexPath.row].name)
         return cell
     }
     
@@ -97,17 +92,9 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let name = names[indexPath.row].name
-//        GithubStarsRealmAction.updateStarOwnGroup(item, groupName: name) { (isSuccess) -> Void in
-//            if isSuccess {
-//                ProgressHUD.showSuccess("Success")
-//                self.navigationController?.popViewControllerAnimated(true)
-//            }else{
-//                ProgressHUD.showSuccess("Error")
-//                self.navigationController?.popViewControllerAnimated(true)
-//            }
-//        }
-        
+        let name = names[indexPath.row].name
+        StarSQLiteModel.updateStarGroup(item.idjson, name: name)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
 
