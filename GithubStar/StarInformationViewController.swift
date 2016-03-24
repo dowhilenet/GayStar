@@ -10,14 +10,13 @@ import UIKit
 import SnapKit
 import Alamofire
 import WebKit
-//import RealmSwift
 import SafariServices
 import SwiftyJSON
 
 class StarInformationViewController: UIViewController{
     
-//    var item: GithubStarsRealm!
-//    var starReadMe: Results<GithubStarReadMe>!
+    var item: StarDataModel!
+    var starReadMe: StarReadMe!
     var webview: WKWebView!
     var html: String!
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -30,14 +29,13 @@ class StarInformationViewController: UIViewController{
         configView()
         //下拉刷新控件的配置
         pullView()
-        //获取这个项目的README 文件。
-//        let tryloadReadme = GithubStarsRealmAction.selectReadMe(self.item.id)
-//        if tryloadReadme.first?.id == nil{
-//            ProgressHUD.show("Loading...")
-//            loadReadme()
-//        }else{
-//            loadreadMefromRealm(item.id)
-//        }
+        
+        starReadMe = StarReadMeSQLite.selectRreadMeByID(item.idjson)
+        if starReadMe.readmeValue == nil {
+            loadReadme()
+        }else {
+            loadreadMefromRealm(item.idjson)
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -70,30 +68,21 @@ class StarInformationViewController: UIViewController{
         }
         
         //Home
-        let tab1 = UIBarButtonItem(image: UIImage(named: "项目网站"), style: .Plain, target: self, action: "goHome")
+        let tab1 = UIBarButtonItem(image: UIImage(named: "项目网站"), style: .Plain, target: self, action: #selector(StarInformationViewController.goHome))
         
         //README
-        let tab2 = UIBarButtonItem(image: UIImage(named: "Group"), style: .Plain, target: self, action: "readMeOnGithub")
+        let tab2 = UIBarButtonItem(image: UIImage(named: "Group"), style: .Plain, target: self, action: #selector(StarInformationViewController.readMeOnGithub))
         
         //ISS
-        let tab3 = UIBarButtonItem(image: UIImage(named: "GitHub主页"), style: .Plain, target: self, action: "onGithub")
+        let tab3 = UIBarButtonItem(image: UIImage(named: "GitHub主页"), style: .Plain, target: self, action: #selector(StarInformationViewController.onGithub))
         
         //User
-        let tab4 = UIBarButtonItem(image: UIImage(named: "作者信息"), style: .Plain, target: self, action: "user")
+        let tab4 = UIBarButtonItem(image: UIImage(named: "作者信息"), style: .Plain, target: self, action: #selector(StarInformationViewController.user))
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         
         toolView.items = [flexibleSpace,tab1,flexibleSpace,tab2,flexibleSpace,tab3,flexibleSpace,tab4,flexibleSpace]
     }
-    
-    
-    
-
-    
-  
-    
-  
-    
 
     func pullView(){
         //圈圈颜色
@@ -103,25 +92,16 @@ class StarInformationViewController: UIViewController{
     
     webview.scrollView.dg_addPullToRefreshWithActionHandler({ () -> Void in
         //刷新当前仓库的状态
-//        let urlString = self.item.fullName
-//        let url = GithubAPI.repos(repos: urlString)
+        let urlString = self.item.fullNamejson
+        let url = GithubAPI.repos(repos: urlString)
         
-//        Alamofire.request(url)
-//        .validate()
-//        .responseData({ (res) -> Void in
-//        guard let data = res.data else{
-//        ProgressHUD.showError("No Data")
-//                return
-//        }
-//        let stars = GithubStarsRealm(data: JSON(data:data))
-//        GithubStarsRealmAction.insertStars([stars], callblocak: { (boole) -> Void in
-//            if boole{
-//                self.item = GithubStarsRealmAction.selectStarByID(self.item.id).first
-//                self.loadReadme()
-//            }
-//        })
-//        })
-        self.webview.scrollView.dg_stopLoading()
+        Alamofire.request(url).validate().responseData({ (res) -> Void in
+        
+            guard let data = res.data else{ return }
+            let star = StarDataModel(jsonData: JSON(data: data))
+            StarSQLiteModel.intsertStar(star)
+            self.loadReadme()
+        })
         }, loadingView: loadingView)
     }
     
@@ -132,29 +112,19 @@ class StarInformationViewController: UIViewController{
      WKWebView 加载readme
      */
      func loadReadme(){
-        
-//        Alamofire.request(GithubAPI.readme(name: self.item.fullName))
-//        .validate()
-//        .responseData { (res) -> Void in
-//        guard let data                = res.data else {
-//                self.load404()
-//                return
-//        }
-//        let urlmodel:ReadMeDownModel? = ReadMeDownModel(unboxer: data)
-//        if let urlmodel               = urlmodel{
-//        ReadMeDown.request(self.item.id, url: urlmodel.download_url, html_url: urlmodel.html_url ,callback: { (boole) -> Void in
-//        if boole{
-//        self.loadreadMefromRealm(self.item.id)
-//        }else{
-//        self.load404()
-//        }
-//        })
-//        }else{
-//        self.load404()
-//        
-//        }
-//
-//        }
+        ProgressHUD.show("Loading")
+        //获取到 readme下载地址
+        Alamofire.request(GithubAPI.readme(name: item.fullNamejson)).validate().responseData { (res) in
+            guard let data = res.data else { self.load404(); return}
+            let model = ReadMeDownModel(unboxer: data)
+            ReadMeDown.request(self.item.idjson, url: model.download_url, html_url: model.html_url, callback: { (res) in
+                if res {
+                    self.loadreadMefromRealm(self.item.idjson)
+                }else {
+                    self.load404()
+                }
+            })
+        }
     }
     
     
@@ -164,15 +134,15 @@ class StarInformationViewController: UIViewController{
      - parameter id: 项目ID
      */
     
-     func loadreadMefromRealm(id:Int){
-//        self.starReadMe = GithubStarsRealmAction.selectReadMe(id)
-//        if self.starReadMe.first?.htmlString != nil{
-//            self.html = htmlheader(self.starReadMe.first!.htmlString)
-//            self.webview.loadHTMLString(self.html, baseURL: nil)
-//            ProgressHUD.dismiss()
-//        }else{
-//            self.load404()
-//        }
+     func loadreadMefromRealm(id:Int64){
+        starReadMe = StarReadMeSQLite.selectRreadMeByID(id)
+        if starReadMe.readmeValue != nil {
+            html = htmlheader(starReadMe.readmeValue!)
+            webview.loadHTMLString(html, baseURL: nil)
+            ProgressHUD.dismiss()
+        }else {
+            load404()
+        }
     }
     
     /**
@@ -180,16 +150,10 @@ class StarInformationViewController: UIViewController{
      */
     private func load404(){
         let html404 = NSBundle.mainBundle().URLForResource("404", withExtension: "html")!
-        self.html = try! NSString(contentsOfURL: html404, encoding: NSUTF8StringEncoding) as String
-        self.webview.loadHTMLString(self.html, baseURL: nil)
+        html = try! NSString(contentsOfURL: html404, encoding: NSUTF8StringEncoding) as String
+        webview.loadHTMLString(html, baseURL: nil)
         ProgressHUD.dismiss()
     }
-    
-    
-    
-    
-    
-   
 }
 
 //MARK: SFSafariViewControllerDelegate

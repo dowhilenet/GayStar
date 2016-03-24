@@ -123,3 +123,10 @@ struct StarDataModel:StaredDataModel {
     }
 }
 
+
+struct StarReadMe {
+    var id: Int64 = 0
+    var readmeValue: String?
+    var readmeURL: String?
+}
+

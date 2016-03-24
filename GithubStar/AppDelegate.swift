@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         StarSQLiteModel.createTable()
         TrendingStarSQLiteModel.createTable()
+        StarReadMeSQLite.createTable()
         return true
     }
     

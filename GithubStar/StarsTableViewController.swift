@@ -37,13 +37,10 @@ class StarsTableViewController: UITableViewController {
         
         guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
         stars = StarSQLiteModel.selectStars()
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        guard let _ = Defaults[.token] else{ return }
         //检查是否需要更新。
         updatestar()
     }
+
     
     deinit {
         self.tableView.dg_removePullToRefresh()
@@ -147,11 +144,11 @@ class StarsTableViewController: UITableViewController {
         func downalltip() {
             ProgressHUD.showSuccess("Having Down All Data")
             if self.runkeeperSwitch.selectedIndex == 0{
-//                self.items = GithubStarsRealmAction.selectStars()
+                stars = StarSQLiteModel.selectStars()
             }else{
-//                self.items = GithubStarsRealmAction.selectStarsSortByName()
+                stars = StarSQLiteModel.selectStarsByGroups()
             }
-            stars = StarSQLiteModel.selectStars()
+            
             self.tableView.reloadData()
             self.tableView.dg_stopLoading()
         }
@@ -225,12 +222,11 @@ extension UItableviewDataSource {
         //取消点击状态
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        //            let star = items[indexPath.row]
+        let star = stars[indexPath.row]
         //初始化项目详细信息界面
-        
         let starView = StarInformationViewController()
         starView.hidesBottomBarWhenPushed = true
-        //            starView.item = star
+        starView.item = star
         self.navigationController?.pushViewController(starView, animated: true)
     }
 }

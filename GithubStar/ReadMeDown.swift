@@ -25,7 +25,7 @@ struct ReadMeDownModel{
 
 class ReadMeDown{
     
-    class func request(id:Int,url:String,html_url:String?, callback:(Bool) -> Void){
+    class func request(id:Int64,url:String,html_url:String?, callback:(Bool) -> Void){
         Alamofire.request(.GET, url)
         .validate()
         .responseString { (response) -> Void in
@@ -41,21 +41,12 @@ class ReadMeDown{
                 options.encodeProblemUrlCharacters = true
                 var markdown               = Markdown(options: options)
                 let outputhtml             = markdown.transform(readmeString)
-
-//                let starReadMeHtml         = GithubStarReadMe(value:
-//                    ["id" : id ,
-//                    "htmlString" : outputhtml ,
-//                    ])
-//                starReadMeHtml.html_url = html_url
-                
-//                do{
-//                    try realm.write({ () -> Void in
-//                        realm.add(starReadMeHtml, update: true)
-//                        callback(true)
-//                    })
-//                }catch{
-//                        callback(false)
-//                }
+                var stareadme = StarReadMe()
+                stareadme.id = id
+                stareadme.readmeValue = outputhtml
+                stareadme.readmeURL = html_url
+                let res = StarReadMeSQLite.insertReadMe(stareadme)
+                callback(res)
             }else{
                 callback(false)
             }

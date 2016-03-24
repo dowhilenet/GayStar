@@ -10,13 +10,12 @@ import UIKit
 import SnapKit
 import WebKit
 import Alamofire
-//import RealmSwift
 import SafariServices
 
 class TrendingRepositionInfoViewController: UIViewController {
     
-//    var repositionModel: GithubStarTrending!
-//    var starReadMe: Results<GithubStarReadMe>!
+    var repositionModel: TrendingStarModel!
+    var starReadMe: StarReadMe!
     var readmeView: WKWebView!
     var html: String!
     var toolView: UIToolbar!
@@ -25,7 +24,7 @@ class TrendingRepositionInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
-//        title = repositionModel.name
+        title = repositionModel.namejson
         
         readmeView = WKWebView()
         self.view.addSubview(readmeView)
@@ -41,28 +40,28 @@ class TrendingRepositionInfoViewController: UIViewController {
         }
         
         //Home
-        let tab1 = UIBarButtonItem(image: UIImage(named: "项目网站"), style: .Plain, target: self, action: "goHome")
+        let tab1 = UIBarButtonItem(image: UIImage(named: "项目网站"), style: .Plain, target: self, action: #selector(TrendingRepositionInfoViewController.goHome))
         
         //README
-        let tab2 = UIBarButtonItem(image: UIImage(named: "Group"), style: .Plain, target: self, action: "readMeOnGithub")
+        let tab2 = UIBarButtonItem(image: UIImage(named: "Group"), style: .Plain, target: self, action: #selector(TrendingRepositionInfoViewController.readMeOnGithub))
         
         //ISS
-        let tab3 = UIBarButtonItem(image: UIImage(named: "GitHub主页"), style: .Plain, target: self, action: "onGithub")
+        let tab3 = UIBarButtonItem(image: UIImage(named: "GitHub主页"), style: .Plain, target: self, action: #selector(TrendingRepositionInfoViewController.onGithub))
         
         //User
-        let tab4 = UIBarButtonItem(image: UIImage(named: "作者信息"), style: .Plain, target: self, action: "user")
+        let tab4 = UIBarButtonItem(image: UIImage(named: "作者信息"), style: .Plain, target: self, action: #selector(TrendingRepositionInfoViewController.user))
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         
         toolView.items = [flexibleSpace,tab1,flexibleSpace,tab2,flexibleSpace,tab3,flexibleSpace,tab4,flexibleSpace]
         
         //获取这个项目的README 文件。
-//        let tryloadReadme = GithubStarsRealmAction.selectReadMe(repositionModel.id)
-//        if tryloadReadme.first?.id == nil{
-//            loadReadMe()
-//        }else{
-//            loadreadMefromRealm(repositionModel.id)
-//        }
+        let readme = StarReadMeSQLite.selectRreadMeByID(repositionModel.idjson)
+        if readme.readmeValue == nil {
+            loadReadMe()
+        }else {
+            loadreadMefromRealm(repositionModel.idjson)
+        }
         
     }
 
@@ -74,26 +73,17 @@ class TrendingRepositionInfoViewController: UIViewController {
     
     func loadReadMe() {
         ProgressHUD.show("Loading")
-//        Alamofire.request(GithubAPI.readme(name: repositionModel.fullName!))
-//            .validate()
-//            .responseData { (response) -> Void in
-//                guard let data = response.data else {
-//                    self.load404()
-//                    return
-//                }
-//                let urlmodel:ReadMeDownModel? = ReadMeDownModel(unboxer: data)
-//                if let urlmodel =  urlmodel {
-////                    ReadMeDown.request(self.repositionModel.id, url: urlmodel.download_url, html_url: urlmodel.html_url, callback: { (success) -> Void in
-////                        if success {
-////                            self.loadreadMefromRealm(self.repositionModel.id)
-////                        }else {
-////                            self.load404()
-////                        }
-////                    })
-//                } else {
-//                    self.load404()
-//                }
-//        }
+        Alamofire.request(GithubAPI.readme(name: repositionModel.fullNamejson)).validate().responseData { (res) in
+            guard let data = res.data else { self.load404();return }
+            let model = ReadMeDownModel(unboxer: data)
+            ReadMeDown.request(self.repositionModel.idjson, url: model.download_url, html_url: model.html_url, callback: { (res) in
+                if res {
+                    self.loadreadMefromRealm(self.repositionModel.idjson)
+                }else {
+                    self.load404()
+                }
+            })
+        }
     }
     
     /**
@@ -102,16 +92,16 @@ class TrendingRepositionInfoViewController: UIViewController {
      - parameter id: 项目ID
      */
     
-    private func loadreadMefromRealm(id:Int){
+    private func loadreadMefromRealm(id:Int64){
         
-//        self.starReadMe = GithubStarsRealmAction.selectReadMe(id)
-//        if self.starReadMe.first?.htmlString != nil{
-//            self.html = htmlheader(self.starReadMe.first!.htmlString)
-//            self.readmeView.loadHTMLString(self.html, baseURL: nil)
-//            ProgressHUD.dismiss()
-//        }else{
-//            self.load404()
-//        }
+        starReadMe = StarReadMeSQLite.selectRreadMeByID(id)
+        if starReadMe.readmeValue == nil {
+            load404()
+        }else {
+            html = htmlheader(starReadMe.readmeValue!)
+            readmeView.loadHTMLString(html, baseURL: nil)
+            ProgressHUD.dismiss()
+        }
     }
     
     /**
@@ -126,39 +116,36 @@ class TrendingRepositionInfoViewController: UIViewController {
     
     
     func goHome(){
-//        let homeUrl = repositionModel.homePage
-//        guard let homeurl = homeUrl else{
-//            ProgressHUD.showError("No Home Page")
-//            return
-//        }
-//        if homeurl.isEmpty{
-//            ProgressHUD.showError("No Home Page")
-//            return
-//        }
-//        showSafari(homeurl)
+        let homeUrl = repositionModel.homePagejson
+        showSafari(homeUrl)
     }
     
     func readMeOnGithub(){
-//        let readmehtmlurl = GithubStarsRealmAction.selectReadMeHTMLUrl(repositionModel.id)
-//        guard let url = readmehtmlurl?.html_url else {
-//            ProgressHUD.showError("404")
-//            return
-//        }
-//        showSafari(url)
+        let url = starReadMe.readmeURL
+        if url == nil {
+            ProgressHUD.showError("404")
+            return
+        }else {
+            showSafari(url!)
+        }
+
     }
     
     func onGithub(){
-//        let userurl = repositionModel.html
-//        showSafari(userurl!)
+        let userurl = repositionModel.htmljson
+        showSafari(userurl)
     }
     
     func user(){
-//        let userurl = repositionModel.htmlURL
-//        showSafari(userurl!)
+        let userurl = repositionModel.htmlURLjson
+        showSafari(userurl)
     }
     
     func showSafari(url:String){
-        safari = SFSafariViewController(URL: NSURL(string: url)!)
+        guard url == " " else { ProgressHUD.showError("404") ; return }
+        let url = NSURL(string: url)
+        guard let URL = url else { ProgressHUD.showError("404") ; return }
+        safari = SFSafariViewController(URL: URL)
         presentViewController(safari, animated: true, completion: nil)
     }
 }

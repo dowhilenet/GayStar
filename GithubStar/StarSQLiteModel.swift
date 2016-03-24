@@ -268,9 +268,63 @@ extension TrendingStarSQLiteModel {
     
     
     static func deleteAllStars() {
-        try? db.run(table.delete())
+        do {
+            try db.run(table.delete())
+        }catch let error as NSError {
+            print("删除数据错误:\(error.localizedDescription)")
+        }
+        
     }
 }
+
+struct StarReadMeSQLite {
+    
+    static private let table = Table("starreadme")
+    static private let db = ConnectingDataBase.sharedObject.db
+    
+    static private let id = Expression<Int64>("id")
+    static private let htmlValue = Expression<String?>("htmlValue")
+    static private let htmlUrl = Expression<String?>("htmlUrl")
+    
+    static func createTable() {
+        do {
+            try db.run(table.create(temporary: false, ifNotExists: true, block: { (t) in
+                t.column(id, primaryKey: true)
+                t.column(htmlValue)
+                t.column(htmlUrl)
+            }))
+        }catch let error as NSError {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    static func insertReadMe(data:StarReadMe) -> Bool {
+        let falg = false
+        do {
+            try db.run(table.insert(
+                id <- data.id,
+                htmlUrl <- data.readmeURL,
+                htmlValue <- data.readmeValue
+                ))
+            return !falg
+        }catch let error as NSError {
+            print("inset readme error: \(error.localizedDescription)")
+            return falg
+        }
+    }
+    
+    static func selectRreadMeByID(id:Int64) -> StarReadMe {
+        var readme = StarReadMe()
+        let query = table.filter(self.id == id)
+        let row = db.pluck(query)
+        guard let rowread = row else { return readme }
+        readme.id = rowread[self.id]
+        readme.readmeValue = rowread[htmlValue]
+        readme.readmeURL = rowread[htmlUrl]
+        return readme
+    }
+}
+
 
 
 

@@ -72,8 +72,8 @@ class TrendingRepositoriesViewController: UITableViewController{
         
         let vc = TrendingRepositionInfoViewController()
         vc.hidesBottomBarWhenPushed = true
-//        let model = repositoriesModel[indexPath.row]
-//        vc.repositionModel = model
+        let model = repositoriesModel[indexPath.row]
+        vc.repositionModel = model
         contantView.navigationController?.pushViewController(vc, animated: true)
 
     }
