@@ -40,7 +40,6 @@
 		ABDA1C241C47320D0026A3AC /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */; };
 		ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C231C47320D0026A3AC /* ProgressHUD.m */; };
 		ABDA1C2B1C4732720026A3AC /* MyNSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */; };
-		ABDA1C2C1C4732720026A3AC /* GithubStarsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C281C4732720026A3AC /* GithubStarsRealm.swift */; };
 		ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C301C4732880026A3AC /* GithubAPI.swift */; };
 		ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C311C4732880026A3AC /* ReadMeDown.swift */; };
 		ABDA1C371C4732C10026A3AC /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C361C4732C10026A3AC /* RootTabBarViewController.swift */; };
@@ -97,7 +96,6 @@
 		ABDA1C221C47320D0026A3AC /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		ABDA1C231C47320D0026A3AC /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNSUserDefaults.swift; sourceTree = "<group>"; };
-		ABDA1C281C4732720026A3AC /* GithubStarsRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubStarsRealm.swift; sourceTree = "<group>"; };
 		ABDA1C301C4732880026A3AC /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		ABDA1C311C4732880026A3AC /* ReadMeDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMeDown.swift; sourceTree = "<group>"; };
 		ABDA1C361C4732C10026A3AC /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */,
-				ABDA1C281C4732720026A3AC /* GithubStarsRealm.swift */,
 				ABB73BA41CA192B3006BE2FC /* StarSQLiteModel.swift */,
 				AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */,
 			);
@@ -460,7 +457,6 @@
 				ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */,
 				ABDA1C0F1C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				ABE5A69A1C63548A00CB7B5D /* UIImageEffects.swift in Sources */,
-				ABDA1C2C1C4732720026A3AC /* GithubStarsRealm.swift in Sources */,
 				AB8395EA1CA128F800DE70AD /* StarTableProtocol.swift in Sources */,
 				ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */,
 				ABDA1C4E1C4733220026A3AC /* ChooseLangueTableViewController.swift in Sources */,

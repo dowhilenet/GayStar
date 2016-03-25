@@ -114,6 +114,7 @@ struct StarSQLiteModel: StarModelProtocol{
 
 extension StarSQLiteModel {
     
+    
     static private func rowToStar(row:Row) -> StarDataModel {
         var star = StarDataModel()
         star.autherNamejson = row[autherName]

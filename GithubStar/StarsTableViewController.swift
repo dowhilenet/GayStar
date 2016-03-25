@@ -124,7 +124,7 @@ class StarsTableViewController: UITableViewController {
         
         let remoteCount = Defaults[.updateCount]
         let localcount = Defaults[.starredCount]
-        if remoteCount < localcount {
+        if localcount >= remoteCount {
             self.tableView.dg_stopLoading()
             return
         }
@@ -157,6 +157,7 @@ class StarsTableViewController: UITableViewController {
             .responseData { (response) -> Void in
                 //请求页书加一
                 self.page += 1
+                print(self.page)
                 // 判断是否请求到了数据
                 guard let data = response.data
                     else{
