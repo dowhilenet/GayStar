@@ -45,7 +45,14 @@ class ReadMeDown{
                 stareadme.id = id
                 stareadme.readmeValue = outputhtml
                 stareadme.readmeURL = html_url
-                let res = StarReadMeSQLite.insertReadMe(stareadme)
+                
+                let value = StarReadMeSQLite.selectRreadMeByID(id).readmeValue
+                var res = false
+                if let _ = value {
+                    res = StarReadMeSQLite.updateReadMe(id, values: outputhtml)
+                }else {
+                    res = StarReadMeSQLite.insertReadMe(stareadme)
+                }
                 callback(res)
             }else{
                 callback(false)

@@ -91,17 +91,9 @@ class StarInformationViewController: UIViewController{
     webview.scrollView.dg_setPullToRefreshBackgroundColor(webview.scrollView.backgroundColor!)
     
     webview.scrollView.dg_addPullToRefreshWithActionHandler({ () -> Void in
-        //刷新当前仓库的状态
-        let urlString = self.item.fullNamejson
-        let url = GithubAPI.repos(repos: urlString)
-        
-        Alamofire.request(url).validate().responseData({ (res) -> Void in
-        
-            guard let data = res.data else{ return }
-            let star = StarDataModel(jsonData: JSON(data: data))
-            StarSQLiteModel.intsertStar(star)
+        //刷新当前仓库的Readme
             self.loadReadme()
-        })
+            self.webview.scrollView.dg_stopLoading()
         }, loadingView: loadingView)
     }
     
@@ -140,6 +132,7 @@ class StarInformationViewController: UIViewController{
             html = htmlheader(starReadMe.readmeValue!)
             webview.loadHTMLString(html, baseURL: nil)
             ProgressHUD.dismiss()
+            
         }else {
             load404()
         }
@@ -153,6 +146,7 @@ class StarInformationViewController: UIViewController{
         html = try! NSString(contentsOfURL: html404, encoding: NSUTF8StringEncoding) as String
         webview.loadHTMLString(html, baseURL: nil)
         ProgressHUD.dismiss()
+        
     }
 }
 

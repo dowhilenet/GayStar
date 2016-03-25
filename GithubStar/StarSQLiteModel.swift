@@ -206,6 +206,7 @@ extension StarSQLiteModel {
             print("error \(error.localizedDescription)")
         }
     }
+    
 }
 
 
@@ -363,6 +364,17 @@ struct StarReadMeSQLite {
         readme.readmeValue = rowread[htmlValue]
         readme.readmeURL = rowread[htmlUrl]
         return readme
+    }
+    
+    static func updateReadMe(id: Int64, values: String) -> Bool {
+        let falg = false
+        do {
+            try db.run(table.filter(self.id == id).update(htmlValue <- values))
+            return !falg
+        }catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+            return falg
+        }
     }
 }
 
