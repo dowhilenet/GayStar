@@ -1,20 +1,5 @@
 
 
-////MARK: GithubGroupRealm
-//class GithubGroupRealm: Object {
-//    
-//    dynamic var name       = ""
-//    dynamic var count      = 0
-//    
-//    override static func primaryKey() -> String?{
-//        return "name"
-//    }
-//    
-//    override static func indexedProperties() -> [String]{
-//        return ["name"]
-//    }
-//}
-//
 //class TrendingDelevlopeRealm: Object {
 //    dynamic var githubname = ""
 //    dynamic var imageURL = ""
@@ -271,37 +256,6 @@
 //    }
 //    //删除数据
 //}
-//
-//class GithubGroupRealmAction{
-//    
-//    class func insert(name: String,callbock:(Bool) -> Void){
-//        let group = GithubGroupRealm(value: ["name":name,"count":0])
-//        do{
-//            try realm.write({ () -> Void in
-//                realm.add(group)
-//                callbock(true)
-//            })
-//        }catch{
-//            callbock(false)
-//        }
-//    }
-//    
-//
-//    
-//    class func select() -> Results<(GithubGroupRealm)>{
-//        return realm.objects(GithubGroupRealm).sorted("name")
-//    }
-//    
-//    class func removeAgroup(name:GithubGroupRealm) {
-//        try! realm.write {
-//            realm.delete(name)
-//        }
-//    }
-//    
-//}
-//
-//
-//
 //
 
 

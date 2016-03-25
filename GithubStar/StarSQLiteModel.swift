@@ -214,7 +214,7 @@ struct TrendingStarSQLiteModel:StarModelProtocol {
     
     
     internal static var table = Table("TrendingStar")
-    private static var typename = Expression<String>("typename")
+    private static var typename = Expression<Int64>("typename")
     static func createTable(){
         do {
             
@@ -291,7 +291,7 @@ extension TrendingStarSQLiteModel {
         return star
     }
     
-    static func selectStarsBytype(type:String) -> [TrendingStarModel] {
+    static func selectStarsBytype(type:Int64) -> [TrendingStarModel] {
         var stars = [TrendingStarModel]()
         do {
             let query = table.filter(typename == type)
@@ -309,9 +309,9 @@ extension TrendingStarSQLiteModel {
     }
     
     
-    static func deleteAllStars() {
+    static func deleteAllStars(type: Int64) {
         do {
-            try db.run(table.delete())
+            try db.run(table.filter(typename == type).delete())
         }catch let error as NSError {
             print("删除数据错误:\(error.localizedDescription)")
         }
@@ -433,6 +433,88 @@ struct StarGroupSQLite {
             print("error\(error.localizedDescription)")
         }
         
+    }
+}
+
+struct TrendingDelevloperSQLite {
+    
+    private static let db = ConnectingDataBase.sharedObject.db
+    private static let table = Table("trendingDeveloper")
+    
+    private static let githubName = Expression<String>("githubName")
+    private static let imageURL = Expression<String>("imageURL")
+    private static let fullName = Expression<String>("fullName")
+    private static let githubURL = Expression<String>("githubURL")
+    private static let repoURL = Expression<String>("repoURL")
+    private static let repoName = Expression<String>("repoName")
+    private static let repoDec = Expression<String>("repodec")
+    private static let typeName = Expression<Int64>("typeName")
+    
+    static func createTale() {
+        do{
+            try db.run(table.create(temporary: false, ifNotExists: true, block: { (t) in
+                t.column(githubName)
+                t.column(imageURL)
+                t.column(fullName)
+                t.column(githubURL)
+                t.column(repoURL)
+                t.column(repoName)
+                t.column(repoDec)
+                t.column(typeName)
+            }))
+        }catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
+    
+    static func insert(developer: TrendingDeveloperModel) {
+        do {
+            try db.run(table.insert(
+                githubName <- developer.githubname,
+                imageURL <- developer.imageURL,
+                fullName <- developer.fullName,
+                githubURL <- developer.githubURL,
+                repoURL <- developer.repoRUL,
+                repoName <- developer.repoName,
+                repoDec <- developer.repoDec,
+                typeName <- developer.typename
+                ))
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
+    
+    static func selectByType(type: Int64) -> [TrendingDeveloperModel] {
+        
+        var devs = [TrendingDeveloperModel]()
+        
+        do {
+            let res = try db.prepare(table.filter(typeName == type))
+            res.forEach({ (row) in
+                var dev = TrendingDeveloperModel()
+                dev.fullName = row[fullName]
+                dev.githubname = row[githubName]
+                dev.githubURL = row[githubURL]
+                dev.imageURL = row[imageURL]
+                dev.repoDec = row[repoDec]
+                dev.repoName = row[repoName]
+                dev.repoRUL = row[repoURL]
+                dev.typename = row[typeName]
+                devs.append(dev)
+            })
+            return devs
+        }catch let error as NSError {
+            print(error.localizedDescription)
+            return devs
+        }
+    }
+    
+    static func deleteByType(type: Int64) {
+        do {
+            try db.run(table.filter(typeName == type).delete())
+        }catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
 }
 

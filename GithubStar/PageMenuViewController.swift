@@ -127,7 +127,6 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLa
         let today = TrendingDevelopersTableViewController()
         today.contantView = self
         today.title = "Today"
-        
         controllerArray.append(today)
         
         let week = TrendingDevelopersTableViewController()

@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TrendingStarSQLiteModel.createTable()
         StarReadMeSQLite.createTable()
         StarGroupSQLite.createTable()
+        TrendingDelevloperSQLite.createTale()
         return true
     }
     

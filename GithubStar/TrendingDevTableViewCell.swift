@@ -28,14 +28,14 @@ class TrendingDevTableViewCell: UITableViewCell {
     }
     
     
-//    func initCell(dev:Results<(TrendingDelevlopeRealm)>,index:NSIndexPath) {
-//        phoneimage.kf_setImageWithURL(NSURL(string: dev[index.row].imageURL)!)
-//        githubname.text = dev[index.row].fullName
-//        fullname.text = dev[index.row].githubname
-//        repodec.text = dev[index.row].repoDec
-//        repoName.text = dev[index.row].repoName
-//    }
-//    
+    func initCell(dev:[TrendingDeveloperModel],index:NSIndexPath) {
+        phoneimage.kf_setImageWithURL(NSURL(string: dev[index.row].imageURL)!)
+        githubname.text = dev[index.row].fullName
+        fullname.text = dev[index.row].githubname
+        repodec.text = dev[index.row].repoDec
+        repoName.text = dev[index.row].repoName
+    }
+    
     
     func configCell() {
         

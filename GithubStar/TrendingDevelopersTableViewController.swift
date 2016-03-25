@@ -7,22 +7,18 @@
 //
 
 import UIKit
-//import RealmSwift
-
 
 
 class TrendingDevelopersTableViewController: UITableViewController{
 
-
     var currType = 0
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     var contantView: PageMenuViewController!
-    
+    var devs = [TrendingDeveloperModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        devs = TrendingDelevlopeRealmAction.select(currType)
+        devs = TrendingDelevloperSQLite.selectByType(Int64(currType))
         tableViewConfig()
-        
     }
 
     func tableViewConfig(){
@@ -48,7 +44,7 @@ class TrendingDevelopersTableViewController: UITableViewController{
                 ProgressHUD.showError("Trending developers results are currently being dissected.")
                 return
             }
-//            self.devs = TrendingDelevlopeRealmAction.select(self.currType)
+            devs = TrendingDelevloperSQLite.selectByType(Int64(currType))
             self.tableView.reloadData()
             self.tableView.dg_stopLoading()
         }
@@ -77,28 +73,27 @@ class TrendingDevelopersTableViewController: UITableViewController{
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        if devs.count == 0 {
-//            self.tableView.configKongTable("There is no data. try the drop-down refresh")
-//            return 0
-//        }
+        if devs.count == 0 {
+            self.tableView.configKongTable("There is no data. try the drop-down refresh")
+            return 0
+        }
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return devs.count
-        return 1
+        return devs.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("DevCell", forIndexPath: indexPath) as! TrendingDevTableViewCell
-//        cell.initCell(devs, index: indexPath)
+        cell.initCell(devs, index: indexPath)
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = TrendingDevelopinfoViewController()
-//        vc.dev = devs[indexPath.row]
+        vc.dev = devs[indexPath.row]
         vc.hidesBottomBarWhenPushed = true
         contantView.navigationController?.pushViewController(vc, animated: true)
     }

@@ -25,7 +25,7 @@ protocol StarModelJsonProtocol {
 
 
 protocol TrendingStarModelProtocol: StarModelJsonProtocol {
-    var type: String {get set}
+    var type: Int64 {get set}
 }
 
 struct TrendingStarModel:TrendingStarModelProtocol {
@@ -42,11 +42,11 @@ struct TrendingStarModel:TrendingStarModelProtocol {
     var homePagejson: String = ""
     var htmljson: String = ""
     var autherNamejson: String = ""
-    var type: String = ""
+    var type: Int64 = 0
     
     init(){}
     
-    init(jsonData: JSON,type: String){
+    init(jsonData: JSON,type: Int64){
         idjson = jsonData["id"].int64!
         stargazersCountjson = jsonData["stargazers_count"].int64!
         namejson = jsonData["name"].stringValue
@@ -63,7 +63,7 @@ struct TrendingStarModel:TrendingStarModelProtocol {
     }
     
     
-    static func initStarArray(data: NSData,type: String) -> [TrendingStarModel] {
+    static func initStarArray(data: NSData,type: Int64) -> [TrendingStarModel] {
         var stars = [TrendingStarModel]()
         let jsonarray = JSON(data: data).arrayValue
         jsonarray.forEach { (data) in
@@ -144,4 +144,19 @@ struct StarGroup {
         self.init(name: name,count:counts)
     }
 }
+
+
+struct TrendingDeveloperModel {
+     var githubname = ""
+     var imageURL = ""
+     var fullName = ""
+     var githubURL = ""
+     var repoRUL = ""
+     var repoName = ""
+     var repoDec = ""
+     var typename = Int64(0)
+    
+    init(){}
+}
+
 

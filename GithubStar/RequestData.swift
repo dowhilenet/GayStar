@@ -56,10 +56,10 @@ enum TrendingDevelopers:String{
     }
     
     //返回仓库的名字
-    func getRepo(type:Int, name:String?,back: (Bool) -> Void ) {
+    func getRepo(type:Int64, name:String?,back: (Bool) -> Void ) {
         
         var url = ""
-//        var delevlopes = [TrendingDelevlopeRealm]()
+        var delevlopes = [TrendingDeveloperModel]()
         if let name = name {
             url = baseurl + "/\(name)" + self.rawValue
         }else{
@@ -89,19 +89,23 @@ enum TrendingDevelopers:String{
                     let fullnameOne = fullName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                     let fullnameTwo = fullnameOne.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "()"))
                     let repoDescOne = repoDesc.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-//                    let dev = TrendingDelevlopeRealm()
-//                    dev.imageURL = imageurl
-//                    dev.githubname = githubName
-//                    dev.repoName = repoName
-//                    dev.fullName = fullnameTwo
-//                    dev.repoDec = repoDescOne
-//                    dev.githubURL = "https://github.com/" + githubName
-//                    dev.repoRUL = "https://github.com" + repoURL
-//                    delevlopes.append(dev)
+                    var dev = TrendingDeveloperModel()
+                    dev.imageURL = imageurl
+                    dev.githubname = githubName
+                    dev.repoName = repoName
+                    dev.fullName = fullnameTwo
+                    dev.repoDec = repoDescOne
+                    dev.githubURL = "https://github.com/" + githubName
+                    dev.repoRUL = "https://github.com" + repoURL
+                    dev.typename = type
+                    delevlopes.append(dev)
                 })//end for each
                 
-//                guard delevlopes.count > 0 else { back(false) ;return }
-//                TrendingDelevlopeRealmAction.insert(type, item: delevlopes)
+                guard delevlopes.count > 0 else { back(false) ;return }
+                TrendingDelevloperSQLite.deleteByType(type)
+                delevlopes.forEach({ (dev) in
+                    TrendingDelevloperSQLite.insert(dev)
+                })
                 back(true)
                 
         }

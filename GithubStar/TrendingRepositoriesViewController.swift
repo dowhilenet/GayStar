@@ -23,7 +23,7 @@ class TrendingRepositoriesViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repositoriesModel = TrendingStarSQLiteModel.selectStarsBytype(currType.toString())
+        repositoriesModel = TrendingStarSQLiteModel.selectStarsBytype(Int64(currType))
         tableViewConfig()
     }
 
@@ -102,7 +102,7 @@ class TrendingRepositoriesViewController: UITableViewController{
             self.tableView.dg_stopLoading()
             return
         }
-        TrendingStarSQLiteModel.deleteAllStars()
+        TrendingStarSQLiteModel.deleteAllStars(Int64(currType))
         names.forEach { (name) -> () in
             Alamofire.request(GithubAPI.repos(repos: name))
                 .responseData({ (res) -> Void in
@@ -117,9 +117,10 @@ class TrendingRepositoriesViewController: UITableViewController{
     }
     
     func switchInsertType(data:NSData) {
-        let star = TrendingStarModel(jsonData: JSON(data: data), type: self.currType.toString())
+        
+        let star = TrendingStarModel(jsonData: JSON(data: data), type: Int64(currType))
         TrendingStarSQLiteModel.intsertStar(star)
-        repositoriesModel = TrendingStarSQLiteModel.selectStarsBytype(self.currType.toString())
+        repositoriesModel = TrendingStarSQLiteModel.selectStarsBytype(Int64(currType))
         tableView.reloadData()
         tableView.dg_stopLoading()
     }
