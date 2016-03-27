@@ -139,10 +139,10 @@ public class DGRunkeeperSwitch: UIControl {
         selectedTitleColor = .blackColor()
         
         // Gestures
-        tapGesture = UITapGestureRecognizer(target: self, action: "tapped:")
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(DGRunkeeperSwitch.tapped(_:)))
         addGestureRecognizer(tapGesture)
         
-        panGesture = UIPanGestureRecognizer(target: self, action: "pan:")
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(DGRunkeeperSwitch.pan(_:)))
         panGesture.delegate = self
         addGestureRecognizer(panGesture)
         
