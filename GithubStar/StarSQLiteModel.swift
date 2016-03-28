@@ -50,6 +50,7 @@ extension StarModelProtocol {
     static private var homePage:Expression<String> { return Expression<String>("homePage") }
     static private var html:Expression<String> { return Expression<String>("html") }
     static private var autherName:Expression<String> { return Expression<String>("autherName") }
+    
 }
 
 
@@ -57,7 +58,7 @@ extension StarModelProtocol {
 struct StarSQLiteModel: StarModelProtocol{
     
      static internal var table: Table {return Table("stars") }
-    
+
      static private var groupsNmae: Expression<String?> { return Expression<String?>("groupsNmae") }
     
     static func createTable() {

@@ -10,6 +10,14 @@
 		AB0A506F1CA2F3C400B334CA /* StarDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */; };
 		AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */; };
 		AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */; };
+		AB40E3D11CA90B57001642CC /* ChatLeftMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3D01CA90B57001642CC /* ChatLeftMessageCell.swift */; };
+		AB40E3D31CA91E3C001642CC /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3D21CA91E3C001642CC /* ChatModel.swift */; };
+		AB40E3D51CA923DD001642CC /* ChatRightMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3D41CA923DD001642CC /* ChatRightMessageCell.swift */; };
+		AB40E3D71CA928A0001642CC /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3D61CA928A0001642CC /* InputView.swift */; };
+		AB40E3D91CA92D8B001642CC /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3D81CA92D8B001642CC /* ChatTableViewController.swift */; };
+		AB40E3DB1CA92E36001642CC /* ViewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3DA1CA92E36001642CC /* ViewsCategory.swift */; };
+		AB40E3DD1CA92F4A001642CC /* TakePhotoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3DC1CA92F4A001642CC /* TakePhotoCenter.swift */; };
+		AB40E3E01CA95241001642CC /* ChooseChatRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3DF1CA95241001642CC /* ChooseChatRoomTableViewController.swift */; };
 		AB552E711C60611500D6914C /* Orbitron-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E701C60611500D6914C /* Orbitron-Regular.ttf */; };
 		AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */; };
 		AB552E751C6064FD00D6914C /* Candal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E741C6064FD00D6914C /* Candal.ttf */; };
@@ -62,6 +70,14 @@
 		AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarDataModel.swift; sourceTree = "<group>"; };
 		AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositionInfoViewController.swift; sourceTree = "<group>"; };
 		AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevelopinfoViewController.swift; sourceTree = "<group>"; };
+		AB40E3D01CA90B57001642CC /* ChatLeftMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLeftMessageCell.swift; sourceTree = "<group>"; };
+		AB40E3D21CA91E3C001642CC /* ChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		AB40E3D41CA923DD001642CC /* ChatRightMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRightMessageCell.swift; sourceTree = "<group>"; };
+		AB40E3D61CA928A0001642CC /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		AB40E3D81CA92D8B001642CC /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		AB40E3DA1CA92E36001642CC /* ViewsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewsCategory.swift; sourceTree = "<group>"; };
+		AB40E3DC1CA92F4A001642CC /* TakePhotoCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoCenter.swift; sourceTree = "<group>"; };
+		AB40E3DF1CA95241001642CC /* ChooseChatRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseChatRoomTableViewController.swift; sourceTree = "<group>"; };
 		AB552E701C60611500D6914C /* Orbitron-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Orbitron-Regular.ttf"; path = "../Orbitron-Regular.ttf"; sourceTree = "<group>"; };
 		AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		AB552E741C6064FD00D6914C /* Candal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Candal.ttf; path = ../Candal.ttf; sourceTree = "<group>"; };
@@ -125,6 +141,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB40E3CF1CA90B04001642CC /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AB40E3DE1CA92F97001642CC /* ChatView */,
+				AB40E3D81CA92D8B001642CC /* ChatTableViewController.swift */,
+				AB40E3DF1CA95241001642CC /* ChooseChatRoomTableViewController.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		AB40E3DE1CA92F97001642CC /* ChatView */ = {
+			isa = PBXGroup;
+			children = (
+				AB40E3D01CA90B57001642CC /* ChatLeftMessageCell.swift */,
+				AB40E3D41CA923DD001642CC /* ChatRightMessageCell.swift */,
+				AB40E3D61CA928A0001642CC /* InputView.swift */,
+				AB40E3DA1CA92E36001642CC /* ViewsCategory.swift */,
+				AB40E3DC1CA92F4A001642CC /* TakePhotoCenter.swift */,
+				AB40E3D21CA91E3C001642CC /* ChatModel.swift */,
+			);
+			name = ChatView;
+			sourceTree = "<group>";
+		};
 		AB4351181C64C97200E7D848 /* Showcases */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +305,7 @@
 		ABDA1C341C47329D0026A3AC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AB40E3CF1CA90B04001642CC /* Chat */,
 				AB4351181C64C97200E7D848 /* Showcases */,
 				AB6B74331C55F5C900FDBBE9 /* Groups */,
 				ABDA1C481C47330B0026A3AC /* Explore */,
@@ -441,10 +481,14 @@
 				ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */,
 				ABDA1C2B1C4732720026A3AC /* MyNSUserDefaults.swift in Sources */,
 				ABDA1C371C4732C10026A3AC /* RootTabBarViewController.swift in Sources */,
+				AB40E3DB1CA92E36001642CC /* ViewsCategory.swift in Sources */,
+				AB40E3D11CA90B57001642CC /* ChatLeftMessageCell.swift in Sources */,
+				AB40E3D31CA91E3C001642CC /* ChatModel.swift in Sources */,
 				ABDA1C4F1C4733220026A3AC /* RequestData.swift in Sources */,
 				ABDA1C451C4732F70026A3AC /* StarsTableViewCell.swift in Sources */,
 				ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */,
 				AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */,
+				AB40E3D51CA923DD001642CC /* ChatRightMessageCell.swift in Sources */,
 				AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */,
 				AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */,
 				ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */,
@@ -455,6 +499,7 @@
 				ABE5A6981C63548A00CB7B5D /* SwiftPrompts.swift in Sources */,
 				AB72320C1C620819004565BC /* TagViewController.swift in Sources */,
 				ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */,
+				AB40E3DD1CA92F4A001642CC /* TakePhotoCenter.swift in Sources */,
 				ABDA1C0F1C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				ABE5A69A1C63548A00CB7B5D /* UIImageEffects.swift in Sources */,
 				AB8395EA1CA128F800DE70AD /* StarTableProtocol.swift in Sources */,
@@ -463,11 +508,14 @@
 				ABDA1C0E1C4731640026A3AC /* DGElasticPullToRefreshConstants.swift in Sources */,
 				ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */,
 				ABDA1C501C4733220026A3AC /* TrendingRepositoriesViewController.swift in Sources */,
+				AB40E3D71CA928A0001642CC /* InputView.swift in Sources */,
 				ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
 				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
 				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
+				AB40E3E01CA95241001642CC /* ChooseChatRoomTableViewController.swift in Sources */,
 				AB0A506F1CA2F3C400B334CA /* StarDataModel.swift in Sources */,
+				AB40E3D91CA92D8B001642CC /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

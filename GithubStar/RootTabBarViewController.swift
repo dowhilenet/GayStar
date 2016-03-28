@@ -51,12 +51,12 @@ class RootTabBarViewController: UITabBarController {
         
         
         //4
-//        let fourViewController = UINavigationController(rootViewController: ShowcaseViewController())
-//        let fourTabBarItem = UITabBarItem()
-//        fourTabBarItem.title = "Showcase"
-//        fourViewController.tabBarItem = fourTabBarItem
+        let fourViewController = UINavigationController(rootViewController: ChooseChatRoomTableViewController())
+        let fourTabBarItem = UITabBarItem()
+        fourTabBarItem.title = "Chat"
+        fourViewController.tabBarItem = fourTabBarItem
         
-        self.viewControllers = [firstViewController,secViewController,thirdViewController]
+        self.viewControllers = [firstViewController,secViewController,thirdViewController,fourViewController]
 
 
         
