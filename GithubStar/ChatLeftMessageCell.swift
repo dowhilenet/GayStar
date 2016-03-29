@@ -11,13 +11,19 @@ import SnapKit
 import Kingfisher
 
 class ChatLeftMessageCell: UITableViewCell {
+    //时间
     var dateLabel: UILabel!
+    //头像
     var headImageView: UIButton!
+    //名字
     var nameLabel: UILabel!
+    //消息内容
     var contentButton: UIButton!
     var contentLabel: UILabel!
     var imageHeightConstraint: NSLayoutConstraint!
+    //头像地址
     var headImageUrl = ""
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .None
@@ -61,6 +67,7 @@ class ChatLeftMessageCell: UITableViewCell {
         
         // 内容视图
         contentButton = UIButton()
+        // 插入到 contentLabel 的下边
         contentView.insertSubview(contentButton, belowSubview: contentLabel)
         contentButton.clipsToBounds = true
         contentButton.setBackgroundImage(UIImage(named: "left_message_back"), forState: .Normal)
@@ -92,6 +99,7 @@ class ChatLeftMessageCell: UITableViewCell {
     
     func configUIWithModel(model: ChatModel) {
         dateLabel.text = model.time
+        headImageUrl = model.headImage
         switch model.messageType {
         case ChatMessageType.Text:
             contentLabel.text = model.text

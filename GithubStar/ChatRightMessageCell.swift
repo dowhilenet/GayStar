@@ -15,7 +15,7 @@ class ChatRightMessageCell: UITableViewCell {
      var headImageView: UIButton!
      var nameLabel: UILabel!
      var contentButton: UIButton!
-    
+     var headImageURL: String!
      var contentLabel: UILabel!
     
      var imageHeightConstraint: NSLayoutConstraint!
@@ -26,24 +26,25 @@ class ChatRightMessageCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        self.selectionStyle = .None
         dateLabel = UILabel()
         contentView.addSubview(dateLabel)
         dateLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(contentView).offset(4)
+            make.top.equalTo(contentView)
             make.centerX.equalTo(contentView)
         }
         
         headImageView = UIButton()
+        contentView.addSubview(headImageView)
         headImageView.layer.borderWidth = 4
         headImageView.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5).CGColor
         headImageView.layer.cornerRadius = 25
         headImageView.clipsToBounds = true
-        headImageView.kf_setImageWithURL(NSURL(string: "")!, forState: .Normal)
+        headImageView.setImage(UIImage(named: "headImage"), forState: .Normal)
         
         headImageView.snp_makeConstraints { (make) in
             make.width.height.equalTo(50)
-            make.trailing.equalTo(-10)
+            make.trailing.equalTo(contentView).offset(-10)
             make.top.equalTo(dateLabel).offset(20)
         }
         
@@ -89,6 +90,7 @@ class ChatRightMessageCell: UITableViewCell {
     
     func configUIWithModel(model: ChatModel){
         dateLabel.text = model.time
+        headImageURL = model.headImage
         switch model.messageType {
         case ChatMessageType.Text:
             self.contentLabel.text = model.text

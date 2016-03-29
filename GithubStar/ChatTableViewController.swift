@@ -26,7 +26,6 @@ class ChatTableViewController: UIViewController {
         
         dataArray = [ChatModel]()
         
-        
         inputBackView = InputView()
         view.addSubview(inputBackView)
         
@@ -45,6 +44,7 @@ class ChatTableViewController: UIViewController {
         }
         
         view.addConstraint(inputViewConstraint!)
+        
         inputBackView.sendMessage(imageBlock: { (image, textView) in
             self.dataArray.append(ChatModel.creatMessageFromMeByImage(image))
             self.chatTableView.reloadData()
@@ -65,10 +65,14 @@ class ChatTableViewController: UIViewController {
         chatTableView.estimatedRowHeight = 60
         view.addSubview(chatTableView)
         chatTableView.snp_makeConstraints { (make) in
-            make.top.leading.trailing.equalTo(self.view)
+            make.leading.trailing.equalTo(self.view)
+            make.top.equalTo(self.view).offset(64)
             make.bottom.equalTo(inputBackView.snp_top)
         }
-        chatTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        
+        chatTableView.registerClass(ChatLeftMessageCell.classForCoder(), forCellReuseIdentifier: leftCellId)
+        chatTableView.registerClass(ChatRightMessageCell.classForCoder(), forCellReuseIdentifier: rightCellId)
+        chatTableView.estimatedRowHeight = 100
     }
 
     
@@ -121,7 +125,7 @@ extension ChatTableViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let model = dataArray[indexPath.row]
         if model.from == .Me {
-            let cell = tableView.dequeueReusableCellWithIdentifier(rightCellId) as! ChatRightMessageCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(rightCellId,forIndexPath: indexPath) as! ChatRightMessageCell
             cell.configUIWithModel(model)
             return cell
         }else {
@@ -136,6 +140,7 @@ extension ChatTableViewController: UITableViewDataSource {
 
 extension ChatTableViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         view.endEditing(true)
     }
 }

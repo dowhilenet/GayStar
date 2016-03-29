@@ -33,7 +33,7 @@ class TrendingRepositoriesViewController: UITableViewController{
         tableView.registerClass(StarsTableViewCell.self, forCellReuseIdentifier: "TodayCell")
         tableView.estimatedRowHeight = 88.00
         tableView.rowHeight = UITableViewAutomaticDimension
-    
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 104, right: 0)
         loadingView.tintColor = PullToRefreshTintColor
         tableView.dg_addPullToRefreshWithActionHandler(pulldowndata, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PullToRefreshFillColor)

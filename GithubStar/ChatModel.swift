@@ -34,10 +34,12 @@ struct ChatModel {
     var voice: NSData?
     var voiceSecond: String?
     
+
     static func creatMessageFromMeByText(text:String) -> ChatModel {
         var model = ChatModel()
         model.messageType = .Text
         model.text = text
+        model.headImage = "http://baidu.com"
         model.configMeBaseInfo()
         return model
     }
@@ -64,7 +66,6 @@ struct ChatModel {
         from = .Me
         userName = "Daniel"
         time = random()%2==1 ? NSDate.init(timeIntervalSince1970: NSTimeInterval(random()%1000)).description : ""
-        
     }
     
 }
