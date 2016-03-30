@@ -77,7 +77,8 @@ extension GithubAPI:URLRequestConvertible{
         case .star:
             return "/user/starred"
         case .user(let user):
-            return "/users/\(user)"
+            return "/users"
+//            return "/users/\(user)"
         case .repos(let repo):
             return "/repos/\(repo)"
         case .followers(let user):

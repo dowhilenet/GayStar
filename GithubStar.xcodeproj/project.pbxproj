@@ -18,6 +18,11 @@
 		AB40E3DB1CA92E36001642CC /* ViewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3DA1CA92E36001642CC /* ViewsCategory.swift */; };
 		AB40E3DD1CA92F4A001642CC /* TakePhotoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3DC1CA92F4A001642CC /* TakePhotoCenter.swift */; };
 		AB40E3E01CA95241001642CC /* ChooseChatRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3DF1CA95241001642CC /* ChooseChatRoomTableViewController.swift */; };
+		AB40E3E31CAA9E03001642CC /* Wilddog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB40E3E21CAA9E03001642CC /* Wilddog.framework */; };
+		AB40E3E51CAA9E26001642CC /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */; };
+		AB40E3E71CAA9E3A001642CC /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */; };
+		AB40E3E91CAA9ED6001642CC /* WilddogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3E81CAA9ED6001642CC /* WilddogManager.swift */; };
+		AB40E3EB1CAAAC05001642CC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3EA1CAAAC05001642CC /* UserModel.swift */; };
 		AB552E711C60611500D6914C /* Orbitron-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E701C60611500D6914C /* Orbitron-Regular.ttf */; };
 		AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */; };
 		AB552E751C6064FD00D6914C /* Candal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E741C6064FD00D6914C /* Candal.ttf */; };
@@ -78,6 +83,11 @@
 		AB40E3DA1CA92E36001642CC /* ViewsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewsCategory.swift; sourceTree = "<group>"; };
 		AB40E3DC1CA92F4A001642CC /* TakePhotoCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoCenter.swift; sourceTree = "<group>"; };
 		AB40E3DF1CA95241001642CC /* ChooseChatRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseChatRoomTableViewController.swift; sourceTree = "<group>"; };
+		AB40E3E21CAA9E03001642CC /* Wilddog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Wilddog.framework; sourceTree = "<group>"; };
+		AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		AB40E3E81CAA9ED6001642CC /* WilddogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WilddogManager.swift; sourceTree = "<group>"; };
+		AB40E3EA1CAAAC05001642CC /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AB552E701C60611500D6914C /* Orbitron-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Orbitron-Regular.ttf"; path = "../Orbitron-Regular.ttf"; sourceTree = "<group>"; };
 		AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		AB552E741C6064FD00D6914C /* Candal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Candal.ttf; path = ../Candal.ttf; sourceTree = "<group>"; };
@@ -135,6 +145,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB40E3E71CAA9E3A001642CC /* libsqlite3.0.tbd in Frameworks */,
+				AB40E3E51CAA9E26001642CC /* JavaScriptCore.framework in Frameworks */,
+				AB40E3E31CAA9E03001642CC /* Wilddog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +160,7 @@
 				AB40E3DE1CA92F97001642CC /* ChatView */,
 				AB40E3D81CA92D8B001642CC /* ChatTableViewController.swift */,
 				AB40E3DF1CA95241001642CC /* ChooseChatRoomTableViewController.swift */,
+				AB40E3E81CAA9ED6001642CC /* WilddogManager.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -162,6 +176,14 @@
 				AB40E3D21CA91E3C001642CC /* ChatModel.swift */,
 			);
 			name = ChatView;
+			sourceTree = "<group>";
+		};
+		AB40E3E11CAA9DF6001642CC /* Wilddog */ = {
+			isa = PBXGroup;
+			children = (
+				AB40E3E21CAA9E03001642CC /* Wilddog.framework */,
+			);
+			name = Wilddog;
 			sourceTree = "<group>";
 		};
 		AB4351181C64C97200E7D848 /* Showcases */ = {
@@ -205,6 +227,8 @@
 		ABDA1BE81C4730890026A3AC = {
 			isa = PBXGroup;
 			children = (
+				AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */,
+				AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */,
 				ABDA1BF31C4730890026A3AC /* GithubStar */,
 				ABDA1BF21C4730890026A3AC /* Products */,
 			);
@@ -240,6 +264,7 @@
 		ABDA1C061C4731360026A3AC /* Frame */ = {
 			isa = PBXGroup;
 			children = (
+				AB40E3E11CAA9DF6001642CC /* Wilddog */,
 				ABE5A6941C63548A00CB7B5D /* Swift-Prompts */,
 				ABDA1C1F1C4731F70026A3AC /* ProgressHUD */,
 				ABDA1C141C4731740026A3AC /* MarkDown */,
@@ -287,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */,
+				AB40E3EA1CAAAC05001642CC /* UserModel.swift */,
 				ABB73BA41CA192B3006BE2FC /* StarSQLiteModel.swift */,
 				AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */,
 			);
@@ -489,6 +515,7 @@
 				ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */,
 				AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */,
 				AB40E3D51CA923DD001642CC /* ChatRightMessageCell.swift in Sources */,
+				AB40E3EB1CAAAC05001642CC /* UserModel.swift in Sources */,
 				AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */,
 				AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */,
 				ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */,
@@ -511,6 +538,7 @@
 				AB40E3D71CA928A0001642CC /* InputView.swift in Sources */,
 				ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
+				AB40E3E91CAA9ED6001642CC /* WilddogManager.swift in Sources */,
 				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
 				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				AB40E3E01CA95241001642CC /* ChooseChatRoomTableViewController.swift in Sources */,

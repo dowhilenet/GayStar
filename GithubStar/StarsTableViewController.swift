@@ -114,6 +114,7 @@ class StarsTableViewController: UITableViewController {
 //    MARK: Pull down data
     func pulldowndata(){
         //查看是否有 token
+        
         guard let _ = Defaults[.token] else{
         
             ProgressHUD.showError("Not Logged in", interaction: true)
@@ -124,7 +125,7 @@ class StarsTableViewController: UITableViewController {
         
         let remoteCount = Defaults[.updateCount]
         let localcount = Defaults[.starredCount]
-        if localcount >= remoteCount {
+        if localcount > remoteCount {
             self.tableView.dg_stopLoading()
             return
         }
@@ -157,7 +158,6 @@ class StarsTableViewController: UITableViewController {
             .responseData { (response) -> Void in
                 //请求页书加一
                 self.page += 1
-                print(self.page)
                 // 判断是否请求到了数据
                 guard let data = response.data
                     else{

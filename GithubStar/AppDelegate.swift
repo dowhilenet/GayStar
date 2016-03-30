@@ -24,12 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()
         
         ConnectingDataBase.sharedObject.db
+        ConnectingDataBase.createTables()
         
-        StarSQLiteModel.createTable()
-        TrendingStarSQLiteModel.createTable()
-        StarReadMeSQLite.createTable()
-        StarGroupSQLite.createTable()
-        TrendingDelevloperSQLite.createTale()
         return true
     }
     

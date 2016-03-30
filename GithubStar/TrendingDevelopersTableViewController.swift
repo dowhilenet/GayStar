@@ -29,7 +29,7 @@ class TrendingDevelopersTableViewController: UITableViewController{
             240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0,
             alpha: 0.8)
         tableView.registerClass(TrendingDevTableViewCell.self, forCellReuseIdentifier: "DevCell")
-        
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 106, right: 0)
         loadingView.tintColor = PullToRefreshTintColor
         tableView.dg_addPullToRefreshWithActionHandler(pulldowndata, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(PullToRefreshFillColor)

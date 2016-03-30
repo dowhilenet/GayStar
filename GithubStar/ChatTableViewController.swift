@@ -8,13 +8,15 @@
 
 import UIKit
 import SnapKit
-
+import Wilddog
+import SwiftyJSON
 
 class ChatTableViewController: UIViewController {
 
-    
     private let leftCellId = "ChatLeftMessageCell"
     private let rightCellId = "ChatRightMessageCell"
+    
+    var room: WilddogChatRoomModel!
     
     var chatTableView: UITableView!
     var inputBackView: InputView!
@@ -46,11 +48,14 @@ class ChatTableViewController: UIViewController {
         view.addConstraint(inputViewConstraint!)
         
         inputBackView.sendMessage(imageBlock: { (image, textView) in
+            
             self.dataArray.append(ChatModel.creatMessageFromMeByImage(image))
             self.chatTableView.reloadData()
             self.chatTableView.scrollToBottom(animation: true)
             }, textBlock: { (text, textView) in
-                self.dataArray.append(ChatModel.creatMessageFromMeByText(text))
+                let model = ChatModel.creatMessageFromMeByText(text)
+                self.configWilddog(model)
+                self.dataArray.append(model)
                 self.chatTableView.reloadData()
                 self.chatTableView.scrollToBottom(animation: true)
             }) { (voice, textView) in
@@ -73,6 +78,8 @@ class ChatTableViewController: UIViewController {
         chatTableView.registerClass(ChatLeftMessageCell.classForCoder(), forCellReuseIdentifier: leftCellId)
         chatTableView.registerClass(ChatRightMessageCell.classForCoder(), forCellReuseIdentifier: rightCellId)
         chatTableView.estimatedRowHeight = 100
+        
+        fullmessages()
     }
 
     
@@ -109,6 +116,48 @@ class ChatTableViewController: UIViewController {
     
     private func mainScreenSize() -> CGSize {
         return UIScreen.mainScreen().bounds.size
+    }
+    
+    
+    func configWilddog(chat: ChatModel) -> Void {
+        let roomid = room.roomId
+        let roomref = WilddogManager.ref.childByAppendingPath(roomid)
+        let messageKey = chat.time + chat.userId
+        let messageValue = [
+            "user":chat.userName,
+            "headurl":chat.headImage,
+            "time":chat.time,
+            "message":chat.text
+        ]
+        roomref.updateChildValues([messageKey:messageValue])
+    }
+    
+    func fullmessages() {
+        let roomid = room.roomId
+        let roomref = WilddogManager.ref.childByAppendingPath(roomid)
+        roomref.observeEventType(.ChildAdded, withBlock: { (snapshot) in
+            let messages = snapshot.value
+            let messagesJson = JSON(messages)
+            print(messagesJson)
+            messagesJson.forEach({ (json) in
+//                var model = ChatModel()
+//                if json["user"].stringValue == "" {
+//                    model.from = .Me
+//                }else {
+//                    model.from = .Other
+//                }
+//                model.headImage = json["headurl"].stringValue
+//                model.text = json["message"].stringValue
+//                model.time = json["time"].stringValue
+//                model.userName = json["user"].stringValue
+//                self.dataArray.append(model)
+                
+            })
+            
+            
+            }) { (error) in
+            print(error.description)
+        }
     }
 
 }

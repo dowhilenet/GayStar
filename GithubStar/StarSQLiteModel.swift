@@ -12,7 +12,7 @@ import SwiftyJSON
 class ConnectingDataBase {
     private init(){}
     static let sharedObject = ConnectingDataBase()
-    private  let document = NSHomeDirectory() + "/Documents"
+    private let document = NSHomeDirectory() + "/Documents"
     
     var db: Connection {
     
@@ -23,6 +23,15 @@ class ConnectingDataBase {
             print("Connecting Data Base Error")
         }
         return db
+    }
+    
+    static func createTables() {
+        StarSQLiteModel.createTable()
+        TrendingStarSQLiteModel.createTable()
+        StarReadMeSQLite.createTable()
+        StarGroupSQLite.createTable()
+        TrendingDelevloperSQLite.createTale()
+        UserSQLiteModel.createTable()
     }
 }
 
@@ -50,8 +59,8 @@ extension StarModelProtocol {
     static private var homePage:Expression<String> { return Expression<String>("homePage") }
     static private var html:Expression<String> { return Expression<String>("html") }
     static private var autherName:Expression<String> { return Expression<String>("autherName") }
-    
 }
+
 
 
 

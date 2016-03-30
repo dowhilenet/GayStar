@@ -7,46 +7,51 @@
 //
 
 import UIKit
+import Wilddog
 
 class ChooseChatRoomTableViewController: UITableViewController {
-
+    
+    
+    var rooms = [WilddogChatRoomModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.registerClass(GroupTableViewCell.classForCoder(), forCellReuseIdentifier: "reuseIdentifier")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        //用户登陆
+        WilddogManager.wilddogLogin()
+        
+        for i in 0 ... 10 {
+            let room = WilddogChatRoomModel(roomName: "room\(i)", roomId:  "\(i)")
+            rooms.append(room)
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        return rooms.count
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! GroupTableViewCell
-
-        // Configure the cell...
-        cell.setButtonTitle("ooooo")
+        let room = rooms[indexPath.row]
+        cell.setButtonTitle(room.roomName)
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let chatVC = ChatTableViewController()
         chatVC.hidesBottomBarWhenPushed = true
+        chatVC.room = rooms[indexPath.row]
         navigationController?.pushViewController(chatVC, animated: true)
     }
 
 }
+

@@ -24,48 +24,56 @@ enum ChatMessageType {
 
 
 struct ChatModel {
+    //用户信息
     var from: ChatFrom = .Me
     var messageType: ChatMessageType = .Text
+    
+    var headImage: String!
+    var userId = ""
     var userName = ""
     var time = ""
-    var headImage: String!
-    var text: String?
+    
+    //消息类型
+    var text: String = ""
     var image: UIImage?
     var voice: NSData?
+    //语音时长
     var voiceSecond: String?
     
-
-    static func creatMessageFromMeByText(text:String) -> ChatModel {
+    
+    private static func configMe() -> ChatModel {
         var model = ChatModel()
+        //初始化一些公共信息
+        let user = UserSQLiteModel.selectData()
+        model.userId = user.id
+        model.userName = user.name
+        model.headImage = user.avatarURL
+        return model
+    }
+    static func creatMessageFromMeByText(text:String) -> ChatModel {
+        var model = configMe()
         model.messageType = .Text
         model.text = text
-        model.headImage = "http://baidu.com"
-        model.configMeBaseInfo()
+        model.time = NSDate().description
         return model
     }
     
     static func creatMessageFromMeByImage(image:UIImage) -> ChatModel{
-        var model = ChatModel()
+        var model = configMe()
         model.messageType = .Image
         model.image = image
-        model.configMeBaseInfo()
+        model.time = random()%2==1 ? NSDate().description : ""
         return model
     }
     
     
     static func creatMessageFromMeByVoice(voice:NSData) -> ChatModel{
-        var model = ChatModel()
+        var model = configMe()
         model.messageType = .Voice
         model.voice = voice
+        model.time = random()%2==1 ? NSDate().description : ""
         model.voiceSecond = "5"
-        model.configMeBaseInfo()
         return model
-    }
-    
-    private mutating func configMeBaseInfo() {
-        from = .Me
-        userName = "Daniel"
-        time = random()%2==1 ? NSDate.init(timeIntervalSince1970: NSTimeInterval(random()%1000)).description : ""
     }
     
 }
