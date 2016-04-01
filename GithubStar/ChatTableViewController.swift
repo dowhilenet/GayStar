@@ -17,7 +17,6 @@ class ChatTableViewController: UIViewController {
     private let rightCellId = "ChatRightMessageCell"
     
     var room: WilddogChatRoomModel!
-    
     var chatTableView: UITableView!
     var inputBackView: InputView!
     var dataArray: [ChatModel]!
@@ -54,10 +53,8 @@ class ChatTableViewController: UIViewController {
             self.chatTableView.scrollToBottom(animation: true)
             }, textBlock: { (text, textView) in
                 let model = ChatModel.creatMessageFromMeByText(text)
+                //服务器添加数据
                 self.configWilddog(model)
-                self.dataArray.append(model)
-                self.chatTableView.reloadData()
-                self.chatTableView.scrollToBottom(animation: true)
             }) { (voice, textView) in
                 
         }
@@ -68,6 +65,7 @@ class ChatTableViewController: UIViewController {
         chatTableView.separatorStyle = .None
         chatTableView.keyboardDismissMode = .Interactive
         chatTableView.estimatedRowHeight = 60
+        
         view.addSubview(chatTableView)
         chatTableView.snp_makeConstraints { (make) in
             make.leading.trailing.equalTo(self.view)
@@ -86,6 +84,7 @@ class ChatTableViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ChatTableViewController.keyboardFrameChanged(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
+        chatTableView.scrollToBottom(animation: true)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -118,45 +117,56 @@ class ChatTableViewController: UIViewController {
         return UIScreen.mainScreen().bounds.size
     }
     
-    
+    // wilddog 添加子节点
     func configWilddog(chat: ChatModel) -> Void {
         let roomid = room.roomId
         let roomref = WilddogManager.ref.childByAppendingPath(roomid)
         let messageKey = chat.time + chat.userId
         let messageValue = [
             "user":chat.userName,
+            "userid":chat.userId,
             "headurl":chat.headImage,
             "time":chat.time,
             "message":chat.text
         ]
         roomref.updateChildValues([messageKey:messageValue])
     }
-    
+    /**
+     从服务器获取数据
+     */
     func fullmessages() {
+        //选择当前登陆用户
+        let model = UserSQLiteModel.selectData()
+        //聊天室模型
+        var chatModel = ChatModel()
+        //根据房间号添加子节点
         let roomid = room.roomId
         let roomref = WilddogManager.ref.childByAppendingPath(roomid)
-        roomref.observeEventType(.ChildAdded, withBlock: { (snapshot) in
+        //检测子节点的数据变化
+        roomref.queryLimitedToLast(99).observeEventType(.ChildAdded, withBlock: { (snapshot) in
+            //获取新添加节点的内容
             let messages = snapshot.value
+            //解析json
             let messagesJson = JSON(messages)
-            print(messagesJson)
-            messagesJson.forEach({ (json) in
-//                var model = ChatModel()
-//                if json["user"].stringValue == "" {
-//                    model.from = .Me
-//                }else {
-//                    model.from = .Other
-//                }
-//                model.headImage = json["headurl"].stringValue
-//                model.text = json["message"].stringValue
-//                model.time = json["time"].stringValue
-//                model.userName = json["user"].stringValue
-//                self.dataArray.append(model)
+            //判断节点是否是本地登陆用户
+            if messagesJson["user"].stringValue == model.name {
+                chatModel.from = .Me
+            }else {
+                chatModel.from = .Other
+            }
+            //设置chatmodel 的属性
+            chatModel.headImage = messagesJson["headurl"].stringValue
+            chatModel.text = messagesJson["message"].stringValue
+            chatModel.time = messagesJson["time"].stringValue
+            chatModel.userName = messagesJson["user"].stringValue
+            //将新添加的数据放入到 data array 中刷新界面
+            self.dataArray.append(chatModel)
+            self.chatTableView.reloadData()
+            //表格的最底部
+            self.chatTableView.scrollToBottom(animation: true)
+            }) { (eror) in
                 
-            })
-            
-            
-            }) { (error) in
-            print(error.description)
+                print(eror.localizedDescription)
         }
     }
 

@@ -39,6 +39,8 @@ class StarsTableViewController: UITableViewController {
         stars = StarSQLiteModel.selectStars()
         //检查是否需要更新。
         updatestar()
+        UserModel.requestDataAndInseret()
+
     }
 
     

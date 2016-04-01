@@ -28,6 +28,8 @@ class ChatRightMessageCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .None
         dateLabel = UILabel()
+        dateLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+        dateLabel.textColor = UIColor.grayColor()
         contentView.addSubview(dateLabel)
         dateLabel.snp_makeConstraints { (make) in
             make.top.equalTo(contentView)
@@ -91,6 +93,7 @@ class ChatRightMessageCell: UITableViewCell {
     func configUIWithModel(model: ChatModel){
         dateLabel.text = model.time
         headImageURL = model.headImage
+        headImageView.kf_setImageWithURL(NSURL(string: headImageURL)!, forState: .Normal)
         switch model.messageType {
         case ChatMessageType.Text:
             self.contentLabel.text = model.text

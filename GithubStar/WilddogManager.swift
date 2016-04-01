@@ -38,6 +38,11 @@ struct WilddogManager {
 struct WilddogChatRoomModel {
     var roomName = ""
     var roomId = ""
+    
+    init(star: StarDataModel) {
+        roomId = String(star.idjson)
+        roomName = star.fullNamejson
+    }
 }
 
 

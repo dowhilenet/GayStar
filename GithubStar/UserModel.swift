@@ -8,7 +8,7 @@
 
 import SwiftyJSON
 import SQLite
-
+import Alamofire
 struct UserSQLiteModel {
     
    static private let table = Table("user")
@@ -68,7 +68,7 @@ struct UserSQLiteModel {
         }
     }
     
-    static func inserData(data: UserModel) {
+    private static func inserData(data: UserModel) {
         do {
             try db.run(table.insert(
                 login <- data.login,
@@ -154,8 +154,9 @@ struct UserModel {
     var createdAt = ""
     var updatedAt = ""
     init(){}
-    init(data: NSData) {
-        let json = JSON(data: data)[0]
+    
+    private init(data: NSData) {
+        let json = JSON(data: data)
         login = json["login"].stringValue
         id = json["id"].stringValue
         avatarURL = json["avatar_url"].stringValue
@@ -178,5 +179,24 @@ struct UserModel {
         following = json["following"].stringValue
         createdAt = json["created_at"].stringValue
         updatedAt = json["updated_at"].stringValue
+    }
+    
+    private static func requestData(back: (data: NSData?) -> Void)  {
+        
+        Alamofire.request(GithubAPI.me).responseJSON { (res) in
+            guard let res = res.data else {
+                back(data: nil)
+                return
+            }
+            back(data: res)
+        }
+    }
+    
+    static func requestDataAndInseret() {
+        requestData { (data) in
+            guard let data = data else { print("no data") ;return }
+            let model = UserModel(data: data)
+            UserSQLiteModel.inserData(model)
+        }
     }
 }

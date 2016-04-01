@@ -67,6 +67,8 @@ enum GithubAPI{
     case starredCount
 
     case feeds
+    
+    case me
 }
 
 extension GithubAPI:URLRequestConvertible{
@@ -77,8 +79,7 @@ extension GithubAPI:URLRequestConvertible{
         case .star:
             return "/user/starred"
         case .user(let user):
-            return "/users"
-//            return "/users/\(user)"
+            return "/users/\(user)"
         case .repos(let repo):
             return "/repos/\(repo)"
         case .followers(let user):
@@ -91,6 +92,8 @@ extension GithubAPI:URLRequestConvertible{
             return "/user/starred"
         case .feeds:
             return  "/feeds"
+        case .me:
+            return "/user"
         }
     }
     
@@ -112,6 +115,10 @@ extension GithubAPI:URLRequestConvertible{
             return ["per_page":1]
         case .feeds:
             return  nil
+        case .me:
+            let token = Defaults[.token]
+            guard let token1 = token else { return nil }
+            return ["access_token":token1]
         }
     }
     
@@ -143,6 +150,7 @@ class GithubOAuth{
         oauthswift.authorizeWithCallbackURL(NSURL(string: "GITStare://oauth-callback/github")!, scope: "user,repo", state: state,success: { (credential, response, parameters) -> Void in
             Defaults[.token] = credential.oauth_token
             Defaults.synchronize()
+            UserModel.requestDataAndInseret()
             }) { (error) -> Void in
                 //Error
         }

@@ -11,7 +11,6 @@ import Wilddog
 
 class ChooseChatRoomTableViewController: UITableViewController {
     
-    
     var rooms = [WilddogChatRoomModel]()
     
     override func viewDidLoad() {
@@ -21,11 +20,11 @@ class ChooseChatRoomTableViewController: UITableViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         //用户登陆
         WilddogManager.wilddogLogin()
+        //检测是否有用户信息
+        let user = UserSQLiteModel.selectData()
         
-        for i in 0 ... 10 {
-            let room = WilddogChatRoomModel(roomName: "room\(i)", roomId:  "\(i)")
-            rooms.append(room)
-        }
+        guard user.id != "" else { GithubOAuth.GithubOAuth(self); return }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +32,16 @@ class ChooseChatRoomTableViewController: UITableViewController {
         
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let stars = StarSQLiteModel.selectStars()
+        stars.forEach { (star) in
+            let room = WilddogChatRoomModel(star: star)
+            rooms.append(room)
+        }
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,6 +59,7 @@ class ChooseChatRoomTableViewController: UITableViewController {
         let chatVC = ChatTableViewController()
         chatVC.hidesBottomBarWhenPushed = true
         chatVC.room = rooms[indexPath.row]
+        
         navigationController?.pushViewController(chatVC, animated: true)
     }
 
