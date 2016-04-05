@@ -55,7 +55,7 @@ class ChatLeftMessageCell: UITableViewCell {
         //内容 frame 辅助
         contentLabel = UILabel()
         contentView.addSubview(contentLabel)
-        contentLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        contentLabel.font = UIFont.systemFontOfSize(30)
         contentLabel.numberOfLines = 0
         contentLabel.textColor = UIColor.grayColor()
         contentLabel.snp_makeConstraints { (make) in

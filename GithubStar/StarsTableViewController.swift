@@ -12,7 +12,6 @@ import SwiftyUserDefaults
 import SwiftyJSON
 
 
-
 class StarsTableViewController: UITableViewController {
    
     let cellId = "StarsCell"

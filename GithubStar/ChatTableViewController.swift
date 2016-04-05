@@ -141,9 +141,10 @@ class ChatTableViewController: UIViewController {
         var chatModel = ChatModel()
         //根据房间号添加子节点
         let roomid = room.roomId
+        print(roomid)
         let roomref = WilddogManager.ref.childByAppendingPath(roomid)
         //检测子节点的数据变化
-        roomref.queryLimitedToLast(99).observeEventType(.ChildAdded, withBlock: { (snapshot) in
+        roomref.observeEventType(.ChildAdded, withBlock: { (snapshot) in
             //获取新添加节点的内容
             let messages = snapshot.value
             //解析json
