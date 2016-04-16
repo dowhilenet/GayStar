@@ -1,6 +1,6 @@
 github "uacaps/PageMenu"
 github "onevcat/Kingfisher" ~> 2.0
-#github "dzenbot/DZNEmptyDataSet"
+github "dzenbot/DZNEmptyDataSet"
 github "Alamofire/Alamofire"
 github "SnapKit/SnapKit"
 github "radex/SwiftyUserDefaults"
@@ -9,3 +9,5 @@ github "cezheng/Fuzi" ~> 0.3.0
 #github "hyperoslo/Presentation"
 github "SwiftyJSON/SwiftyJSON"
 github "stephencelis/SQLite.swift" ~> 0.9.2
+github "dekatotoro/SlideMenuControllerSwift"
+github "mchoe/SwiftSVG" ~> 1.0
