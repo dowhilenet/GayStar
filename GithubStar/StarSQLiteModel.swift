@@ -9,6 +9,7 @@
 import SQLite
 import SwiftyJSON
 
+/// 连接数据库
 class ConnectingDataBase {
     private init(){}
     static let sharedObject = ConnectingDataBase()
@@ -24,7 +25,9 @@ class ConnectingDataBase {
         }
         return db
     }
-    
+    /**
+     创建数据库中的表
+     */
     static func createTables() {
         StarSQLiteModel.createTable()
         TrendingStarSQLiteModel.createTable()
@@ -37,13 +40,16 @@ class ConnectingDataBase {
 
 
 
-
+/**
+ *  数据库表的协议
+ */
 protocol StarModelProtocol {
     static func createTable()
     static var table: Table { get }
     static func intsertStar(star:StarModelJsonProtocol) -> Bool
 }
 
+// MARK: - Star 共有的属性
 extension StarModelProtocol {
     
     static private var db:Connection { return ConnectingDataBase.sharedObject.db }
@@ -62,14 +68,18 @@ extension StarModelProtocol {
 }
 
 
-
+/**
+ *  Star 的项目的数据模型
+ */
 
 struct StarSQLiteModel: StarModelProtocol{
-    
+         /// 表名
      static internal var table: Table {return Table("stars") }
-
+             /// 扩展属性，项目所属的分组
      static private var groupsNmae: Expression<String?> { return Expression<String?>("groupsNmae") }
-    
+    /**
+     表格的创建方法
+     */
     static func createTable() {
         do {
             
@@ -93,7 +103,13 @@ struct StarSQLiteModel: StarModelProtocol{
             print("创建表错误")
         }
     }
-    
+    /**
+     stars 表插入数据
+     
+     - parameter star: Star 模型
+     
+     - returns: 插入成功的话返回 true
+     */
     static func intsertStar(star:StarModelJsonProtocol) -> Bool {
         let flag = false
         
@@ -124,7 +140,13 @@ struct StarSQLiteModel: StarModelProtocol{
 
 extension StarSQLiteModel {
     
-    
+    /**
+     私有方法，将数据库中的一行数据转化成 Star 模型
+     
+     - parameter row: 数据库中的一行
+     
+     - returns: Star 模型
+     */
     static private func rowToStar(row:Row) -> StarDataModel {
         var star = StarDataModel()
         star.autherNamejson = row[autherName]
@@ -142,7 +164,11 @@ extension StarSQLiteModel {
         star.namejson = row[name]
         return star
     }
-    
+    /**
+     选取所有的项目中的Star
+     
+     - returns: 返回 Star 数组
+     */
     static func selectStars() -> [StarDataModel] {
         var starArray = [StarDataModel]()
         do {
@@ -159,7 +185,11 @@ extension StarSQLiteModel {
             return starArray
         }
     }
-    //选择没有被分组的star
+    /**
+     选择没有被分组的star
+     
+     - returns: 没有被分组的Star 数组
+     */
     static func selectStarsByGroups() -> [StarDataModel] {
         var starArray = [StarDataModel]()
         do {
@@ -177,6 +207,13 @@ extension StarSQLiteModel {
         }
     }
     
+    /**
+     某一个分组中的Star 数目
+     
+     - parameter name: 分组名称
+     
+     - returns: Star 数目
+     */
     static func selecCount(name: String) -> Int64 {
         var counts:Int64 = 0
         let query = table.filter(groupsNmae == name).count
@@ -184,6 +221,13 @@ extension StarSQLiteModel {
         return counts
     }
     
+    /**
+     根据分组选出 Star
+     
+     - parameter name: 分组名称
+     
+     - returns: Star 数组
+     */
     static func selectStarByGroupName(name:String) -> [StarDataModel] {
         var stars = [StarDataModel]()
         
@@ -201,6 +245,11 @@ extension StarSQLiteModel {
         return stars
     }
     
+    /**
+     删除某一个分组下的Star
+     
+     - parameter id: Star ID
+     */
     static func deleteStarFromGroup(id: Int64) {
         do {
             
@@ -221,11 +270,17 @@ extension StarSQLiteModel {
 }
 
 
+/**
+ *  热门项目表
+ */
 struct TrendingStarSQLiteModel:StarModelProtocol {
-    
-    
+     /// 表名
     internal static var table = Table("TrendingStar")
+        /// 扩展属性 类型名称
     private static var typename = Expression<Int64>("typename")
+    /**
+     建立表 方法
+     */
     static func createTable(){
         do {
             
@@ -249,7 +304,13 @@ struct TrendingStarSQLiteModel:StarModelProtocol {
             print("创建表错误")
         }
     }
-    
+    /**
+     向表中插入Star
+     
+     - parameter star: Star Model
+     
+     - returns: Success －> True || Error -> False
+     */
     static func intsertStar(star:StarModelJsonProtocol) -> Bool {
         let flag = false
         
@@ -284,6 +345,13 @@ struct TrendingStarSQLiteModel:StarModelProtocol {
 }
 
 extension TrendingStarSQLiteModel {
+    /**
+     私有方法 将数据库中的某一行转化成 TrendingStarModel
+     
+     - parameter row: 数据库中的行
+     
+     - returns: Trending Star Model
+     */
     static private func rowToStar(row:Row) -> TrendingStarModel {
         var star = TrendingStarModel()
         star.autherNamejson = row[autherName]
@@ -302,6 +370,13 @@ extension TrendingStarSQLiteModel {
         return star
     }
     
+    /**
+     筛选数据通过 热门类型的不同
+     
+     - parameter type: 类型 ID
+     
+     - returns: Trending Star Model
+     */
     static func selectStarsBytype(type:Int64) -> [TrendingStarModel] {
         var stars = [TrendingStarModel]()
         do {
@@ -319,7 +394,11 @@ extension TrendingStarSQLiteModel {
         
     }
     
-    
+    /**
+     删除所有的热门项目
+     
+     - parameter type: 要删除的类型
+     */
     static func deleteAllStars(type: Int64) {
         do {
             try db.run(table.filter(typename == type).delete())
@@ -330,15 +409,23 @@ extension TrendingStarSQLiteModel {
     }
 }
 
+/**
+ *  Star Read Me 文件 缓存
+ */
 struct StarReadMeSQLite {
-    
+        /// 表的名字
     static private let table = Table("starreadme")
+        /// 数据库
     static private let db = ConnectingDataBase.sharedObject.db
-    
+            /// 文件的id
     static private let id = Expression<Int64>("id")
+        /// html 内容
     static private let htmlValue = Expression<String?>("htmlValue")
+        /// read me 文件的 URL路径
     static private let htmlUrl = Expression<String?>("htmlUrl")
-    
+    /**
+     创建表格
+     */
     static func createTable() {
         do {
             try db.run(table.create(temporary: false, ifNotExists: true, block: { (t) in
@@ -350,7 +437,13 @@ struct StarReadMeSQLite {
             print("\(error.localizedDescription)")
         }
     }
-    
+    /**
+     插入数据
+     
+     - parameter data: readme model
+     
+     - returns: true or false
+     */
     static func insertReadMe(data:StarReadMe) -> Bool {
         let falg = false
         do {
@@ -365,7 +458,13 @@ struct StarReadMeSQLite {
             return falg
         }
     }
-    
+    /**
+     根据项目的id 来筛选
+     
+     - parameter id: Star ID
+     
+     - returns: Star read me
+     */
     static func selectRreadMeByID(id:Int64) -> StarReadMe {
         var readme = StarReadMe()
         let query = table.filter(self.id == id)
@@ -377,6 +476,14 @@ struct StarReadMeSQLite {
         return readme
     }
     
+    /**
+     更新 read me 文件
+     
+     - parameter id:     要跟新的id
+     - parameter values: 要更新的内容
+     
+     - returns: true or false
+     */
     static func updateReadMe(id: Int64, values: String) -> Bool {
         let falg = false
         do {
@@ -389,13 +496,21 @@ struct StarReadMeSQLite {
     }
 }
 
+/**
+ *  分组列表
+ */
 struct StarGroupSQLite {
+        /// 表名
     static private let table = Table("stargroup")
+            /// 数据库
     static private let db = ConnectingDataBase.sharedObject.db
-    
+        /// 分组所拥有的Star 数目
     static private let count = Expression<Int64>("count")
+        /// 分组的名称
     static private let name = Expression<String>("name")
-    
+    /**
+     建立表格
+     */
     static  func createTable() {
         do {
             try db.run(table.create(temporary: false, ifNotExists: true, block: { (t) in
@@ -406,7 +521,13 @@ struct StarGroupSQLite {
             print("error:\(error.localizedDescription)")
         }
     }
-    
+    /**
+     插入数据
+     
+     - parameter group: 分组model
+     
+     - returns: true or false
+     */
     static  func insert(group:StarGroup) -> Bool{
         let flag = false
         do {
@@ -421,6 +542,11 @@ struct StarGroupSQLite {
         return flag
     }
     
+    /**
+     选择所有的分组
+     
+     - returns: 分组数组
+     */
     static  func select() -> [StarGroup] {
         var groups = [StarGroup]()
         do {
@@ -437,6 +563,11 @@ struct StarGroupSQLite {
         return groups
     }
     
+    /**
+     删除某个分组
+     
+     - parameter name: 分组名称
+     */
     static func delete(name:String) {
         do {
             try db.run(table.filter(self.name == name).delete())
@@ -447,6 +578,9 @@ struct StarGroupSQLite {
     }
 }
 
+/**
+ *  热门开发者
+ */
 struct TrendingDelevloperSQLite {
     
     private static let db = ConnectingDataBase.sharedObject.db

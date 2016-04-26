@@ -154,25 +154,16 @@ class StarsTableViewController: UITableViewController {
         //如果 所有数据已经下载完成则退出下载
         guard page <= downpages else { downalltip() ; return }
         
-        Alamofire.request(GithubAPI.star(page: "\(page)"))
-            .validate()
-            .responseData { (response) -> Void in
-                //请求页书加一
-                self.page += 1
-                // 判断是否请求到了数据
-                guard let data = response.data
-                    else{
-                        ProgressHUD.showError("No Data", interaction: true)
-                        self.tableView.dg_stopLoading()
-                        self.tableView.reloadData()
-                        return
-                }
-                
-                let stars = StarDataModel.initStarArray(data)
-                stars.forEach({ (star) in
-                    StarSQLiteModel.intsertStar(star)
-                })
-                self.requestPagedata()
+        
+        StarRequestHelper.stared.requestStared("\(page)"){ (stars) in
+            guard let _ = stars else {
+                ProgressHUD.showError("No Data", interaction: true)
+                self.tableView.dg_stopLoading()
+                self.tableView.reloadData()
+                return
+            }
+            self.page += 1
+            self.requestPagedata()
         }
         
     }
@@ -209,6 +200,7 @@ extension UItableviewDataSource {
         let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Group") { (UITableaction, indexpath) -> Void in
             let vc = TagViewController()
             vc.item = self.stars[indexPath.row]
+            //隐藏tabar
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             

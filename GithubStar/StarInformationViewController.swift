@@ -106,10 +106,9 @@ class StarInformationViewController: UIViewController{
      func loadReadme(){
         ProgressHUD.show("Loading")
         //获取到 readme下载地址
-        Alamofire.request(GithubAPI.readme(name: item.fullNamejson)).validate().responseData { (res) in
-            guard let data = res.data else { self.load404(); return}
-            let model = ReadMeDownModel(unboxer: data)
-            ReadMeDown.request(self.item.idjson, url: model.download_url, html_url: model.html_url, callback: { (res) in
+        StarRequestHelper.readMe.requestReadMeFile(item.fullNamejson) { (readme) in
+            guard let readme = readme else {self.load404();return}
+            ReadMeDown.request(self.item.idjson, url: readme.download_url, html_url: readme.html_url, callback: { (res) in
                 if res {
                     self.loadreadMefromRealm(self.item.idjson)
                 }else {
