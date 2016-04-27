@@ -73,10 +73,9 @@ class TrendingRepositionInfoViewController: UIViewController {
     
     func loadReadMe() {
         ProgressHUD.show("Loading")
-        Alamofire.request(GithubAPI.readme(name: repositionModel.fullNamejson)).validate().responseData { (res) in
-            guard let data = res.data else { self.load404();return }
-            let model = ReadMeDownModel(unboxer: data)
-            ReadMeDown.request(self.repositionModel.idjson, url: model.download_url, html_url: model.html_url, callback: { (res) in
+        StarRequestHelper.readMe.requestReadMeFile(repositionModel.fullNamejson) { (readme) in
+            guard let readme = readme else { self.load404(); return}
+            ReadMeDown.request(self.repositionModel.idjson, url: readme.download_url, html_url: readme.html_url, callback: { (res) in
                 if res {
                     self.loadreadMefromRealm(self.repositionModel.idjson)
                 }else {

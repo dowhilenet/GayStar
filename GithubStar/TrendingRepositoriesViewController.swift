@@ -77,6 +77,10 @@ class TrendingRepositoriesViewController: UITableViewController{
         contantView.navigationController?.pushViewController(vc, animated: true)
 
     }
+    
+    /**
+     下拉刷新
+     */
     func pulldowndata(){
         
         switch currType {
@@ -102,6 +106,9 @@ class TrendingRepositoriesViewController: UITableViewController{
             self.tableView.dg_stopLoading()
             return
         }
+        /**
+         *  删除之前缓存的项目
+         */
         TrendingStarSQLiteModel.deleteAllStars(Int64(currType))
         names.forEach { (name) -> () in
             Alamofire.request(GithubAPI.repos(repos: name))

@@ -9,17 +9,20 @@
 import Foundation
 import Alamofire
 import Fuzi
-
+/// 热门仓库的请求
 enum TrendingRepositories:String{
+        /// 今日
     case ToDay = "?since=daily"
+        /// 一周
     case Week = "?since=weekly"
+        /// 一个月
     case Monhly = "?since=monthly"
-    
+        /// 根路径
     var baseurl: String {
         return "https://github.com/trending"
     }
 
-    //返回仓库的名字
+    ///根据 语言名来 返回仓库的名字
     func getRepo(name:String?,back:([String]) -> Void) {
 
         var ress = [String]()
