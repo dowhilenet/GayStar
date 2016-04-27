@@ -30,25 +30,27 @@ class ReadMeDown{
         .responseString { (response) -> Void in
             
             if let readmeString = response.result.value{
-               
-                var options                = MarkdownOptions()
-                options.autoHyperlink      = false
-                options.autoNewlines       = true
-                options.linkEmails         = false
-                options.emptyElementSuffix = "/>"
-                options.strictBoldItalic   = true
-                options.encodeProblemUrlCharacters = true
-                var markdown               = Markdown(options: options)
-                let outputhtml             = markdown.transform(readmeString)
+                
+//                let m = MarkdownParser()
+//                let outputhtml = m.convert(readmeString)
+//                var options                = MarkdownOptions()
+//                options.autoHyperlink      = false
+//                options.autoNewlines       = true
+//                options.linkEmails         = false
+//                options.emptyElementSuffix = "/>"
+//                options.strictBoldItalic   = true
+//                options.encodeProblemUrlCharacters = true
+//                var markdown               = Markdown(options: options)
+//                let outputhtml             = markdown.transform(readmeString)
                 var stareadme = StarReadMe()
                 stareadme.id = id
-                stareadme.readmeValue = outputhtml
+                stareadme.readmeValue = readmeString
                 stareadme.readmeURL = html_url
                 
                 let value = StarReadMeSQLite.selectRreadMeByID(id).readmeValue
                 var res = false
                 if let _ = value {
-                    res = StarReadMeSQLite.updateReadMe(id, values: outputhtml)
+                    res = StarReadMeSQLite.updateReadMe(id, values: readmeString)
                 }else {
                     res = StarReadMeSQLite.insertReadMe(stareadme)
                 }

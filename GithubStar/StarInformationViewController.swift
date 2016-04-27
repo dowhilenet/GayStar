@@ -128,7 +128,11 @@ class StarInformationViewController: UIViewController{
      func loadreadMefromRealm(id:Int64){
         starReadMe = StarReadMeSQLite.selectRreadMeByID(id)
         if starReadMe.readmeValue != nil {
-            html = htmlheader(starReadMe.readmeValue!)
+            let m = MarkdownParser()
+            let html2 = m.convert(starReadMe.readmeValue!)
+//            html = htmlheader(starReadMe.readmeValue!)
+            let label = UILabel()
+            label.attributedText = html2
             webview.loadHTMLString(html, baseURL: nil)
             ProgressHUD.dismiss()
             
