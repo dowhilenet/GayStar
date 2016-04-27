@@ -37,8 +37,6 @@
 		AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8253C31C73F60900A0E3C0 /* lang.plist */; };
 		AB8395EA1CA128F800DE70AD /* StarTableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */; };
 		AB8AC2161CCFBDC700430187 /* StarRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */; };
-		AB8AC2191CD0552600430187 /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2171CD0552600430187 /* MarkdownParser.swift */; };
-		AB8AC21A1CD0552600430187 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2181CD0552600430187 /* Parser.swift */; };
 		ABB73BA51CA192B3006BE2FC /* StarSQLiteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB73BA41CA192B3006BE2FC /* StarSQLiteModel.swift */; };
 		ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */; };
 		ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1BF41C4730890026A3AC /* AppDelegate.swift */; };
@@ -105,8 +103,6 @@
 		AB8253C31C73F60900A0E3C0 /* lang.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = lang.plist; sourceTree = "<group>"; };
 		AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarTableProtocol.swift; sourceTree = "<group>"; };
 		AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRequestHelper.swift; sourceTree = "<group>"; };
-		AB8AC2171CD0552600430187 /* MarkdownParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
-		AB8AC2181CD0552600430187 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		ABB73BA41CA192B3006BE2FC /* StarSQLiteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarSQLiteModel.swift; sourceTree = "<group>"; };
 		ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemsTableViewController.swift; sourceTree = "<group>"; };
 		ABDA1BF11C4730890026A3AC /* GithubStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,8 +291,6 @@
 		ABDA1C141C4731740026A3AC /* MarkDown */ = {
 			isa = PBXGroup;
 			children = (
-				AB8AC2171CD0552600430187 /* MarkdownParser.swift */,
-				AB8AC2181CD0552600430187 /* Parser.swift */,
 				ABDA1C151C47319D0026A3AC /* 404.html */,
 				AB5814F11C8E60500011B2CF /* cssstyle.css */,
 				AB5814F21C8E60500011B2CF /* cssstyle2.css */,
@@ -532,7 +526,6 @@
 				AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */,
 				ABE5A69C1C63736C00CB7B5D /* PageMenuViewController.swift in Sources */,
 				ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */,
-				AB8AC2191CD0552600430187 /* MarkdownParser.swift in Sources */,
 				ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */,
 				ABE5A6981C63548A00CB7B5D /* SwiftPrompts.swift in Sources */,
 				AB72320C1C620819004565BC /* TagViewController.swift in Sources */,
@@ -548,7 +541,6 @@
 				ABDA1C501C4733220026A3AC /* TrendingRepositoriesViewController.swift in Sources */,
 				AB40E3D71CA928A0001642CC /* InputView.swift in Sources */,
 				ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
-				AB8AC21A1CD0552600430187 /* Parser.swift in Sources */,
 				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
 				AB40E3E91CAA9ED6001642CC /* WilddogManager.swift in Sources */,
 				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
