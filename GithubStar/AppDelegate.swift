@@ -8,7 +8,9 @@
 
 import UIKit
 import OAuthSwift
+import RealmSwift
 
+let realm: Realm = try! Realm()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -9,6 +9,10 @@
 import SwiftyJSON
 import SQLite
 import Alamofire
+import RealmSwift
+
+
+
 struct UserSQLiteModel {
     
    static private let table = Table("user")

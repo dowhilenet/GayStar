@@ -37,6 +37,11 @@
 		AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8253C31C73F60900A0E3C0 /* lang.plist */; };
 		AB8395EA1CA128F800DE70AD /* StarTableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */; };
 		AB8AC2161CCFBDC700430187 /* StarRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */; };
+		AB8AC21D1CD0C03600430187 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21B1CD0C03600430187 /* Realm.framework */; };
+		AB8AC21E1CD0C03600430187 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21B1CD0C03600430187 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB8AC21F1CD0C03600430187 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21C1CD0C03600430187 /* RealmSwift.framework */; };
+		AB8AC2201CD0C03600430187 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21C1CD0C03600430187 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB8AC2241CD0C24400430187 /* StarRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2231CD0C24400430187 /* StarRealm.swift */; };
 		ABB73BA51CA192B3006BE2FC /* StarSQLiteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB73BA41CA192B3006BE2FC /* StarSQLiteModel.swift */; };
 		ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */; };
 		ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1BF41C4730890026A3AC /* AppDelegate.swift */; };
@@ -72,6 +77,21 @@
 		ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AB8AC2211CD0C03600430187 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AB8AC2201CD0C03600430187 /* RealmSwift.framework in Embed Frameworks */,
+				AB8AC21E1CD0C03600430187 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarDataModel.swift; sourceTree = "<group>"; };
 		AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositionInfoViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +123,9 @@
 		AB8253C31C73F60900A0E3C0 /* lang.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = lang.plist; sourceTree = "<group>"; };
 		AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarTableProtocol.swift; sourceTree = "<group>"; };
 		AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRequestHelper.swift; sourceTree = "<group>"; };
+		AB8AC21B1CD0C03600430187 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		AB8AC21C1CD0C03600430187 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		AB8AC2231CD0C24400430187 /* StarRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRealm.swift; sourceTree = "<group>"; };
 		ABB73BA41CA192B3006BE2FC /* StarSQLiteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarSQLiteModel.swift; sourceTree = "<group>"; };
 		ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemsTableViewController.swift; sourceTree = "<group>"; };
 		ABDA1BF11C4730890026A3AC /* GithubStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +170,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB8AC21D1CD0C03600430187 /* Realm.framework in Frameworks */,
+				AB8AC21F1CD0C03600430187 /* RealmSwift.framework in Frameworks */,
 				AB40E3E71CAA9E3A001642CC /* libsqlite3.0.tbd in Frameworks */,
 				AB40E3E51CAA9E26001642CC /* JavaScriptCore.framework in Frameworks */,
 				AB40E3E31CAA9E03001642CC /* Wilddog.framework in Frameworks */,
@@ -229,6 +254,8 @@
 		ABDA1BE81C4730890026A3AC = {
 			isa = PBXGroup;
 			children = (
+				AB8AC21B1CD0C03600430187 /* Realm.framework */,
+				AB8AC21C1CD0C03600430187 /* RealmSwift.framework */,
 				AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */,
 				AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */,
 				ABDA1BF31C4730890026A3AC /* GithubStar */,
@@ -317,6 +344,7 @@
 				AB40E3EA1CAAAC05001642CC /* UserModel.swift */,
 				ABB73BA41CA192B3006BE2FC /* StarSQLiteModel.swift */,
 				AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */,
+				AB8AC2231CD0C24400430187 /* StarRealm.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -400,6 +428,8 @@
 				ABDA1BEE1C4730890026A3AC /* Frameworks */,
 				ABDA1BEF1C4730890026A3AC /* Resources */,
 				AB50AD1B1C5AE585007702EF /* Run Script */,
+				AB8AC2211CD0C03600430187 /* Embed Frameworks */,
+				AB8AC2221CD0C0A300430187 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -493,6 +523,19 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		AB8AC2221CD0C0A300430187 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -506,6 +549,7 @@
 				ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */,
 				ABDA1C411C4732F70026A3AC /* ReferenceTableViewController.swift in Sources */,
 				AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */,
+				AB8AC2241CD0C24400430187 /* StarRealm.swift in Sources */,
 				ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */,
 				ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */,
 				ABDA1C2B1C4732720026A3AC /* MyNSUserDefaults.swift in Sources */,
