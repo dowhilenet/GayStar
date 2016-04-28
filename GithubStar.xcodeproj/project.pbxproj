@@ -208,6 +208,8 @@
 		AB40E3E11CAA9DF6001642CC /* Wilddog */ = {
 			isa = PBXGroup;
 			children = (
+				AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */,
+				AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */,
 				AB40E3E21CAA9E03001642CC /* Wilddog.framework */,
 			);
 			name = Wilddog;
@@ -240,6 +242,30 @@
 			name = RequestData;
 			sourceTree = "<group>";
 		};
+		AB8AC2251CD18F6E00430187 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				AB8AC21B1CD0C03600430187 /* Realm.framework */,
+				AB8AC21C1CD0C03600430187 /* RealmSwift.framework */,
+			);
+			name = Realm;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		AB8AC2261CD18FB300430187 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				ABDA1BF41C4730890026A3AC /* AppDelegate.swift */,
+				ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */,
+				ABDA1C201C47320C0026A3AC /* GithubStar-Bridging-Header.h */,
+				ABDA1BFB1C4730890026A3AC /* Assets.xcassets */,
+				ABDA1BFD1C4730890026A3AC /* LaunchScreen.storyboard */,
+				AB8253C31C73F60900A0E3C0 /* lang.plist */,
+				ABDA1C001C4730890026A3AC /* Info.plist */,
+			);
+			name = Info;
+			sourceTree = "<group>";
+		};
 		ABA524941C608D9E00B571CE /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,10 +280,6 @@
 		ABDA1BE81C4730890026A3AC = {
 			isa = PBXGroup;
 			children = (
-				AB8AC21B1CD0C03600430187 /* Realm.framework */,
-				AB8AC21C1CD0C03600430187 /* RealmSwift.framework */,
-				AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */,
-				AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */,
 				ABDA1BF31C4730890026A3AC /* GithubStar */,
 				ABDA1BF21C4730890026A3AC /* Products */,
 			);
@@ -279,13 +301,7 @@
 				ABDA1C2F1C47327C0026A3AC /* API */,
 				ABDA1C261C4732640026A3AC /* Model */,
 				ABDA1C061C4731360026A3AC /* Frame */,
-				ABDA1BF41C4730890026A3AC /* AppDelegate.swift */,
-				ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */,
-				ABDA1C201C47320C0026A3AC /* GithubStar-Bridging-Header.h */,
-				ABDA1BFB1C4730890026A3AC /* Assets.xcassets */,
-				ABDA1BFD1C4730890026A3AC /* LaunchScreen.storyboard */,
-				AB8253C31C73F60900A0E3C0 /* lang.plist */,
-				ABDA1C001C4730890026A3AC /* Info.plist */,
+				AB8AC2261CD18FB300430187 /* Info */,
 			);
 			path = GithubStar;
 			sourceTree = "<group>";
@@ -293,6 +309,7 @@
 		ABDA1C061C4731360026A3AC /* Frame */ = {
 			isa = PBXGroup;
 			children = (
+				AB8AC2251CD18F6E00430187 /* Realm */,
 				AB40E3E11CAA9DF6001642CC /* Wilddog */,
 				ABE5A6941C63548A00CB7B5D /* Swift-Prompts */,
 				ABDA1C1F1C4731F70026A3AC /* ProgressHUD */,
