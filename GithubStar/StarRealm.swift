@@ -142,14 +142,31 @@ class StarRealm: StarBase {
         return Array<StarRealm>(RealmData.share.realm.objects(StarRealm).filter(predicate).sorted("namejson", ascending: true))
     }
     
+    class func selectStarByID(ID: Int64) -> StarRealm? {
+     
+        return RealmData.share.realm.objects(StarRealm).filter("idjson = \(ID)").first
+    }
+    
     /**
      删除某一分组下的所有项目
      
      - parameter id: 分组的ID
      */
-    class func deleteStarFromGroup(id: Int64) -> Bool {
+    class func deleteStarFromGroup(groupName: String) -> Bool {
         let res = false
-        return res
+        let stars = RealmData.share.realm.objects(StarRealm).filter(NSPredicate(format: "groupsName = %@", groupName))
+        stars.forEach { (star) in
+            star.groupsName = ""
+        }
+        do {
+            try RealmData.share.realm.write({ 
+                RealmData.share.realm.add(stars)
+            })
+            return !res
+        } catch {
+            return res
+        }
+        
     }
 
 }
@@ -229,10 +246,8 @@ class StarReadMeRealm: Object {
      
      - returns: Star read me
      */
-    class func selectRreadMeByID(id:Int64) -> StarReadMeRealm {
-        let starReadMe = StarReadMeRealm()
-        
-        return starReadMe
+    class func selectRreadMeByID(id:Int64) -> StarReadMeRealm? {
+        return RealmData.share.realm.objects(StarReadMeRealm).filter(NSPredicate(format: "id = %@", id)).first
     }
     
     /**
@@ -245,7 +260,17 @@ class StarReadMeRealm: Object {
      */
     class func updateReadMe(id: Int64, values: String) -> Bool {
         let res = false
-        return res
+        let readme = StarReadMeRealm()
+        readme.id = id
+        readme.readmeValue = values
+        do {
+            try RealmData.share.realm.write({ 
+                RealmData.share.realm.add(readme, update: true)
+            })
+            return !res
+        } catch {
+            return res
+        }
     }
     
     
@@ -254,6 +279,12 @@ class StarReadMeRealm: Object {
 class StarGroupRealm: Object {
     dynamic var name = ""
     dynamic var count:Int64 = 0
+    
+    
+    convenience init(name: String) {
+        self.init()
+        self.name = name
+    }
     
     override static func primaryKey() -> String? {
         return "name"
@@ -268,7 +299,14 @@ class StarGroupRealm: Object {
      */
     class func insert(group:StarGroupRealm) -> Bool {
         let res = false
-        return res
+        do {
+            try RealmData.share.realm.write({ 
+                RealmData.share.realm.add(group, update: true)
+            })
+            return !res
+        }catch {
+            return res
+        }
     }
     
     /**
@@ -277,8 +315,7 @@ class StarGroupRealm: Object {
      - returns: 分组数组
      */
     class func select() -> [StarGroupRealm] {
-        var groups = [StarGroupRealm]()
-        return groups
+        return Array<StarGroupRealm>(RealmData.share.realm.objects(StarGroupRealm))
     }
     /**
      删除某个分组
@@ -289,7 +326,20 @@ class StarGroupRealm: Object {
      */
     class func deleteGroup(name:String) -> Bool {
         let res = false
-        return res
+        let group = StarGroupRealm(name: name)
+        do {
+            try RealmData.share.realm.write({
+                RealmData.share.realm.delete(group)
+            })
+            
+            guard StarRealm.deleteStarFromGroup(name)  else {
+                return res
+            }
+            return !res
+
+        }catch {
+            return res
+        }
     }
 }
 

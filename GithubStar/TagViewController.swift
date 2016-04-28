@@ -14,13 +14,13 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
 
     var tb: UITableView!
     var item: StarRealm!
-    var names = [StarGroup]()
+    var names = [StarGroupRealm]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Group"
-        names = StarGroupSQLite.select()
+        names = StarGroupRealm.select()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(TagViewController.add))
         
@@ -51,9 +51,9 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
                 return char != " "
             })
             guard newChars.count > 0 else { return }
-            let res = StarGroupSQLite.insert(StarGroup(name: name, count: 0))
+            let res = StarGroupRealm.insert(StarGroupRealm(name: name))
             if res {
-                self.names = StarGroupSQLite.select()
+                self.names = StarGroupRealm.select()
                 self.tb.reloadData()
             }else {
                 print("inset groups error")
@@ -93,7 +93,10 @@ class TagViewController: UIViewController , UITableViewDelegate , UITableViewDat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let name = names[indexPath.row].name
-        StarSQLiteModel.updateStarGroup(item.idjson, name: name)
+        let star = StarRealm.selectStarByID(item.idjson)
+        guard let Star = star else { return }
+        Star.groupsName = name
+        StarRealm.intsertStar(Star)
         self.navigationController?.popViewControllerAnimated(true)
     }
     

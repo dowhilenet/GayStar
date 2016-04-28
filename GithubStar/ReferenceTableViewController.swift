@@ -11,7 +11,7 @@ import SnapKit
 import SwiftyUserDefaults
 
 protocol ReferenceTableViewControllerDelegate{
-    func didSelectedGroupDelegate(group:StarGroup)
+    func didSelectedGroupDelegate(group:StarGroupRealm)
 }
 
 
@@ -21,20 +21,20 @@ class ReferenceTableViewController: UIViewController, UITableViewDataSource,UITa
     
     var tb: UITableView!
     var groupdelegate: ReferenceTableViewControllerDelegate?
-    var names = [StarGroup]()
+    var names = [StarGroupRealm]()
     var prompt = SwiftPromptsView()
     var deleteIndex = NSIndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Group"
-        names = StarGroupSQLite.select()
+        names = StarGroupRealm.select()
         configTB()
         guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
     }
     
     override func viewDidAppear(animated: Bool) {
-        names = StarGroupSQLite.select()
+        names = StarGroupRealm.select()
         tb.reloadData()
     }
     override func didReceiveMemoryWarning() {
@@ -109,7 +109,7 @@ extension ReferenceTableViewController{
             guard newChars.count > 0 else { return }
             let res = StarGroupSQLite.insert(StarGroup(name: name, count: 0))
             if res {
-                self.names = StarGroupSQLite.select()
+                self.names = StarGroupRealm.select()
                 self.tb.reloadData()
             }else {
                 print("inset groups error")
@@ -163,7 +163,7 @@ extension ReferenceTableViewController:SwiftPromptsProtocol{
     
     func clickedOnTheMainButton() {
         StarGroupSQLite.delete(names[deleteIndex.row].name)
-        names = StarGroupSQLite.select()
+        names = StarGroupRealm.select()
         self.tb.reloadData()
         prompt.dismissPrompt()
     }

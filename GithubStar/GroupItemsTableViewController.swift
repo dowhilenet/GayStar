@@ -101,7 +101,7 @@ extension GroupItemsTableViewController{
 
 
 extension GroupItemsTableViewController:ReferenceTableViewControllerDelegate{
-    func didSelectedGroupDelegate(group: StarGroup) {
+    func didSelectedGroupDelegate(group: StarGroupRealm) {
         name = group.name
     }
 }
