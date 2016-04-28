@@ -13,7 +13,7 @@ import SnapKit
 class TagViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
 
     var tb: UITableView!
-    var item: StarDataModel!
+    var item: StarRealm!
     var names = [StarGroup]()
     
     override func viewDidLoad() {

@@ -16,7 +16,7 @@ protocol GroupItemsTableViewControllerDelegate{
 class GroupItemsTableViewController: UITableViewController {
     
     
-    var stars = [StarDataModel]()
+    var stars = [StarRealm]()
     var name: String!
     var groupdelegate: GroupItemsTableViewControllerDelegate?
 
@@ -33,12 +33,13 @@ class GroupItemsTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(GroupItemsTableViewController.addRepository))
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         self.title = name
-        stars = StarSQLiteModel.selectStarByGroupName(name)
+        
+        stars = StarRealm.selectStarByGroupName(name)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        stars = StarSQLiteModel.selectStarByGroupName(name)
+        stars = StarRealm.selectStarByGroupName(name)
         self.tableView.reloadData()
     }
     override func didReceiveMemoryWarning() {
@@ -80,7 +81,7 @@ class GroupItemsTableViewController: UITableViewController {
         
         if editingStyle == .Delete {
             StarSQLiteModel.deleteStarFromGroup(stars[indexPath.row].idjson)
-            stars = StarSQLiteModel.selectStarByGroupName(name)
+            stars = StarRealm.selectStarByGroupName(name)
             self.tableView.reloadData()
         }
     }

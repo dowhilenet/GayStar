@@ -57,7 +57,19 @@ class StarRealm: StarBase {
     }
     
     //Star 的分组
-    dynamic var groupsName: String? = nil
+    dynamic var groupsName: String = ""
+    
+    
+    class func initStarArray(data: NSData) -> [StarRealm] {
+        let json = JSON(data: data)
+        var stars = [StarRealm]()
+        for (_ , subJson) in json {
+            let star = StarRealm(jsonData: subJson)
+            stars.append(star)
+        }
+        return stars
+    }
+    
     /**
      向数据库中插入新的数据
      
@@ -67,12 +79,28 @@ class StarRealm: StarBase {
         let res = false
         do{
            try RealmData.share.realm.write({
-            
+            RealmData.share.realm.add(star, update: true)
            })
+            return !res
         }catch {
             return res
         }
-        return res
+    }
+    /**
+     向数据库中插入新的数据
+     
+     - parameter star: 要插入的数据
+     */
+    class func insertStars(stars: [StarRealm]) -> Bool {
+        let res = false
+        do {
+            try RealmData.share.realm.write({ 
+                RealmData.share.realm.add(stars, update: true)
+            })
+            return !res
+        }catch {
+            return res
+        }
     }
     /**
      获取所有的项目
@@ -80,8 +108,7 @@ class StarRealm: StarBase {
      - returns: 项目
      */
     class func selectStars() -> [StarRealm] {
-        var res: [StarRealm] = [StarRealm]()
-        return res
+        return Array<StarRealm>(RealmData.share.realm.objects(StarRealm).sorted("namejson", ascending: true))
     }
     /**
      选出所有没有被分组的项目
@@ -89,8 +116,8 @@ class StarRealm: StarBase {
      - returns: 没有被分组的项目
      */
     class func selectStarsByGroups() -> [StarRealm] {
-        var res: [StarRealm] = [StarRealm]()
-        return res
+        let predicate = NSPredicate(format: "groupsName = %@", "")
+        return Array<StarRealm>(RealmData.share.realm.objects(StarRealm).filter(predicate).sorted("namejson", ascending: true))
     }
     /**
      某一分组下的项目数目
@@ -100,8 +127,8 @@ class StarRealm: StarBase {
      - returns: 分组下的项目数目
      */
     class func selecCount(name: String) -> Int {
-        var cont: Int = 0
-        return cont
+        let predicate = NSPredicate(format: "groupsName  = %@", name)
+        return RealmData.share.realm.objects(StarRealm).filter(predicate).count
     }
     /**
      获取某个分组下的所有数目
@@ -111,8 +138,8 @@ class StarRealm: StarBase {
      - returns: 分组下的所有项目
      */
     class func selectStarByGroupName(name:String) -> [StarRealm] {
-        var res: [StarRealm] = [StarRealm]()
-        return res
+        let predicate = NSPredicate(format: "groupsName  = %@", name)
+        return Array<StarRealm>(RealmData.share.realm.objects(StarRealm).filter(predicate).sorted("namejson", ascending: true))
     }
     
     /**
@@ -185,7 +212,14 @@ class StarReadMeRealm: Object {
      */
     class func insertReadMe(data:StarReadMeRealm) -> Bool {
         let res = false
-        return res
+        do {
+            try RealmData.share.realm.write({
+                RealmData.share.realm.add(data, update: true)
+            })
+            return !res
+        } catch {
+            return res
+        }
     }
     
     /**
@@ -362,7 +396,7 @@ class UserRealm: Object {
     private static func requestData(back: (data: NSData?) -> Void)  {
         Alamofire.request(GithubAPI.me).responseJSON { (res) in
             guard let res = res.data else {
-                back(data: nil)        
+                back(data: nil)
                 return
             }
             back(data: res)

@@ -16,7 +16,7 @@ class StarsTableViewController: UITableViewController {
    
     let cellId = "StarsCell"
   
-    var stars = [StarDataModel]()
+    var stars = [StarRealm]()
  
     //下拉刷新控件
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -35,7 +35,7 @@ class StarsTableViewController: UITableViewController {
         pulldownConfig()
         
         guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
-        stars = StarSQLiteModel.selectStars()
+        stars = StarRealm.selectStars()
         //检查是否需要更新。
         updatestar()
         UserModel.requestDataAndInseret()
@@ -74,10 +74,10 @@ class StarsTableViewController: UITableViewController {
      */
     func switchValueDidChange(sender:DGRunkeeperSwitch){
         if self.runkeeperSwitch.selectedIndex == 0{
-            stars = StarSQLiteModel.selectStars()
+            stars = StarRealm.selectStars()
             self.tableView.reloadData()
         }else{
-            stars = StarSQLiteModel.selectStarsByGroups()
+            stars = StarRealm.selectStarsByGroups()
             self.tableView.reloadData()
         }
     }
@@ -143,9 +143,9 @@ class StarsTableViewController: UITableViewController {
         func downalltip() {
             ProgressHUD.showSuccess("Having Down All Data")
             if self.runkeeperSwitch.selectedIndex == 0{
-                stars = StarSQLiteModel.selectStars()
+                stars = StarRealm.selectStars()
             }else{
-                stars = StarSQLiteModel.selectStarsByGroups()
+                stars = StarRealm.selectStarsByGroups()
             }
             
             self.tableView.reloadData()
@@ -156,14 +156,14 @@ class StarsTableViewController: UITableViewController {
         
         
         StarRequestHelper.stared.requestStared("\(page)"){ (stars) in
-            guard let _ = stars else {
+            if stars.count > 0 {
+                self.page += 1
+                self.requestPagedata()
+            }else {
                 ProgressHUD.showError("No Data", interaction: true)
                 self.tableView.dg_stopLoading()
                 self.tableView.reloadData()
-                return
             }
-            self.page += 1
-            self.requestPagedata()
         }
         
     }

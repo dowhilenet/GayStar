@@ -19,25 +19,28 @@ enum StarRequestHelper {
      - parameter page:       页数
      - parameter completion: 回调
      */
-    func requestStared(page: String, completion: (stars:[StarDataModel]?) -> Void) {
+    func requestStared(page: String, completion: (stars:[StarRealm]) -> Void) {
     switch self {
     case .stared:
         Alamofire.request(GithubAPI.star(page: page))
         .validate()
         .responseData({ (res) in
             if res.result.isFailure {
-                completion(stars: nil)
+                completion(stars: [])
             }
             
-            guard let data = res.data else { completion(stars: nil); return}
-            let stars = StarDataModel.initStarArray(data)
-            stars.forEach({ (star) in
-                StarSQLiteModel.intsertStar(star)
-            })
+            guard let data = res.data else { completion(stars: []); return}
+            
+            let stars = StarRealm.initStarArray(data)
+            StarRealm.insertStars(stars)
+////            let stars = StarDataModel.initStarArray(data)
+//            stars.forEach({ (star) in
+//                StarSQLiteModel.intsertStar(star)
+//            })
             completion(stars: stars)
         })
     default:
-        completion(stars: nil)
+        completion(stars: [])
     }
    }
     

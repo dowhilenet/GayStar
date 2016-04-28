@@ -8,14 +8,14 @@
 
 import UIKit
 import SnapKit
-import Alamofire
+//import Alamofire
 import WebKit
 import SafariServices
-import SwiftyJSON
+//import SwiftyJSON
 
 class StarInformationViewController: UIViewController{
     
-    var item: StarDataModel!
+    var item: StarRealm!
     var starReadMe: StarReadMe!
     var webview: WKWebView!
     var html: String!
