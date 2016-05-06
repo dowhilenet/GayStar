@@ -34,7 +34,6 @@
 		AB5814F31C8E60500011B2CF /* cssstyle.css in Resources */ = {isa = PBXBuildFile; fileRef = AB5814F11C8E60500011B2CF /* cssstyle.css */; };
 		AB5814F41C8E60500011B2CF /* cssstyle2.css in Resources */ = {isa = PBXBuildFile; fileRef = AB5814F21C8E60500011B2CF /* cssstyle2.css */; };
 		AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */; };
-		AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */; };
 		AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */; };
 		AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */; };
 		AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8253C31C73F60900A0E3C0 /* lang.plist */; };
@@ -121,7 +120,6 @@
 		AB5814F11C8E60500011B2CF /* cssstyle.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = cssstyle.css; sourceTree = "<group>"; };
 		AB5814F21C8E60500011B2CF /* cssstyle2.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = cssstyle2.css; sourceTree = "<group>"; };
 		AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevTableViewCell.swift; sourceTree = "<group>"; };
-		AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowRepositoryListTableViewController.swift; sourceTree = "<group>"; };
 		AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcasesRequest.swift; sourceTree = "<group>"; };
 		AB8253C31C73F60900A0E3C0 /* lang.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = lang.plist; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 				AB058E5A1CDC836E009D8B91 /* ReferenceCollectionViewController.swift */,
 				ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */,
 				AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */,
-				AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */,
 			);
 			name = Groups;
 			sourceTree = "<group>";
@@ -584,7 +581,6 @@
 				AB1384A71CDC71E8008360D5 /* TagCollectionViewController.swift in Sources */,
 				AB40E3EB1CAAAC05001642CC /* UserModel.swift in Sources */,
 				AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */,
-				AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */,
 				AB8AC2161CCFBDC700430187 /* StarRequestHelper.swift in Sources */,
 				ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */,
 				AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */,

@@ -8,17 +8,11 @@
 
 import UIKit
 
-
-protocol GroupItemsTableViewControllerDelegate{
-    func groupName(name:String)
-}
-
 class GroupItemsTableViewController: UITableViewController {
     
     
     var stars = [StarRealm]()
     var name: String!
-    var groupdelegate: GroupItemsTableViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

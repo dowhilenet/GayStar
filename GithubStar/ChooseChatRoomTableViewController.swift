@@ -16,7 +16,7 @@ class ChooseChatRoomTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerClass(GroupTableViewCell.classForCoder(), forCellReuseIdentifier: "reuseIdentifier")
+        tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "reuseIdentifier")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         //用户登陆
         WilddogManager.wilddogLogin()
@@ -49,9 +49,9 @@ class ChooseChatRoomTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! GroupTableViewCell
-        let room = rooms[indexPath.row]
-        cell.setButtonTitle(room.roomName)
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+//        let room = rooms[indexPath.row]
+//        cell.setButtonTitle(room.roomName)
         return cell
     }
     

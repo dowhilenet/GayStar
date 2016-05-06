@@ -103,8 +103,4 @@ class ShowRepositoryListTableViewController: UITableViewController{
         starsSectionTitles.sortInPlace({$0 < $1})
     }
     
-
-    func groupName(name:String){
-        groupName = name
-    }
 }
