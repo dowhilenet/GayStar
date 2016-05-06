@@ -10,6 +10,12 @@
 		AB058E591CDC798F009D8B91 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E581CDC798F009D8B91 /* TagCollectionViewCell.swift */; };
 		AB058E5B1CDC836E009D8B91 /* ReferenceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E5A1CDC836E009D8B91 /* ReferenceCollectionViewController.swift */; };
 		AB058E5D1CDC863C009D8B91 /* TagViewFloutLaout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E5C1CDC863C009D8B91 /* TagViewFloutLaout.swift */; };
+		AB058E5F1CDC9574009D8B91 /* StarBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E5E1CDC9574009D8B91 /* StarBase.swift */; };
+		AB058E611CDC95C8009D8B91 /* TrendingStarRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E601CDC95C8009D8B91 /* TrendingStarRealm.swift */; };
+		AB058E631CDC9652009D8B91 /* StarReadMeRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E621CDC9652009D8B91 /* StarReadMeRealm.swift */; };
+		AB058E651CDC9691009D8B91 /* StarGroupRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E641CDC9691009D8B91 /* StarGroupRealm.swift */; };
+		AB058E671CDC96DA009D8B91 /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E661CDC96DA009D8B91 /* UserRealm.swift */; };
+		AB058E691CDC972C009D8B91 /* TrendingDelevloperRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E681CDC972C009D8B91 /* TrendingDelevloperRealm.swift */; };
 		AB0A506F1CA2F3C400B334CA /* StarDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */; };
 		AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */; };
 		AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */; };
@@ -43,7 +49,6 @@
 		AB8AC21F1CD0C03600430187 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21C1CD0C03600430187 /* RealmSwift.framework */; };
 		AB8AC2201CD0C03600430187 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21C1CD0C03600430187 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AB8AC2241CD0C24400430187 /* StarRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2231CD0C24400430187 /* StarRealm.swift */; };
-		ABB73BA51CA192B3006BE2FC /* StarSQLiteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB73BA41CA192B3006BE2FC /* StarSQLiteModel.swift */; };
 		ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */; };
 		ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1BF41C4730890026A3AC /* AppDelegate.swift */; };
 		ABDA1BFC1C4730890026A3AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1BFB1C4730890026A3AC /* Assets.xcassets */; };
@@ -96,6 +101,12 @@
 		AB058E581CDC798F009D8B91 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB058E5A1CDC836E009D8B91 /* ReferenceCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceCollectionViewController.swift; sourceTree = "<group>"; };
 		AB058E5C1CDC863C009D8B91 /* TagViewFloutLaout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewFloutLaout.swift; sourceTree = "<group>"; };
+		AB058E5E1CDC9574009D8B91 /* StarBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarBase.swift; sourceTree = "<group>"; };
+		AB058E601CDC95C8009D8B91 /* TrendingStarRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingStarRealm.swift; sourceTree = "<group>"; };
+		AB058E621CDC9652009D8B91 /* StarReadMeRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarReadMeRealm.swift; sourceTree = "<group>"; };
+		AB058E641CDC9691009D8B91 /* StarGroupRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarGroupRealm.swift; sourceTree = "<group>"; };
+		AB058E661CDC96DA009D8B91 /* UserRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
+		AB058E681CDC972C009D8B91 /* TrendingDelevloperRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDelevloperRealm.swift; sourceTree = "<group>"; };
 		AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarDataModel.swift; sourceTree = "<group>"; };
 		AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositionInfoViewController.swift; sourceTree = "<group>"; };
 		AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevelopinfoViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +138,6 @@
 		AB8AC21B1CD0C03600430187 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		AB8AC21C1CD0C03600430187 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		AB8AC2231CD0C24400430187 /* StarRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRealm.swift; sourceTree = "<group>"; };
-		ABB73BA41CA192B3006BE2FC /* StarSQLiteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarSQLiteModel.swift; sourceTree = "<group>"; };
 		ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemsTableViewController.swift; sourceTree = "<group>"; };
 		ABDA1BF11C4730890026A3AC /* GithubStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDA1BF41C4730890026A3AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +191,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB058E6A1CDC9768009D8B91 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				AB8AC2231CD0C24400430187 /* StarRealm.swift */,
+				AB058E681CDC972C009D8B91 /* TrendingDelevloperRealm.swift */,
+				AB058E661CDC96DA009D8B91 /* UserRealm.swift */,
+				AB058E601CDC95C8009D8B91 /* TrendingStarRealm.swift */,
+				AB058E641CDC9691009D8B91 /* StarGroupRealm.swift */,
+				AB058E621CDC9652009D8B91 /* StarReadMeRealm.swift */,
+				AB058E5E1CDC9574009D8B91 /* StarBase.swift */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
 		AB40E3CF1CA90B04001642CC /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,9 +383,8 @@
 			children = (
 				ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */,
 				AB40E3EA1CAAAC05001642CC /* UserModel.swift */,
-				ABB73BA41CA192B3006BE2FC /* StarSQLiteModel.swift */,
 				AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */,
-				AB8AC2231CD0C24400430187 /* StarRealm.swift */,
+				AB058E6A1CDC9768009D8B91 /* Realm */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -560,7 +583,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABB73BA51CA192B3006BE2FC /* StarSQLiteModel.swift in Sources */,
+				AB058E691CDC972C009D8B91 /* TrendingDelevloperRealm.swift in Sources */,
+				AB058E611CDC95C8009D8B91 /* TrendingStarRealm.swift in Sources */,
 				ABE5A6991C63548A00CB7B5D /* SwiftPromptsView.swift in Sources */,
 				ABDFAA451C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift in Sources */,
 				ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */,
@@ -576,6 +600,7 @@
 				ABDA1C4F1C4733220026A3AC /* RequestData.swift in Sources */,
 				ABDA1C451C4732F70026A3AC /* StarsTableViewCell.swift in Sources */,
 				ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */,
+				AB058E631CDC9652009D8B91 /* StarReadMeRealm.swift in Sources */,
 				AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */,
 				AB40E3D51CA923DD001642CC /* ChatRightMessageCell.swift in Sources */,
 				AB1384A71CDC71E8008360D5 /* TagCollectionViewController.swift in Sources */,
@@ -590,6 +615,7 @@
 				AB058E5D1CDC863C009D8B91 /* TagViewFloutLaout.swift in Sources */,
 				ABE5A6981C63548A00CB7B5D /* SwiftPrompts.swift in Sources */,
 				ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */,
+				AB058E5F1CDC9574009D8B91 /* StarBase.swift in Sources */,
 				AB40E3DD1CA92F4A001642CC /* TakePhotoCenter.swift in Sources */,
 				AB058E5B1CDC836E009D8B91 /* ReferenceCollectionViewController.swift in Sources */,
 				ABDA1C0F1C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift in Sources */,
@@ -597,6 +623,7 @@
 				ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */,
 				ABDA1C4E1C4733220026A3AC /* ChooseLangueTableViewController.swift in Sources */,
 				ABDA1C0E1C4731640026A3AC /* DGElasticPullToRefreshConstants.swift in Sources */,
+				AB058E651CDC9691009D8B91 /* StarGroupRealm.swift in Sources */,
 				ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */,
 				ABDA1C501C4733220026A3AC /* TrendingRepositoriesViewController.swift in Sources */,
 				AB40E3D71CA928A0001642CC /* InputView.swift in Sources */,
@@ -604,6 +631,7 @@
 				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
 				AB40E3E91CAA9ED6001642CC /* WilddogManager.swift in Sources */,
 				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
+				AB058E671CDC96DA009D8B91 /* UserRealm.swift in Sources */,
 				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				AB40E3E01CA95241001642CC /* ChooseChatRoomTableViewController.swift in Sources */,
 				AB058E591CDC798F009D8B91 /* TagCollectionViewCell.swift in Sources */,

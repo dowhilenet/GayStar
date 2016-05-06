@@ -62,7 +62,7 @@ enum TrendingDevelopers:String{
     func getRepo(type:Int64, name:String?,back: (Bool) -> Void ) {
         
         var url = ""
-        var delevlopes = [TrendingDeveloperModel]()
+        var delevlopes = [TrendingDelevloperRealm]()
         if let name = name {
             url = baseurl + "/\(name)" + self.rawValue
         }else{
@@ -92,7 +92,7 @@ enum TrendingDevelopers:String{
                     let fullnameOne = fullName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                     let fullnameTwo = fullnameOne.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "()"))
                     let repoDescOne = repoDesc.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                    var dev = TrendingDeveloperModel()
+                    let dev = TrendingDelevloperRealm()
                     dev.imageURL = imageurl
                     dev.githubname = githubName
                     dev.repoName = repoName
@@ -105,9 +105,9 @@ enum TrendingDevelopers:String{
                 })//end for each
                 
                 guard delevlopes.count > 0 else { back(false) ;return }
-                TrendingDelevloperSQLite.deleteByType(type)
+                TrendingDelevloperRealm.deleteByType(type)
                 delevlopes.forEach({ (dev) in
-                    TrendingDelevloperSQLite.insert(dev)
+                    TrendingDelevloperRealm.insert(dev)
                 })
                 back(true)
                 

@@ -34,7 +34,7 @@ class ChooseChatRoomTableViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let stars = StarSQLiteModel.selectStars()
+        let stars = StarRealm.selectStars()
         stars.forEach { (star) in
             let room = WilddogChatRoomModel(star: star)
             rooms.append(room)
@@ -49,7 +49,7 @@ class ChooseChatRoomTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 //        let room = rooms[indexPath.row]
 //        cell.setButtonTitle(room.roomName)
         return cell

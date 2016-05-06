@@ -13,7 +13,7 @@ import SnapKit
 class TrendingDevelopinfoViewController: UIViewController {
 
     let webview = WKWebView()
-    var dev: TrendingDeveloperModel!
+    var dev: TrendingDelevloperRealm!
     
     override func viewDidLoad() {
         super.viewDidLoad()

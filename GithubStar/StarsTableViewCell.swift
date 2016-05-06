@@ -34,15 +34,15 @@ class StarsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func initCell(star:StarModelJsonProtocol) {
-        imageview.kf_setImageWithURL(NSURL(string: star.avatarURLjson)!)
-        autherName.text = star.autherNamejson
-        desText.text = star.decriptionjson
-        name.text = star.namejson
-        langLabel.text = star.languagejson
-        starLabel.text = String(star.stargazersCountjson)
-    }
-    
+//    func initCell(star:StarModelJsonProtocol) {
+//        imageview.kf_setImageWithURL(NSURL(string: star.avatarURLjson)!)
+//        autherName.text = star.autherNamejson
+//        desText.text = star.decriptionjson
+//        name.text = star.namejson
+//        langLabel.text = star.languagejson
+//        starLabel.text = String(star.stargazersCountjson)
+//    }
+//    
     func initCell(star:StarBase) {
         imageview.kf_setImageWithURL(NSURL(string: star.avatarURLjson)!)
         autherName.text = star.autherNamejson

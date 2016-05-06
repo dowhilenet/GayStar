@@ -28,7 +28,7 @@ class TrendingDevTableViewCell: UITableViewCell {
     }
     
     
-    func initCell(dev:[TrendingDeveloperModel],index:NSIndexPath) {
+    func initCell(dev:[TrendingDelevloperRealm],index:NSIndexPath) {
         phoneimage.kf_setImageWithURL(NSURL(string: dev[index.row].imageURL)!)
         githubname.text = dev[index.row].fullName
         fullname.text = dev[index.row].githubname

@@ -22,10 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootview = RootTabBarViewController()        
         window!.rootViewController = rootview
         window!.makeKeyAndVisible()
-        //创建数据库
-        ConnectingDataBase.sharedObject.db
-        //创建表
-        ConnectingDataBase.createTables()
+
         
         return true
     }

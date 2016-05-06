@@ -14,8 +14,8 @@ import SafariServices
 
 class TrendingRepositionInfoViewController: UIViewController {
     
-    var repositionModel: TrendingStarModel!
-    var starReadMe: StarReadMe!
+    var repositionModel: TrendingStarRealm!
+    var starReadMe: StarReadMeRealm!
     var readmeView: WKWebView!
     var html: String!
     var toolView: UIToolbar!
@@ -56,20 +56,15 @@ class TrendingRepositionInfoViewController: UIViewController {
         toolView.items = [flexibleSpace,tab1,flexibleSpace,tab2,flexibleSpace,tab3,flexibleSpace,tab4,flexibleSpace]
         
         //获取这个项目的README 文件。
-        let readme = StarReadMeSQLite.selectRreadMeByID(repositionModel.idjson)
-        if readme.readmeValue == nil {
-            loadReadMe()
-        }else {
+        if let _ = StarReadMeRealm.selectRreadMeByID(repositionModel.idjson) {
             loadreadMefromRealm(repositionModel.idjson)
+        }else {
+            loadReadMe()
         }
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     
     func loadReadMe() {
         ProgressHUD.show("Loading")
@@ -93,7 +88,8 @@ class TrendingRepositionInfoViewController: UIViewController {
     
     private func loadreadMefromRealm(id:Int64){
         
-        starReadMe = StarReadMeSQLite.selectRreadMeByID(id)
+        starReadMe = StarReadMeRealm.selectRreadMeByID(id)
+        
         if starReadMe.readmeValue == nil {
             load404()
         }else {

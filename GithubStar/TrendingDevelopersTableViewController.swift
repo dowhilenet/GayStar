@@ -14,10 +14,10 @@ class TrendingDevelopersTableViewController: UITableViewController{
     var currType = 0
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
     var contantView: PageMenuViewController!
-    var devs = [TrendingDeveloperModel]()
+    var devs = [TrendingDelevloperRealm]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        devs = TrendingDelevloperSQLite.selectByType(Int64(currType))
+        devs = TrendingDelevloperRealm.selectByType(Int64(currType))
         tableViewConfig()
     }
 
@@ -44,7 +44,7 @@ class TrendingDevelopersTableViewController: UITableViewController{
                 ProgressHUD.showError("Trending developers results are currently being dissected.")
                 return
             }
-            devs = TrendingDelevloperSQLite.selectByType(Int64(currType))
+            devs = TrendingDelevloperRealm.selectByType(Int64(currType))
             self.tableView.reloadData()
             self.tableView.dg_stopLoading()
         }

@@ -14,7 +14,7 @@ import SwiftyJSON
 class TrendingRepositoriesViewController: UITableViewController{
     
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-    var repositoriesModel = [TrendingStarModel]()
+    var repositoriesModel = [TrendingStarRealm]()
  
     var lang: String?
     var currType = 0
@@ -23,7 +23,7 @@ class TrendingRepositoriesViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repositoriesModel = TrendingStarSQLiteModel.selectStarsBytype(Int64(currType))
+        repositoriesModel = TrendingStarRealm.selectStarsBytype(Int64(currType))
         tableViewConfig()
     }
 
@@ -39,13 +39,6 @@ class TrendingRepositoriesViewController: UITableViewController{
         tableView.dg_setPullToRefreshFillColor(PullToRefreshFillColor)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
-    }
-    
-
-  
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -75,7 +68,6 @@ class TrendingRepositoriesViewController: UITableViewController{
         let model = repositoriesModel[indexPath.row]
         vc.repositionModel = model
         contantView.navigationController?.pushViewController(vc, animated: true)
-
     }
     
     /**
@@ -109,7 +101,8 @@ class TrendingRepositoriesViewController: UITableViewController{
         /**
          *  删除之前缓存的项目
          */
-        TrendingStarSQLiteModel.deleteAllStars(Int64(currType))
+        TrendingStarRealm.deleteAllStars(Int64(currType))
+
         names.forEach { (name) -> () in
             Alamofire.request(GithubAPI.repos(repos: name))
                 .responseData({ (res) -> Void in
@@ -125,9 +118,10 @@ class TrendingRepositoriesViewController: UITableViewController{
     
     func switchInsertType(data:NSData) {
         
-        let star = TrendingStarModel(jsonData: JSON(data: data), type: Int64(currType))
-        TrendingStarSQLiteModel.intsertStar(star)
-        repositoriesModel = TrendingStarSQLiteModel.selectStarsBytype(Int64(currType))
+        let star = TrendingStarRealm(jsonData: JSON(data: data))
+        star.type = Int64(currType)
+        TrendingStarRealm.intsertStar(star)
+        repositoriesModel = TrendingStarRealm.selectStarsBytype(Int64(currType))
         tableView.reloadData()
         tableView.dg_stopLoading()
     }
