@@ -40,20 +40,15 @@ class ReadMeDown{
                 options.encodeProblemUrlCharacters = true
                 var markdown               = Markdown(options: options)
                 let outputhtml             = markdown.transform(readmeString)
-                var stareadme = StarReadMe()
+                //实例化一个read me 模型
+                let stareadme = StarReadMeRealm()
                 stareadme.id = id
                 stareadme.readmeValue = outputhtml
-                stareadme.readmeURL = outputhtml
-                
-                let value = StarReadMeSQLite.selectRreadMeByID(id).readmeValue
-                var res = false
-                if let _ = value {
-                    
-                    res = StarReadMeSQLite.updateReadMe(id, values: outputhtml)
-                }else {
-                    res = StarReadMeSQLite.insertReadMe(stareadme)
-                }
+                stareadme.readmeURL = html_url
+                //插入到数据库
+                let res = StarReadMeRealm.insertReadMe(stareadme)
                 callback(res)
+               
             }else{
                 callback(false)
             }

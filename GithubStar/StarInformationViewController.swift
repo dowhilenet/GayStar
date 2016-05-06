@@ -8,15 +8,13 @@
 
 import UIKit
 import SnapKit
-//import Alamofire
 import WebKit
 import SafariServices
-//import SwiftyJSON
 
 class StarInformationViewController: UIViewController{
     
     var item: StarRealm!
-    var starReadMe: StarReadMe!
+    var starReadMe: StarReadMeRealm!
     var webview: WKWebView!
     var html: String!
     let loadingView = DGElasticPullToRefreshLoadingViewCircle()
@@ -30,12 +28,12 @@ class StarInformationViewController: UIViewController{
         //下拉刷新控件的配置
         pullView()
         
-        starReadMe = StarReadMeSQLite.selectRreadMeByID(item.idjson)
-        if starReadMe.readmeValue == nil {
+        guard let _ = StarReadMeRealm.selectRreadMeByID(self.item.idjson) else {
+            //如果本地数据库没有的话，从网络获取
             loadReadme()
-        }else {
-            loadreadMefromRealm(item.idjson)
+            return
         }
+        loadreadMefromRealm(item.idjson)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -126,7 +124,8 @@ class StarInformationViewController: UIViewController{
      */
     
      func loadreadMefromRealm(id:Int64){
-        starReadMe = StarReadMeSQLite.selectRreadMeByID(id)
+        
+        starReadMe = StarReadMeRealm.selectRreadMeByID(self.item.idjson)
         if starReadMe.readmeValue != nil {
             html = htmlheader(starReadMe.readmeValue!)
             webview.loadHTMLString(html, baseURL: nil)
@@ -136,6 +135,8 @@ class StarInformationViewController: UIViewController{
             load404()
         }
     }
+    
+    
     
     /**
      404页面

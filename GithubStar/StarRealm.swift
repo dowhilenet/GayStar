@@ -221,7 +221,7 @@ class StarReadMeRealm: Object {
     }
     
     /**
-     插入数据
+     插入数据（更新）
      
      - parameter data: readme model
      
@@ -247,33 +247,8 @@ class StarReadMeRealm: Object {
      - returns: Star read me
      */
     class func selectRreadMeByID(id:Int64) -> StarReadMeRealm? {
-        return RealmData.share.realm.objects(StarReadMeRealm).filter(NSPredicate(format: "id = %@", id)).first
+        return RealmData.share.realm.objects(StarReadMeRealm).filter(NSPredicate(format: "id == %@", NSNumber(longLong: id))).first
     }
-    
-    /**
-     更新 read me 文件
-     
-     - parameter id:     要跟新的id
-     - parameter values: 要更新的内容
-     
-     - returns: true or false
-     */
-    class func updateReadMe(id: Int64, values: String) -> Bool {
-        let res = false
-        let readme = StarReadMeRealm()
-        readme.id = id
-        readme.readmeValue = values
-        do {
-            try RealmData.share.realm.write({ 
-                RealmData.share.realm.add(readme, update: true)
-            })
-            return !res
-        } catch {
-            return res
-        }
-    }
-    
-    
 }
 
 class StarGroupRealm: Object {
