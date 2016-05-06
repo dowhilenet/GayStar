@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB058E591CDC798F009D8B91 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E581CDC798F009D8B91 /* TagCollectionViewCell.swift */; };
 		AB0A506F1CA2F3C400B334CA /* StarDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */; };
 		AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */; };
 		AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */; };
+		AB1384A71CDC71E8008360D5 /* TagCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1384A61CDC71E8008360D5 /* TagCollectionViewController.swift */; };
 		AB40E3D11CA90B57001642CC /* ChatLeftMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3D01CA90B57001642CC /* ChatLeftMessageCell.swift */; };
 		AB40E3D31CA91E3C001642CC /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3D21CA91E3C001642CC /* ChatModel.swift */; };
 		AB40E3D51CA923DD001642CC /* ChatRightMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3D41CA923DD001642CC /* ChatRightMessageCell.swift */; };
@@ -32,10 +34,8 @@
 		AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */; };
 		AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */; };
 		AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */; };
-		AB72320C1C620819004565BC /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72320B1C620819004565BC /* TagViewController.swift */; };
 		AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */; };
 		AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8253C31C73F60900A0E3C0 /* lang.plist */; };
-		AB8395EA1CA128F800DE70AD /* StarTableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */; };
 		AB8AC2161CCFBDC700430187 /* StarRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */; };
 		AB8AC21D1CD0C03600430187 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21B1CD0C03600430187 /* Realm.framework */; };
 		AB8AC21E1CD0C03600430187 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21B1CD0C03600430187 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -93,9 +93,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AB058E581CDC798F009D8B91 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarDataModel.swift; sourceTree = "<group>"; };
 		AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositionInfoViewController.swift; sourceTree = "<group>"; };
 		AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevelopinfoViewController.swift; sourceTree = "<group>"; };
+		AB1384A61CDC71E8008360D5 /* TagCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewController.swift; sourceTree = "<group>"; };
 		AB40E3D01CA90B57001642CC /* ChatLeftMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLeftMessageCell.swift; sourceTree = "<group>"; };
 		AB40E3D21CA91E3C001642CC /* ChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		AB40E3D41CA923DD001642CC /* ChatRightMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRightMessageCell.swift; sourceTree = "<group>"; };
@@ -118,10 +120,8 @@
 		AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevTableViewCell.swift; sourceTree = "<group>"; };
 		AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowRepositoryListTableViewController.swift; sourceTree = "<group>"; };
-		AB72320B1C620819004565BC /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcasesRequest.swift; sourceTree = "<group>"; };
 		AB8253C31C73F60900A0E3C0 /* lang.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = lang.plist; sourceTree = "<group>"; };
-		AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarTableProtocol.swift; sourceTree = "<group>"; };
 		AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRequestHelper.swift; sourceTree = "<group>"; };
 		AB8AC21B1CD0C03600430187 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		AB8AC21C1CD0C03600430187 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
@@ -403,8 +403,8 @@
 				ABDA1C3B1C4732F70026A3AC /* StarInformationViewController.swift */,
 				ABDA1C3E1C4732F70026A3AC /* StarsTableViewCell.swift */,
 				ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */,
-				AB8395E91CA128F800DE70AD /* StarTableProtocol.swift */,
-				AB72320B1C620819004565BC /* TagViewController.swift */,
+				AB1384A61CDC71E8008360D5 /* TagCollectionViewController.swift */,
+				AB058E581CDC798F009D8B91 /* TagCollectionViewCell.swift */,
 			);
 			name = Star;
 			sourceTree = "<group>";
@@ -579,6 +579,7 @@
 				ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */,
 				AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */,
 				AB40E3D51CA923DD001642CC /* ChatRightMessageCell.swift in Sources */,
+				AB1384A71CDC71E8008360D5 /* TagCollectionViewController.swift in Sources */,
 				AB40E3EB1CAAAC05001642CC /* UserModel.swift in Sources */,
 				AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */,
 				AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */,
@@ -589,12 +590,10 @@
 				ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */,
 				ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */,
 				ABE5A6981C63548A00CB7B5D /* SwiftPrompts.swift in Sources */,
-				AB72320C1C620819004565BC /* TagViewController.swift in Sources */,
 				ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */,
 				AB40E3DD1CA92F4A001642CC /* TakePhotoCenter.swift in Sources */,
 				ABDA1C0F1C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				ABE5A69A1C63548A00CB7B5D /* UIImageEffects.swift in Sources */,
-				AB8395EA1CA128F800DE70AD /* StarTableProtocol.swift in Sources */,
 				ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */,
 				ABDA1C4E1C4733220026A3AC /* ChooseLangueTableViewController.swift in Sources */,
 				ABDA1C0E1C4731640026A3AC /* DGElasticPullToRefreshConstants.swift in Sources */,
@@ -607,6 +606,7 @@
 				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
 				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				AB40E3E01CA95241001642CC /* ChooseChatRoomTableViewController.swift in Sources */,
+				AB058E591CDC798F009D8B91 /* TagCollectionViewCell.swift in Sources */,
 				AB0A506F1CA2F3C400B334CA /* StarDataModel.swift in Sources */,
 				AB40E3D91CA92D8B001642CC /* ChatTableViewController.swift in Sources */,
 			);

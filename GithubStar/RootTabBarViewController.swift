@@ -56,7 +56,13 @@ class RootTabBarViewController: UITabBarController {
         fourTabBarItem.title = "Chat"
         fourViewController.tabBarItem = fourTabBarItem
         
-        self.viewControllers = [firstViewController,secViewController,thirdViewController,fourViewController]
+        //5
+        let layout = UICollectionViewFlowLayout()
+        let fiveViewController = UINavigationController(rootViewController: TagCollectionViewController(collectionViewLayout: layout))
+        let fiveTabBarItem = UITabBarItem()
+        fiveTabBarItem.title = "Cool"
+        fiveViewController.tabBarItem = fiveTabBarItem
+        self.viewControllers = [firstViewController,secViewController,thirdViewController,fourViewController,fiveViewController]
 
 
         

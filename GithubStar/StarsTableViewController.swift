@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Alamofire
 import SwiftyUserDefaults
-import SwiftyJSON
+
 
 
 class StarsTableViewController: UITableViewController {
@@ -198,7 +197,7 @@ extension UItableviewDataSource {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
         let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Group") { (UITableaction, indexpath) -> Void in
-            let vc = TagViewController()
+            let vc = TagCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
             vc.item = self.stars[indexPath.row]
             //隐藏tabar
             vc.hidesBottomBarWhenPushed = true
