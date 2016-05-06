@@ -30,10 +30,9 @@ class GroupItemsTableViewController: UITableViewController {
             240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0,
             alpha: 0.8)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(GroupItemsTableViewController.addRepository))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.addRepository))
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         self.title = name
-        
         stars = StarRealm.selectStarByGroupName(name)
     }
     
@@ -42,10 +41,7 @@ class GroupItemsTableViewController: UITableViewController {
         stars = StarRealm.selectStarByGroupName(name)
         self.tableView.reloadData()
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
 
     // MARK: - Table view data source
 
@@ -73,14 +69,14 @@ class GroupItemsTableViewController: UITableViewController {
         let vc = StarInformationViewController()
         vc.hidesBottomBarWhenPushed = true
         vc.item = star
-        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if editingStyle == .Delete {
-            StarSQLiteModel.deleteStarFromGroup(stars[indexPath.row].idjson)
+            let deleteStar = StarRealm.selectStarByID(stars[indexPath.row].idjson)
+            StarRealm.updateGroup(deleteStar!, groupName: "")
             stars = StarRealm.selectStarByGroupName(name)
             self.tableView.reloadData()
         }
@@ -93,18 +89,13 @@ class GroupItemsTableViewController: UITableViewController {
 extension GroupItemsTableViewController{
     func addRepository(){
         let showListView = ShowRepositoryListTableViewController()
-        self.groupdelegate = showListView
-        groupdelegate?.groupName(name)
+        showListView.groupName = name
         navigationController?.pushViewController(showListView, animated: true)
     }
 }
 
 
-extension GroupItemsTableViewController:ReferenceTableViewControllerDelegate{
-    func didSelectedGroupDelegate(group: StarGroupRealm) {
-        name = group.name
-    }
-}
+
 
 
 

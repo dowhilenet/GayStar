@@ -1,5 +1,5 @@
 //
-//  TagCollectionViewController.swift
+//  ReferenceCollectionViewController.swift
 //  GithubStar
 //
 //  Created by xiaolei on 16/5/6.
@@ -7,30 +7,37 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
-private let reuseIdentifier = "TagCell"
 
-class TagCollectionViewController: UICollectionViewController{
+private let reuseIdentifier = "ReferenceCell"
 
-    var item: StarRealm!
+class ReferenceCollectionViewController: UICollectionViewController{
+
     var names = [StarGroupRealm]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Register cell classes
+        title = "Group"
         collectionView!.registerClass(TagCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.backgroundColor = UIColor.whiteColor()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.addgroups(_:)))
         
-        self.title = "Group"
         names = StarGroupRealm.select()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.add))
+        guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
     }
 
-    // MARK: UICollectionViewDataSource
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        names = StarGroupRealm.select()
+        collectionView?.reloadData()
+    }
+
+    // MARK: UICollectionVsiewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -49,20 +56,17 @@ class TagCollectionViewController: UICollectionViewController{
     }
 
     // MARK: UICollectionViewDelegate
-     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let name = names[indexPath.row].name
-        let star = StarRealm.selectStarByID(item.idjson)
-        guard let Star = star else { return }
-        StarRealm.updateGroup(Star, groupName: name)
-        self.navigationController?.popViewControllerAnimated(true)
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let controller = GroupItemsTableViewController()
+        controller.hidesBottomBarWhenPushed = true
+        controller.name = names[indexPath.row].name
+        self.navigationController?.pushViewController(controller, animated: true)
     }
-    
-    // MARK: UICollectionViewDelegateFlowLayout
- 
 }
 
-extension TagCollectionViewController {
-    func add(){
+extension ReferenceCollectionViewController {
+    func addgroups(item:UIBarButtonItem){
         let alert = UIAlertController(title: "Add Group", message: nil, preferredStyle: .Alert)
         
         alert.addTextFieldWithConfigurationHandler { (uitextfield) -> Void in
@@ -90,3 +94,4 @@ extension TagCollectionViewController {
         presentViewController(alert, animated: true, completion: nil)
     }
 }
+

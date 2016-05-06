@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AB058E591CDC798F009D8B91 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E581CDC798F009D8B91 /* TagCollectionViewCell.swift */; };
+		AB058E5B1CDC836E009D8B91 /* ReferenceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E5A1CDC836E009D8B91 /* ReferenceCollectionViewController.swift */; };
+		AB058E5D1CDC863C009D8B91 /* TagViewFloutLaout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E5C1CDC863C009D8B91 /* TagViewFloutLaout.swift */; };
 		AB0A506F1CA2F3C400B334CA /* StarDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */; };
 		AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */; };
 		AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */; };
@@ -62,7 +64,6 @@
 		ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C301C4732880026A3AC /* GithubAPI.swift */; };
 		ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C311C4732880026A3AC /* ReadMeDown.swift */; };
 		ABDA1C371C4732C10026A3AC /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C361C4732C10026A3AC /* RootTabBarViewController.swift */; };
-		ABDA1C411C4732F70026A3AC /* ReferenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3A1C4732F70026A3AC /* ReferenceTableViewController.swift */; };
 		ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3B1C4732F70026A3AC /* StarInformationViewController.swift */; };
 		ABDA1C451C4732F70026A3AC /* StarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3E1C4732F70026A3AC /* StarsTableViewCell.swift */; };
 		ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */; };
@@ -94,6 +95,8 @@
 
 /* Begin PBXFileReference section */
 		AB058E581CDC798F009D8B91 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB058E5A1CDC836E009D8B91 /* ReferenceCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceCollectionViewController.swift; sourceTree = "<group>"; };
+		AB058E5C1CDC863C009D8B91 /* TagViewFloutLaout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewFloutLaout.swift; sourceTree = "<group>"; };
 		AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarDataModel.swift; sourceTree = "<group>"; };
 		AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositionInfoViewController.swift; sourceTree = "<group>"; };
 		AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevelopinfoViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +153,6 @@
 		ABDA1C301C4732880026A3AC /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		ABDA1C311C4732880026A3AC /* ReadMeDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMeDown.swift; sourceTree = "<group>"; };
 		ABDA1C361C4732C10026A3AC /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
-		ABDA1C3A1C4732F70026A3AC /* ReferenceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceTableViewController.swift; sourceTree = "<group>"; };
 		ABDA1C3B1C4732F70026A3AC /* StarInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarInformationViewController.swift; sourceTree = "<group>"; };
 		ABDA1C3E1C4732F70026A3AC /* StarsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsTableViewCell.swift; sourceTree = "<group>"; };
 		ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsTableViewController.swift; sourceTree = "<group>"; };
@@ -226,7 +228,8 @@
 		AB6B74331C55F5C900FDBBE9 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
-				ABDA1C3A1C4732F70026A3AC /* ReferenceTableViewController.swift */,
+				AB058E5C1CDC863C009D8B91 /* TagViewFloutLaout.swift */,
+				AB058E5A1CDC836E009D8B91 /* ReferenceCollectionViewController.swift */,
 				ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */,
 				AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */,
 				AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */,
@@ -564,7 +567,6 @@
 				ABE5A6991C63548A00CB7B5D /* SwiftPromptsView.swift in Sources */,
 				ABDFAA451C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift in Sources */,
 				ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */,
-				ABDA1C411C4732F70026A3AC /* ReferenceTableViewController.swift in Sources */,
 				AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */,
 				AB8AC2241CD0C24400430187 /* StarRealm.swift in Sources */,
 				ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */,
@@ -589,9 +591,11 @@
 				ABE5A69C1C63736C00CB7B5D /* PageMenuViewController.swift in Sources */,
 				ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */,
 				ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */,
+				AB058E5D1CDC863C009D8B91 /* TagViewFloutLaout.swift in Sources */,
 				ABE5A6981C63548A00CB7B5D /* SwiftPrompts.swift in Sources */,
 				ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */,
 				AB40E3DD1CA92F4A001642CC /* TakePhotoCenter.swift in Sources */,
+				AB058E5B1CDC836E009D8B91 /* ReferenceCollectionViewController.swift in Sources */,
 				ABDA1C0F1C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				ABE5A69A1C63548A00CB7B5D /* UIImageEffects.swift in Sources */,
 				ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */,

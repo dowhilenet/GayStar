@@ -86,6 +86,19 @@ class StarRealm: StarBase {
             return res
         }
     }
+    
+    class func updateGroup(star: StarRealm,groupName:String) -> Bool {
+        let res = false
+        do {
+            try RealmData.share.realm.write({ 
+                star.setValue(groupName, forKeyPath: "groupsName")
+            })
+            return !res
+        }catch {
+            return res
+        }
+    }
+    
     /**
      向数据库中插入新的数据
      

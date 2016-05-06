@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTableViewControllerDelegate{
+class ShowRepositoryListTableViewController: UITableViewController{
 
     
-    var stars = [StarDataModel]()
-    var starsdic = [String:[StarDataModel]]()
+    var stars = [StarRealm]()
+    var starsdic = [String:[StarRealm]]()
     var starsSectionTitles = [String]()
     let starsIndexTitles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     var groupName: String!
@@ -24,14 +24,8 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
         self.tableView.estimatedRowHeight = 88
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        stars = StarSQLiteModel.selectStarsByGroups()
+        stars = StarRealm.selectStarsByGroups()
         createStarsDic()
-    }
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -90,7 +84,7 @@ class ShowRepositoryListTableViewController: UITableViewController, GroupItemsTa
         let starkey = starsSectionTitles[indexPath.section]
         let stars = starsdic[starkey]
         let selectstar = stars![indexPath.row]
-        StarSQLiteModel.updateStarGroup(selectstar.idjson, name: groupName)
+        StarRealm.updateGroup(selectstar, groupName: groupName)
         navigationController?.popViewControllerAnimated(true)
     }
     

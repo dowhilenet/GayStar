@@ -197,7 +197,9 @@ extension UItableviewDataSource {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
         let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Group") { (UITableaction, indexpath) -> Void in
-            let vc = TagCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+            let layout = TagViewFloutLaout()
+            layout.flowLaoutInit()
+            let vc = TagCollectionViewController(collectionViewLayout: layout)
             vc.item = self.stars[indexPath.row]
             //隐藏tabar
             vc.hidesBottomBarWhenPushed = true
