@@ -35,15 +35,15 @@ class UserRealm: Object {
     dynamic var createdAt: String = ""
     dynamic var updatedAt: String = ""
     
-//    override static func primaryKey() -> String? {
-//        return "id"
-//    }
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
     private static func insert(data:UserRealm) -> Bool {
         let res = false
         do {
             try RealmData.share.realm.write({ 
-                RealmData.share.realm.add(data)
+                RealmData.share.realm.add(data,update: true)
             })
             return !res
         }catch {

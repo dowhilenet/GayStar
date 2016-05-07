@@ -115,10 +115,10 @@ class StarRealm: StarBase {
      
      - returns: 分组下的项目数目
      */
-    class func selecCount(name: String) -> Int {
-        let predicate = NSPredicate(format: "groupsName  = %@", name)
-        return RealmData.share.realm.objects(StarRealm).filter(predicate).count
-    }
+//    class func selecCount(name: String) -> Int {
+//        let predicate = NSPredicate(format: "groupsName  = %@", name)
+//        return RealmData.share.realm.objects(StarRealm).filter(predicate).count
+//    }
     /**
      获取某个分组下的所有数目
      
