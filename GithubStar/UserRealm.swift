@@ -12,38 +12,38 @@ import Alamofire
 
 class UserRealm: Object {
     
-    dynamic var login = ""
-    dynamic var id = ""
-    dynamic var avatarURL = ""
-    dynamic var htmlurl = ""
-    dynamic var followersURL = ""
-    dynamic var followingURL = ""
-    dynamic var gistsURL = ""
-    dynamic var starredURL = ""
-    dynamic var subscriptionsURL = ""
-    dynamic var organiationsURL = ""
-    dynamic var reposURL = ""
-    dynamic var eventsURL = ""
-    dynamic var name = ""
-    dynamic var blog = ""
-    dynamic var location = ""
-    dynamic var email = ""
-    dynamic var publicRepos = ""
-    dynamic var publicGists = ""
-    dynamic var followers = ""
-    dynamic var following = ""
-    dynamic var createdAt = ""
-    dynamic var updatedAt = ""
+    dynamic var login: String = ""
+    dynamic var id: String = ""
+    dynamic var avatarURL: String = ""
+    dynamic var htmlurl: String = ""
+    dynamic var followersURL: String = ""
+    dynamic var followingURL: String = ""
+    dynamic var gistsURL: String = ""
+    dynamic var starredURL: String = ""
+    dynamic var subscriptionsURL: String = ""
+    dynamic var organiationsURL: String = ""
+    dynamic var reposURL: String = ""
+    dynamic var eventsURL: String = ""
+    dynamic var name: String = ""
+    dynamic var blog: String = ""
+    dynamic var location: String = ""
+    dynamic var email: String = ""
+    dynamic var publicRepos: String = ""
+    dynamic var publicGists: String = ""
+    dynamic var followers: String = ""
+    dynamic var following: String = ""
+    dynamic var createdAt: String = ""
+    dynamic var updatedAt: String = ""
     
-    override static func primaryKey() -> String? {
-        return "id"
-    }
+//    override static func primaryKey() -> String? {
+//        return "id"
+//    }
     
     private static func insert(data:UserRealm) -> Bool {
         let res = false
         do {
             try RealmData.share.realm.write({ 
-                RealmData.share.realm.add(data, update: true)
+                RealmData.share.realm.add(data)
             })
             return !res
         }catch {

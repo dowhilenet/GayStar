@@ -23,7 +23,7 @@ class ChooseChatRoomTableViewController: UITableViewController {
         //检测是否有用户信息
         let user = UserRealm.selectUser()
         
-        guard user == nil else { GithubOAuth.GithubOAuth(self); return }
+        guard let _ = user else { GithubOAuth.GithubOAuth(self); return }
         
     }
 
@@ -50,8 +50,8 @@ class ChooseChatRoomTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-//        let room = rooms[indexPath.row]
-//        cell.setButtonTitle(room.roomName)
+        let room = rooms[indexPath.row]
+        cell.textLabel?.text = room.roomName
         return cell
     }
     
