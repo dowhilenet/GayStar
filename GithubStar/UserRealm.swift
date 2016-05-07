@@ -35,6 +35,25 @@ class UserRealm: Object {
     dynamic var createdAt = ""
     dynamic var updatedAt = ""
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    private static func insert(data:UserRealm) -> Bool {
+        let res = false
+        do {
+            try RealmData.share.realm.write({ 
+                RealmData.share.realm.add(data, update: true)
+            })
+            return !res
+        }catch {
+            return res
+        }
+    }
+    
+    static func selectUser() -> UserRealm? {
+        return RealmData.share.realm.objects(UserRealm).first
+    }
     
     private convenience init(data: NSData) {
         self.init()
@@ -62,7 +81,11 @@ class UserRealm: Object {
         createdAt = json["created_at"].stringValue
         updatedAt = json["updated_at"].stringValue
     }
-    
+    /**
+     请求用户数据
+     
+     - parameter back: 返回用户的数据
+     */
     private static func requestData(back: (data: NSData?) -> Void)  {
         Alamofire.request(GithubAPI.me).responseJSON { (res) in
             guard let res = res.data else {
@@ -73,12 +96,19 @@ class UserRealm: Object {
         }
     }
     
-    static func requestDataAndInseret() -> Bool {
-        var res = false
+    /**
+     请求数据并插入到数据库
+     
+     - returns: true or false
+     */
+    static func requestDataAndInseret() {
         requestData { (data) in
             guard let data = data else { print("no data") ;return }
-            
+            let user = UserRealm(data: data)
+            insert(user)
         }
-        return res
+        
     }
+    
+    
 }

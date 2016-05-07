@@ -16,7 +16,6 @@
 		AB058E651CDC9691009D8B91 /* StarGroupRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E641CDC9691009D8B91 /* StarGroupRealm.swift */; };
 		AB058E671CDC96DA009D8B91 /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E661CDC96DA009D8B91 /* UserRealm.swift */; };
 		AB058E691CDC972C009D8B91 /* TrendingDelevloperRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058E681CDC972C009D8B91 /* TrendingDelevloperRealm.swift */; };
-		AB0A506F1CA2F3C400B334CA /* StarDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */; };
 		AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */; };
 		AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */; };
 		AB1384A71CDC71E8008360D5 /* TagCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1384A61CDC71E8008360D5 /* TagCollectionViewController.swift */; };
@@ -32,7 +31,6 @@
 		AB40E3E51CAA9E26001642CC /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */; };
 		AB40E3E71CAA9E3A001642CC /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */; };
 		AB40E3E91CAA9ED6001642CC /* WilddogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3E81CAA9ED6001642CC /* WilddogManager.swift */; };
-		AB40E3EB1CAAAC05001642CC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3EA1CAAAC05001642CC /* UserModel.swift */; };
 		AB552E711C60611500D6914C /* Orbitron-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E701C60611500D6914C /* Orbitron-Regular.ttf */; };
 		AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */; };
 		AB552E751C6064FD00D6914C /* Candal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E741C6064FD00D6914C /* Candal.ttf */; };
@@ -107,7 +105,6 @@
 		AB058E641CDC9691009D8B91 /* StarGroupRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarGroupRealm.swift; sourceTree = "<group>"; };
 		AB058E661CDC96DA009D8B91 /* UserRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
 		AB058E681CDC972C009D8B91 /* TrendingDelevloperRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDelevloperRealm.swift; sourceTree = "<group>"; };
-		AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarDataModel.swift; sourceTree = "<group>"; };
 		AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositionInfoViewController.swift; sourceTree = "<group>"; };
 		AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevelopinfoViewController.swift; sourceTree = "<group>"; };
 		AB1384A61CDC71E8008360D5 /* TagCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewController.swift; sourceTree = "<group>"; };
@@ -123,7 +120,6 @@
 		AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		AB40E3E81CAA9ED6001642CC /* WilddogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WilddogManager.swift; sourceTree = "<group>"; };
-		AB40E3EA1CAAAC05001642CC /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AB552E701C60611500D6914C /* Orbitron-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Orbitron-Regular.ttf"; path = "../Orbitron-Regular.ttf"; sourceTree = "<group>"; };
 		AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		AB552E741C6064FD00D6914C /* Candal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Candal.ttf; path = ../Candal.ttf; sourceTree = "<group>"; };
@@ -382,8 +378,6 @@
 			isa = PBXGroup;
 			children = (
 				ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */,
-				AB40E3EA1CAAAC05001642CC /* UserModel.swift */,
-				AB0A506E1CA2F3C400B334CA /* StarDataModel.swift */,
 				AB058E6A1CDC9768009D8B91 /* Realm */,
 			);
 			name = Model;
@@ -604,7 +598,6 @@
 				AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */,
 				AB40E3D51CA923DD001642CC /* ChatRightMessageCell.swift in Sources */,
 				AB1384A71CDC71E8008360D5 /* TagCollectionViewController.swift in Sources */,
-				AB40E3EB1CAAAC05001642CC /* UserModel.swift in Sources */,
 				AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */,
 				AB8AC2161CCFBDC700430187 /* StarRequestHelper.swift in Sources */,
 				ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */,
@@ -635,7 +628,6 @@
 				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				AB40E3E01CA95241001642CC /* ChooseChatRoomTableViewController.swift in Sources */,
 				AB058E591CDC798F009D8B91 /* TagCollectionViewCell.swift in Sources */,
-				AB0A506F1CA2F3C400B334CA /* StarDataModel.swift in Sources */,
 				AB40E3D91CA92D8B001642CC /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

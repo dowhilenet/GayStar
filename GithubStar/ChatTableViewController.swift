@@ -136,7 +136,7 @@ class ChatTableViewController: UIViewController {
      */
     func fullmessages() {
         //选择当前登陆用户
-        let model = UserSQLiteModel.selectData()
+        let model = UserRealm.selectUser()!
         //聊天室模型
         var chatModel = ChatModel()
         //根据房间号添加子节点

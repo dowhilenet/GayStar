@@ -37,7 +37,7 @@ class StarsTableViewController: UITableViewController {
         stars = StarRealm.selectStars()
         //检查是否需要更新。
         updatestar()
-        UserModel.requestDataAndInseret()
+        UserRealm.requestDataAndInseret()
 
     }
 

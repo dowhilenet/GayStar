@@ -21,9 +21,9 @@ class ChooseChatRoomTableViewController: UITableViewController {
         //用户登陆
         WilddogManager.wilddogLogin()
         //检测是否有用户信息
-        let user = UserSQLiteModel.selectData()
+        let user = UserRealm.selectUser()
         
-        guard user.id != "" else { GithubOAuth.GithubOAuth(self); return }
+        guard user == nil else { GithubOAuth.GithubOAuth(self); return }
         
     }
 

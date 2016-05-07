@@ -44,7 +44,7 @@ struct ChatModel {
     private static func configMe() -> ChatModel {
         var model = ChatModel()
         //初始化一些公共信息
-        let user = UserSQLiteModel.selectData()
+        let user = UserRealm.selectUser()!
         model.userId = user.id
         model.userName = user.name
         model.headImage = user.avatarURL

@@ -150,7 +150,7 @@ class GithubOAuth{
         oauthswift.authorizeWithCallbackURL(NSURL(string: "GITStare://oauth-callback/github")!, scope: "user,repo", state: state,success: { (credential, response, parameters) -> Void in
             Defaults[.token] = credential.oauth_token
             Defaults.synchronize()
-            UserModel.requestDataAndInseret()
+            UserRealm.requestDataAndInseret()
             }) { (error) -> Void in
                 //Error
         }
