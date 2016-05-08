@@ -56,12 +56,23 @@ class ChooseChatRoomTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let chatVC = ChatTableViewController()
-        chatVC.hidesBottomBarWhenPushed = true
-        chatVC.room = rooms[indexPath.row]
-        
-        navigationController?.pushViewController(chatVC, animated: true)
+        let chatController = LGChatController()
+        chatController.hidesBottomBarWhenPushed = true
+        chatController.title = rooms[indexPath.row].roomName
+        chatController.delegate = self
+        navigationController?.pushViewController(chatController, animated: true)
     }
 
+}
+
+extension ChooseChatRoomTableViewController: LGChatControllerDelegate {
+    
+    func shouldChatController(chatController: LGChatController, addMessage message: LGChatMessage) -> Bool {
+        
+        return false
+    }
+    func chatController(chatController: LGChatController, didAddNewMessage message: LGChatMessage) {
+        
+    }
 }
 
