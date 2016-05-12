@@ -58,10 +58,20 @@ extension ReferenceCollectionViewController {
     }
     
     func setUpCollectionView() {
+        
+        let layout = CollectionViewWaterfallLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.minimumColumnSpacing = 8
+        layout.minimumInteritemSpacing = 8
+        collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
         collectionView!.registerClass(TagCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.backgroundColor = UIColor.whiteColor()
+        view.addSubview(collectionView)
+        collectionView.snp_makeConstraints { (make) in
+            make.edges.equalTo(self.view)
+        }
     }
     
     func setUpNavgation() {
