@@ -12,9 +12,22 @@ import SwiftyUserDefaults
 
 private let reuseIdentifier = "ReferenceCell"
 
-class ReferenceCollectionViewController: UICollectionViewController{
+class ReferenceCollectionViewController: UIViewController {
 
     var names = [StarGroupRealm]()
+    var collectionView: UICollectionView!
+    
+    lazy var cellSizes: [CGSize] = {
+        var _cellSizes = [CGSize]()
+        
+        for _ in 0...100 {
+            let random = Int(arc4random_uniform((UInt32(100))))
+            
+            _cellSizes.append(CGSize(width: 140, height: 50 + random))
+        }
+        
+        return _cellSizes
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,63 +50,51 @@ class ReferenceCollectionViewController: UICollectionViewController{
         collectionView?.reloadData()
     }
 
-    // MARK: UICollectionVsiewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+
+
+}
+
+extension ReferenceCollectionViewController: UICollectionViewDataSource {
+    
+    // MARK: UICollectionVsiewDataSource
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-
-
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return names.count
     }
-
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TagCollectionViewCell
         cell.titleLabel.numberOfLines = 0
         cell.titleLabel.text = names[indexPath.row].name
         cell.titleLabel.backgroundColor = UIColor.blueColor()
         return cell
     }
+}
 
-    // MARK: UICollectionViewDelegate
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//MARK: CollectionViewWaterfallLayoutDelegate
+extension ReferenceCollectionViewController: CollectionViewWaterfallLayoutDelegate {
+    
+    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return cellSizes[indexPath.item]
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let controller = GroupItemsTableViewController()
         controller.hidesBottomBarWhenPushed = true
         controller.name = names[indexPath.row].name
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
 }
 
-// MARK: UICollectionViewDelegateFlowLayout
-extension ReferenceCollectionViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let text = names[indexPath.item].name
-        
-        func heightForComment() -> CGFloat {
-            let rect = NSString(string: text).boundingRectWithSize(CGSize(width: 66, height: 0) , options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(UIFont.systemFontSize())], context: nil)
-            return rect.height
-        }
-        
-        let height = heightForComment()
-        return CGSize(width: 100, height: height)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(20, 20, 20, 20)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 10
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0
-    }
-}
 
 extension ReferenceCollectionViewController {
 

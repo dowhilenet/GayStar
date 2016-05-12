@@ -50,6 +50,7 @@
 		AB8AC21F1CD0C03600430187 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21C1CD0C03600430187 /* RealmSwift.framework */; };
 		AB8AC2201CD0C03600430187 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21C1CD0C03600430187 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AB8AC2241CD0C24400430187 /* StarRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2231CD0C24400430187 /* StarRealm.swift */; };
+		ABB55A621CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB55A611CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift */; };
 		ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */; };
 		ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1BF41C4730890026A3AC /* AppDelegate.swift */; };
 		ABDA1BFC1C4730890026A3AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1BFB1C4730890026A3AC /* Assets.xcassets */; };
@@ -140,6 +141,7 @@
 		AB8AC21B1CD0C03600430187 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		AB8AC21C1CD0C03600430187 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		AB8AC2231CD0C24400430187 /* StarRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRealm.swift; sourceTree = "<group>"; };
+		ABB55A611CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemsTableViewController.swift; sourceTree = "<group>"; };
 		ABDA1BF11C4730890026A3AC /* GithubStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDA1BF41C4730890026A3AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		AB26F0151CE49121000F7400 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				ABB55A611CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift */,
 				AB26F0161CE49136000F7400 /* HanabiCollectionViewLayout.swift */,
 			);
 			name = Layout;
@@ -646,6 +649,7 @@
 				AB40E3E91CAA9ED6001642CC /* WilddogManager.swift in Sources */,
 				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
 				AB058E671CDC96DA009D8B91 /* UserRealm.swift in Sources */,
+				ABB55A621CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift in Sources */,
 				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				AB058E591CDC798F009D8B91 /* TagCollectionViewCell.swift in Sources */,
 				AB40E3D91CA92D8B001642CC /* ChatTableViewController.swift in Sources */,

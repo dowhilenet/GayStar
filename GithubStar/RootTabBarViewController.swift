@@ -33,8 +33,8 @@ class RootTabBarViewController: UITabBarController {
         firstViewController.tabBarItem = firstViewTabBarItem
         
         //2
-        let refLaout = UICollectionViewFlowLayout()
-        let secViewController = UINavigationController(rootViewController: ReferenceCollectionViewController(collectionViewLayout: refLaout))
+        
+        let secViewController = UINavigationController(rootViewController: ReferenceCollectionViewController())
         secViewController.navigationBar.barStyle = .Black
         let secTabBarItem = UITabBarItem()
         secTabBarItem.title = "Group"
