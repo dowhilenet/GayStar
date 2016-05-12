@@ -33,8 +33,7 @@ class RootTabBarViewController: UITabBarController {
         firstViewController.tabBarItem = firstViewTabBarItem
         
         //2
-        let refLaout = TagViewFloutLaout()
-        refLaout.flowLaoutInit()
+        let refLaout = UICollectionViewFlowLayout()
         let secViewController = UINavigationController(rootViewController: ReferenceCollectionViewController(collectionViewLayout: refLaout))
         secViewController.navigationBar.barStyle = .Black
         let secTabBarItem = UITabBarItem()
@@ -53,18 +52,18 @@ class RootTabBarViewController: UITabBarController {
         
         
         //4
-        let fourViewController = UINavigationController(rootViewController: ChooseChatRoomTableViewController())
+        let fourViewController = UINavigationController(rootViewController: ChatRoomCollectionViewController())
         let fourTabBarItem = UITabBarItem()
         fourTabBarItem.title = "Chat"
         fourViewController.tabBarItem = fourTabBarItem
         
         //5
-        let layout = UICollectionViewFlowLayout()
-        let fiveViewController = UINavigationController(rootViewController: TagCollectionViewController(collectionViewLayout: layout))
+        
+        let fiveViewController = UINavigationController(rootViewController: ChatRoomCollectionViewController())
         let fiveTabBarItem = UITabBarItem()
         fiveTabBarItem.title = "Cool"
         fiveViewController.tabBarItem = fiveTabBarItem
-        self.viewControllers = [firstViewController,secViewController,thirdViewController,fourViewController,fiveViewController]
+        self.viewControllers = [firstViewController,secViewController,thirdViewController,fourViewController]
 
 
         

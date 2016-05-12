@@ -51,7 +51,9 @@ class ReferenceCollectionViewController: UICollectionViewController{
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TagCollectionViewCell
+        cell.titleLabel.numberOfLines = 0
         cell.titleLabel.text = names[indexPath.row].name
+        cell.titleLabel.backgroundColor = UIColor.blueColor()
         return cell
     }
 
@@ -65,7 +67,37 @@ class ReferenceCollectionViewController: UICollectionViewController{
     }
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
+extension ReferenceCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let text = names[indexPath.item].name
+        
+        func heightForComment() -> CGFloat {
+            let rect = NSString(string: text).boundingRectWithSize(CGSize(width: 66, height: 0) , options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(UIFont.systemFontSize())], context: nil)
+            return rect.height
+        }
+        
+        let height = heightForComment()
+        return CGSize(width: 100, height: height)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(20, 20, 20, 20)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+}
+
 extension ReferenceCollectionViewController {
+
+    
     func addgroups(item:UIBarButtonItem){
         let alert = UIAlertController(title: "Add Group", message: nil, preferredStyle: .Alert)
         

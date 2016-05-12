@@ -17,7 +17,7 @@
 //    var room: WilddogChatRoomModel!
 //
 //    var dataArray: [ChatModel]!
-//  
+//
 //    
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
@@ -26,19 +26,19 @@
 //        
 //      
 //        
-////        inputBackView.sendMessage(imageBlock: { (image, textView) in
-////            
-////            self.dataArray.append(ChatModel.creatMessageFromMeByImage(image))
-////            self.chatTableView.reloadData()
-////            self.chatTableView.scrollToBottom(animation: true)
-////            }, textBlock: { (text, textView) in
-////                let model = ChatModel.creatMessageFromMeByText(text)
-////                //服务器添加数据
-////                self.configWilddog(model)
-////            }) { (voice, textView) in
-////                
-////        }
-//        
+//        inputBackView.sendMessage(imageBlock: { (image, textView) in
+//            
+//            self.dataArray.append(ChatModel.creatMessageFromMeByImage(image))
+//            self.chatTableView.reloadData()
+//            self.chatTableView.scrollToBottom(animation: true)
+//            }, textBlock: { (text, textView) in
+//                let model = ChatModel.creatMessageFromMeByText(text)
+//                //服务器添加数据
+//                self.configWilddog(model)
+//            }) { (voice, textView) in
+//                
+//        }
+//
 //
 //        
 //        fullmessages()
