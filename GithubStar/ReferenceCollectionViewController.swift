@@ -31,16 +31,11 @@ class ReferenceCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Register cell classes
-        title = "Group"
-        collectionView!.registerClass(TagCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-        collectionView?.backgroundColor = UIColor.whiteColor()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.addgroups(_:)))
         
-        names = StarGroupRealm.select()
+        setUpView()
+        setUpCollectionView()
+        setUpNavgation()
+
         guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
     }
 
@@ -55,9 +50,29 @@ class ReferenceCollectionViewController: UIViewController {
 
 }
 
-extension ReferenceCollectionViewController: UICollectionViewDataSource {
+// MARK: Extention
+extension ReferenceCollectionViewController {
+    func setUpView() {
+        title = "Group"
+        names = StarGroupRealm.select()
+    }
     
-    // MARK: UICollectionVsiewDataSource
+    func setUpCollectionView() {
+        collectionView!.registerClass(TagCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        collectionView?.backgroundColor = UIColor.whiteColor()
+    }
+    
+    func setUpNavgation() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.addgroups(_:)))
+    }
+}
+
+// MARK: UICollectionVsiewDataSource
+extension ReferenceCollectionViewController: UICollectionViewDataSource {
+
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
