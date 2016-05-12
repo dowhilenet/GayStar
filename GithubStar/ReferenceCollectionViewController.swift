@@ -17,17 +17,7 @@ class ReferenceCollectionViewController: UIViewController {
     var names = [StarGroupRealm]()
     var collectionView: UICollectionView!
     
-    lazy var cellSizes: [CGSize] = {
-        var _cellSizes = [CGSize]()
-        
-        for _ in 0...100 {
-            let random = Int(arc4random_uniform((UInt32(100))))
-            
-            _cellSizes.append(CGSize(width: 140, height: 50 + random))
-        }
-        
-        return _cellSizes
-    }()
+    var cellSizes: [CGSize]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +97,10 @@ extension ReferenceCollectionViewController: UICollectionViewDataSource {
 extension ReferenceCollectionViewController: CollectionViewWaterfallLayoutDelegate {
     
     func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return cellSizes[indexPath.item]
+        let name = names[indexPath.item]
+        let rect = NSString(string:name.name).boundingRectWithSize(CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(18)], context: nil)
+        print(rect.height,rect.width)
+        return rect.size
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
