@@ -7,6 +7,7 @@
 //
 
 import RealmSwift
+import Realm
 
 class StarReadMeRealm: Object {
     dynamic var id: Int64 = 0

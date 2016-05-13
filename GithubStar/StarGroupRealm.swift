@@ -7,6 +7,7 @@
 //
 
 import RealmSwift
+import Realm
 
 class StarGroupRealm: Object {
     dynamic var name = ""

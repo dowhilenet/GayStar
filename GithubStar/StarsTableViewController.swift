@@ -117,7 +117,7 @@ class StarsTableViewController: UITableViewController {
         
         guard let _ = Defaults[.token] else{
         
-            ProgressHUD.showError("Not Logged in", interaction: true)
+            KRProgressHUD.showError(message:"Not Logged in")
             GithubOAuth.GithubOAuth(self)
             self.tableView.dg_stopLoading()
             return
@@ -140,7 +140,7 @@ class StarsTableViewController: UITableViewController {
         
         //下载完成后刷新界面
         func downalltip() {
-            ProgressHUD.showSuccess("Having Down All Data")
+            KRProgressHUD.showSuccess(message: "Having Down All Data")
             if self.runkeeperSwitch.selectedIndex == 0{
                 stars = StarRealm.selectStars()
             }else{
@@ -159,7 +159,7 @@ class StarsTableViewController: UITableViewController {
                 self.page += 1
                 self.requestPagedata()
             }else {
-                ProgressHUD.showError("No Data", interaction: true)
+                KRProgressHUD.showError(message: "No Data")
                 self.tableView.dg_stopLoading()
                 self.tableView.reloadData()
             }

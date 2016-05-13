@@ -11,6 +11,7 @@ import Fuzi
 import Alamofire
 import SwiftyUserDefaults
 import RealmSwift
+import UIKit
 /// Realm 的单例
 class RealmData {
     static let share = RealmData()
@@ -127,7 +128,8 @@ func updatestar() {
             if localcount < count {
                 Defaults[.updateCount] = count
                 Defaults.synchronize()
-                ProgressHUD.showSuccess("Have Update, Please Pull")
+                KRProgressHUD.showSuccess(message: "Have Update, Please Pull")
+                
             }
         }
         

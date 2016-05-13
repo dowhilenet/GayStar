@@ -7,7 +7,7 @@
 //
 
 import RealmSwift
-
+import Realm
 
 /// Trending Star 项目
 class TrendingStarRealm: StarBase {

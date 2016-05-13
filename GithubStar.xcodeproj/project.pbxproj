@@ -42,6 +42,9 @@
 		AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */; };
 		AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */; };
 		AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */; };
+		AB7B21AE1CE612AB00B1C75A /* KRProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B21AD1CE612AB00B1C75A /* KRProgressHUD.swift */; };
+		AB7B21B01CE612D800B1C75A /* KRProgressHUDIconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B21AF1CE612D800B1C75A /* KRProgressHUDIconType.swift */; };
+		AB7B21B21CE6131E00B1C75A /* KRProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B21B11CE6131E00B1C75A /* KRProgressIndicator.swift */; };
 		AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8253C31C73F60900A0E3C0 /* lang.plist */; };
 		AB85D91D1CDED158000DACD3 /* SimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85D91C1CDED158000DACD3 /* SimpleChat.swift */; };
 		AB8AC2161CCFBDC700430187 /* StarRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */; };
@@ -60,8 +63,6 @@
 		ABDA1C1A1C47319D0026A3AC /* 404.html in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C151C47319D0026A3AC /* 404.html */; };
 		ABDA1C1D1C47319D0026A3AC /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C181C47319D0026A3AC /* jquery.min.js */; };
 		ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C191C47319D0026A3AC /* Markdown.swift */; };
-		ABDA1C241C47320D0026A3AC /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */; };
-		ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C231C47320D0026A3AC /* ProgressHUD.m */; };
 		ABDA1C2B1C4732720026A3AC /* MyNSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */; };
 		ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C301C4732880026A3AC /* GithubAPI.swift */; };
 		ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C311C4732880026A3AC /* ReadMeDown.swift */; };
@@ -116,6 +117,10 @@
 		AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevTableViewCell.swift; sourceTree = "<group>"; };
 		AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowRepositoryListTableViewController.swift; sourceTree = "<group>"; };
 		AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcasesRequest.swift; sourceTree = "<group>"; };
+		AB7B21AD1CE612AB00B1C75A /* KRProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressHUD.swift; sourceTree = "<group>"; };
+		AB7B21AF1CE612D800B1C75A /* KRProgressHUDIconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressHUDIconType.swift; sourceTree = "<group>"; };
+		AB7B21B11CE6131E00B1C75A /* KRProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressIndicator.swift; sourceTree = "<group>"; };
+		AB7B21B31CE6161B00B1C75A /* GithubStar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		AB8253C31C73F60900A0E3C0 /* lang.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = lang.plist; sourceTree = "<group>"; };
 		AB85D91C1CDED158000DACD3 /* SimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleChat.swift; sourceTree = "<group>"; };
 		AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRequestHelper.swift; sourceTree = "<group>"; };
@@ -136,10 +141,6 @@
 		ABDA1C151C47319D0026A3AC /* 404.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404.html; sourceTree = "<group>"; };
 		ABDA1C181C47319D0026A3AC /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
 		ABDA1C191C47319D0026A3AC /* Markdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
-		ABDA1C201C47320C0026A3AC /* GithubStar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubStar-Bridging-Header.h"; sourceTree = "<group>"; };
-		ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
-		ABDA1C221C47320D0026A3AC /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
-		ABDA1C231C47320D0026A3AC /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNSUserDefaults.swift; sourceTree = "<group>"; };
 		ABDA1C301C4732880026A3AC /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		ABDA1C311C4732880026A3AC /* ReadMeDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMeDown.swift; sourceTree = "<group>"; };
@@ -261,8 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				ABDA1BF41C4730890026A3AC /* AppDelegate.swift */,
+				AB7B21B31CE6161B00B1C75A /* GithubStar-Bridging-Header.h */,
 				ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */,
-				ABDA1C201C47320C0026A3AC /* GithubStar-Bridging-Header.h */,
 				ABDA1BFB1C4730890026A3AC /* Assets.xcassets */,
 				ABDA1BFD1C4730890026A3AC /* LaunchScreen.storyboard */,
 				AB8253C31C73F60900A0E3C0 /* lang.plist */,
@@ -353,9 +354,9 @@
 		ABDA1C1F1C4731F70026A3AC /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */,
-				ABDA1C221C47320D0026A3AC /* ProgressHUD.h */,
-				ABDA1C231C47320D0026A3AC /* ProgressHUD.m */,
+				AB7B21AD1CE612AB00B1C75A /* KRProgressHUD.swift */,
+				AB7B21B11CE6131E00B1C75A /* KRProgressIndicator.swift */,
+				AB7B21AF1CE612D800B1C75A /* KRProgressHUDIconType.swift */,
 			);
 			name = ProgressHUD;
 			sourceTree = "<group>";
@@ -505,7 +506,6 @@
 				AB552E751C6064FD00D6914C /* Candal.ttf in Resources */,
 				AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */,
 				AB552E711C60611500D6914C /* Orbitron-Regular.ttf in Resources */,
-				ABDA1C241C47320D0026A3AC /* ProgressHUD.bundle in Resources */,
 				ABDA1BFF1C4730890026A3AC /* LaunchScreen.storyboard in Resources */,
 				ABDA1C1D1C47319D0026A3AC /* jquery.min.js in Resources */,
 				ABDA1BFC1C4730890026A3AC /* Assets.xcassets in Resources */,
@@ -566,12 +566,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB058E691CDC972C009D8B91 /* TrendingDelevloperRealm.swift in Sources */,
+				AB7B21B21CE6131E00B1C75A /* KRProgressIndicator.swift in Sources */,
 				AB058E611CDC95C8009D8B91 /* TrendingStarRealm.swift in Sources */,
 				ABE5A6991C63548A00CB7B5D /* SwiftPromptsView.swift in Sources */,
 				ABDFAA451C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift in Sources */,
 				ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */,
 				AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */,
 				AB26F0241CE4A546000F7400 /* Hue.swift in Sources */,
+				AB7B21B01CE612D800B1C75A /* KRProgressHUDIconType.swift in Sources */,
 				AB8AC2241CD0C24400430187 /* StarRealm.swift in Sources */,
 				ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */,
 				ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */,
@@ -591,7 +593,6 @@
 				ABE5A69C1C63736C00CB7B5D /* PageMenuViewController.swift in Sources */,
 				AB26F0171CE49136000F7400 /* HanabiCollectionViewLayout.swift in Sources */,
 				ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */,
-				ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */,
 				AB058E5D1CDC863C009D8B91 /* TagViewFloutLaout.swift in Sources */,
 				ABE5A6981C63548A00CB7B5D /* SwiftPrompts.swift in Sources */,
 				ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */,
@@ -614,6 +615,7 @@
 				ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
 				AB40E3E91CAA9ED6001642CC /* WilddogManager.swift in Sources */,
+				AB7B21AE1CE612AB00B1C75A /* KRProgressHUD.swift in Sources */,
 				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
 				AB058E671CDC96DA009D8B91 /* UserRealm.swift in Sources */,
 				ABB55A621CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift in Sources */,

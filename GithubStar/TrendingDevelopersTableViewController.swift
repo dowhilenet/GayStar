@@ -41,7 +41,7 @@ class TrendingDevelopersTableViewController: UITableViewController{
         func falseOrTrue(res:Bool) {
             guard res else {
                 self.tableView.dg_stopLoading()
-                ProgressHUD.showError("Trending developers results are currently being dissected.")
+//                ProgressHUD.showError("Trending developers results are currently being dissected.")
                 return
             }
             devs = TrendingDelevloperRealm.selectByType(Int64(currType))

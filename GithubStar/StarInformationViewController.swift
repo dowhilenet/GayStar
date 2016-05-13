@@ -38,7 +38,7 @@ class StarInformationViewController: UIViewController{
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        ProgressHUD.dismiss()
+        KRProgressHUD.dismiss()
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,7 +102,7 @@ class StarInformationViewController: UIViewController{
      WKWebView 加载readme
      */
      func loadReadme(){
-        ProgressHUD.show("Loading")
+        KRProgressHUD.show(message: "Loading")
         //获取到 readme下载地址
         StarRequestHelper.readMe.requestReadMeFile(item.fullNamejson) { (readme) in
             guard let readme = readme else {self.load404();return}
@@ -129,7 +129,7 @@ class StarInformationViewController: UIViewController{
         if starReadMe.readmeValue != nil {
             html = htmlheader(starReadMe.readmeValue!)
             webview.loadHTMLString(html, baseURL: nil)
-            ProgressHUD.dismiss()
+            KRProgressHUD.dismiss()
             
         }else {
             load404()
@@ -145,7 +145,7 @@ class StarInformationViewController: UIViewController{
         let html404 = NSBundle.mainBundle().URLForResource("404", withExtension: "html")!
         html = try! NSString(contentsOfURL: html404, encoding: NSUTF8StringEncoding) as String
         webview.loadHTMLString(html, baseURL: nil)
-        ProgressHUD.dismiss()
+        KRProgressHUD.dismiss()
         
     }
 }
@@ -182,9 +182,9 @@ extension StarInformationViewController{
     }
     
     func showSafari(url:String?){
-        guard let url = url else { ProgressHUD.showError("404") ;return }
-        guard url != " " else { ProgressHUD.showError("404") ;return }
-        guard let _url = NSURL(string: url) else { ProgressHUD.showError("404") ;return }
+        guard let url = url else { KRProgressHUD.showError(message:"404") ;return }
+        guard url != " " else { KRProgressHUD.showError(message:"404") ;return }
+        guard let _url = NSURL(string: url) else { KRProgressHUD.showError(message:"404") ;return }
         safari = SFSafariViewController(URL: _url)
         presentViewController(safari, animated: true, completion: nil)
     }
