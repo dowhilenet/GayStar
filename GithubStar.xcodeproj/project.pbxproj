@@ -119,8 +119,6 @@
 		AB8253C31C73F60900A0E3C0 /* lang.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = lang.plist; sourceTree = "<group>"; };
 		AB85D91C1CDED158000DACD3 /* SimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleChat.swift; sourceTree = "<group>"; };
 		AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRequestHelper.swift; sourceTree = "<group>"; };
-		AB8AC21B1CD0C03600430187 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		AB8AC21C1CD0C03600430187 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		AB8AC2231CD0C24400430187 /* StarRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRealm.swift; sourceTree = "<group>"; };
 		ABB55A611CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemsTableViewController.swift; sourceTree = "<group>"; };
@@ -259,16 +257,6 @@
 			name = RequestData;
 			sourceTree = "<group>";
 		};
-		AB8AC2251CD18F6E00430187 /* Realm */ = {
-			isa = PBXGroup;
-			children = (
-				AB8AC21B1CD0C03600430187 /* Realm.framework */,
-				AB8AC21C1CD0C03600430187 /* RealmSwift.framework */,
-			);
-			name = Realm;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		AB8AC2261CD18FB300430187 /* Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,7 +316,6 @@
 			isa = PBXGroup;
 			children = (
 				AB26F01E1CE4A518000F7400 /* RandomColor */,
-				AB8AC2251CD18F6E00430187 /* Realm */,
 				AB40E3E11CAA9DF6001642CC /* Wilddog */,
 				ABE5A6941C63548A00CB7B5D /* Swift-Prompts */,
 				ABDA1C1F1C4731F70026A3AC /* ProgressHUD */,
