@@ -116,8 +116,7 @@ class StarsTableViewController: UITableViewController {
         //查看是否有 token
         
         guard let _ = Defaults[.token] else{
-        
-            KRProgressHUD.showError(message:"Not Logged in")
+            SwiftNotice.showNoticeWithText(NoticeType.error, text: "Not Logged in", autoClear: true, autoClearTime: 2)
             GithubOAuth.GithubOAuth(self)
             self.tableView.dg_stopLoading()
             return
@@ -140,7 +139,7 @@ class StarsTableViewController: UITableViewController {
         
         //下载完成后刷新界面
         func downalltip() {
-            KRProgressHUD.showSuccess(message: "Having Down All Data")
+            SwiftNotice.showNoticeWithText(NoticeType.success, text: "Having Down All Data", autoClear: true, autoClearTime: 2)
             if self.runkeeperSwitch.selectedIndex == 0{
                 stars = StarRealm.selectStars()
             }else{
@@ -159,7 +158,7 @@ class StarsTableViewController: UITableViewController {
                 self.page += 1
                 self.requestPagedata()
             }else {
-                KRProgressHUD.showError(message: "No Data")
+                SwiftNotice.showNoticeWithText(NoticeType.success, text: "No Data", autoClear: true, autoClearTime: 2)
                 self.tableView.dg_stopLoading()
                 self.tableView.reloadData()
             }

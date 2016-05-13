@@ -128,7 +128,7 @@ func updatestar() {
             if localcount < count {
                 Defaults[.updateCount] = count
                 Defaults.synchronize()
-                KRProgressHUD.showSuccess(message: "Have Update, Please Pull")
+                SwiftNotice.showNoticeWithText(NoticeType.success, text: "Have Update, Please Pull", autoClear: true, autoClearTime: 2)
                 
             }
         }

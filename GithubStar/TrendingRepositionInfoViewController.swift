@@ -67,7 +67,7 @@ class TrendingRepositionInfoViewController: UIViewController {
 
     
     func loadReadMe() {
-        KRProgressHUD.show(message: "Loading")
+        SwiftNotice.wait()
         StarRequestHelper.readMe.requestReadMeFile(repositionModel.fullNamejson) { (readme) in
             guard let readme = readme else { self.load404(); return}
             ReadMeDown.request(self.repositionModel.idjson, url: readme.download_url, html_url: readme.html_url, callback: { (res) in
@@ -95,7 +95,7 @@ class TrendingRepositionInfoViewController: UIViewController {
         }else {
             html = htmlheader(starReadMe.readmeValue!)
             readmeView.loadHTMLString(html, baseURL: nil)
-            KRProgressHUD.dismiss()
+            SwiftNotice.clear()
         }
     }
     
@@ -106,7 +106,7 @@ class TrendingRepositionInfoViewController: UIViewController {
         let html404 = NSBundle.mainBundle().URLForResource("404", withExtension: "html")!
         self.html = try! NSString(contentsOfURL: html404, encoding: NSUTF8StringEncoding) as String
         self.readmeView.loadHTMLString(self.html, baseURL: nil)
-        KRProgressHUD.dismiss()
+        SwiftNotice.clear()
     }
     
     
@@ -118,7 +118,7 @@ class TrendingRepositionInfoViewController: UIViewController {
     func readMeOnGithub(){
         let url = starReadMe.readmeURL
         if url == nil {
-            KRProgressHUD.showError(message:"404")
+            SwiftNotice.showNoticeWithText(NoticeType.error, text: "404", autoClear: true, autoClearTime: 2)
             return
         }else {
             showSafari(url!)
@@ -137,9 +137,9 @@ class TrendingRepositionInfoViewController: UIViewController {
     }
     
     func showSafari(url:String){
-        guard url == " " else { KRProgressHUD.showError(message:"404") ; return }
+        guard url == " " else { SwiftNotice.showNoticeWithText(NoticeType.error, text: "404", autoClear: true, autoClearTime: 2) ; return }
         let url = NSURL(string: url)
-        guard let URL = url else { KRProgressHUD.showError(message:"404") ; return }
+        guard let URL = url else { SwiftNotice.showNoticeWithText(NoticeType.error, text: "404", autoClear: true, autoClearTime: 2) ; return }
         safari = SFSafariViewController(URL: URL)
         presentViewController(safari, animated: true, completion: nil)
     }

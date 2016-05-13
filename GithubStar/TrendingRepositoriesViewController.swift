@@ -94,8 +94,7 @@ class TrendingRepositoriesViewController: UITableViewController{
     
     func requestRepoData(names:[String]){
         guard names.count > 0 else {
-            KRProgressHUD.showError()
-//            ProgressHUD.showError("Trending repositories results are currently being dissected.")
+            SwiftNotice.showNoticeWithText(NoticeType.error, text: "Trending repositories results are currently being dissected.", autoClear: true, autoClearTime: 2)
             self.tableView.dg_stopLoading()
             return
         }
@@ -109,7 +108,7 @@ class TrendingRepositoriesViewController: UITableViewController{
                 .responseData({ (res) -> Void in
                     guard let data = res.data  else{
                         self.tableView.dg_stopLoading()
-                        KRProgressHUD.showError(message:"Error0")
+                        SwiftNotice.showNoticeWithText(NoticeType.error, text: "Trending repositories results are currently being dissected.", autoClear: true, autoClearTime: 2)
                         return
                     }
                     self.switchInsertType(data)

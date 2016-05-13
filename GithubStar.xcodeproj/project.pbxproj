@@ -42,9 +42,7 @@
 		AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */; };
 		AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */; };
 		AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */; };
-		AB7B21AE1CE612AB00B1C75A /* KRProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B21AD1CE612AB00B1C75A /* KRProgressHUD.swift */; };
-		AB7B21B01CE612D800B1C75A /* KRProgressHUDIconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B21AF1CE612D800B1C75A /* KRProgressHUDIconType.swift */; };
-		AB7B21B21CE6131E00B1C75A /* KRProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B21B11CE6131E00B1C75A /* KRProgressIndicator.swift */; };
+		AB7B21B51CE61B1F00B1C75A /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B21B41CE61B1F00B1C75A /* SwiftNotice.swift */; };
 		AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8253C31C73F60900A0E3C0 /* lang.plist */; };
 		AB85D91D1CDED158000DACD3 /* SimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85D91C1CDED158000DACD3 /* SimpleChat.swift */; };
 		AB8AC2161CCFBDC700430187 /* StarRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */; };
@@ -117,10 +115,8 @@
 		AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevTableViewCell.swift; sourceTree = "<group>"; };
 		AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowRepositoryListTableViewController.swift; sourceTree = "<group>"; };
 		AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcasesRequest.swift; sourceTree = "<group>"; };
-		AB7B21AD1CE612AB00B1C75A /* KRProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressHUD.swift; sourceTree = "<group>"; };
-		AB7B21AF1CE612D800B1C75A /* KRProgressHUDIconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressHUDIconType.swift; sourceTree = "<group>"; };
-		AB7B21B11CE6131E00B1C75A /* KRProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KRProgressIndicator.swift; sourceTree = "<group>"; };
 		AB7B21B31CE6161B00B1C75A /* GithubStar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubStar-Bridging-Header.h"; sourceTree = "<group>"; };
+		AB7B21B41CE61B1F00B1C75A /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		AB8253C31C73F60900A0E3C0 /* lang.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = lang.plist; sourceTree = "<group>"; };
 		AB85D91C1CDED158000DACD3 /* SimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleChat.swift; sourceTree = "<group>"; };
 		AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRequestHelper.swift; sourceTree = "<group>"; };
@@ -354,9 +350,7 @@
 		ABDA1C1F1C4731F70026A3AC /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				AB7B21AD1CE612AB00B1C75A /* KRProgressHUD.swift */,
-				AB7B21B11CE6131E00B1C75A /* KRProgressIndicator.swift */,
-				AB7B21AF1CE612D800B1C75A /* KRProgressHUDIconType.swift */,
+				AB7B21B41CE61B1F00B1C75A /* SwiftNotice.swift */,
 			);
 			name = ProgressHUD;
 			sourceTree = "<group>";
@@ -566,14 +560,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB058E691CDC972C009D8B91 /* TrendingDelevloperRealm.swift in Sources */,
-				AB7B21B21CE6131E00B1C75A /* KRProgressIndicator.swift in Sources */,
 				AB058E611CDC95C8009D8B91 /* TrendingStarRealm.swift in Sources */,
 				ABE5A6991C63548A00CB7B5D /* SwiftPromptsView.swift in Sources */,
 				ABDFAA451C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift in Sources */,
 				ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */,
 				AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */,
 				AB26F0241CE4A546000F7400 /* Hue.swift in Sources */,
-				AB7B21B01CE612D800B1C75A /* KRProgressHUDIconType.swift in Sources */,
 				AB8AC2241CD0C24400430187 /* StarRealm.swift in Sources */,
 				ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */,
 				ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */,
@@ -610,12 +602,12 @@
 				AB058E651CDC9691009D8B91 /* StarGroupRealm.swift in Sources */,
 				ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */,
 				AB26F0281CE4B40B000F7400 /* ExtentionSimpleChat.swift in Sources */,
+				AB7B21B51CE61B1F00B1C75A /* SwiftNotice.swift in Sources */,
 				AB85D91D1CDED158000DACD3 /* SimpleChat.swift in Sources */,
 				ABDA1C501C4733220026A3AC /* TrendingRepositoriesViewController.swift in Sources */,
 				ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
 				AB40E3E91CAA9ED6001642CC /* WilddogManager.swift in Sources */,
-				AB7B21AE1CE612AB00B1C75A /* KRProgressHUD.swift in Sources */,
 				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
 				AB058E671CDC96DA009D8B91 /* UserRealm.swift in Sources */,
 				ABB55A621CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift in Sources */,
