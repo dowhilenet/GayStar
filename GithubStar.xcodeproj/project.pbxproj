@@ -45,10 +45,6 @@
 		AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8253C31C73F60900A0E3C0 /* lang.plist */; };
 		AB85D91D1CDED158000DACD3 /* SimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85D91C1CDED158000DACD3 /* SimpleChat.swift */; };
 		AB8AC2161CCFBDC700430187 /* StarRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */; };
-		AB8AC21D1CD0C03600430187 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21B1CD0C03600430187 /* Realm.framework */; };
-		AB8AC21E1CD0C03600430187 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21B1CD0C03600430187 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AB8AC21F1CD0C03600430187 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21C1CD0C03600430187 /* RealmSwift.framework */; };
-		AB8AC2201CD0C03600430187 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8AC21C1CD0C03600430187 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AB8AC2241CD0C24400430187 /* StarRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2231CD0C24400430187 /* StarRealm.swift */; };
 		ABB55A621CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB55A611CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift */; };
 		ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */; };
@@ -83,21 +79,6 @@
 		ABE5A69C1C63736C00CB7B5D /* PageMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A69B1C63736C00CB7B5D /* PageMenuViewController.swift */; };
 		ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		AB8AC2211CD0C03600430187 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				AB8AC2201CD0C03600430187 /* RealmSwift.framework in Embed Frameworks */,
-				AB8AC21E1CD0C03600430187 /* Realm.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AB058E581CDC798F009D8B91 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -184,8 +165,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB8AC21D1CD0C03600430187 /* Realm.framework in Frameworks */,
-				AB8AC21F1CD0C03600430187 /* RealmSwift.framework in Frameworks */,
 				AB40E3E71CAA9E3A001642CC /* libsqlite3.0.tbd in Frameworks */,
 				AB40E3E51CAA9E26001642CC /* JavaScriptCore.framework in Frameworks */,
 				AB40E3E31CAA9E03001642CC /* Wilddog.framework in Frameworks */,
@@ -482,7 +461,6 @@
 				ABDA1BEE1C4730890026A3AC /* Frameworks */,
 				ABDA1BEF1C4730890026A3AC /* Resources */,
 				AB50AD1B1C5AE585007702EF /* Run Script */,
-				AB8AC2211CD0C03600430187 /* Embed Frameworks */,
 				AB8AC2221CD0C0A300430187 /* ShellScript */,
 			);
 			buildRules = (
@@ -570,6 +548,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Fuzi.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SQLite.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -757,7 +737,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -786,7 +765,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
