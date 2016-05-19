@@ -104,15 +104,14 @@ class TrendingRepositoriesViewController: UITableViewController{
         TrendingStarRealm.deleteAllStars(Int64(currType))
 
         names.forEach { (name) -> () in
-            Alamofire.request(GithubAPI.repos(repos: name))
-                .responseData({ (res) -> Void in
-                    guard let data = res.data  else{
-                        self.tableView.dg_stopLoading()
-                        SwiftNotice.showNoticeWithText(NoticeType.error, text: "Trending repositories results are currently being dissected.", autoClear: true, autoClearTime: 2)
-                        return
-                    }
-                    self.switchInsertType(data)
-                })
+            Alamofire.request(GithubAPI.repos(repos: name)).responseData(completionHandler: { (res) in
+                guard let data = res.data else {
+                    self.tableView.dg_stopLoading()
+                    SwiftNotice.showNoticeWithText(NoticeType.error, text: "Trending repositories results are currently being dissected.", autoClear: true, autoClearTime: 2)
+                    return
+                }
+                self.switchInsertType(data)
+            })
         }
     }
     

@@ -1,0 +1,33 @@
+PODS:
+  - Alamofire (3.4.0)
+  - Fuzi (0.3.1)
+  - Kingfisher (2.4.1)
+  - OAuthSwift (0.5.2)
+  - PageMenu (1.2.9)
+  - SnapKit (0.21.0)
+  - SwiftyJSON (2.3.2)
+  - SwiftyUserDefaults (2.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Fuzi
+  - Kingfisher
+  - OAuthSwift
+  - PageMenu
+  - SnapKit
+  - SwiftyJSON
+  - SwiftyUserDefaults
+
+SPEC CHECKSUMS:
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Fuzi: 25118b725a1637f1676f63ae1acbba1f30a5dd6c
+  Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
+  OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
+  PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
+  SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
+
+PODFILE CHECKSUM: f7617754d4887014d8c3a50f6f972c2a4b1d3486
+
+COCOAPODS: 1.0.0

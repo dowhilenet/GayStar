@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PageMenuFramework
+import PageMenu
 
 
 class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLangueTableViewControllerDelegate{

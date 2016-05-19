@@ -24,19 +24,13 @@ enum StarRequestHelper {
     case .stared:
         Alamofire.request(GithubAPI.star(page: page))
         .validate()
-        .responseData({ (res) in
+        .responseData(completionHandler: { (res) in
             if res.result.isFailure {
                 completion(stars: [])
             }
-            
-            guard let data = res.data else { completion(stars: []); return}
-            
+            guard let data = res.data else {completion(stars: []); return}
             let stars = StarRealm.initStarArray(data)
             StarRealm.insertStars(stars)
-////            let stars = StarDataModel.initStarArray(data)
-//            stars.forEach({ (star) in
-//                StarSQLiteModel.intsertStar(star)
-//            })
             completion(stars: stars)
         })
     default:
