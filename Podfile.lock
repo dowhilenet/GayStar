@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (3.4.0)
   - Fuzi (0.3.1)
+  - JSQMessagesViewController (7.2.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - Kingfisher (2.4.1)
   - OAuthSwift (0.5.2)
   - PageMenu (1.2.9)
@@ -11,6 +14,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Fuzi
+  - JSQMessagesViewController
   - Kingfisher
   - OAuthSwift
   - PageMenu
@@ -21,6 +25,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   Fuzi: 25118b725a1637f1676f63ae1acbba1f30a5dd6c
+  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
   PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
@@ -28,6 +34,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
 
-PODFILE CHECKSUM: f7617754d4887014d8c3a50f6f972c2a4b1d3486
+PODFILE CHECKSUM: fa33bcbb5feac17603d084e88dc5502e658a9f0a
 
 COCOAPODS: 1.0.0

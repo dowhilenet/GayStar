@@ -28,8 +28,6 @@
 		AB26F0241CE4A546000F7400 /* Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26F0201CE4A546000F7400 /* Hue.swift */; };
 		AB26F0251CE4A546000F7400 /* Luminosity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26F0211CE4A546000F7400 /* Luminosity.swift */; };
 		AB26F0261CE4A546000F7400 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26F0221CE4A546000F7400 /* RandomColor.swift */; };
-		AB26F0281CE4B40B000F7400 /* ExtentionSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26F0271CE4B40B000F7400 /* ExtentionSimpleChat.swift */; };
-		AB40E3D91CA92D8B001642CC /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3D81CA92D8B001642CC /* ChatTableViewController.swift */; };
 		AB40E3E31CAA9E03001642CC /* Wilddog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB40E3E21CAA9E03001642CC /* Wilddog.framework */; };
 		AB40E3E51CAA9E26001642CC /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */; };
 		AB40E3E71CAA9E3A001642CC /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */; };
@@ -45,11 +43,11 @@
 		AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */; };
 		AB7B21B51CE61B1F00B1C75A /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7B21B41CE61B1F00B1C75A /* SwiftNotice.swift */; };
 		AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8253C31C73F60900A0E3C0 /* lang.plist */; };
-		AB85D91D1CDED158000DACD3 /* SimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85D91C1CDED158000DACD3 /* SimpleChat.swift */; };
 		AB8AC2161CCFBDC700430187 /* StarRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */; };
 		AB8AC2241CD0C24400430187 /* StarRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8AC2231CD0C24400430187 /* StarRealm.swift */; };
 		ABB55A621CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB55A611CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift */; };
 		ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */; };
+		ABD9FE461CED6ED7008B4A05 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD9FE451CED6ED7008B4A05 /* ChatViewController.swift */; };
 		ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1BF41C4730890026A3AC /* AppDelegate.swift */; };
 		ABDA1BFC1C4730890026A3AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1BFB1C4730890026A3AC /* Assets.xcassets */; };
 		ABDA1BFF1C4730890026A3AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1BFD1C4730890026A3AC /* LaunchScreen.storyboard */; };
@@ -102,8 +100,6 @@
 		AB26F0201CE4A546000F7400 /* Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hue.swift; sourceTree = "<group>"; };
 		AB26F0211CE4A546000F7400 /* Luminosity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Luminosity.swift; sourceTree = "<group>"; };
 		AB26F0221CE4A546000F7400 /* RandomColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
-		AB26F0271CE4B40B000F7400 /* ExtentionSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtentionSimpleChat.swift; sourceTree = "<group>"; };
-		AB40E3D81CA92D8B001642CC /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		AB40E3E21CAA9E03001642CC /* Wilddog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Wilddog.framework; sourceTree = "<group>"; };
 		AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -120,11 +116,11 @@
 		AB7B21B31CE6161B00B1C75A /* GithubStar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		AB7B21B41CE61B1F00B1C75A /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		AB8253C31C73F60900A0E3C0 /* lang.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = lang.plist; sourceTree = "<group>"; };
-		AB85D91C1CDED158000DACD3 /* SimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleChat.swift; sourceTree = "<group>"; };
 		AB8AC2151CCFBDC700430187 /* StarRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRequestHelper.swift; sourceTree = "<group>"; };
 		AB8AC2231CD0C24400430187 /* StarRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRealm.swift; sourceTree = "<group>"; };
 		ABB55A611CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemsTableViewController.swift; sourceTree = "<group>"; };
+		ABD9FE451CED6ED7008B4A05 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		ABDA1BF11C4730890026A3AC /* GithubStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDA1BF41C4730890026A3AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABDA1BFB1C4730890026A3AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,12 +215,8 @@
 		AB40E3CF1CA90B04001642CC /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				AB40E3D81CA92D8B001642CC /* ChatTableViewController.swift */,
-				AB85D91C1CDED158000DACD3 /* SimpleChat.swift */,
-				AB26F0271CE4B40B000F7400 /* ExtentionSimpleChat.swift */,
-				AB26F0181CE49236000F7400 /* ChatRoomCollectionViewController.swift */,
-				AB26F01A1CE4958E000F7400 /* StarsCollectionViewCell.swift */,
-				AB26F01B1CE4958E000F7400 /* StarsCollectionViewCell.xib */,
+				ABD9FE451CED6ED7008B4A05 /* ChatViewController.swift */,
+				ABD9FE441CED6E6A008B4A05 /* room */,
 				AB40E3E81CAA9ED6001642CC /* WilddogManager.swift */,
 			);
 			name = Chat;
@@ -290,6 +282,16 @@
 				AB552E701C60611500D6914C /* Orbitron-Regular.ttf */,
 			);
 			name = Font;
+			sourceTree = "<group>";
+		};
+		ABD9FE441CED6E6A008B4A05 /* room */ = {
+			isa = PBXGroup;
+			children = (
+				AB26F0181CE49236000F7400 /* ChatRoomCollectionViewController.swift */,
+				AB26F01B1CE4958E000F7400 /* StarsCollectionViewCell.xib */,
+				AB26F01A1CE4958E000F7400 /* StarsCollectionViewCell.swift */,
+			);
+			name = room;
 			sourceTree = "<group>";
 		};
 		ABDA1BE81C4730890026A3AC = {
@@ -632,6 +634,7 @@
 				AB8AC2241CD0C24400430187 /* StarRealm.swift in Sources */,
 				ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */,
 				ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */,
+				ABD9FE461CED6ED7008B4A05 /* ChatViewController.swift in Sources */,
 				ABDA1C2B1C4732720026A3AC /* MyNSUserDefaults.swift in Sources */,
 				AB26F0191CE49236000F7400 /* ChatRoomCollectionViewController.swift in Sources */,
 				ABDA1C371C4732C10026A3AC /* RootTabBarViewController.swift in Sources */,
@@ -664,9 +667,7 @@
 				AB26F0261CE4A546000F7400 /* RandomColor.swift in Sources */,
 				AB058E651CDC9691009D8B91 /* StarGroupRealm.swift in Sources */,
 				ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */,
-				AB26F0281CE4B40B000F7400 /* ExtentionSimpleChat.swift in Sources */,
 				AB7B21B51CE61B1F00B1C75A /* SwiftNotice.swift in Sources */,
-				AB85D91D1CDED158000DACD3 /* SimpleChat.swift in Sources */,
 				ABDA1C501C4733220026A3AC /* TrendingRepositoriesViewController.swift in Sources */,
 				ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
@@ -676,7 +677,6 @@
 				ABB55A621CE4BE7C00D4DDEB /* CollectionViewWaterfallLayout.swift in Sources */,
 				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				AB058E591CDC798F009D8B91 /* TagCollectionViewCell.swift in Sources */,
-				AB40E3D91CA92D8B001642CC /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

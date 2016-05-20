@@ -81,33 +81,17 @@ extension ChatRoomCollectionViewController {
     }
 }
 
-//MARK: LGChatControllerDelegate
-extension ChatRoomCollectionViewController: LGChatControllerDelegate {
-    
-    func shouldChatController(chatController: LGChatController, addMessage message: LGChatMessage) -> Bool {
-        
-        return true
-    }
-    func chatController(chatController: LGChatController, didAddNewMessage message: LGChatMessage) {
-        
-    }
-    
-}
+
 
  // MARK: UICollectionViewDelegate
 extension ChatRoomCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         room = rooms[indexPath.row]
-        let chatController = LGChatController()
+        let chatController = ChatViewController()
+        chatController.room = room
         chatController.hidesBottomBarWhenPushed = true
         chatController.title = room.roomName
-        chatController.delegate = self
-        roomRef.observeEventType(.Value, andPreviousSiblingKeyWithBlock: { (snap, string) in
-            
-            }) { (error) in
-                print(error.localizedDescription)
-        }
         navigationController?.pushViewController(chatController, animated: true)
     }
 }

@@ -46,5 +46,9 @@ struct WilddogChatRoomModel {
     }
 }
 
+struct ChatModel {
+    
+}
+
 
 

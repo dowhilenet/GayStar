@@ -14,4 +14,5 @@ pod 'SwiftyUserDefaults'
 pod 'OAuthSwift'
 pod 'Fuzi'
 pod 'SwiftyJSON'
+pod 'JSQMessagesViewController'
 end
