@@ -35,6 +35,7 @@ class ChatViewController: JSQMessagesViewController {
         setUpSenderUser()
         setUpMessageView()
         setUpWilddog()
+
     }
     
 }
