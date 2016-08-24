@@ -14,7 +14,7 @@ struct ReadMeDownModel{
     var download_url: String = ""
     var html_url: String? = ""
     
-    init(unboxer: NSData){
+    init(unboxer: Data){
         let data = JSON(data:unboxer)
     download_url = data["download_url"].stringValue
     html_url = data["html_url"].stringValue
@@ -24,7 +24,7 @@ struct ReadMeDownModel{
 
 class ReadMeDown{
     
-    class func request(id:Int64,url:String,html_url:String?, callback:(Bool) -> Void){
+    class func request(_ id:Int64,url:String,html_url:String?, callback:@escaping (Bool) -> Void){
         Alamofire.request(.GET, url)
         .validate()
         .responseString { (response) -> Void in

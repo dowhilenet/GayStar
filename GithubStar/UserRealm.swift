@@ -39,7 +39,7 @@ class UserRealm: Object {
         return "id"
     }
     
-    private static func insert(data:UserRealm) -> Bool {
+    fileprivate static func insert(_ data:UserRealm) -> Bool {
         let res = false
         do {
             try RealmData.share.realm.write({ 
@@ -55,7 +55,7 @@ class UserRealm: Object {
         return RealmData.share.realm.objects(UserRealm).first
     }
     
-    private convenience init(data: NSData) {
+    fileprivate convenience init(data: NSData) {
         self.init()
         let json = JSON(data: data)
         login = json["login"].stringValue
@@ -86,7 +86,7 @@ class UserRealm: Object {
      
      - parameter back: 返回用户的数据
      */
-    private static func requestData(back: (data: NSData?) -> Void)  {
+    fileprivate static func requestData(_ back: (_ data: NSData?) -> Void)  {
         Alamofire.request(GithubAPI.me).responseJSON { (res) in
             guard let res = res.data else {
                 back(data: nil)

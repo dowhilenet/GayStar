@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChooseLangueTableViewControllerDelegate{
-    func didSelectLan(lan:String)
+    func didSelectLan(_ lan:String)
 }
 
 
@@ -33,19 +33,19 @@ class ChooseLangueTableViewController: UITableViewController {
     }
     
     func initlange(){
-    let patch = NSBundle.mainBundle().URLForResource("lang", withExtension: "plist", subdirectory: nil)
-    let alllangues = NSArray(contentsOfURL: patch!)
+    let patch = Bundle.main.url(forResource: "lang", withExtension: "plist", subdirectory: nil)
+    let alllangues = NSArray(contentsOf: patch!)
     let langs = (alllangues?.firstObject)! as! NSArray
     langues = langs as! Array
     langues.forEach { (lang) -> () in
-        let a = String(lang[lang.startIndex]).uppercaseString
+        let a = String(lang[lang.startIndex]).uppercased()
         if let _ = sectionLangues[a] {
             sectionLangues[a]?.append(lang)
         }else {
             sectionLangues[a] = [lang]
         }
         }
-    self.tableView.registerClass(LangCell.self, forCellReuseIdentifier: "LangueCell")
+    self.tableView.register(LangCell.self, forCellReuseIdentifier: "LangueCell")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,12 +54,12 @@ class ChooseLangueTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return starsIndexTitles.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let key = starsIndexTitles[section]
         if let lang = sectionLangues[key] {
             return lang.count
@@ -68,29 +68,29 @@ class ChooseLangueTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("LangueCell", forIndexPath: indexPath)
-        let key = starsIndexTitles[indexPath.section]
-        cell.textLabel?.text = sectionLangues[key]![indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LangueCell", for: indexPath)
+        let key = starsIndexTitles[(indexPath as NSIndexPath).section]
+        cell.textLabel?.text = sectionLangues[key]![(indexPath as NSIndexPath).row]
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let key = starsIndexTitles[indexPath.section]
-        let lang = sectionLangues[key]![indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let key = starsIndexTitles[(indexPath as NSIndexPath).section]
+        let lang = sectionLangues[key]![(indexPath as NSIndexPath).row]
         self.delegate = rootviewcontroller
         self.delegate?.didSelectLan(lang)
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
         
     }
     
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return starsIndexTitles[section]
     }
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return starsIndexTitles
     }
 

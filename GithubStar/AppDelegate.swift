@@ -8,7 +8,7 @@
 
 import UIKit
 import OAuthSwift
-import RealmSwift
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
         
         window = UIWindow()
         let rootview = RootTabBarViewController()        
@@ -29,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         if url.host == "oauth-callback"{
-            if url.path!.hasPrefix("/github"){
+            if url.path.hasPrefix("/github"){
              OAuth2Swift.handleOpenURL(url)
             }
         }
@@ -40,22 +40,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
     
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
        
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
   
     }
     

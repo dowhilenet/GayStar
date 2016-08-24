@@ -19,7 +19,7 @@ class ChatRoomCollectionViewController: UIViewController {
     var roomRef: Wilddog!
     var room: WilddogChatRoomModel! {
         didSet{
-          roomRef = WilddogManager.ref.childByAppendingPath(room.roomId)
+          roomRef = WilddogManager.ref?.child(byAppendingPath: room.roomId)
         }
     }
     
@@ -32,7 +32,7 @@ class ChatRoomCollectionViewController: UIViewController {
         setUpWilddog()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let stars = StarRealm.selectStars()
         stars.forEach { (star) in
@@ -59,21 +59,21 @@ extension ChatRoomCollectionViewController {
     }
     
     func setUpNavigationView() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
     }
     
     func setUpView() {
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
     }
     
     func setUpCollectionView() {
         let layout = HanabiCollectionViewLayout()
-        collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
         let nib = UINib(nibName: "StarsCollectionViewCell", bundle: nil)
-        collectionView.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.backgroundColor = UIColor.white
         view.addSubview(collectionView)
         collectionView.snp_makeConstraints { (make) in
             make.edges.equalTo(self.view)
@@ -86,8 +86,8 @@ extension ChatRoomCollectionViewController {
  // MARK: UICollectionViewDelegate
 extension ChatRoomCollectionViewController: UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        room = rooms[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        room = rooms[(indexPath as NSIndexPath).row]
         let chatController = ChatViewController()
         chatController.room = room
         chatController.hidesBottomBarWhenPushed = true
@@ -99,18 +99,18 @@ extension ChatRoomCollectionViewController: UICollectionViewDelegate {
  // MARK: UICollectionViewDataSource
 extension ChatRoomCollectionViewController: UICollectionViewDataSource {
     
-     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return rooms.count
     }
     
-     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! StarsCollectionViewCell
-        cell.initCell(rooms[indexPath.row])
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! StarsCollectionViewCell
+        cell.initCell(rooms[(indexPath as NSIndexPath).row])
         return cell
     }
 }

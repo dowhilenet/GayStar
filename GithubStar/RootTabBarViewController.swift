@@ -16,17 +16,17 @@ class RootTabBarViewController: UITabBarController {
         super.viewDidLoad()
         //配置 nav 样式
         UINavigationBar.appearance().barTintColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().translucent = true
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
        //配置 TabBar 样式
-        UITabBar.appearance().translucent = true
+        UITabBar.appearance().isTranslucent = true
         UITabBar.appearance().tintColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
 //        UITabBar.appearance().barTintColor = UIColor.whiteColor()
         
         //1
         let firstViewController = UINavigationController(rootViewController: StarsTableViewController())
-        firstViewController.navigationBar.barStyle = .Black
+        firstViewController.navigationBar.barStyle = .black
         let firstViewTabBarItem = UITabBarItem()
         firstViewTabBarItem.title = "Star"
         firstViewTabBarItem.image = UIImage(named: "Star 3")
@@ -35,7 +35,7 @@ class RootTabBarViewController: UITabBarController {
         //2
         
         let secViewController = UINavigationController(rootViewController: ReferenceCollectionViewController())
-        secViewController.navigationBar.barStyle = .Black
+        secViewController.navigationBar.barStyle = .black
         let secTabBarItem = UITabBarItem()
         secTabBarItem.title = "Group"
         secTabBarItem.image = UIImage(named: "Oval 13")

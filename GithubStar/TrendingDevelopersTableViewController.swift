@@ -28,7 +28,7 @@ class TrendingDevelopersTableViewController: UITableViewController{
         tableView.separatorColor = UIColor(red:
             240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0,
             alpha: 0.8)
-        tableView.registerClass(TrendingDevTableViewCell.self, forCellReuseIdentifier: "DevCell")
+        tableView.register(TrendingDevTableViewCell.self, forCellReuseIdentifier: "DevCell")
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 106, right: 0)
         loadingView.tintColor = PullToRefreshTintColor
         tableView.dg_addPullToRefreshWithActionHandler(pulldowndata, loadingView: loadingView)
@@ -38,7 +38,7 @@ class TrendingDevelopersTableViewController: UITableViewController{
     
     func pulldowndata() {
         
-        func falseOrTrue(res:Bool) {
+        func falseOrTrue(_ res:Bool) {
             guard res else {
                 self.tableView.dg_stopLoading()
 //                ProgressHUD.showError("Trending developers results are currently being dissected.")
@@ -72,7 +72,7 @@ class TrendingDevelopersTableViewController: UITableViewController{
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if devs.count == 0 {
             self.tableView.configKongTable("There is no data. try the drop-down refresh")
             return 0
@@ -80,20 +80,20 @@ class TrendingDevelopersTableViewController: UITableViewController{
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return devs.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DevCell", forIndexPath: indexPath) as! TrendingDevTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DevCell", for: indexPath) as! TrendingDevTableViewCell
         cell.initCell(devs, index: indexPath)
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = TrendingDevelopinfoViewController()
-        vc.dev = devs[indexPath.row]
+        vc.dev = devs[(indexPath as NSIndexPath).row]
         vc.hidesBottomBarWhenPushed = true
         contantView.navigationController?.pushViewController(vc, animated: true)
     }

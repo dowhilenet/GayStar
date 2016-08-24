@@ -23,7 +23,7 @@ class TrendingRepositionInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         title = repositionModel.namejson
         
         readmeView = WKWebView()
@@ -40,18 +40,18 @@ class TrendingRepositionInfoViewController: UIViewController {
         }
         
         //Home
-        let tab1 = UIBarButtonItem(image: UIImage(named: "项目网站"), style: .Plain, target: self, action: #selector(TrendingRepositionInfoViewController.goHome))
+        let tab1 = UIBarButtonItem(image: UIImage(named: "项目网站"), style: .plain, target: self, action: #selector(TrendingRepositionInfoViewController.goHome))
         
         //README
-        let tab2 = UIBarButtonItem(image: UIImage(named: "Group"), style: .Plain, target: self, action: #selector(TrendingRepositionInfoViewController.readMeOnGithub))
+        let tab2 = UIBarButtonItem(image: UIImage(named: "Group"), style: .plain, target: self, action: #selector(TrendingRepositionInfoViewController.readMeOnGithub))
         
         //ISS
-        let tab3 = UIBarButtonItem(image: UIImage(named: "GitHub主页"), style: .Plain, target: self, action: #selector(TrendingRepositionInfoViewController.onGithub))
+        let tab3 = UIBarButtonItem(image: UIImage(named: "GitHub主页"), style: .plain, target: self, action: #selector(TrendingRepositionInfoViewController.onGithub))
         
         //User
-        let tab4 = UIBarButtonItem(image: UIImage(named: "作者信息"), style: .Plain, target: self, action: #selector(TrendingRepositionInfoViewController.user))
+        let tab4 = UIBarButtonItem(image: UIImage(named: "作者信息"), style: .plain, target: self, action: #selector(TrendingRepositionInfoViewController.user))
         
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         toolView.items = [flexibleSpace,tab1,flexibleSpace,tab2,flexibleSpace,tab3,flexibleSpace,tab4,flexibleSpace]
         
@@ -86,7 +86,7 @@ class TrendingRepositionInfoViewController: UIViewController {
      - parameter id: 项目ID
      */
     
-    private func loadreadMefromRealm(id:Int64){
+    fileprivate func loadreadMefromRealm(_ id:Int64){
         
         starReadMe = StarReadMeRealm.selectRreadMeByID(id)
         
@@ -102,9 +102,9 @@ class TrendingRepositionInfoViewController: UIViewController {
     /**
      404页面
      */
-    private func load404(){
-        let html404 = NSBundle.mainBundle().URLForResource("404", withExtension: "html")!
-        self.html = try! NSString(contentsOfURL: html404, encoding: NSUTF8StringEncoding) as String
+    fileprivate func load404(){
+        let html404 = Bundle.main.url(forResource: "404", withExtension: "html")!
+        self.html = try! NSString(contentsOf: html404, encoding: String.Encoding.utf8.rawValue) as String
         self.readmeView.loadHTMLString(self.html, baseURL: nil)
         SwiftNotice.clear()
     }
@@ -136,11 +136,11 @@ class TrendingRepositionInfoViewController: UIViewController {
         showSafari(userurl)
     }
     
-    func showSafari(url:String){
+    func showSafari(_ url:String){
         guard url == " " else { SwiftNotice.showNoticeWithText(NoticeType.error, text: "404", autoClear: true, autoClearTime: 2) ; return }
-        let url = NSURL(string: url)
+        let url = URL(string: url)
         guard let URL = url else { SwiftNotice.showNoticeWithText(NoticeType.error, text: "404", autoClear: true, autoClearTime: 2) ; return }
-        safari = SFSafariViewController(URL: URL)
-        presentViewController(safari, animated: true, completion: nil)
+        safari = SFSafariViewController(url: URL)
+        present(safari, animated: true, completion: nil)
     }
 }

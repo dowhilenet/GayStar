@@ -20,7 +20,7 @@ class ShowRepositoryListTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Repositories"
-        self.tableView.registerClass(StarsTableViewCell.classForCoder(), forCellReuseIdentifier: "starlist")
+        self.tableView.register(StarsTableViewCell.classForCoder(), forCellReuseIdentifier: "starlist")
         self.tableView.estimatedRowHeight = 88
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -30,11 +30,11 @@ class ShowRepositoryListTableViewController: UITableViewController{
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return starsSectionTitles.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let starkey = starsSectionTitles[section]
         if let stars = starsdic[starkey] {
             return stars.count
@@ -43,27 +43,27 @@ class ShowRepositoryListTableViewController: UITableViewController{
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("starlist", forIndexPath: indexPath) as! StarsTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "starlist", for: indexPath) as! StarsTableViewCell
         
-        let starkey = starsSectionTitles[indexPath.section]
+        let starkey = starsSectionTitles[(indexPath as NSIndexPath).section]
         if let stars = starsdic[starkey] {
-            let star = stars[indexPath.row]
+            let star = stars[(indexPath as NSIndexPath).row]
             cell.initCell(star)
         }
         return cell
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return starsSectionTitles[section]
     }
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return starsIndexTitles
     }
     
-    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int{
-        guard let  index = starsSectionTitles.indexOf(title) else {
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int{
+        guard let  index = starsSectionTitles.index(of: title) else {
             return -1
         }
         return index
@@ -74,24 +74,24 @@ class ShowRepositoryListTableViewController: UITableViewController{
 //    }
     
     
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 //        let headerView = view as! UITableViewHeaderFooterView
 //        headerView.textLabel?.font = UIFont(name: "FrederickatheGreat", size: 18.0)
     }
     
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let starkey = starsSectionTitles[indexPath.section]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let starkey = starsSectionTitles[(indexPath as NSIndexPath).section]
         let stars = starsdic[starkey]
-        let selectstar = stars![indexPath.row]
+        let selectstar = stars![(indexPath as NSIndexPath).row]
         StarRealm.updateGroup(selectstar, groupName: groupName)
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
     }
     
     
     func createStarsDic() {
         stars.forEach { (star) -> () in
-            let starKey = star.namejson.substringToIndex(star.namejson.startIndex.advancedBy(1)).uppercaseString
+            let starKey = star.namejson.substringToIndex(star.namejson.index(star.namejson.startIndex, offsetBy: 1)).uppercased()
             if var starValue = starsdic[starKey]{
                 starValue.append(star)
                 starsdic[starKey] = starValue
@@ -100,7 +100,7 @@ class ShowRepositoryListTableViewController: UITableViewController{
             }
         }
         starsSectionTitles = [String](starsdic.keys)
-        starsSectionTitles.sortInPlace({$0 < $1})
+        starsSectionTitles.sort(by: {$0 < $1})
     }
     
 }

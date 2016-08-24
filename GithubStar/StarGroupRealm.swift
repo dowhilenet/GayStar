@@ -30,7 +30,7 @@ class StarGroupRealm: Object {
      
      - returns: true or false
      */
-    class func insert(group:StarGroupRealm) -> Bool {
+    class func insert(_ group:StarGroupRealm) -> Bool {
         let res = false
         do {
             try RealmData.share.realm.write({
@@ -57,7 +57,7 @@ class StarGroupRealm: Object {
      
      - returns: 删除的结果  true or false
      */
-    class func deleteGroup(name:String) -> Bool {
+    class func deleteGroup(_ name:String) -> Bool {
         let res = false
         let group = StarGroupRealm(name: name)
         do {

@@ -27,7 +27,7 @@ class TrendingDelevloperRealm: Object {
      
      - returns: 插入的结果 true or false
      */
-    class func insert(developer: TrendingDelevloperRealm) -> Bool {
+    class func insert(_ developer: TrendingDelevloperRealm) -> Bool {
         let res = false
         do {
             try RealmData.share.realm.write({ 
@@ -45,8 +45,8 @@ class TrendingDelevloperRealm: Object {
      
      - returns: 开发者模型
      */
-    class func selectByType(type: Int64) -> [TrendingDelevloperRealm] {
-        return Array<TrendingDelevloperRealm>(RealmData.share.realm.objects(TrendingDelevloperRealm).filter(NSPredicate(format: "typename = %@",NSNumber(longLong: type ))))
+    class func selectByType(_ type: Int64) -> [TrendingDelevloperRealm] {
+        return Array<TrendingDelevloperRealm>(RealmData.share.realm.objects(TrendingDelevloperRealm).filter(NSPredicate(format: "typename = %@",NSNumber(value: type ))))
     }
     /**
      根据类型的ID 来删除某一类型下的所有热门开发者
@@ -55,7 +55,7 @@ class TrendingDelevloperRealm: Object {
      
      - returns: 操作的结果 true or  false
      */
-    class func deleteByType(type: Int64) -> Bool {
+    class func deleteByType(_ type: Int64) -> Bool {
         let res = false
         return res
     }

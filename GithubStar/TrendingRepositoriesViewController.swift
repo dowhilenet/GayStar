@@ -30,7 +30,7 @@ class TrendingRepositoriesViewController: UITableViewController{
     
     func tableViewConfig(){
         
-        tableView.registerClass(StarsTableViewCell.self, forCellReuseIdentifier: "TodayCell")
+        tableView.register(StarsTableViewCell.self, forCellReuseIdentifier: "TodayCell")
         tableView.estimatedRowHeight = 88.00
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 106, right: 0)
@@ -41,31 +41,31 @@ class TrendingRepositoriesViewController: UITableViewController{
         
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if repositoriesModel.count == 0 {
             self.tableView.configKongTable("There is no data. try the drop-down refresh")
             return 0
         }
         return 1
     }
-     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
            return repositoriesModel.count
     }
     
-     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("TodayCell", forIndexPath: indexPath) as! StarsTableViewCell
-        let star = repositoriesModel[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TodayCell", for: indexPath) as! StarsTableViewCell
+        let star = repositoriesModel[(indexPath as NSIndexPath).row]
         cell.initCell(star)
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let vc = TrendingRepositionInfoViewController()
         vc.hidesBottomBarWhenPushed = true
-        let model = repositoriesModel[indexPath.row]
+        let model = repositoriesModel[(indexPath as NSIndexPath).row]
         vc.repositionModel = model
         contantView.navigationController?.pushViewController(vc, animated: true)
     }
@@ -92,7 +92,7 @@ class TrendingRepositoriesViewController: UITableViewController{
         }
     }
     
-    func requestRepoData(names:[String]){
+    func requestRepoData(_ names:[String]){
         guard names.count > 0 else {
             SwiftNotice.showNoticeWithText(NoticeType.error, text: "Trending repositories results are currently being dissected.", autoClear: true, autoClearTime: 2)
             self.tableView.dg_stopLoading()
@@ -115,7 +115,7 @@ class TrendingRepositoriesViewController: UITableViewController{
         }
     }
     
-    func switchInsertType(data:NSData) {
+    func switchInsertType(_ data:Data) {
         
         let star = TrendingStarRealm(jsonData: JSON(data: data))
         star.type = Int64(currType)

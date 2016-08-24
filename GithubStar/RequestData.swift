@@ -23,7 +23,7 @@ enum TrendingRepositories:String{
     }
 
     ///根据 语言名来 返回仓库的名字
-    func getRepo(name:String?,back:([String]) -> Void) {
+    func getRepo(_ name:String?,back:@escaping ([String]) -> Void) {
 
         var ress = [String]()
         var url = ""
@@ -36,7 +36,7 @@ enum TrendingRepositories:String{
         
         Alamofire.request(.GET, url)
         .responseData { (res) -> Void in
-            guard let data = res.data , doc = try? HTMLDocument(data: data) else { back(ress); return }
+            guard let data = res.data , let doc = try? HTMLDocument(data: data) else { back(ress); return }
             let repos = doc.xpath("//h3[@class='repo-list-name']")
             repos.forEach({ (element) -> () in
                 guard let taga = element.firstChild(tag: "a") , var href = taga["href"] else { back(ress) ; return }
@@ -59,7 +59,7 @@ enum TrendingDevelopers:String{
     }
     
     //返回仓库的名字
-    func getRepo(type:Int64, name:String?,back: (Bool) -> Void ) {
+    func getRepo(_ type:Int64, name:String?,back: @escaping (Bool) -> Void ) {
         
         var url = ""
         var delevlopes = [TrendingDelevloperRealm]()
@@ -72,7 +72,7 @@ enum TrendingDevelopers:String{
         Alamofire.request(.GET, url)
             .responseData { (res) -> Void in
                 
-                guard let data = res.data , doc = try? HTMLDocument(data: data) else {
+                guard let data = res.data , let doc = try? HTMLDocument(data: data) else {
                     
                     back(false)
                     return }
@@ -84,9 +84,9 @@ enum TrendingDevelopers:String{
                         let imageurl = element.css(".leaderboard-gravatar").first?["src"] ,
                         var githubName = element.css(".user-leaderboard-list-name").first?.firstChild(tag: "a")?["href"],
                         let fullName = element.css(".full-name").first?.stringValue ,
-                        repoURL = element.css(".repo-snipit").first?["href"],
-                        repoName = element.css(".repo").first?["title"],
-                        repoDesc = element.css(".repo-snipit-description").first?.stringValue
+                        let repoURL = element.css(".repo-snipit").first?["href"],
+                        let repoName = element.css(".repo").first?["title"],
+                        let repoDesc = element.css(".repo-snipit-description").first?.stringValue
                         else {  return }
                     githubName.removeAtIndex(githubName.startIndex)
                     let fullnameOne = fullName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())

@@ -499,6 +499,7 @@
 					ABDA1BF01C4730890026A3AC = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 3HX94AXZ2B;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -804,6 +805,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GithubStar/GithubStar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -836,6 +838,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.dowhile.GitStar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GithubStar/GithubStar-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

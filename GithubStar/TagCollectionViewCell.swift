@@ -15,7 +15,7 @@ class TagCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(titleLabel)
-        contentView.backgroundColor = UIColor.whiteColor()
+        contentView.backgroundColor = UIColor.white
         titleLabel.snp_makeConstraints { (make) in
             make.edges.equalTo(contentView)
         }

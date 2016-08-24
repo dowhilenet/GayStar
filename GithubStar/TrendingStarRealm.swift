@@ -20,7 +20,7 @@ class TrendingStarRealm: StarBase {
      
      - returns: true or false
      */
-    class func intsertStar(star:TrendingStarRealm) -> Bool {
+    class func intsertStar(_ star:TrendingStarRealm) -> Bool {
         let res: Bool = false
         do {
             try RealmData.share.realm.write({
@@ -38,8 +38,8 @@ class TrendingStarRealm: StarBase {
      
      - returns: 热门仓库
      */
-    class func selectStarsBytype(type:Int64) -> [TrendingStarRealm] {
-        return Array<TrendingStarRealm>(RealmData.share.realm.objects(TrendingStarRealm).filter(NSPredicate(format: "type = %@", NSNumber(longLong: type))))
+    class func selectStarsBytype(_ type:Int64) -> [TrendingStarRealm] {
+        return Array<TrendingStarRealm>(RealmData.share.realm.objects(TrendingStarRealm).filter(NSPredicate(format: "type = %@", NSNumber(value: type))))
     }
     /**
      根据热门项目的分类
@@ -48,10 +48,10 @@ class TrendingStarRealm: StarBase {
      
      - returns: true or  false
      */
-    class func deleteAllStars(type: Int64) -> Bool {
+    class func deleteAllStars(_ type: Int64) -> Bool {
         let res: Bool = false
         do {
-            let deleteedRes = RealmData.share.realm.objects(TrendingStarRealm).filter(NSPredicate(format: "type = %@", NSNumber(longLong: type)))
+            let deleteedRes = RealmData.share.realm.objects(TrendingStarRealm).filter(NSPredicate(format: "type = %@", NSNumber(value: type)))
             try RealmData.share.realm.write({
                 RealmData.share.realm.delete(deleteedRes)
             })

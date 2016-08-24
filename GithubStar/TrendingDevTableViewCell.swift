@@ -28,18 +28,18 @@ class TrendingDevTableViewCell: UITableViewCell {
     }
     
     
-    func initCell(dev:[TrendingDelevloperRealm],index:NSIndexPath) {
-        phoneimage.kf_setImageWithURL(NSURL(string: dev[index.row].imageURL)!)
-        githubname.text = dev[index.row].fullName
-        fullname.text = dev[index.row].githubname
-        repodec.text = dev[index.row].repoDec
-        repoName.text = dev[index.row].repoName
+    func initCell(_ dev:[TrendingDelevloperRealm],index:IndexPath) {
+        phoneimage.kf_setImageWithURL(URL(string: dev[index.row].imageURL)!)
+        githubname.text = dev[(index as NSIndexPath).row].fullName
+        fullname.text = dev[(index as NSIndexPath).row].githubname
+        repodec.text = dev[(index as NSIndexPath).row].repoDec
+        repoName.text = dev[(index as NSIndexPath).row].repoName
     }
     
     
     func configCell() {
         
-        self.selectionStyle = .None
+        self.selectionStyle = .none
         
         
         phoneimage = UIImageView(image: UIImage(named: "Icon-60"))
@@ -81,7 +81,7 @@ class TrendingDevTableViewCell: UITableViewCell {
         
         repodec = UILabel()
         repodec.numberOfLines = 0
-        repodec.font = UIFont.systemFontOfSize(14)
+        repodec.font = UIFont.systemFont(ofSize: 14)
         self.addSubview(repodec)
         repodec.snp_makeConstraints { (make) -> Void in
             make.leading.equalTo(phoneimage.snp_leading)

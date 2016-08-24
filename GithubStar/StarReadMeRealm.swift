@@ -25,7 +25,7 @@ class StarReadMeRealm: Object {
      
      - returns: true or false
      */
-    class func insertReadMe(data:StarReadMeRealm) -> Bool {
+    class func insertReadMe(_ data:StarReadMeRealm) -> Bool {
         let res = false
         do {
             try RealmData.share.realm.write({
@@ -44,7 +44,7 @@ class StarReadMeRealm: Object {
      
      - returns: Star read me
      */
-    class func selectRreadMeByID(id:Int64) -> StarReadMeRealm? {
-        return RealmData.share.realm.objects(StarReadMeRealm).filter(NSPredicate(format: "id == %@", NSNumber(longLong: id))).first
+    class func selectRreadMeByID(_ id:Int64) -> StarReadMeRealm? {
+        return RealmData.share.realm.objects(StarReadMeRealm).filter(NSPredicate(format: "id == %@", NSNumber(value: id))).first
     }
 }

@@ -36,7 +36,7 @@ class StarInformationViewController: UIViewController{
         loadreadMefromRealm(item.idjson)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         SwiftNotice.clear()
     }
@@ -66,18 +66,18 @@ class StarInformationViewController: UIViewController{
         }
         
         //Home
-        let tab1 = UIBarButtonItem(image: UIImage(named: "项目网站"), style: .Plain, target: self, action: #selector(StarInformationViewController.goHome))
+        let tab1 = UIBarButtonItem(image: UIImage(named: "项目网站"), style: .plain, target: self, action: #selector(StarInformationViewController.goHome))
         
         //README
-        let tab2 = UIBarButtonItem(image: UIImage(named: "Group"), style: .Plain, target: self, action: #selector(StarInformationViewController.readMeOnGithub))
+        let tab2 = UIBarButtonItem(image: UIImage(named: "Group"), style: .plain, target: self, action: #selector(StarInformationViewController.readMeOnGithub))
         
         //ISS
-        let tab3 = UIBarButtonItem(image: UIImage(named: "GitHub主页"), style: .Plain, target: self, action: #selector(StarInformationViewController.onGithub))
+        let tab3 = UIBarButtonItem(image: UIImage(named: "GitHub主页"), style: .plain, target: self, action: #selector(StarInformationViewController.onGithub))
         
         //User
-        let tab4 = UIBarButtonItem(image: UIImage(named: "作者信息"), style: .Plain, target: self, action: #selector(StarInformationViewController.user))
+        let tab4 = UIBarButtonItem(image: UIImage(named: "作者信息"), style: .plain, target: self, action: #selector(StarInformationViewController.user))
         
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         toolView.items = [flexibleSpace,tab1,flexibleSpace,tab2,flexibleSpace,tab3,flexibleSpace,tab4,flexibleSpace]
     }
@@ -123,7 +123,7 @@ class StarInformationViewController: UIViewController{
      - parameter id: 项目ID
      */
     
-     func loadreadMefromRealm(id:Int64){
+     func loadreadMefromRealm(_ id:Int64){
         
         starReadMe = StarReadMeRealm.selectRreadMeByID(self.item.idjson)
         if starReadMe.readmeValue != nil {
@@ -141,9 +141,9 @@ class StarInformationViewController: UIViewController{
     /**
      404页面
      */
-    private func load404(){
-        let html404 = NSBundle.mainBundle().URLForResource("404", withExtension: "html")!
-        html = try! NSString(contentsOfURL: html404, encoding: NSUTF8StringEncoding) as String
+    fileprivate func load404(){
+        let html404 = Bundle.main.url(forResource: "404", withExtension: "html")!
+        html = try! NSString(contentsOf: html404, encoding: String.Encoding.utf8.rawValue) as String
         webview.loadHTMLString(html, baseURL: nil)
         SwiftNotice.clear()
         
@@ -153,8 +153,8 @@ class StarInformationViewController: UIViewController{
 //MARK: SFSafariViewControllerDelegate
 extension StarInformationViewController:SFSafariViewControllerDelegate{
     
-    func safariViewControllerDidFinish(controller: SFSafariViewController){
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController){
+        controller.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -181,12 +181,12 @@ extension StarInformationViewController{
         showSafari(userurl)
     }
     
-    func showSafari(url:String?){
+    func showSafari(_ url:String?){
         guard let url = url else { SwiftNotice.showNoticeWithText(NoticeType.error, text: "404", autoClear: true, autoClearTime: 2) ;return }
         guard url != " " else { SwiftNotice.showNoticeWithText(NoticeType.error, text: "404", autoClear: true, autoClearTime: 2) ;return }
-        guard let _url = NSURL(string: url) else { SwiftNotice.showNoticeWithText(NoticeType.error, text: "404", autoClear: true, autoClearTime: 2) ;return }
-        safari = SFSafariViewController(URL: _url)
-        presentViewController(safari, animated: true, completion: nil)
+        guard let _url = URL(string: url) else { SwiftNotice.showNoticeWithText(NoticeType.error, text: "404", autoClear: true, autoClearTime: 2) ;return }
+        safari = SFSafariViewController(url: _url)
+        present(safari, animated: true, completion: nil)
     }
     
 }

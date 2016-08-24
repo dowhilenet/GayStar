@@ -43,8 +43,8 @@ class StarsTableViewCell: UITableViewCell {
 //        starLabel.text = String(star.stargazersCountjson)
 //    }
 //    
-    func initCell(star:StarBase) {
-        imageview.kf_setImageWithURL(NSURL(string: star.avatarURLjson)!)
+    func initCell(_ star:StarBase) {
+        imageview.kf_setImageWithURL(URL(string: star.avatarURLjson)!)
         autherName.text = star.autherNamejson
         desText.text = star.decriptionjson
         name.text = star.namejson
@@ -53,7 +53,7 @@ class StarsTableViewCell: UITableViewCell {
     }
     
     func configTableCell(){
-        self.selectionStyle = .None
+        self.selectionStyle = .none
         //头像
         imageview = UIImageView(image: UIImage(named: "Icon-60"))
 //        imageview.layer.cornerRadius = 44.0 / 2
@@ -84,7 +84,7 @@ class StarsTableViewCell: UITableViewCell {
         //desText
         desText = UILabel()
         desText.numberOfLines = 0
-        desText.font = UIFont.systemFontOfSize(16)
+        desText.font = UIFont.systemFont(ofSize: 16)
         self.addSubview(desText)
         
         langImageView = UIImageView(image: UIImage(named: "code"))

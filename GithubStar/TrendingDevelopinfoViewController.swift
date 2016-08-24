@@ -22,6 +22,6 @@ class TrendingDevelopinfoViewController: UIViewController {
         webview.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(self.view)
         }
-        webview.loadRequest(NSURLRequest(URL: NSURL(string: dev.githubURL)!))
+        webview.load(URLRequest(url: URL(string: dev.githubURL)!))
     }
 }

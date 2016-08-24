@@ -47,11 +47,11 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         pageMenuConfig()
         runkeepeSwitch()
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
 //        let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "choocelang")
 //        self.navigationItem.rightBarButtonItem = rightButton
     }
@@ -71,15 +71,15 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLa
     /**
      配置 switch
      */
-    private func runkeepeSwitch(){
+    fileprivate func runkeepeSwitch(){
         runkeeperSwitch.backgroundColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
-        runkeeperSwitch.selectedBackgroundColor = .whiteColor()
-        runkeeperSwitch.tintColor = .whiteColor()
+        runkeeperSwitch.selectedBackgroundColor = .white()
+        runkeeperSwitch.tintColor = .white()
         runkeeperSwitch.selectedTitleColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
         runkeeperSwitch.titleFont = UIFont(name: "OpenSans", size: 13.0)
         runkeeperSwitch.frame = CGRect(x: 30.0, y: 40.0, width: 200.0, height: 30.0)
-        runkeeperSwitch.autoresizingMask = [.FlexibleWidth]
-        runkeeperSwitch.addTarget(self, action: #selector(PageMenuViewController.switchValueDidChange(_:)), forControlEvents: .ValueChanged)
+        runkeeperSwitch.autoresizingMask = [.flexibleWidth]
+        runkeeperSwitch.addTarget(self, action: #selector(PageMenuViewController.switchValueDidChange(_:)), for: .valueChanged)
         self.navigationItem.titleView = runkeeperSwitch
     }
     
@@ -88,7 +88,7 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLa
      
      - parameter sender: sender
      */
-    func switchValueDidChange(sender:DGRunkeeperSwitch){
+    func switchValueDidChange(_ sender:DGRunkeeperSwitch){
         if self.runkeeperSwitch.selectedIndex == 0{
             pageMenuConfig()
         }else{
@@ -115,7 +115,7 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLa
         month.contantView = self
         controllerArray.append(month)
         
-        pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 64.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)
+        pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRect(x: 0.0, y: 64.0, width: self.view.frame.width, height: self.view.frame.height), pageMenuOptions: parameters)
         self.view.addSubview(pageMenu!.view)
         
         pageMenu!.delegate = self
@@ -139,12 +139,12 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLa
         month.contantView = self
         controllerArray.append(month)
         
-        showcasesPageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 64.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)
+        showcasesPageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRect(x: 0.0, y: 64.0, width: self.view.frame.width, height: self.view.frame.height), pageMenuOptions: parameters)
         self.view.addSubview(showcasesPageMenu!.view)
         showcasesPageMenu!.delegate = self
     }
     
-    func willMoveToPage(controller: UIViewController, index: Int){
+    func willMoveToPage(_ controller: UIViewController, index: Int){
        
         if controller is TrendingRepositoriesViewController {
             let TrendingController = controller as! TrendingRepositoriesViewController
@@ -155,7 +155,7 @@ class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLa
         }
     }
 
-    func didSelectLan(lan:String) {
+    func didSelectLan(_ lan:String) {
         lang = lan
     }
 }

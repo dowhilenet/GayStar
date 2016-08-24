@@ -54,15 +54,15 @@ class StarsTableViewController: UITableViewController {
     /**
      配置 switch
      */
-    private func runkeepeSwitch(){
+    fileprivate func runkeepeSwitch(){
     runkeeperSwitch.backgroundColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
-    runkeeperSwitch.selectedBackgroundColor = .whiteColor()
-    runkeeperSwitch.tintColor = .whiteColor()
+    runkeeperSwitch.selectedBackgroundColor = .white()
+    runkeeperSwitch.tintColor = .white()
     runkeeperSwitch.selectedTitleColor = UIColor(red: 0.44, green: 0.836, blue: 0.953, alpha: 1)
     runkeeperSwitch.titleFont = UIFont(name: "OpenSans", size: 13.0)
     runkeeperSwitch.frame = CGRect(x: 30.0, y: 40.0, width: 200.0, height: 30.0)
-    runkeeperSwitch.autoresizingMask = [.FlexibleWidth]
-    runkeeperSwitch.addTarget(self, action: #selector(StarsTableViewController.switchValueDidChange(_:)), forControlEvents: .ValueChanged)
+    runkeeperSwitch.autoresizingMask = [.flexibleWidth]
+    runkeeperSwitch.addTarget(self, action: #selector(StarsTableViewController.switchValueDidChange(_:)), for: .valueChanged)
     self.navigationItem.titleView = runkeeperSwitch
     }
 
@@ -71,7 +71,7 @@ class StarsTableViewController: UITableViewController {
      
      - parameter sender: sender
      */
-    func switchValueDidChange(sender:DGRunkeeperSwitch){
+    func switchValueDidChange(_ sender:DGRunkeeperSwitch){
         if self.runkeeperSwitch.selectedIndex == 0{
             stars = StarRealm.selectStars()
             self.tableView.reloadData()
@@ -83,15 +83,15 @@ class StarsTableViewController: UITableViewController {
     /**
      Table View 配置
      */
-    private func tableviewConfig(){
+    fileprivate func tableviewConfig(){
         
         self.tableView.estimatedRowHeight = 88.00
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.separatorColor = UIColor(red:
             240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0,
             alpha: 0.8)
-        self.tableView.registerClass(StarsTableViewCell.classForCoder(), forCellReuseIdentifier: cellId)
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.tableView.register(StarsTableViewCell.classForCoder(), forCellReuseIdentifier: cellId)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
    
@@ -99,7 +99,7 @@ class StarsTableViewController: UITableViewController {
     /**
      配置下拉组建
      */
-    private func pulldownConfig(){
+    fileprivate func pulldownConfig(){
         //下拉刷新样式设计
         loadingView.tintColor = PullToRefreshTintColor
         self.tableView.dg_setPullToRefreshFillColor(PullToRefreshFillColor)
@@ -174,46 +174,46 @@ class StarsTableViewController: UITableViewController {
 typealias UItableviewDataSource = StarsTableViewController
 
 extension UItableviewDataSource {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return stars.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! StarsTableViewCell
-        let star = stars[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! StarsTableViewCell
+        let star = stars[(indexPath as NSIndexPath).row]
         cell.initCell(star)
         return cell
         
     }
     
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
-        let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Group") { (UITableaction, indexpath) -> Void in
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
+        let groupAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Group") { (UITableaction, indexpath) -> Void in
             let layout = TagViewFloutLaout()
             layout.flowLaoutInit()
             let vc = TagCollectionViewController(collectionViewLayout: layout)
-            vc.item = self.stars[indexPath.row]
+            vc.item = self.stars[(indexPath as NSIndexPath).row]
             //隐藏tabar
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
-        groupAction.backgroundColor = UIColor.blackColor()
+        groupAction.backgroundColor = UIColor.black
         return [groupAction]
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //取消点击状态
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        let star = stars[indexPath.row]
+        let star = stars[(indexPath as NSIndexPath).row]
         //初始化项目详细信息界面
         let starView = StarInformationViewController()
         starView.hidesBottomBarWhenPushed = true

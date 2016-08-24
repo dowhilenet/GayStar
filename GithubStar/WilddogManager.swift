@@ -14,16 +14,16 @@ struct WilddogManager {
 
     static func wilddogLogin() {
         //监听用户的登陆状况
-        ref.observeAuthEventWithBlock { (authData) in
+        ref?.observeAuthEvent { (authData) in
             if authData != nil {
                 //用户已经认证
                 
             }else {
                 //用户没有认证，进行匿名登陆
-                WilddogManager.ref.authAnonymouslyWithCompletionBlock({ (error, autherData) in
+                WilddogManager.ref?.authAnonymously(completionBlock: { (error, autherData) in
                     if error == nil {
                         //登陆成功
-                        print(autherData.uid)
+                        print(autherData?.uid)
                     }else {
                         //登陆失败
                     }

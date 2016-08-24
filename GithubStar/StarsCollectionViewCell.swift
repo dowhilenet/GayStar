@@ -19,10 +19,10 @@ class StarsCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        contentView.backgroundColor = randomColor(hue: .Yellow, luminosity: .Light)
+        contentView.backgroundColor = randomColor(hue: .yellow, luminosity: .light)
     }
     
-    func initCell(room:WilddogChatRoomModel) {
+    func initCell(_ room:WilddogChatRoomModel) {
         autherName.text = room.autherName
         starLabel.text = room.roomName
     }

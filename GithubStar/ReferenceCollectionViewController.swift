@@ -29,7 +29,7 @@ class ReferenceCollectionViewController: UIViewController {
         guard let _ = Defaults[.token] else{ GithubOAuth.GithubOAuth(self);return}
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         names = StarGroupRealm.select()
         collectionView?.reloadData()
@@ -53,11 +53,11 @@ extension ReferenceCollectionViewController {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.minimumColumnSpacing = 8
         layout.minimumInteritemSpacing = 8
-        collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
-        collectionView!.registerClass(TagCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        collectionView!.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        collectionView?.backgroundColor = UIColor.whiteColor()
+        collectionView?.backgroundColor = UIColor.white
         view.addSubview(collectionView)
         collectionView.snp_makeConstraints { (make) in
             make.edges.equalTo(self.view)
@@ -65,8 +65,8 @@ extension ReferenceCollectionViewController {
     }
     
     func setUpNavgation() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.addgroups(_:)))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addgroups(_:)))
     }
 }
 
@@ -74,21 +74,21 @@ extension ReferenceCollectionViewController {
 extension ReferenceCollectionViewController: UICollectionViewDataSource {
 
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return names.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TagCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TagCollectionViewCell
         cell.titleLabel.numberOfLines = 0
-        cell.titleLabel.text = names[indexPath.row].name
-        cell.titleLabel.backgroundColor = UIColor.blueColor()
+        cell.titleLabel.text = names[(indexPath as NSIndexPath).row].name
+        cell.titleLabel.backgroundColor = UIColor.blue
         return cell
     }
 }
@@ -96,18 +96,18 @@ extension ReferenceCollectionViewController: UICollectionViewDataSource {
 //MARK: CollectionViewWaterfallLayoutDelegate
 extension ReferenceCollectionViewController: CollectionViewWaterfallLayoutDelegate {
     
-    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let name = names[indexPath.item]
-        let rect = NSString(string:name.name).boundingRectWithSize(CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(18)], context: nil)
+    func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        let name = names[(indexPath as NSIndexPath).item]
+        let rect = NSString(string:name.name).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 18)], context: nil)
         print(rect.height,rect.width)
         return rect.size
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let controller = GroupItemsTableViewController()
         controller.hidesBottomBarWhenPushed = true
-        controller.name = names[indexPath.row].name
+        controller.name = names[(indexPath as NSIndexPath).row].name
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -117,17 +117,17 @@ extension ReferenceCollectionViewController: CollectionViewWaterfallLayoutDelega
 extension ReferenceCollectionViewController {
 
     
-    func addgroups(item:UIBarButtonItem){
-        let alert = UIAlertController(title: "Add Group", message: nil, preferredStyle: .Alert)
+    func addgroups(_ item:UIBarButtonItem){
+        let alert = UIAlertController(title: "Add Group", message: nil, preferredStyle: .alert)
         
-        alert.addTextFieldWithConfigurationHandler { (uitextfield) -> Void in
+        alert.addTextField { (uitextfield) -> Void in
             uitextfield.placeholder = "Group Name"
         }
         
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             guard let name = alert.textFields?.first?.text else{ return }
             let newChars = name.characters.filter({ (char) -> Bool in
                 return char != " "
@@ -142,7 +142,7 @@ extension ReferenceCollectionViewController {
             }
             
         }))
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }
 

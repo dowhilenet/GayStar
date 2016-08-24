@@ -28,7 +28,7 @@ class StarRealm: StarBase {
      
      - returns: StarRealm 数组
      */
-    class func initStarArray(data: NSData) -> [StarRealm] {
+    class func initStarArray(_ data: NSData) -> [StarRealm] {
         let json = JSON(data: data)
         var stars = [StarRealm]()
         for (_ , subJson) in json {
@@ -43,7 +43,7 @@ class StarRealm: StarBase {
      
      - parameter star: 要插入的数据
      */
-    class func intsertStar(star: StarRealm) -> Bool {
+    class func intsertStar(_ star: StarRealm) -> Bool {
         let res = false
         do{
            try RealmData.share.realm.write({
@@ -63,7 +63,7 @@ class StarRealm: StarBase {
      
      - returns: true fale
      */
-    class func updateGroup(star: StarRealm,groupName:String) -> Bool {
+    class func updateGroup(_ star: StarRealm,groupName:String) -> Bool {
         let res = false
         do {
             try RealmData.share.realm.write({ 
@@ -80,7 +80,7 @@ class StarRealm: StarBase {
      
      - parameter star: 要插入的数据
      */
-    class func insertStars(stars: [StarRealm]) -> Bool {
+    class func insertStars(_ stars: [StarRealm]) -> Bool {
         let res = false
         do {
             try RealmData.share.realm.write({ 
@@ -126,12 +126,12 @@ class StarRealm: StarBase {
      
      - returns: 分组下的所有项目
      */
-    class func selectStarByGroupName(name:String) -> [StarRealm] {
+    class func selectStarByGroupName(_ name:String) -> [StarRealm] {
         let predicate = NSPredicate(format: "groupsName  = %@", name)
         return Array<StarRealm>(RealmData.share.realm.objects(StarRealm).filter(predicate).sorted("namejson", ascending: true))
     }
     
-    class func selectStarByID(ID: Int64) -> StarRealm? {
+    class func selectStarByID(_ ID: Int64) -> StarRealm? {
      
         return RealmData.share.realm.objects(StarRealm).filter("idjson = \(ID)").first
     }
@@ -141,7 +141,7 @@ class StarRealm: StarBase {
      
      - parameter id: 分组的ID
      */
-    class func deleteStarFromGroup(groupName: String) -> Bool {
+    class func deleteStarFromGroup(_ groupName: String) -> Bool {
         let res = false
         let stars = RealmData.share.realm.objects(StarRealm).filter(NSPredicate(format: "groupsName = %@", groupName))
         stars.forEach { (star) in

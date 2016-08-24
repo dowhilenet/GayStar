@@ -73,8 +73,8 @@ enum GithubAPI{
 
 extension GithubAPI:URLRequestConvertible{
     
-    private var baseURL:String {return "https://api.github.com"}
-    private var patch:String{
+    fileprivate var baseURL:String {return "https://api.github.com"}
+    fileprivate var patch:String{
         switch self{
         case .star:
             return "/user/starred"
@@ -97,12 +97,12 @@ extension GithubAPI:URLRequestConvertible{
         }
     }
     
-    private var paraments:[String:AnyObject]?{
+    fileprivate var paraments:[String:AnyObject]?{
         switch self{
         case .user(_):
             return nil
         case .star(let page):
-            return ["page":"\(page)","per_page":100]
+            return ["page":"\(page)"," as AnyObject as AnyObject as AnyObject as AnyObject as AnyObject as AnyObject as AnyObjectper_page":100]
         case .repos(_):
             return nil
         case .followers(_):
@@ -112,7 +112,7 @@ extension GithubAPI:URLRequestConvertible{
         case .readme(_):
             return nil
         case .starredCount:
-            return ["per_page":1]
+            return ["per_page":1 as AnyObject]
         case .feeds:
             return  nil
         case .me:
@@ -124,8 +124,8 @@ extension GithubAPI:URLRequestConvertible{
     
     var URLRequest: NSMutableURLRequest {
         
-        let URL = NSURL(string: baseURL)!
-        let URLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(patch))
+        let URL = Foundation.URL(string: baseURL)!
+        let URLRequest = NSMutableURLRequest(url: URL.appendingPathComponent(patch))
         URLRequest.HTTPMethod = Alamofire.Method.GET.rawValue
         if let token = Defaults[.token]{
         URLRequest.addValue("token \(token)", forHTTPHeaderField: "Authorization")
@@ -137,7 +137,7 @@ extension GithubAPI:URLRequestConvertible{
 
 
 class GithubOAuth{
-    class func GithubOAuth(ViewController:UIViewController){
+    class func GithubOAuth(_ ViewController:UIViewController){
         
         let clientId = "af3689b7eef793657839"
         let clientSectet = "b2f4713ee30029079d036428f0ed45c6b44982a2"
@@ -147,7 +147,7 @@ class GithubOAuth{
         
         oauthswift.authorize_url_handler = sfSafari
         
-        oauthswift.authorizeWithCallbackURL(NSURL(string: "GITStare://oauth-callback/github")!, scope: "user,repo", state: state,success: { (credential, response, parameters) -> Void in
+        oauthswift.authorizeWithCallbackURL(URL(string: "GITStare://oauth-callback/github")!, scope: "user,repo", state: state,success: { (credential, response, parameters) -> Void in
             Defaults[.token] = credential.oauth_token
             Defaults.synchronize()
             UserRealm.requestDataAndInseret()
@@ -161,7 +161,7 @@ class GithubOAuth{
 
 
 class GetStarredCount{
-    class func starredCount(callback:(Int?) -> Void){
+    class func starredCount(_ callback:@escaping (Int?) -> Void){
         
         Alamofire.request(GithubAPI.starredCount)
             .validate()

@@ -19,7 +19,7 @@ enum StarRequestHelper {
      - parameter page:       页数
      - parameter completion: 回调
      */
-    func requestStared(page: String, completion: (stars:[StarRealm]) -> Void) {
+    func requestStared(_ page: String, completion: @escaping (_ stars:[StarRealm]) -> Void) {
     switch self {
     case .stared:
         Alamofire.request(GithubAPI.star(page: page))
@@ -34,7 +34,7 @@ enum StarRequestHelper {
             completion(stars: stars)
         })
     default:
-        completion(stars: [])
+        completion([])
     }
    }
     
@@ -44,7 +44,7 @@ enum StarRequestHelper {
      - parameter name:       项目名称
      - parameter completion: 回调函数
      */
-    func requestReadMeFile(name:String, completion: (readme: ReadMeDownModel?) -> Void) {
+    func requestReadMeFile(_ name:String, completion: @escaping (_ readme: ReadMeDownModel?) -> Void) {
         Alamofire.request(GithubAPI.readme(name: name))
         .validate()
         .responseData { (res) in
