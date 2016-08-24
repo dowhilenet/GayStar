@@ -465,14 +465,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABDA1C031C4730890026A3AC /* Build configuration list for PBXNativeTarget "GithubStar" */;
 			buildPhases = (
-				5B87A5A506B13F2E107D5170 /* 📦 Check Pods Manifest.lock */,
+				5B87A5A506B13F2E107D5170 /* [CP] Check Pods Manifest.lock */,
 				ABDA1BED1C4730890026A3AC /* Sources */,
 				ABDA1BEE1C4730890026A3AC /* Frameworks */,
 				ABDA1BEF1C4730890026A3AC /* Resources */,
-				AB50AD1B1C5AE585007702EF /* Run Script */,
-				AB8AC2221CD0C0A300430187 /* ShellScript */,
-				D17E5836B3FEA9E4F1B5270E /* 📦 Embed Pods Frameworks */,
-				E5265B206C97879670DAE5C9 /* 📦 Copy Pods Resources */,
+				D17E5836B3FEA9E4F1B5270E /* [CP] Embed Pods Frameworks */,
+				E5265B206C97879670DAE5C9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -544,58 +542,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5B87A5A506B13F2E107D5170 /* 📦 Check Pods Manifest.lock */ = {
+		5B87A5A506B13F2E107D5170 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		AB50AD1B1C5AE585007702EF /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		AB8AC2221CD0C0A300430187 /* ShellScript */ = {
+		D17E5836B3FEA9E4F1B5270E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
-		};
-		D17E5836B3FEA9E4F1B5270E /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,14 +572,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubStar/Pods-GithubStar-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E5265B206C97879670DAE5C9 /* 📦 Copy Pods Resources */ = {
+		E5265B206C97879670DAE5C9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
