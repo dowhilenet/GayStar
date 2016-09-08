@@ -8,7 +8,7 @@
 
 import Foundation
 import Fuzi
-import Alamofire
+
 
 class ShowcasesRequest {
     fileprivate static let baseurl = "https://github.com"

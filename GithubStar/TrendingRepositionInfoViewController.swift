@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 import WebKit
-import Alamofire
+
 import SafariServices
 
 class TrendingRepositionInfoViewController: UIViewController {

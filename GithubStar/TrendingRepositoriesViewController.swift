@@ -8,8 +8,6 @@
 
 import UIKit
 import SnapKit
-import Alamofire
-import SwiftyJSON
 
 class TrendingRepositoriesViewController: UITableViewController{
     

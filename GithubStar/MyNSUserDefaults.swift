@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftyUserDefaults
+
 
 extension DefaultsKeys{
     static let token                 = DefaultsKey<String?>("token")

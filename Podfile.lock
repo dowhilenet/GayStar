@@ -3,62 +3,35 @@ PODS:
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
-  - Kingfisher (2.5.1)
-  - OAuthSwift (0.5.2)
   - SnapKit (0.40.0.beta4)
-  - SwiftyUserDefaults (2.2.0)
 
 DEPENDENCIES:
   - Fuzi (from `https://github.com/cezheng/Fuzi.git`, branch `swift-3`)
   - JSQMessagesViewController
-  - Kingfisher (from `https://github.com/onevcat/Kingfisher.git`, branch `swift3`)
-  - OAuthSwift (from `https://github.com/OAuthSwift/OAuthSwift.git`, branch `swift3.0`)
   - SnapKit (from `https://github.com/SnapKit/SnapKit.git`, branch `feature/0.40.0`)
-  - SwiftyUserDefaults (from `https://github.com/radex/SwiftyUserDefaults.git`, branch `swift3`)
 
 EXTERNAL SOURCES:
   Fuzi:
     :branch: swift-3
     :git: https://github.com/cezheng/Fuzi.git
-  Kingfisher:
-    :branch: swift3
-    :git: https://github.com/onevcat/Kingfisher.git
-  OAuthSwift:
-    :branch: swift3.0
-    :git: https://github.com/OAuthSwift/OAuthSwift.git
   SnapKit:
     :branch: feature/0.40.0
     :git: https://github.com/SnapKit/SnapKit.git
-  SwiftyUserDefaults:
-    :branch: swift3
-    :git: https://github.com/radex/SwiftyUserDefaults.git
 
 CHECKOUT OPTIONS:
   Fuzi:
     :commit: 03c2934cb2453c24cd2d15e6c0ac6981dde14ad3
     :git: https://github.com/cezheng/Fuzi.git
-  Kingfisher:
-    :commit: 498ed4e98b2710d59ce35c8ad10b22fadc218d2d
-    :git: https://github.com/onevcat/Kingfisher.git
-  OAuthSwift:
-    :commit: 5c087d9ba3c029c06e6b7049982f62380cdd18b1
-    :git: https://github.com/OAuthSwift/OAuthSwift.git
   SnapKit:
     :commit: 2e4cebf41d8bd0833487381590ed90c38b9a2491
     :git: https://github.com/SnapKit/SnapKit.git
-  SwiftyUserDefaults:
-    :commit: 6b6a412d1c17f2e110bcc6fdbd7d09cd74542429
-    :git: https://github.com/radex/SwiftyUserDefaults.git
 
 SPEC CHECKSUMS:
   Fuzi: 25118b725a1637f1676f63ae1acbba1f30a5dd6c
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
-  Kingfisher: 9b82e0e1f1a296f149a50bbc2214532eaa4df4f1
-  OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
   SnapKit: 2eb32fcdca2206e611ef40d2650fe19b7469c91b
-  SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
 
-PODFILE CHECKSUM: 7b5d5b5a3fe2b9e77b2647088bb2156913979666
+PODFILE CHECKSUM: bb6f60e42c778b65e77bf543cf10de4a167dab98
 
 COCOAPODS: 1.1.0.beta.1

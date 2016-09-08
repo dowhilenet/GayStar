@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftyJSON
+
 
 struct ReadMeDownModel{
     var download_url: String = ""

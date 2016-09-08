@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import Alamofire
-import Fuzi
+
 /// 热门仓库的请求
 enum TrendingRepositories:String{
         /// 今日

@@ -32,10 +32,6 @@
 		AB40E3E51CAA9E26001642CC /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */; };
 		AB40E3E71CAA9E3A001642CC /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */; };
 		AB40E3E91CAA9ED6001642CC /* WilddogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40E3E81CAA9ED6001642CC /* WilddogManager.swift */; };
-		AB552E711C60611500D6914C /* Orbitron-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E701C60611500D6914C /* Orbitron-Regular.ttf */; };
-		AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */; };
-		AB552E751C6064FD00D6914C /* Candal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E741C6064FD00D6914C /* Candal.ttf */; };
-		AB552E771C60674100D6914C /* FrederickatheGreat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E761C60674100D6914C /* FrederickatheGreat-Regular.ttf */; };
 		AB5814F31C8E60500011B2CF /* cssstyle.css in Resources */ = {isa = PBXBuildFile; fileRef = AB5814F11C8E60500011B2CF /* cssstyle.css */; };
 		AB5814F41C8E60500011B2CF /* cssstyle2.css in Resources */ = {isa = PBXBuildFile; fileRef = AB5814F21C8E60500011B2CF /* cssstyle2.css */; };
 		AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */; };
@@ -104,10 +100,6 @@
 		AB40E3E41CAA9E26001642CC /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		AB40E3E61CAA9E3A001642CC /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		AB40E3E81CAA9ED6001642CC /* WilddogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WilddogManager.swift; sourceTree = "<group>"; };
-		AB552E701C60611500D6914C /* Orbitron-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Orbitron-Regular.ttf"; path = "../Orbitron-Regular.ttf"; sourceTree = "<group>"; };
-		AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../OpenSans-Italic.ttf"; sourceTree = "<group>"; };
-		AB552E741C6064FD00D6914C /* Candal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Candal.ttf; path = ../Candal.ttf; sourceTree = "<group>"; };
-		AB552E761C60674100D6914C /* FrederickatheGreat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FrederickatheGreat-Regular.ttf"; path = "../FrederickatheGreat-Regular.ttf"; sourceTree = "<group>"; };
 		AB5814F11C8E60500011B2CF /* cssstyle.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = cssstyle.css; sourceTree = "<group>"; };
 		AB5814F21C8E60500011B2CF /* cssstyle2.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = cssstyle2.css; sourceTree = "<group>"; };
 		AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevTableViewCell.swift; sourceTree = "<group>"; };
@@ -273,17 +265,6 @@
 			name = Info;
 			sourceTree = "<group>";
 		};
-		ABA524941C608D9E00B571CE /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				AB552E761C60674100D6914C /* FrederickatheGreat-Regular.ttf */,
-				AB552E741C6064FD00D6914C /* Candal.ttf */,
-				AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */,
-				AB552E701C60611500D6914C /* Orbitron-Regular.ttf */,
-			);
-			name = Font;
-			sourceTree = "<group>";
-		};
 		ABD9FE441CED6E6A008B4A05 /* room */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,7 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				AB26F0151CE49121000F7400 /* Layout */,
-				ABA524941C608D9E00B571CE /* Font */,
 				ABDA1C341C47329D0026A3AC /* Controller */,
 				ABDA1C2F1C47327C0026A3AC /* API */,
 				ABDA1C261C4732640026A3AC /* Model */,
@@ -524,10 +504,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB552E771C60674100D6914C /* FrederickatheGreat-Regular.ttf in Resources */,
-				AB552E751C6064FD00D6914C /* Candal.ttf in Resources */,
-				AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */,
-				AB552E711C60611500D6914C /* Orbitron-Regular.ttf in Resources */,
 				ABDA1BFF1C4730890026A3AC /* LaunchScreen.storyboard in Resources */,
 				ABDA1C1D1C47319D0026A3AC /* jquery.min.js in Resources */,
 				ABDA1BFC1C4730890026A3AC /* Assets.xcassets in Resources */,

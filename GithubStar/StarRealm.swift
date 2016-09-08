@@ -6,9 +6,7 @@
 //  Copyright © 2016年 xiaolei. All rights reserved.
 //
 
-import RealmSwift
-import SwiftyJSON
-import Alamofire
+
 
 
 /// Stared 项目

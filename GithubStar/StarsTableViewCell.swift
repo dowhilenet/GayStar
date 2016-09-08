@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import Kingfisher
+
 
 class StarsTableViewCell: UITableViewCell {
     

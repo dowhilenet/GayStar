@@ -8,10 +8,10 @@ target 'GithubStar' do
 #pod 'PageMenu'
 
 # Swift 3.0
-pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'swift3'
+#pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'swift3'
 pod 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit.git', :branch => 'feature/0.40.0'
-pod 'SwiftyUserDefaults', :git => 'https://github.com/radex/SwiftyUserDefaults.git', :branch => 'swift3'
-pod 'OAuthSwift', :git => 'https://github.com/OAuthSwift/OAuthSwift.git', :branch => 'swift3.0'
+#pod 'SwiftyUserDefaults', :git => 'https://github.com/radex/SwiftyUserDefaults.git', :branch => 'swift3'
+#pod 'OAuthSwift', :git => 'https://github.com/OAuthSwift/OAuthSwift.git', :branch => 'swift3.0'
 pod 'Fuzi', :git => 'https://github.com/cezheng/Fuzi.git', :branch => 'swift-3'
 
 # OC

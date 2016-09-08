@@ -7,10 +7,6 @@
 //
 
 import Foundation
-import SwiftyUserDefaults
-import Alamofire
-import OAuthSwift
-
 
 
 /**

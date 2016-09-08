@@ -6,8 +6,7 @@
 //  Copyright © 2016年 xiaolei. All rights reserved.
 //
 
-import RealmSwift
-import Realm
+
 
 /// Trending Star 项目
 class TrendingStarRealm: StarBase {

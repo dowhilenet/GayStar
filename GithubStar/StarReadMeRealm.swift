@@ -6,8 +6,7 @@
 //  Copyright © 2016年 xiaolei. All rights reserved.
 //
 
-import RealmSwift
-import Realm
+
 
 class StarReadMeRealm: Object {
     dynamic var id: Int64 = 0

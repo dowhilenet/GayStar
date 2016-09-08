@@ -8,9 +8,7 @@
 
 import Foundation
 import Fuzi
-import Alamofire
-import SwiftyUserDefaults
-import RealmSwift
+
 import UIKit
 /// Realm 的单例
 class RealmData {
