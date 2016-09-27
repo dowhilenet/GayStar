@@ -6,7 +6,7 @@
 //  Copyright © 2016年 xiaolei. All rights reserved.
 //
 
-import Wilddog
+
 
 struct WilddogManager {
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+import DGRunkeeperSwitch
 
 class PageMenuViewController: UIViewController , CAPSPageMenuDelegate , ChooseLangueTableViewControllerDelegate{
     

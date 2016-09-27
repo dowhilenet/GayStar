@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import DGElasticPullToRefresh
 
 class TrendingDevelopersTableViewController: UITableViewController{
 

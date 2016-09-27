@@ -1,37 +1,54 @@
 PODS:
-  - Fuzi (0.3.1)
+  - Alamofire (4.0.1)
+  - DGElasticPullToRefresh (1.1)
+  - DGRunkeeperSwitch (1.1.4)
+  - Fuzi (1.0.0)
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
-  - SnapKit (0.40.0.beta4)
+  - Kingfisher (3.1.0)
+  - Moya (8.0.0-beta.2):
+    - Moya/Core (= 8.0.0-beta.2)
+  - Moya/Core (8.0.0-beta.2):
+    - Alamofire (~> 4.0.0)
+    - Result
+  - Moya/RxSwift (8.0.0-beta.2):
+    - Moya/Core
+    - RxSwift
+  - Result (3.0.0)
+  - RxSwift (3.0.0-beta.1)
+  - SnapKit (3.0.1)
+  - SwiftyJSON (3.1.0)
+  - SwiftyUserDefaults (3.0.0)
 
 DEPENDENCIES:
-  - Fuzi (from `https://github.com/cezheng/Fuzi.git`, branch `swift-3`)
+  - DGElasticPullToRefresh
+  - DGRunkeeperSwitch (~> 1.1.4)
+  - Fuzi (~> 1.0.0)
   - JSQMessagesViewController
-  - SnapKit (from `https://github.com/SnapKit/SnapKit.git`, branch `feature/0.40.0`)
-
-EXTERNAL SOURCES:
-  Fuzi:
-    :branch: swift-3
-    :git: https://github.com/cezheng/Fuzi.git
-  SnapKit:
-    :branch: feature/0.40.0
-    :git: https://github.com/SnapKit/SnapKit.git
-
-CHECKOUT OPTIONS:
-  Fuzi:
-    :commit: 03c2934cb2453c24cd2d15e6c0ac6981dde14ad3
-    :git: https://github.com/cezheng/Fuzi.git
-  SnapKit:
-    :commit: 2e4cebf41d8bd0833487381590ed90c38b9a2491
-    :git: https://github.com/SnapKit/SnapKit.git
+  - Kingfisher (~> 3.0)
+  - Moya (= 8.0.0-beta.2)
+  - Moya/RxSwift
+  - RxSwift (= 3.0.0-beta.1)
+  - SnapKit (~> 3.0)
+  - SwiftyJSON
+  - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
-  Fuzi: 25118b725a1637f1676f63ae1acbba1f30a5dd6c
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
+  DGRunkeeperSwitch: cc237936f42237307f5e212e18136a27bf907bf1
+  Fuzi: e88177b7cfdf3aa2b828c096c73551232a7f5c72
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
-  SnapKit: 2eb32fcdca2206e611ef40d2650fe19b7469c91b
+  Kingfisher: 7779f22e977393e9533a89a9685beb8f679d3767
+  Moya: 920d40f738e6f4ece84010cec701bb9693be8251
+  Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
+  RxSwift: 0823e8d7969c23bfa9ddfb2afa4881e424a1a710
+  SnapKit: f818b8326d45b4e1c777d0ab27b5c0a3624bfdeb
+  SwiftyJSON: 29b9f2a64f118c07e691667c2ba1efe536acfe0b
+  SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
 
-PODFILE CHECKSUM: bb6f60e42c778b65e77bf543cf10de4a167dab98
+PODFILE CHECKSUM: a26bc4a575cb60b5b1eeb65f672451393217542a
 
-COCOAPODS: 1.1.0.beta.1
+COCOAPODS: 1.1.0.beta.2

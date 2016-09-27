@@ -5,14 +5,19 @@ target 'GithubStar' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-#pod 'PageMenu'
+pod 'SwiftyJSON'
+pod 'Kingfisher', '~> 3.0'
+pod 'Moya', '8.0.0-beta.2'
+pod 'Moya/RxSwift'
+pod 'RxSwift', '3.0.0-beta.1'
+pod 'Fuzi', '~> 1.0.0'
+pod 'SnapKit', '~> 3.0'
+pod 'SwiftyUserDefaults'
+pod 'DGRunkeeperSwitch', '~> 1.1.4'
+pod 'DGElasticPullToRefresh'
 
-# Swift 3.0
-#pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'swift3'
-pod 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit.git', :branch => 'feature/0.40.0'
-#pod 'SwiftyUserDefaults', :git => 'https://github.com/radex/SwiftyUserDefaults.git', :branch => 'swift3'
+
 #pod 'OAuthSwift', :git => 'https://github.com/OAuthSwift/OAuthSwift.git', :branch => 'swift3.0'
-pod 'Fuzi', :git => 'https://github.com/cezheng/Fuzi.git', :branch => 'swift-3'
 
 # OC
 pod 'JSQMessagesViewController'

@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
-
+import SwiftyJSON
+import Alamofire
 struct ReadMeDownModel{
     var download_url: String = ""
     var html_url: String? = ""
@@ -24,34 +24,34 @@ struct ReadMeDownModel{
 class ReadMeDown{
     
     class func request(_ id:Int64,url:String,html_url:String?, callback:@escaping (Bool) -> Void){
-        Alamofire.request(.GET, url)
-        .validate()
-        .responseString { (response) -> Void in
-            
-            if let readmeString = response.result.value{
-                
-                var options                = MarkdownOptions()
-                options.autoHyperlink      = false
-                options.autoNewlines       = true
-                options.linkEmails         = false
-                options.emptyElementSuffix = "/>"
-                options.strictBoldItalic   = true
-                options.encodeProblemUrlCharacters = true
-                var markdown               = Markdown(options: options)
-                let outputhtml             = markdown.transform(readmeString)
-                //实例化一个read me 模型
-                let stareadme = StarReadMeRealm()
-                stareadme.id = id
-                stareadme.readmeValue = outputhtml
-                stareadme.readmeURL = html_url
-                //插入到数据库
-                let res = StarReadMeRealm.insertReadMe(stareadme)
-                callback(res)
-               
-            }else{
-                callback(false)
-            }
-        }
+//        Alamofire.request(.GET, url)
+//        .validate()
+//        .responseString { (response) -> Void in
+//            
+//            if let readmeString = response.result.value{
+//                
+//                var options                = MarkdownOptions()
+//                options.autoHyperlink      = false
+//                options.autoNewlines       = true
+//                options.linkEmails         = false
+//                options.emptyElementSuffix = "/>"
+//                options.strictBoldItalic   = true
+//                options.encodeProblemUrlCharacters = true
+//                var markdown               = Markdown(options: options)
+//                let outputhtml             = markdown.transform(readmeString)
+//                //实例化一个read me 模型
+//                let stareadme = StarReadMeRealm()
+//                stareadme.id = id
+//                stareadme.readmeValue = outputhtml
+//                stareadme.readmeURL = html_url
+//                //插入到数据库
+//                let res = StarReadMeRealm.insertReadMe(stareadme)
+//                callback(res)
+//               
+//            }else{
+//                callback(false)
+//            }
+//        }
     }
     
  

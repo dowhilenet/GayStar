@@ -6,7 +6,7 @@
 //  Copyright © 2016年 xiaolei. All rights reserved.
 //
 
-
+import SwiftyJSON
 
 /// 有关项目的一些个公有的属性
 class StarBase: Object {

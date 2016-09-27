@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import Wilddog
+
 
 private let reuseIdentifier = "StarsCollectionCell"
 
