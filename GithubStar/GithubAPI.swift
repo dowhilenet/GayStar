@@ -8,6 +8,8 @@
 
 import Foundation
 import SwiftyUserDefaults
+import Alamofire
+import Moya
 
 /**
  请求目标
@@ -67,10 +69,10 @@ enum GithubAPI{
     case me
 }
 
-extension GithubAPI:URLRequestConvertible{
-    
-    fileprivate var baseURL:String {return "https://api.github.com"}
-    fileprivate var patch:String{
+
+extension GithubAPI: TargetType {
+    var baseURL: URL { return URL(string:"https://api.github.com")! }
+    var path: String {
         switch self{
         case .star:
             return "/user/starred"
@@ -92,8 +94,8 @@ extension GithubAPI:URLRequestConvertible{
             return "/user"
         }
     }
-    
-    fileprivate var paraments:[String:AnyObject]?{
+    var method: Moya.Method { return .GET }
+    var parameters: [String: Any]? {
         switch self{
         case .user(_):
             return nil
@@ -117,39 +119,44 @@ extension GithubAPI:URLRequestConvertible{
             return ["access_token":token1]
         }
     }
+    var sampleData: Data { return "data".data(using: String.Encoding.utf8)! }
+    var task: Task { return .request }
     
-    var URLRequest: NSMutableURLRequest {
-        
-        let URL = Foundation.URL(string: baseURL)!
-        let URLRequest = NSMutableURLRequest(url: URL.appendingPathComponent(patch))
-        URLRequest.HTTPMethod = Alamofire.Method.GET.rawValue
-        if let token = Defaults[.token]{
-        URLRequest.addValue("token \(token)", forHTTPHeaderField: "Authorization")
-        }
-        let encoding = Alamofire.ParameterEncoding.URL
-        return encoding.encode(URLRequest, parameters: paraments).0
-    }
+    /*
+     var URLRequest: NSMutableURLRequest {
+     
+     let URL = Foundation.URL(string: baseURL)!
+     let URLRequest = NSMutableURLRequest(url: URL.appendingPathComponent(patch))
+     URLRequest.HTTPMethod = Alamofire.Method.GET.rawValue
+     if let token = Defaults[.token]{
+     URLRequest.addValue("token \(token)", forHTTPHeaderField: "Authorization")
+     }
+     let encoding = Alamofire.ParameterEncoding.URL
+     return encoding.encode(URLRequest, parameters: paraments).0
+     }
+     */
 }
+
 
 
 class GithubOAuth{
     class func GithubOAuth(_ ViewController:UIViewController){
         
-        let clientId = "af3689b7eef793657839"
-        let clientSectet = "b2f4713ee30029079d036428f0ed45c6b44982a2"
-        let oauthswift = OAuth2Swift(consumerKey: clientId, consumerSecret: clientSectet, authorizeUrl: "https://github.com/login/oauth/authorize",accessTokenUrl: "https://github.com/login/oauth/access_token", responseType: "code")
-        let state = generateStateWithLength(20) as String
-        let sfSafari = SafariURLHandler(viewController: ViewController)
-        
-        oauthswift.authorize_url_handler = sfSafari
-        
-        oauthswift.authorizeWithCallbackURL(URL(string: "GITStare://oauth-callback/github")!, scope: "user,repo", state: state,success: { (credential, response, parameters) -> Void in
-            Defaults[.token] = credential.oauth_token
-            Defaults.synchronize()
-            UserRealm.requestDataAndInseret()
-            }) { (error) -> Void in
-                //Error
-        }
+//        let clientId = "af3689b7eef793657839"
+//        let clientSectet = "b2f4713ee30029079d036428f0ed45c6b44982a2"
+//        let oauthswift = OAuth2Swift(consumerKey: clientId, consumerSecret: clientSectet, authorizeUrl: "https://github.com/login/oauth/authorize",accessTokenUrl: "https://github.com/login/oauth/access_token", responseType: "code")
+//        let state = generateStateWithLength(20) as String
+//        let sfSafari = SafariURLHandler(viewController: ViewController)
+//        
+//        oauthswift.authorize_url_handler = sfSafari
+//        
+//        oauthswift.authorizeWithCallbackURL(URL(string: "GITStare://oauth-callback/github")!, scope: "user,repo", state: state,success: { (credential, response, parameters) -> Void in
+//            Defaults[.token] = credential.oauth_token
+//            Defaults.synchronize()
+//            UserRealm.requestDataAndInseret()
+//            }) { (error) -> Void in
+//                //Error
+//        }
         
     }
     
@@ -159,18 +166,18 @@ class GithubOAuth{
 class GetStarredCount{
     class func starredCount(_ callback:@escaping (Int?) -> Void){
         
-        Alamofire.request(GithubAPI.starredCount)
-            .validate()
-            .responseData { (res) -> Void in
-                guard let response = res.response else { return }
-                let link = response.allHeaderFields["Link"] as! String
-                let range = link.rangeOfString(",", options: NSStringCompareOptions.BackwardsSearch)
-                let last = String(link.characters.suffixFrom(range!.endIndex))
-                let star = last.rangeOfString("&page=", options: NSStringCompareOptions.BackwardsSearch)!
-                let end = last.rangeOfString(">;", options: NSStringCompareOptions.CaseInsensitiveSearch)!
-                let page = String(last.substringWithRange(star.endIndex..<end.startIndex)).toInt()
-                callback(page)
-        }
+//        Alamofire.request(GithubAPI.starredCount)
+//            .validate()
+//            .responseData { (res) -> Void in
+//                guard let response = res.response else { return }
+//                let link = response.allHeaderFields["Link"] as! String
+//                let range = link.rangeOfString(",", options: NSStringCompareOptions.BackwardsSearch)
+//                let last = String(link.characters.suffixFrom(range!.endIndex))
+//                let star = last.rangeOfString("&page=", options: NSStringCompareOptions.BackwardsSearch)!
+//                let end = last.rangeOfString(">;", options: NSStringCompareOptions.CaseInsensitiveSearch)!
+//                let page = String(last.substringWithRange(star.endIndex..<end.startIndex)).toInt()
+//                callback(page)
+//        }
     }
 }
 
