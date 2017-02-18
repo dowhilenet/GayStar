@@ -7,59 +7,61 @@
 //
 
 import UIKit
-import OAuthSwift
-import RealmSwift
-//全局变量 realm   默认数据库
-let realm = try! Realm()
+import SwiftyOAuth
 
-
+let github = Provider.gitHub(clientID: "af3689b7eef793657839", clientSecret: "b2f4713ee30029079d036428f0ed45c6b44982a2", redirectURL: "GITStare://callback")
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
+      
+        self.window = UIWindow()
+        let rootview = UIViewController()
+        self.window!.rootViewController = rootview
+        self.window!.backgroundColor = UIColor.white
+        self.window!.makeKeyAndVisible()
+
         
-        window = UIWindow()
-        window!.rootViewController = RootTabBarViewController()
-        window!.makeKeyAndVisible()
+//        github.authorize { (result) in
+//            switch result {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success(let value):
+//                print(value.accessToken)
+//            }
+//        }
+        
         return true
     }
     
 
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+//        github.handleURL(url, options: options)
+//        return true
+//    }
     
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        if url.host == "oauth-callback"{
-            if url.path!.hasPrefix("/github"){
-             OAuth2Swift.handleOpenURL(url)
-            }
-        }
-        return true
+    
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        
     }
     
+    func applicationDidEnterBackground(_ application: UIApplication) {
     
-    
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    func applicationWillEnterForeground(_ application: UIApplication) {
+       
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    func applicationDidBecomeActive(_ application: UIApplication) {
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-    
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    func applicationWillTerminate(_ application: UIApplication) {
+  
     }
     
     

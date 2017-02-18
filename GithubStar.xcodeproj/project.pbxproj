@@ -7,107 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */; };
-		AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */; };
-		AB552E711C60611500D6914C /* Orbitron-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E701C60611500D6914C /* Orbitron-Regular.ttf */; };
-		AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */; };
-		AB552E751C6064FD00D6914C /* Candal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E741C6064FD00D6914C /* Candal.ttf */; };
-		AB552E771C60674100D6914C /* FrederickatheGreat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB552E761C60674100D6914C /* FrederickatheGreat-Regular.ttf */; };
-		AB5814F31C8E60500011B2CF /* cssstyle.css in Resources */ = {isa = PBXBuildFile; fileRef = AB5814F11C8E60500011B2CF /* cssstyle.css */; };
-		AB5814F41C8E60500011B2CF /* cssstyle2.css in Resources */ = {isa = PBXBuildFile; fileRef = AB5814F21C8E60500011B2CF /* cssstyle2.css */; };
-		AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */; };
-		AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */; };
-		AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */; };
-		AB72320C1C620819004565BC /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB72320B1C620819004565BC /* TagViewController.swift */; };
-		AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */; };
-		AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8253C31C73F60900A0E3C0 /* lang.plist */; };
-		ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */; };
+		97E9FE8A0FB18F38C41EFE47 /* Pods_GithubStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0596DD0F229A0F620AEE6C46 /* Pods_GithubStar.framework */; };
+		AB1D3B1D1E211DAB0062DE51 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D3B1C1E211DAB0062DE51 /* TimeLineViewController.swift */; };
+		ABAD982C1E1A509A005058F7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD982B1E1A509A005058F7 /* TabBarViewController.swift */; };
 		ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1BF41C4730890026A3AC /* AppDelegate.swift */; };
 		ABDA1BFC1C4730890026A3AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1BFB1C4730890026A3AC /* Assets.xcassets */; };
 		ABDA1BFF1C4730890026A3AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1BFD1C4730890026A3AC /* LaunchScreen.storyboard */; };
-		ABDA1C0E1C4731640026A3AC /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C081C4731640026A3AC /* DGElasticPullToRefreshConstants.swift */; };
-		ABDA1C0F1C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C091C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift */; };
-		ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C0A1C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift */; };
-		ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C0B1C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
-		ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C0C1C4731640026A3AC /* DGElasticPullToRefreshView.swift */; };
-		ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C0D1C4731640026A3AC /* DGRunkeeperSwitch.swift */; };
-		ABDA1C1A1C47319D0026A3AC /* 404.html in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C151C47319D0026A3AC /* 404.html */; };
-		ABDA1C1D1C47319D0026A3AC /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C181C47319D0026A3AC /* jquery.min.js */; };
-		ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C191C47319D0026A3AC /* Markdown.swift */; };
-		ABDA1C241C47320D0026A3AC /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */; };
-		ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C231C47320D0026A3AC /* ProgressHUD.m */; };
-		ABDA1C2B1C4732720026A3AC /* MyNSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */; };
-		ABDA1C2C1C4732720026A3AC /* GithubStarsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C281C4732720026A3AC /* GithubStarsRealm.swift */; };
-		ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C301C4732880026A3AC /* GithubAPI.swift */; };
-		ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C311C4732880026A3AC /* ReadMeDown.swift */; };
-		ABDA1C371C4732C10026A3AC /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C361C4732C10026A3AC /* RootTabBarViewController.swift */; };
-		ABDA1C411C4732F70026A3AC /* ReferenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3A1C4732F70026A3AC /* ReferenceTableViewController.swift */; };
-		ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3B1C4732F70026A3AC /* StarInformationViewController.swift */; };
-		ABDA1C451C4732F70026A3AC /* StarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3E1C4732F70026A3AC /* StarsTableViewCell.swift */; };
-		ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */; };
-		ABDA1C4E1C4733220026A3AC /* ChooseLangueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C491C4733220026A3AC /* ChooseLangueTableViewController.swift */; };
-		ABDA1C4F1C4733220026A3AC /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C4A1C4733220026A3AC /* RequestData.swift */; };
-		ABDA1C501C4733220026A3AC /* TrendingRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA1C4B1C4733220026A3AC /* TrendingRepositoriesViewController.swift */; };
-		ABDFAA451C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDFAA441C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift */; };
-		ABE5A6981C63548A00CB7B5D /* SwiftPrompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A6951C63548A00CB7B5D /* SwiftPrompts.swift */; };
-		ABE5A6991C63548A00CB7B5D /* SwiftPromptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A6961C63548A00CB7B5D /* SwiftPromptsView.swift */; };
-		ABE5A69A1C63548A00CB7B5D /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A6971C63548A00CB7B5D /* UIImageEffects.swift */; };
-		ABE5A69C1C63736C00CB7B5D /* PageMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A69B1C63736C00CB7B5D /* PageMenuViewController.swift */; };
-		ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositionInfoViewController.swift; sourceTree = "<group>"; };
-		AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevelopinfoViewController.swift; sourceTree = "<group>"; };
-		AB552E701C60611500D6914C /* Orbitron-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Orbitron-Regular.ttf"; path = "../Orbitron-Regular.ttf"; sourceTree = "<group>"; };
-		AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../OpenSans-Italic.ttf"; sourceTree = "<group>"; };
-		AB552E741C6064FD00D6914C /* Candal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Candal.ttf; path = ../Candal.ttf; sourceTree = "<group>"; };
-		AB552E761C60674100D6914C /* FrederickatheGreat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FrederickatheGreat-Regular.ttf"; path = "../FrederickatheGreat-Regular.ttf"; sourceTree = "<group>"; };
-		AB5814F11C8E60500011B2CF /* cssstyle.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = cssstyle.css; sourceTree = "<group>"; };
-		AB5814F21C8E60500011B2CF /* cssstyle2.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = cssstyle2.css; sourceTree = "<group>"; };
-		AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevTableViewCell.swift; sourceTree = "<group>"; };
-		AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
-		AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowRepositoryListTableViewController.swift; sourceTree = "<group>"; };
-		AB72320B1C620819004565BC /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
-		AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcasesRequest.swift; sourceTree = "<group>"; };
-		AB8253C31C73F60900A0E3C0 /* lang.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = lang.plist; sourceTree = "<group>"; };
-		ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupItemsTableViewController.swift; sourceTree = "<group>"; };
+		0596DD0F229A0F620AEE6C46 /* Pods_GithubStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB1D3B1C1E211DAB0062DE51 /* TimeLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
+		AB7B21B31CE6161B00B1C75A /* GithubStar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubStar-Bridging-Header.h"; sourceTree = "<group>"; };
+		ABAD982B1E1A509A005058F7 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		ABDA1BF11C4730890026A3AC /* GithubStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDA1BF41C4730890026A3AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABDA1BFB1C4730890026A3AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABDA1BFE1C4730890026A3AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABDA1C001C4730890026A3AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ABDA1C081C4731640026A3AC /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
-		ABDA1C091C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
-		ABDA1C0A1C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingView.swift; sourceTree = "<group>"; };
-		ABDA1C0B1C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingViewCircle.swift; sourceTree = "<group>"; };
-		ABDA1C0C1C4731640026A3AC /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
-		ABDA1C0D1C4731640026A3AC /* DGRunkeeperSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGRunkeeperSwitch.swift; sourceTree = "<group>"; };
-		ABDA1C151C47319D0026A3AC /* 404.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404.html; sourceTree = "<group>"; };
-		ABDA1C181C47319D0026A3AC /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
-		ABDA1C191C47319D0026A3AC /* Markdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
-		ABDA1C201C47320C0026A3AC /* GithubStar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubStar-Bridging-Header.h"; sourceTree = "<group>"; };
-		ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
-		ABDA1C221C47320D0026A3AC /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
-		ABDA1C231C47320D0026A3AC /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
-		ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNSUserDefaults.swift; sourceTree = "<group>"; };
-		ABDA1C281C4732720026A3AC /* GithubStarsRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubStarsRealm.swift; sourceTree = "<group>"; };
-		ABDA1C301C4732880026A3AC /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
-		ABDA1C311C4732880026A3AC /* ReadMeDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMeDown.swift; sourceTree = "<group>"; };
-		ABDA1C361C4732C10026A3AC /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
-		ABDA1C3A1C4732F70026A3AC /* ReferenceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceTableViewController.swift; sourceTree = "<group>"; };
-		ABDA1C3B1C4732F70026A3AC /* StarInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarInformationViewController.swift; sourceTree = "<group>"; };
-		ABDA1C3E1C4732F70026A3AC /* StarsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsTableViewCell.swift; sourceTree = "<group>"; };
-		ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsTableViewController.swift; sourceTree = "<group>"; };
-		ABDA1C491C4733220026A3AC /* ChooseLangueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseLangueTableViewController.swift; sourceTree = "<group>"; };
-		ABDA1C4A1C4733220026A3AC /* RequestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
-		ABDA1C4B1C4733220026A3AC /* TrendingRepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositoriesViewController.swift; sourceTree = "<group>"; };
-		ABDFAA441C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingDevelopersTableViewController.swift; sourceTree = "<group>"; };
-		ABE5A6951C63548A00CB7B5D /* SwiftPrompts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPrompts.swift; sourceTree = "<group>"; };
-		ABE5A6961C63548A00CB7B5D /* SwiftPromptsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPromptsView.swift; sourceTree = "<group>"; };
-		ABE5A6971C63548A00CB7B5D /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
-		ABE5A69B1C63736C00CB7B5D /* PageMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMenuViewController.swift; sourceTree = "<group>"; };
-		ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubStarExtension.swift; sourceTree = "<group>"; };
+		DF56BD8FBCC39430530A498B /* Pods-GithubStar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubStar.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubStar/Pods-GithubStar.release.xcconfig"; sourceTree = "<group>"; };
+		E044A06E857CB3425416E3EE /* Pods-GithubStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GithubStar/Pods-GithubStar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,48 +34,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97E9FE8A0FB18F38C41EFE47 /* Pods_GithubStar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AB4351181C64C97200E7D848 /* Showcases */ = {
+		8D020AD5F2A6361278B587ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AB78215A1C64DFA800C95BC9 /* RequestData */,
+				0596DD0F229A0F620AEE6C46 /* Pods_GithubStar.framework */,
 			);
-			name = Showcases;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AB6B74331C55F5C900FDBBE9 /* Groups */ = {
+		AB8AC2261CD18FB300430187 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				ABDA1C3A1C4732F70026A3AC /* ReferenceTableViewController.swift */,
-				ABC186811C604255002D7320 /* GroupItemsTableViewController.swift */,
-				AB7232091C61E927004565BC /* ShowRepositoryListTableViewController.swift */,
-				AB6B744E1C56169E00FDBBE9 /* GroupTableViewCell.swift */,
+				ABDA1BF41C4730890026A3AC /* AppDelegate.swift */,
+				AB7B21B31CE6161B00B1C75A /* GithubStar-Bridging-Header.h */,
+				ABDA1BFB1C4730890026A3AC /* Assets.xcassets */,
+				ABDA1BFD1C4730890026A3AC /* LaunchScreen.storyboard */,
+				ABDA1C001C4730890026A3AC /* Info.plist */,
 			);
-			name = Groups;
+			name = Info;
 			sourceTree = "<group>";
 		};
-		AB78215A1C64DFA800C95BC9 /* RequestData */ = {
+		ABAD982A1E1A507A005058F7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				AB78215B1C64E06400C95BC9 /* ShowcasesRequest.swift */,
+				ABAD982B1E1A509A005058F7 /* TabBarViewController.swift */,
+				AB1D3B1C1E211DAB0062DE51 /* TimeLineViewController.swift */,
 			);
-			name = RequestData;
-			sourceTree = "<group>";
-		};
-		ABA524941C608D9E00B571CE /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				AB552E761C60674100D6914C /* FrederickatheGreat-Regular.ttf */,
-				AB552E741C6064FD00D6914C /* Candal.ttf */,
-				AB552E721C6063B600D6914C /* OpenSans-Italic.ttf */,
-				AB552E701C60611500D6914C /* Orbitron-Regular.ttf */,
-			);
-			name = Font;
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		ABDA1BE81C4730890026A3AC = {
@@ -164,6 +75,8 @@
 			children = (
 				ABDA1BF31C4730890026A3AC /* GithubStar */,
 				ABDA1BF21C4730890026A3AC /* Products */,
+				C6B50A9D6D8C6AE16F2A0838 /* Pods */,
+				8D020AD5F2A6361278B587ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,140 +91,19 @@
 		ABDA1BF31C4730890026A3AC /* GithubStar */ = {
 			isa = PBXGroup;
 			children = (
-				ABA524941C608D9E00B571CE /* Font */,
-				ABDA1C341C47329D0026A3AC /* Controller */,
-				ABDA1C2F1C47327C0026A3AC /* API */,
-				ABDA1C261C4732640026A3AC /* Model */,
-				ABDA1C061C4731360026A3AC /* Frame */,
-				ABDA1BF41C4730890026A3AC /* AppDelegate.swift */,
-				ABE5A69D1C6385D700CB7B5D /* GithubStarExtension.swift */,
-				ABDA1C201C47320C0026A3AC /* GithubStar-Bridging-Header.h */,
-				ABDA1BFB1C4730890026A3AC /* Assets.xcassets */,
-				ABDA1BFD1C4730890026A3AC /* LaunchScreen.storyboard */,
-				AB8253C31C73F60900A0E3C0 /* lang.plist */,
-				ABDA1C001C4730890026A3AC /* Info.plist */,
+				ABAD982A1E1A507A005058F7 /* ViewController */,
+				AB8AC2261CD18FB300430187 /* Info */,
 			);
 			path = GithubStar;
 			sourceTree = "<group>";
 		};
-		ABDA1C061C4731360026A3AC /* Frame */ = {
+		C6B50A9D6D8C6AE16F2A0838 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ABE5A6941C63548A00CB7B5D /* Swift-Prompts */,
-				ABDA1C1F1C4731F70026A3AC /* ProgressHUD */,
-				ABDA1C141C4731740026A3AC /* MarkDown */,
-				ABDA1C071C4731500026A3AC /* DGElasticPullToRefresh */,
+				E044A06E857CB3425416E3EE /* Pods-GithubStar.debug.xcconfig */,
+				DF56BD8FBCC39430530A498B /* Pods-GithubStar.release.xcconfig */,
 			);
-			name = Frame;
-			sourceTree = "<group>";
-		};
-		ABDA1C071C4731500026A3AC /* DGElasticPullToRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				ABDA1C081C4731640026A3AC /* DGElasticPullToRefreshConstants.swift */,
-				ABDA1C091C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift */,
-				ABDA1C0A1C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift */,
-				ABDA1C0B1C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift */,
-				ABDA1C0C1C4731640026A3AC /* DGElasticPullToRefreshView.swift */,
-				ABDA1C0D1C4731640026A3AC /* DGRunkeeperSwitch.swift */,
-			);
-			name = DGElasticPullToRefresh;
-			sourceTree = "<group>";
-		};
-		ABDA1C141C4731740026A3AC /* MarkDown */ = {
-			isa = PBXGroup;
-			children = (
-				ABDA1C151C47319D0026A3AC /* 404.html */,
-				AB5814F11C8E60500011B2CF /* cssstyle.css */,
-				AB5814F21C8E60500011B2CF /* cssstyle2.css */,
-				ABDA1C181C47319D0026A3AC /* jquery.min.js */,
-				ABDA1C191C47319D0026A3AC /* Markdown.swift */,
-			);
-			name = MarkDown;
-			sourceTree = "<group>";
-		};
-		ABDA1C1F1C4731F70026A3AC /* ProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				ABDA1C211C47320D0026A3AC /* ProgressHUD.bundle */,
-				ABDA1C221C47320D0026A3AC /* ProgressHUD.h */,
-				ABDA1C231C47320D0026A3AC /* ProgressHUD.m */,
-			);
-			name = ProgressHUD;
-			sourceTree = "<group>";
-		};
-		ABDA1C261C4732640026A3AC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				ABDA1C271C4732720026A3AC /* MyNSUserDefaults.swift */,
-				ABDA1C281C4732720026A3AC /* GithubStarsRealm.swift */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		ABDA1C2F1C47327C0026A3AC /* API */ = {
-			isa = PBXGroup;
-			children = (
-				ABDA1C301C4732880026A3AC /* GithubAPI.swift */,
-				ABDA1C311C4732880026A3AC /* ReadMeDown.swift */,
-			);
-			name = API;
-			sourceTree = "<group>";
-		};
-		ABDA1C341C47329D0026A3AC /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				AB4351181C64C97200E7D848 /* Showcases */,
-				AB6B74331C55F5C900FDBBE9 /* Groups */,
-				ABDA1C481C47330B0026A3AC /* Explore */,
-				ABDA1C391C4732E10026A3AC /* Star */,
-				ABDA1C351C4732AE0026A3AC /* Tab */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		ABDA1C351C4732AE0026A3AC /* Tab */ = {
-			isa = PBXGroup;
-			children = (
-				ABDA1C361C4732C10026A3AC /* RootTabBarViewController.swift */,
-			);
-			name = Tab;
-			sourceTree = "<group>";
-		};
-		ABDA1C391C4732E10026A3AC /* Star */ = {
-			isa = PBXGroup;
-			children = (
-				ABDA1C3B1C4732F70026A3AC /* StarInformationViewController.swift */,
-				ABDA1C3E1C4732F70026A3AC /* StarsTableViewCell.swift */,
-				ABDA1C3F1C4732F70026A3AC /* StarsTableViewController.swift */,
-				AB72320B1C620819004565BC /* TagViewController.swift */,
-			);
-			name = Star;
-			sourceTree = "<group>";
-		};
-		ABDA1C481C47330B0026A3AC /* Explore */ = {
-			isa = PBXGroup;
-			children = (
-				ABDA1C491C4733220026A3AC /* ChooseLangueTableViewController.swift */,
-				AB0B59681C813B9900076A12 /* TrendingRepositionInfoViewController.swift */,
-				ABDA1C4A1C4733220026A3AC /* RequestData.swift */,
-				ABE5A69B1C63736C00CB7B5D /* PageMenuViewController.swift */,
-				ABDA1C4B1C4733220026A3AC /* TrendingRepositoriesViewController.swift */,
-				ABDFAA441C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift */,
-				AB0B596A1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift */,
-				AB6993F51C648802006171ED /* TrendingDevTableViewCell.swift */,
-			);
-			name = Explore;
-			sourceTree = "<group>";
-		};
-		ABE5A6941C63548A00CB7B5D /* Swift-Prompts */ = {
-			isa = PBXGroup;
-			children = (
-				ABE5A6951C63548A00CB7B5D /* SwiftPrompts.swift */,
-				ABE5A6961C63548A00CB7B5D /* SwiftPromptsView.swift */,
-				ABE5A6971C63548A00CB7B5D /* UIImageEffects.swift */,
-			);
-			path = "Swift-Prompts";
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,10 +113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABDA1C031C4730890026A3AC /* Build configuration list for PBXNativeTarget "GithubStar" */;
 			buildPhases = (
+				5B87A5A506B13F2E107D5170 /* [CP] Check Pods Manifest.lock */,
 				ABDA1BED1C4730890026A3AC /* Sources */,
 				ABDA1BEE1C4730890026A3AC /* Frameworks */,
 				ABDA1BEF1C4730890026A3AC /* Resources */,
-				AB50AD1B1C5AE585007702EF /* Run Script */,
+				D17E5836B3FEA9E4F1B5270E /* [CP] Embed Pods Frameworks */,
+				E5265B206C97879670DAE5C9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -345,12 +139,13 @@
 					New,
 				);
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = xiaolei;
 				TargetAttributes = {
 					ABDA1BF01C4730890026A3AC = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 3HX94AXZ2B;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -377,47 +172,58 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB552E771C60674100D6914C /* FrederickatheGreat-Regular.ttf in Resources */,
-				AB552E751C6064FD00D6914C /* Candal.ttf in Resources */,
-				AB552E731C6063B600D6914C /* OpenSans-Italic.ttf in Resources */,
-				AB552E711C60611500D6914C /* Orbitron-Regular.ttf in Resources */,
-				ABDA1C241C47320D0026A3AC /* ProgressHUD.bundle in Resources */,
 				ABDA1BFF1C4730890026A3AC /* LaunchScreen.storyboard in Resources */,
-				ABDA1C1D1C47319D0026A3AC /* jquery.min.js in Resources */,
 				ABDA1BFC1C4730890026A3AC /* Assets.xcassets in Resources */,
-				AB5814F41C8E60500011B2CF /* cssstyle2.css in Resources */,
-				AB5814F31C8E60500011B2CF /* cssstyle.css in Resources */,
-				AB8253C41C73F60900A0E3C0 /* lang.plist in Resources */,
-				ABDA1C1A1C47319D0026A3AC /* 404.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AB50AD1B1C5AE585007702EF /* Run Script */ = {
+		5B87A5A506B13F2E107D5170 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/OAuthSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PageMenuFramework.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Fuzi.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
-			name = "Run Script";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D17E5836B3FEA9E4F1B5270E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubStar/Pods-GithubStar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5265B206C97879670DAE5C9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubStar/Pods-GithubStar-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -426,41 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABE5A6991C63548A00CB7B5D /* SwiftPromptsView.swift in Sources */,
-				ABDFAA451C645E1B005F89E0 /* TrendingDevelopersTableViewController.swift in Sources */,
-				ABDA1C131C4731640026A3AC /* DGRunkeeperSwitch.swift in Sources */,
-				ABDA1C411C4732F70026A3AC /* ReferenceTableViewController.swift in Sources */,
-				AB72320A1C61E927004565BC /* ShowRepositoryListTableViewController.swift in Sources */,
-				ABDA1C331C4732880026A3AC /* ReadMeDown.swift in Sources */,
-				ABDA1C321C4732880026A3AC /* GithubAPI.swift in Sources */,
-				ABDA1C2B1C4732720026A3AC /* MyNSUserDefaults.swift in Sources */,
-				ABDA1C371C4732C10026A3AC /* RootTabBarViewController.swift in Sources */,
-				ABDA1C4F1C4733220026A3AC /* RequestData.swift in Sources */,
-				ABDA1C451C4732F70026A3AC /* StarsTableViewCell.swift in Sources */,
-				ABC186821C604255002D7320 /* GroupItemsTableViewController.swift in Sources */,
-				AB78215C1C64E06400C95BC9 /* ShowcasesRequest.swift in Sources */,
-				AB0B596B1C81E08C00076A12 /* TrendingDevelopinfoViewController.swift in Sources */,
-				AB6B744F1C56169E00FDBBE9 /* GroupTableViewCell.swift in Sources */,
-				ABE5A69E1C6385D700CB7B5D /* GithubStarExtension.swift in Sources */,
-				AB0B59691C813B9900076A12 /* TrendingRepositionInfoViewController.swift in Sources */,
-				ABE5A69C1C63736C00CB7B5D /* PageMenuViewController.swift in Sources */,
-				ABDA1C1E1C47319D0026A3AC /* Markdown.swift in Sources */,
-				ABDA1C251C47320D0026A3AC /* ProgressHUD.m in Sources */,
-				ABE5A6981C63548A00CB7B5D /* SwiftPrompts.swift in Sources */,
-				AB72320C1C620819004565BC /* TagViewController.swift in Sources */,
-				ABDA1C421C4732F70026A3AC /* StarInformationViewController.swift in Sources */,
-				ABDA1C0F1C4731640026A3AC /* DGElasticPullToRefreshExtensions.swift in Sources */,
-				ABE5A69A1C63548A00CB7B5D /* UIImageEffects.swift in Sources */,
-				ABDA1C2C1C4732720026A3AC /* GithubStarsRealm.swift in Sources */,
+				ABAD982C1E1A509A005058F7 /* TabBarViewController.swift in Sources */,
 				ABDA1BF51C4730890026A3AC /* AppDelegate.swift in Sources */,
-				ABDA1C4E1C4733220026A3AC /* ChooseLangueTableViewController.swift in Sources */,
-				ABDA1C0E1C4731640026A3AC /* DGElasticPullToRefreshConstants.swift in Sources */,
-				ABDA1C461C4732F70026A3AC /* StarsTableViewController.swift in Sources */,
-				ABDA1C501C4733220026A3AC /* TrendingRepositoriesViewController.swift in Sources */,
-				ABDA1C111C4731640026A3AC /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
-				ABDA1C121C4731640026A3AC /* DGElasticPullToRefreshView.swift in Sources */,
-				AB6993F61C648802006171ED /* TrendingDevTableViewCell.swift in Sources */,
-				ABDA1C101C4731640026A3AC /* DGElasticPullToRefreshLoadingView.swift in Sources */,
+				AB1D3B1D1E211DAB0062DE51 /* TimeLineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,8 +265,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -535,8 +311,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -555,24 +333,31 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		ABDA1C041C4730890026A3AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E044A06E857CB3425416E3EE /* Pods-GithubStar.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = 3HX94AXZ2B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/GithubStar",
 					"$(PROJECT_DIR)",
+					"$(inherited)",
 				);
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = GithubStar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -580,28 +365,34 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/GithubStar",
 				);
-				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = net.dowhile.GitStar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GithubStar/GithubStar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		ABDA1C051C4730890026A3AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF56BD8FBCC39430530A498B /* Pods-GithubStar.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = 3HX94AXZ2B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/GithubStar",
 					"$(PROJECT_DIR)",
+					"$(inherited)",
 				);
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = GithubStar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -609,10 +400,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/GithubStar",
 				);
-				OTHER_LDFLAGS = "";
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = net.dowhile.GitStar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GithubStar/GithubStar-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E49a" minimumToolsVersion="Xcode 7.0">
+    <entity name="GithubGroup" representedClassName=".GithubGroup" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="GithubStarReadMe" representedClassName=".GithubStarReadMe" syncable="YES">
+        <attribute name="htmlString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="htmlURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="GithubStarTrending" representedClassName=".GithubStarTrending" parentEntity="Star" syncable="YES">
+        <attribute name="typename" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="GitubStars" representedClassName=".GitubStars" parentEntity="Star" syncable="YES">
+        <attribute name="groupsName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="Showcases" representedClassName=".Showcases" syncable="YES">
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Star" representedClassName=".Star" isAbstract="YES" syncable="YES">
+        <attribute name="autherName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="autherURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatarURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="decription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="default_branch" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="forksCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="homePage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="html" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="htmlURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="openIssuesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="pushedTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stargazersCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="TrendingDevelope" representedClassName=".TrendingDevelope" syncable="YES">
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="githubname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="githubURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repoDec" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repoName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="GithubGroup" positionX="0" positionY="135" width="128" height="75"/>
+        <element name="GithubStarReadMe" positionX="-18" positionY="126" width="128" height="90"/>
+        <element name="GithubStarTrending" positionX="-36" positionY="117" width="128" height="60"/>
+        <element name="GitubStars" positionX="-54" positionY="108" width="128" height="60"/>
+        <element name="Showcases" positionX="36" positionY="180" width="128" height="90"/>
+        <element name="Star" positionX="-63" positionY="-18" width="128" height="285"/>
+        <element name="TrendingDevelope" positionX="18" positionY="144" width="128" height="165"/>
+    </elements>
+</model>
