@@ -1,54 +1,38 @@
 PODS:
-  - Alamofire (4.0.1)
-  - DGElasticPullToRefresh (1.1)
-  - DGRunkeeperSwitch (1.1.4)
-  - Fuzi (1.0.0)
-  - JSQMessagesViewController (7.3.4):
-    - JSQSystemSoundPlayer (~> 2.0.1)
-  - JSQSystemSoundPlayer (2.0.1)
-  - Kingfisher (3.1.0)
-  - Moya (8.0.0-beta.2):
-    - Moya/Core (= 8.0.0-beta.2)
-  - Moya/Core (8.0.0-beta.2):
-    - Alamofire (~> 4.0.0)
-    - Result
-  - Moya/RxSwift (8.0.0-beta.2):
+  - Alamofire (4.3.0)
+  - Kingfisher (3.4.0)
+  - Moya (8.0.2):
+    - Moya/Core (= 8.0.2)
+  - Moya/Core (8.0.2):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (8.0.2):
     - Moya/Core
-    - RxSwift
-  - Result (3.0.0)
-  - RxSwift (3.0.0-beta.1)
-  - SnapKit (3.0.1)
-  - SwiftyJSON (3.1.0)
-  - SwiftyUserDefaults (3.0.0)
+    - RxSwift (~> 3.0)
+  - Result (3.1.0)
+  - RxSwift (3.2.0)
+  - SnapKit (3.1.2)
+  - SwiftyJSON (3.1.4)
+  - SwiftyOAuth (1.1)
 
 DEPENDENCIES:
-  - DGElasticPullToRefresh
-  - DGRunkeeperSwitch (~> 1.1.4)
-  - Fuzi (~> 1.0.0)
-  - JSQMessagesViewController
-  - Kingfisher (~> 3.0)
-  - Moya (= 8.0.0-beta.2)
+  - Kingfisher
+  - Moya
   - Moya/RxSwift
-  - RxSwift (= 3.0.0-beta.1)
-  - SnapKit (~> 3.0)
+  - SnapKit
   - SwiftyJSON
-  - SwiftyUserDefaults
+  - SwiftyOAuth
 
 SPEC CHECKSUMS:
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
-  DGRunkeeperSwitch: cc237936f42237307f5e212e18136a27bf907bf1
-  Fuzi: e88177b7cfdf3aa2b828c096c73551232a7f5c72
-  JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
-  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
-  Kingfisher: 7779f22e977393e9533a89a9685beb8f679d3767
-  Moya: 920d40f738e6f4ece84010cec701bb9693be8251
-  Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
-  RxSwift: 0823e8d7969c23bfa9ddfb2afa4881e424a1a710
-  SnapKit: f818b8326d45b4e1c777d0ab27b5c0a3624bfdeb
-  SwiftyJSON: 29b9f2a64f118c07e691667c2ba1efe536acfe0b
-  SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  Kingfisher: 5690cfb3d1bddf3a98d679a3a34d0b7294974ed2
+  Moya: 47f61da5b634aa71f676431b64ee0f81e976296d
+  Result: 4e3ed5995ed94d0cd6a09be9a431fce3f3624bbf
+  RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
+  SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyOAuth: 2f775155944954ba01ef413746d36f4e1486c561
 
-PODFILE CHECKSUM: a26bc4a575cb60b5b1eeb65f672451393217542a
+PODFILE CHECKSUM: aa269b02dbfc8a6f7f88a2d0fa52291a7f6d4f10
 
-COCOAPODS: 1.1.0.beta.2
+COCOAPODS: 1.2.0.beta.1
