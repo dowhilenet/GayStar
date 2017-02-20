@@ -13,6 +13,15 @@
 		AB1D3B321E2122EA0062DE51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB1D3B311E2122EA0062DE51 /* Assets.xcassets */; };
 		AB1D3B351E2122EA0062DE51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB1D3B331E2122EA0062DE51 /* LaunchScreen.storyboard */; };
 		AB1D3B3D1E2124FE0062DE51 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D3B3C1E2124FE0062DE51 /* TabBarViewController.swift */; };
+		ABF93E211E57F4A8001E7848 /* GithubOauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E201E57F4A8001E7848 /* GithubOauth.swift */; };
+		ABF93E231E5828AA001E7848 /* Github.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E221E5828AA001E7848 /* Github.swift */; };
+		ABF93E261E582B53001E7848 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E251E582B53001E7848 /* CurrentUser.swift */; };
+		ABF93E281E582C37001E7848 /* SwiftExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E271E582C37001E7848 /* SwiftExtention.swift */; };
+		ABF93E2A1E5837C0001E7848 /* StarredRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E291E5837C0001E7848 /* StarredRepo.swift */; };
+		ABF93E2D1E583D24001E7848 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E2C1E583D24001E7848 /* TimeLineViewController.swift */; };
+		ABF93E301E583DF4001E7848 /* TimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E2F1E583DF4001E7848 /* TimeLineTableViewCell.swift */; };
+		ABF93E321E584266001E7848 /* TimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E311E584266001E7848 /* TimeLine.swift */; };
+		ABF93E351E5883B7001E7848 /* TimeLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E341E5883B7001E7848 /* TimeLineModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +35,15 @@
 		AB1D3B341E2122EA0062DE51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB1D3B361E2122EA0062DE51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB1D3B3C1E2124FE0062DE51 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		ABF93E201E57F4A8001E7848 /* GithubOauth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubOauth.swift; sourceTree = "<group>"; };
+		ABF93E221E5828AA001E7848 /* Github.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Github.swift; sourceTree = "<group>"; };
+		ABF93E251E582B53001E7848 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		ABF93E271E582C37001E7848 /* SwiftExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtention.swift; sourceTree = "<group>"; };
+		ABF93E291E5837C0001E7848 /* StarredRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarredRepo.swift; sourceTree = "<group>"; };
+		ABF93E2C1E583D24001E7848 /* TimeLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
+		ABF93E2F1E583DF4001E7848 /* TimeLineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewCell.swift; sourceTree = "<group>"; };
+		ABF93E311E584266001E7848 /* TimeLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLine.swift; sourceTree = "<group>"; };
+		ABF93E341E5883B7001E7848 /* TimeLineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,14 +87,63 @@
 		AB1D3B291E2122EA0062DE51 /* GayStar */ = {
 			isa = PBXGroup;
 			children = (
+				ABF93E241E582B34001E7848 /* JSONModel */,
+				ABF93E331E58838F001E7848 /* XMLModel */,
+				ABF93E2E1E583DD9001E7848 /* TableViewCellView */,
+				ABF93E2B1E583D10001E7848 /* ViewController */,
+				ABF93E1F1E57F47C001E7848 /* APIRequest */,
 				AB1D3B2A1E2122EA0062DE51 /* AppDelegate.swift */,
 				AB1D3B3C1E2124FE0062DE51 /* TabBarViewController.swift */,
 				AB1D3B2C1E2122EA0062DE51 /* ViewController.swift */,
+				ABF93E271E582C37001E7848 /* SwiftExtention.swift */,
 				AB1D3B311E2122EA0062DE51 /* Assets.xcassets */,
 				AB1D3B331E2122EA0062DE51 /* LaunchScreen.storyboard */,
 				AB1D3B361E2122EA0062DE51 /* Info.plist */,
 			);
 			path = GayStar;
+			sourceTree = "<group>";
+		};
+		ABF93E1F1E57F47C001E7848 /* APIRequest */ = {
+			isa = PBXGroup;
+			children = (
+				ABF93E201E57F4A8001E7848 /* GithubOauth.swift */,
+				ABF93E221E5828AA001E7848 /* Github.swift */,
+				ABF93E311E584266001E7848 /* TimeLine.swift */,
+			);
+			name = APIRequest;
+			sourceTree = "<group>";
+		};
+		ABF93E241E582B34001E7848 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				ABF93E251E582B53001E7848 /* CurrentUser.swift */,
+				ABF93E291E5837C0001E7848 /* StarredRepo.swift */,
+			);
+			name = JSONModel;
+			sourceTree = "<group>";
+		};
+		ABF93E2B1E583D10001E7848 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ABF93E2C1E583D24001E7848 /* TimeLineViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		ABF93E2E1E583DD9001E7848 /* TableViewCellView */ = {
+			isa = PBXGroup;
+			children = (
+				ABF93E2F1E583DF4001E7848 /* TimeLineTableViewCell.swift */,
+			);
+			name = TableViewCellView;
+			sourceTree = "<group>";
+		};
+		ABF93E331E58838F001E7848 /* XMLModel */ = {
+			isa = PBXGroup;
+			children = (
+				ABF93E341E5883B7001E7848 /* TimeLineModel.swift */,
+			);
+			name = XMLModel;
 			sourceTree = "<group>";
 		};
 		B9E4BCA32F2025CAD9A7925F /* Pods */ = {
@@ -211,9 +278,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF93E301E583DF4001E7848 /* TimeLineTableViewCell.swift in Sources */,
+				ABF93E211E57F4A8001E7848 /* GithubOauth.swift in Sources */,
 				AB1D3B2D1E2122EA0062DE51 /* ViewController.swift in Sources */,
 				AB1D3B3D1E2124FE0062DE51 /* TabBarViewController.swift in Sources */,
+				ABF93E321E584266001E7848 /* TimeLine.swift in Sources */,
+				ABF93E231E5828AA001E7848 /* Github.swift in Sources */,
+				ABF93E261E582B53001E7848 /* CurrentUser.swift in Sources */,
 				AB1D3B2B1E2122EA0062DE51 /* AppDelegate.swift in Sources */,
+				ABF93E281E582C37001E7848 /* SwiftExtention.swift in Sources */,
+				ABF93E2A1E5837C0001E7848 /* StarredRepo.swift in Sources */,
+				ABF93E351E5883B7001E7848 /* TimeLineModel.swift in Sources */,
+				ABF93E2D1E583D24001E7848 /* TimeLineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

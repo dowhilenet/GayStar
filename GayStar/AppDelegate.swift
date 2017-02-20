@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import SwiftyOAuth
-
-let github = Provider.gitHub(clientID: "af3689b7eef793657839", clientSecret: "b2f4713ee30029079d036428f0ed45c6b44982a2", redirectURL: "GITStare://oauth-callback/github")
+import OAuthSwift
+//["scope": "repo%2Cuser", "token_type": "bearer", "access_token": "a7f6b892ea5afd4e83a59f203920f280bb5b469d"]
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,12 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         return true
     }
-
-  func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] ) -> Bool {
-    github.handleURL(url, options: options)
+  
+  func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    
+    if url.host == "oauth-callback" {
+      OAuthSwift.handle(url: url)
+    }
     return true
   }
-    
+  
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

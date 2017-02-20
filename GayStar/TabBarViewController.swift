@@ -12,30 +12,19 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let oneVC = ViewController()
-        oneVC.tabBarItem.title = "One"
-        let twoVC = ViewController()
+      
+        let oneNav = UINavigationController(rootViewController: TimeLineViewController())
+        let oneVC = oneNav
+        oneVC.tabBarItem.title = "TimeLine"
+      
+        let twoNav = UINavigationController(rootViewController: ViewController())
+        let twoVC = twoNav
         twoVC.tabBarItem.title = "Two"
-        let threeVC = ViewController()
+      
+        let threeNav = UINavigationController(rootViewController: ViewController())
+        let threeVC = threeNav
         threeVC.tabBarItem.title = "Three"
         viewControllers = [oneVC,twoVC,threeVC]
-        // Do any additional setup after loading the view.
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

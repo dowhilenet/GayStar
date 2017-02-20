@@ -11,4 +11,7 @@ pod 'Moya'
 pod 'SnapKit'
 pod 'SwiftyOAuth'
 pod 'PromiseKit'
+pod 'OAuthSwift'
+pod 'SWXMLHash'
+pod 'MJRefresh'
 end

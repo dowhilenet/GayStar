@@ -28,25 +28,25 @@ class ViewController: UIViewController {
       testButton.snp.makeConstraints { (make) in
         make.center.equalToSuperview()
     }
+    
+    githubProvider.request(Github.currentUser) { (result) in
+      switch result {
+      case .failure(let error):
+        print("error")
+      case .success(let value):
+        let user = value.data.mapObject(type: CurrentUser.self)
+        print(user!)
+      }
+    }
   }
 
     
 
     
   func goto() {
-    github.state = Date().description
-    github.scopes = ["user", "repo"]
-    github.useWebView = false
-    github.authorize { (result) in
-      switch result {
-      case .failure(let error):
-        print(error.localizedDescription,"请求数据失败")
-      case .success(let value):
-        print(value,"token" + value.accessToken)
-      }
-    }
-    
+    GithubOauth.shared.doOAuthGithub(viewController: self)
   }
+
 
 
 }
