@@ -17,11 +17,11 @@ class TabBarViewController: UITabBarController {
         let oneVC = oneNav
         oneVC.tabBarItem.title = "TimeLine"
       
-        let twoNav = UINavigationController(rootViewController: TrendingViewController())
+        let twoNav = UINavigationController(rootViewController: TrendingPageViewController())
         let twoVC = twoNav
         twoVC.tabBarItem.title = "Two"
       
-        let threeNav = UINavigationController(rootViewController: ViewController())
+        let threeNav = UINavigationController(rootViewController: StarRepoViewController())
         let threeVC = threeNav
         threeVC.tabBarItem.title = "Three"
         viewControllers = [oneVC,twoVC,threeVC]

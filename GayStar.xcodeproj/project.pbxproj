@@ -25,6 +25,9 @@
 		ABF93E371E5A855D001E7848 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E361E5A855D001E7848 /* TrendingViewController.swift */; };
 		ABF93E391E5A8621001E7848 /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E381E5A8621001E7848 /* TrendingTableViewCell.swift */; };
 		ABF93E3B1E5A9058001E7848 /* TrendingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E3A1E5A9058001E7848 /* TrendingModel.swift */; };
+		ABF93E3D1E5ADFB0001E7848 /* TrendingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E3C1E5ADFB0001E7848 /* TrendingPageViewController.swift */; };
+		ABF93E401E5AF6E2001E7848 /* StarRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E3F1E5AF6E2001E7848 /* StarRepoViewController.swift */; };
+		ABF93E421E5AF868001E7848 /* StarRepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF93E411E5AF868001E7848 /* StarRepoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		ABF93E361E5A855D001E7848 /* TrendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		ABF93E381E5A8621001E7848 /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
 		ABF93E3A1E5A9058001E7848 /* TrendingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingModel.swift; sourceTree = "<group>"; };
+		ABF93E3C1E5ADFB0001E7848 /* TrendingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingPageViewController.swift; sourceTree = "<group>"; };
+		ABF93E3F1E5AF6E2001E7848 /* StarRepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRepoViewController.swift; sourceTree = "<group>"; };
+		ABF93E411E5AF868001E7848 /* StarRepoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRepoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +139,8 @@
 			children = (
 				ABF93E2C1E583D24001E7848 /* TimeLineViewController.swift */,
 				ABF93E361E5A855D001E7848 /* TrendingViewController.swift */,
+				ABF93E3C1E5ADFB0001E7848 /* TrendingPageViewController.swift */,
+				ABF93E3F1E5AF6E2001E7848 /* StarRepoViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -142,6 +150,7 @@
 			children = (
 				ABF93E2F1E583DF4001E7848 /* TimeLineTableViewCell.swift */,
 				ABF93E381E5A8621001E7848 /* TrendingTableViewCell.swift */,
+				ABF93E411E5AF868001E7848 /* StarRepoTableViewCell.swift */,
 			);
 			name = TableViewCellView;
 			sourceTree = "<group>";
@@ -291,12 +300,15 @@
 				ABF93E211E57F4A8001E7848 /* GithubOauth.swift in Sources */,
 				AB1D3B2D1E2122EA0062DE51 /* ViewController.swift in Sources */,
 				ABF93E371E5A855D001E7848 /* TrendingViewController.swift in Sources */,
+				ABF93E3D1E5ADFB0001E7848 /* TrendingPageViewController.swift in Sources */,
 				AB1D3B3D1E2124FE0062DE51 /* TabBarViewController.swift in Sources */,
 				ABF93E321E584266001E7848 /* TimeLine.swift in Sources */,
+				ABF93E421E5AF868001E7848 /* StarRepoTableViewCell.swift in Sources */,
 				ABF93E231E5828AA001E7848 /* Github.swift in Sources */,
 				ABF93E3B1E5A9058001E7848 /* TrendingModel.swift in Sources */,
 				ABF93E261E582B53001E7848 /* CurrentUser.swift in Sources */,
 				AB1D3B2B1E2122EA0062DE51 /* AppDelegate.swift in Sources */,
+				ABF93E401E5AF6E2001E7848 /* StarRepoViewController.swift in Sources */,
 				ABF93E281E582C37001E7848 /* SwiftExtention.swift in Sources */,
 				ABF93E391E5A8621001E7848 /* TrendingTableViewCell.swift in Sources */,
 				ABF93E2A1E5837C0001E7848 /* StarredRepo.swift in Sources */,

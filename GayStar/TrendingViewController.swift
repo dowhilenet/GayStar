@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 import Kanna
+import XLPagerTabStrip
+
 class TrendingViewController: UIViewController {
 
   lazy var tableView: UITableView = {
@@ -53,6 +55,18 @@ class TrendingViewController: UIViewController {
 
 }
 
+extension TrendingViewController: IndicatorInfoProvider {
+  func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+    switch type {
+    case .trendingToday:
+      return IndicatorInfo(title: "Today")
+    case .trendingWeek:
+      return IndicatorInfo(title: "Week")
+    default:
+      return IndicatorInfo(title: "Month")
+    }
+  }
+}
 
 extension TrendingViewController: UITableViewDelegate {
   
