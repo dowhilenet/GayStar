@@ -13,5 +13,8 @@ pod 'SwiftyOAuth'
 pod 'PromiseKit'
 pod 'OAuthSwift'
 pod 'SWXMLHash'
+pod 'Kanna'
 pod 'MJRefresh'
+pod 'SwifterSwift'
+pod 'XLPagerTabStrip'
 end

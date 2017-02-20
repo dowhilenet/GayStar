@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     githubProvider.request(Github.currentUser) { (result) in
       switch result {
       case .failure(let error):
-        print("error")
+        print("\(error.localizedDescription)")
       case .success(let value):
         let user = value.data.mapObject(type: CurrentUser.self)
         print(user!)

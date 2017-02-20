@@ -30,6 +30,9 @@ let TimeLineProvider = MoyaProvider(endpointClosure: { (target) -> Endpoint<Time
 
 enum TimeLine {
   case currentUser(page: Int)
+  case trendingToday
+  case trendingWeek
+  case trendingMonth
 }
 
 extension TimeLine: TargetType {
@@ -40,6 +43,8 @@ extension TimeLine: TargetType {
     switch self {
       case .currentUser:
           return "/timeline"
+    case .trendingToday, .trendingWeek, .trendingMonth:
+          return "/trending"
     }
   }
   
@@ -51,6 +56,12 @@ extension TimeLine: TargetType {
     switch self {
     case .currentUser(let page):
       return ["page":page]
+    case .trendingWeek:
+      return ["since":"weekly"]
+    case .trendingMonth:
+      return ["since":"monthly"]
+    case .trendingToday:
+      return nil
     }
   }
   

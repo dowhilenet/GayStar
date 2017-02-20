@@ -8,7 +8,6 @@
 
 import UIKit
 import OAuthSwift
-//["scope": "repo%2Cuser", "token_type": "bearer", "access_token": "a7f6b892ea5afd4e83a59f203920f280bb5b469d"]
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -17,7 +17,7 @@ class TabBarViewController: UITabBarController {
         let oneVC = oneNav
         oneVC.tabBarItem.title = "TimeLine"
       
-        let twoNav = UINavigationController(rootViewController: ViewController())
+        let twoNav = UINavigationController(rootViewController: TrendingViewController())
         let twoVC = twoNav
         twoVC.tabBarItem.title = "Two"
       

@@ -28,7 +28,7 @@ let githubProvider = MoyaProvider(endpointClosure: { (target) -> Endpoint<Github
 }, plugins: [], trackInflights: false)
 
 func test() {
-  let githubProvider = MoyaProvider(endpointClosure: { (target) -> Endpoint<Github> in
+  _ = MoyaProvider(endpointClosure: { (target) -> Endpoint<Github> in
     let url = target.baseURL.appendingPathComponent(target.path).absoluteString
     return Endpoint(
       url: url,
