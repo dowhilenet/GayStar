@@ -12,7 +12,7 @@ class TrendingPageViewController: TwitterPagerTabStripViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    automaticallyAdjustsScrollViewInsets = false
     view.backgroundColor = .white
   }
   

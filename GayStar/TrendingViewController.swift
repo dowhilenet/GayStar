@@ -33,10 +33,12 @@ class TrendingViewController: UIViewController {
   }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        automaticallyAdjustsScrollViewInsets = false
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-          make.edges.equalToSuperview()
+          make.top.equalToSuperview().offset(64)
+          make.bottom.equalToSuperview().offset(-46)
+          make.left.trailing.equalToSuperview()
         }
       
         getTrendData(type: type)
